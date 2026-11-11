@@ -120,6 +120,39 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
         }
+        .site-header.is-dark.up {
+            border-color: rgba(255,255,255,0.08);
+            background: rgba(13,13,12,0.92);
+        }
+        .site-header.is-dark .header-logo {
+            color: #ffffff;
+        }
+        .site-header.is-dark .header-logo .live-dot {
+            background: #10b981;
+        }
+        .site-header.is-dark .header-nav a {
+            color: rgba(255,255,255,0.5);
+        }
+        .site-header.is-dark .header-nav a:hover {
+            color: #ffffff;
+        }
+        .site-header.is-dark .btn-ghost {
+            color: #ffffff;
+            border-color: rgba(255,255,255,0.25);
+        }
+        .site-header.is-dark .btn-ghost:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: #ffffff;
+        }
+        .site-header.is-dark .btn-solid {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+        .site-header.is-dark .btn-solid:hover {
+            background: #e5e5e0;
+            border-color: #e5e5e0;
+        }
         .header-logo {
             font-family: 'DM Mono', monospace;
             font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
@@ -310,45 +343,235 @@
             font-weight: 600;
         }
 
-        .hero-badges-row {
-            margin-top: 16px;
+        /* ── HERO TRI-VECTOR DOCK ── */
+        .hero-trivector-dock {
+            margin-top: 18px;
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 8px;
-            max-width: 520px;
+            max-width: 540px;
         }
-        .hero-badge {
+        .trivector-card {
             background: #ffffff;
             border: 1px solid var(--line-strong);
             border-radius: 4px;
-            padding: 6px 10px;
+            padding: 8px 10px;
             display: flex;
             flex-direction: column;
-            gap: 1px;
-            transition: border-color 0.2s, transform 0.2s;
+            justify-content: space-between;
+            gap: 4px;
+            text-decoration: none;
+            transition: all 0.2s;
         }
-        .hero-badge:hover {
+        .trivector-card:hover {
             border-color: #0a0a0a;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
         }
-        .hero-badge .badge-accent {
+        .trivector-tag {
             font-family: 'DM Mono', monospace;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
+            font-size: 8.5px;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--text-primary);
-        }
-        .hero-badge .badge-text {
-            font-size: 11px;
             color: var(--text-muted);
+            font-weight: 600;
+        }
+        .trivector-title {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+        .trivector-sub {
+            font-family: 'DM Mono', monospace;
+            font-size: 9.5px;
+            color: var(--text-secondary);
             line-height: 1.3;
         }
 
         .hero-actions {
-            margin-top: 22px;
+            margin-top: 20px;
             display: flex; align-items: center; gap: 12px;
             flex-wrap: wrap;
+        }
+
+        /* ═══════════════════════════════════════════
+           ACT I-B: THE DUAL-CORE SPECTRUM ARCHITECTURE
+        ═══════════════════════════════════════════ */
+        #spectrum-section {
+            background: #090908;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-dark-sec);
+        }
+        #spectrum-section .sec-tag { color: rgba(255,255,255,0.5); }
+        #spectrum-section .sec-tag::before { background: #ffffff; }
+        #spectrum-section .sec-title { color: var(--text-dark-pri); }
+        #spectrum-section .sec-title em { color: #8e8e89; }
+        #spectrum-section .sec-sub { color: #9c9c96; }
+
+        .spectrum-grid {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .spectrum-card {
+            background: #121211;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 18px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            position: relative;
+        }
+        .spectrum-card:hover {
+            border-color: rgba(255,255,255,0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+        }
+        .spectrum-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .spectrum-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'DM Mono', monospace;
+            font-size: 9.5px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #34d399;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+        .spectrum-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 8px rgba(16,185,129,0.7);
+            display: inline-block;
+        }
+        .spectrum-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.25);
+        }
+        .spectrum-pillar-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+        }
+        .spectrum-pillar-desc {
+            font-size: 13.5px;
+            color: #9c9c96;
+            line-height: 1.55;
+        }
+        .spectrum-roles-block {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 14px;
+        }
+        .spectrum-roles-heading {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .spectrum-roles-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .spectrum-roles-list .role-pill {
+            font-size: 10px;
+            padding: 4px 8px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #e5e5e0;
+        }
+        .spectrum-roles-list .role-pill:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.3);
+            color: #ffffff;
+        }
+        .spectrum-proof-strip {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .spectrum-proof-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .sp-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 9.5px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+        }
+        .sp-val {
+            font-size: 12.5px;
+            color: #f5f5f2;
+            font-weight: 500;
+        }
+        .spectrum-jump-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: #1a1a19;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #ffffff;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .spectrum-jump-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            transform: translateX(2px);
+        }
+        .spectrum-academic-strip {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: #121211;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+        }
+        .spectrum-academic-strip .deg-title {
+            color: #ffffff;
+        }
+        .spectrum-academic-strip .deg-sub {
+            color: #9c9c96;
         }
 
         /* ═══════════════════════════════════════════
@@ -440,23 +663,30 @@
            ACT III: 3D SPATIAL & ARCHVIZ GALLERY
         ═══════════════════════════════════════════ */
         #gallery-section {
-            background: var(--bg);
-            border-bottom: 1px solid var(--line);
+            background: var(--bg-dark);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-dark-sec);
         }
+        #gallery-section .sec-tag { color: rgba(255,255,255,0.5); }
+        #gallery-section .sec-tag::before { background: #ffffff; }
+        #gallery-section .sec-title { color: var(--text-dark-pri); }
+        #gallery-section .sec-title em { color: rgba(255,255,255,0.6); }
+        #gallery-section .sec-sub { color: var(--text-dark-sec); }
+
         .gallery-hero-card {
             margin-top: 40px;
             width: 100%;
-            border: 1px solid var(--line);
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: 4px;
-            background: #ffffff;
+            background: #141413;
             overflow: hidden;
             cursor: pointer;
             position: relative;
             transition: all 0.25s ease;
         }
         .gallery-hero-card:hover {
-            border-color: var(--line-mid);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
             transform: translateY(-2px);
         }
         .gallery-hero-img-wrap {
@@ -475,13 +705,13 @@
         .gallery-hero-info {
             padding: 20px 28px;
             display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-            background: #ffffff;
-            border-top: 1px solid var(--line);
+            background: #141413;
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
-        .gallery-hero-title { font-size: 15.5px; font-weight: 600; color: var(--text-primary); }
+        .gallery-hero-title { font-size: 15.5px; font-weight: 600; color: #ffffff; }
         .gallery-hero-meta {
             font-family: 'DM Mono', monospace; font-size: 11px;
-            color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;
+            color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase;
         }
 
         .gallery-studies-grid {
@@ -491,9 +721,9 @@
             gap: 24px;
         }
         .gallery-card {
-            border: 1px solid var(--line);
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: 4px;
-            background: #ffffff;
+            background: #141413;
             overflow: hidden;
             cursor: pointer;
             position: relative;
@@ -501,8 +731,8 @@
             transition: all 0.25s ease;
         }
         .gallery-card:hover {
-            border-color: var(--line-mid);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
             transform: translateY(-2px);
         }
         .gallery-card-img-wrap {
@@ -510,7 +740,7 @@
             aspect-ratio: 16 / 10;
             overflow: hidden;
             position: relative;
-            background: #f0f0ee;
+            background: #080808;
         }
         .gallery-card img {
             width: 100%; height: 100%; object-fit: cover;
@@ -520,13 +750,13 @@
         .gallery-card-info {
             padding: 18px 22px;
             display: flex; align-items: baseline; justify-content: space-between;
-            background: #ffffff;
-            border-top: 1px solid var(--line);
+            background: #141413;
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
-        .gallery-card-title { font-size: 14.5px; font-weight: 600; color: var(--text-primary); }
+        .gallery-card-title { font-size: 14.5px; font-weight: 600; color: #ffffff; }
         .gallery-card-meta {
             font-family: 'DM Mono', monospace; font-size: 10.5px;
-            color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase;
+            color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase;
         }
 
         /* ═══════════════════════════════════════════
@@ -805,9 +1035,16 @@
            ACT VI: TECHNICAL ARSENAL & INTAKE REDESIGN
         ═══════════════════════════════════════════ */
         #contact-section {
-            background: #fcfcfb;
-            border-top: 1px solid var(--line);
+            background: #080808;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-dark-sec);
         }
+        #contact-section .sec-tag { color: rgba(255,255,255,0.5); }
+        #contact-section .sec-tag::before { background: #ffffff; }
+        #contact-section .sec-title { color: var(--text-dark-pri); }
+        #contact-section .sec-title em { color: #8e8e89; }
+        #contact-section .sec-sub { color: #9c9c96; }
+
         .arsenal-grid {
             margin-top: 48px;
             display: grid;
@@ -815,19 +1052,19 @@
             gap: 20px;
         }
         .arsenal-card {
-            background: #ffffff;
-            border: 1px solid var(--line-strong);
+            background: #121211;
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: 6px;
             padding: 28px 24px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             transition: all 0.2s ease;
         }
         .arsenal-card:hover {
-            border-color: #0a0a0a;
+            border-color: rgba(255,255,255,0.35);
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.7);
         }
         .arsenal-card-head {
             display: flex;
@@ -840,15 +1077,15 @@
             font-size: 10px;
             letter-spacing: 0.12em;
             font-weight: 700;
-            background: #0a0a0a;
-            color: #ffffff;
+            background: #ffffff;
+            color: #000000;
             padding: 4px 8px;
             border-radius: 3px;
         }
         .arsenal-card-title {
             font-size: 16px;
             font-weight: 700;
-            color: var(--text-primary);
+            color: #ffffff;
             letter-spacing: -0.02em;
             margin: 0;
         }
@@ -856,9 +1093,9 @@
             font-family: 'DM Mono', monospace;
             font-size: 10px;
             letter-spacing: 0.08em;
-            color: var(--text-muted);
-            background: var(--bg-subtle);
-            border: 1px solid var(--line);
+            color: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
             padding: 4px 10px;
             border-radius: 3px;
             width: fit-content;
@@ -872,7 +1109,7 @@
             display: flex;
             flex-direction: column;
             gap: 14px;
-            border-top: 1px solid var(--line);
+            border-top: 1px solid rgba(255,255,255,0.08);
             padding-top: 18px;
         }
         .arsenal-list li {
@@ -883,11 +1120,11 @@
         .a-item-name {
             font-size: 14px;
             font-weight: 600;
-            color: var(--text-primary);
+            color: #ffffff;
         }
         .a-item-spec {
             font-size: 12.5px;
-            color: var(--text-secondary);
+            color: #9c9c96;
             line-height: 1.45;
         }
 
@@ -895,10 +1132,10 @@
         .creds-section {
             margin-top: 48px;
             padding: 32px 36px;
-            background: #ffffff;
-            border: 1px solid var(--line-strong);
+            background: #121211;
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: 6px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
         .creds-header {
             display: flex;
@@ -908,7 +1145,7 @@
             gap: 12px;
             margin-bottom: 24px;
             padding-bottom: 16px;
-            border-bottom: 1px solid var(--line);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .creds-tag {
             font-family: 'DM Mono', monospace;
@@ -916,12 +1153,12 @@
             letter-spacing: 0.16em;
             text-transform: uppercase;
             font-weight: 700;
-            color: var(--text-primary);
+            color: #ffffff;
         }
         .creds-sub {
             font-family: 'DM Mono', monospace;
             font-size: 10.5px;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.45);
             letter-spacing: 0.04em;
         }
         .creds-grid {
@@ -930,8 +1167,8 @@
             gap: 14px;
         }
         .cred-card {
-            background: var(--bg-subtle);
-            border: 1px solid var(--line);
+            background: #181817;
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 4px;
             padding: 14px 16px;
             text-decoration: none;
@@ -941,10 +1178,10 @@
             transition: all 0.2s;
         }
         .cred-card:hover {
-            background: #ffffff;
-            border-color: #0a0a0a;
+            background: #222220;
+            border-color: rgba(255,255,255,0.3);
             transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
         }
         .cred-org-badge {
             font-family: 'DM Mono', monospace;
@@ -952,8 +1189,8 @@
             letter-spacing: 0.08em;
             text-transform: uppercase;
             font-weight: 700;
-            background: #0a0a0a;
-            color: #ffffff;
+            background: #ffffff;
+            color: #000000;
             padding: 3px 7px;
             border-radius: 2px;
             flex-shrink: 0;
@@ -967,7 +1204,7 @@
         .cred-title {
             font-size: 12.5px;
             font-weight: 600;
-            color: var(--text-primary);
+            color: #ffffff;
             line-height: 1.35;
             white-space: nowrap;
             overflow: hidden;
@@ -976,23 +1213,24 @@
         .cred-id {
             font-family: 'DM Mono', monospace;
             font-size: 10px;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.45);
             margin-top: 2px;
         }
         .cred-arrow {
             font-size: 12px;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.4);
             transition: transform 0.2s;
         }
         .cred-card:hover .cred-arrow {
             transform: translate(2px, -2px);
-            color: var(--text-primary);
+            color: #ffffff;
         }
         .cred-status-dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
             background: #10b981;
+            box-shadow: 0 0 6px rgba(16,185,129,0.7);
             flex-shrink: 0;
         }
 
@@ -1091,7 +1329,7 @@
         .contact-deck-wrapper {
             margin-top: 48px;
             padding-top: 40px;
-            border-top: 1px solid var(--line);
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
         .contact-deck-header {
             display: flex;
@@ -1106,7 +1344,7 @@
             font-size: 11.5px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.5);
             font-weight: 600;
         }
         .contact-links-grid {
@@ -1120,48 +1358,55 @@
             justify-content: space-between;
             gap: 10px;
             padding: 18px 20px;
-            background: #ffffff;
-            border: 1px solid var(--line-strong);
+            background: #121211;
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: 6px;
             text-decoration: none;
             transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
             min-height: 84px;
         }
         .c-action:hover {
-            border-color: #0a0a0a;
+            border-color: rgba(255,255,255,0.35);
+            background: #1c1c1b;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.6);
         }
         .c-action.primary {
-            background: #0a0a0a;
-            color: #ffffff;
-            border-color: #0a0a0a;
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
         }
         .c-action.primary:hover {
-            background: #1f1f1f;
+            background: #f0f0eb;
+            border-color: #f0f0eb;
         }
         .c-action.primary .c-action-label {
-            color: rgba(255,255,255,0.65);
+            color: rgba(0,0,0,0.65);
         }
         .c-action.primary .c-action-val {
-            color: #ffffff;
+            color: #000000;
+            font-weight: 700;
         }
         .c-action.download {
-            background: #fafaf8;
+            background: #181817;
+            border-color: rgba(255,255,255,0.16);
+        }
+        .c-action.download:hover {
+            background: #242422;
         }
         .c-action-label {
             font-family: 'DM Mono', monospace;
             font-size: 10px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.45);
             font-weight: 600;
         }
         .c-action-val {
             font-family: 'DM Mono', monospace;
             font-size: 12.5px;
-            color: var(--text-primary);
+            color: #ffffff;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -1173,7 +1418,7 @@
             gap: 8px;
             font-family: 'DM Mono', monospace;
             font-size: 11px;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.45);
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
@@ -1211,14 +1456,14 @@
         /* ── FOOTER ─────────────────────────────────── */
         .site-footer {
             padding: 32px var(--gutter);
-            border-top: 1px solid var(--line);
+            border-top: 1px solid rgba(255,255,255,0.08);
             display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
             font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
-            color: var(--text-muted);
-            background: var(--bg);
+            color: rgba(255,255,255,0.4);
+            background: #050505;
         }
-        .site-footer a { color: var(--text-muted); text-decoration: none; }
-        .site-footer a:hover { color: var(--text-primary); }
+        .site-footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+        .site-footer a:hover { color: #ffffff; }
 
         [data-enter] { opacity: 0; transform: translateY(24px); }
 
@@ -1482,6 +1727,21 @@
                 white-space: normal !important;
                 font-size: 12px !important;
             }
+            .hero-trivector-dock {
+                grid-template-columns: 1fr !important;
+                gap: 8px !important;
+            }
+            .spectrum-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+            .spectrum-card {
+                padding: 20px 18px !important;
+            }
+            .spectrum-academic-strip {
+                padding: 14px 16px !important;
+            }
+
             .intake-roles-section {
                 margin-top: 36px !important;
                 padding-top: 32px !important;
@@ -1548,11 +1808,12 @@
             <span>Joel Daniel Nadar</span>
         </a>
         <nav class="header-nav" aria-label="Sections">
+            <a href="#spectrum-section">Architecture</a>
             <a href="#cinema-section">3D Motion</a>
             <a href="#gallery-section">Visuals</a>
             <a href="#infra-section">Infrastructure</a>
             <a href="#web-section">Web &amp; Pipelines</a>
-            <a href="#contact-section">Arsenal &amp; Hire</a>
+            <a href="#contact-section">Accreditations &amp; Hire</a>
         </nav>
         <div class="header-actions">
             <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn btn-ghost" download>CV</a>
@@ -1589,31 +1850,191 @@
             <p class="hero-role" data-enter>
                 Operating high-availability enterprise infrastructure across <strong>150+ production servers</strong> under live market &amp; airport SLA pressure. Architecting autonomous AI pipelines (n8n/Zapier), photorealistic 3D computational environments, and hardened web platforms. Built for roles demanding zero-latency execution, rapid incident triage, and hands-on technical execution.
             </p>
-            <div class="hero-badges-row" data-enter>
-                <div class="hero-badge">
-                    <span class="badge-accent">150+ Servers · 99.9% SLA</span>
-                    <span class="badge-text">RHEL, Windows Server, DigiYatra Biometrics</span>
-                </div>
-                <div class="hero-badge">
-                    <span class="badge-accent">AI &amp; Workflow Automation</span>
-                    <span class="badge-text">n8n, Zapier Webhooks, Bash/Python Pipelines</span>
-                </div>
-                <div class="hero-badge">
-                    <span class="badge-accent">3D Computational CGI</span>
-                    <span class="badge-text">Blender Cycles PBR, Three.js WebGL Shaders</span>
-                </div>
-                <div class="hero-badge">
-                    <span class="badge-accent">SecOps &amp; Compliance</span>
-                    <span class="badge-text">Google Cybersecurity Certified, Trellix ENS</span>
-                </div>
+
+            <!-- Hero Tri-Vector Dock -->
+            <div class="hero-trivector-dock" data-enter>
+                <a href="#infra-section" class="trivector-card">
+                    <span class="trivector-tag">VEC.01 // BARE METAL</span>
+                    <span class="trivector-title">Systems &amp; SecOps</span>
+                    <span class="trivector-sub">150+ Servers · 99.9% SLA</span>
+                </a>
+                <a href="#cinema-section" class="trivector-card">
+                    <span class="trivector-tag">VEC.02 // PHOTONS</span>
+                    <span class="trivector-title">3D Spatial &amp; CGI</span>
+                    <span class="trivector-sub">Blender Cycles · WebGL</span>
+                </a>
+                <a href="#web-section" class="trivector-card">
+                    <span class="trivector-tag">VEC.03 // PIPELINES</span>
+                    <span class="trivector-title">AI &amp; Web Systems</span>
+                    <span class="trivector-sub">&lt;120ms Webhooks · 4 Stores</span>
+                </a>
             </div>
+
             <div class="hero-actions" data-enter>
-                <a href="#cinema-section" class="btn btn-solid">
-                    <span>Explore 3D Work</span>
+                <a href="#spectrum-section" class="btn btn-solid">
+                    <span>Explore Full Spectrum</span>
                     <span>↓</span>
                 </a>
-                <a href="#contact-section" class="btn btn-ghost">Target Roles &amp; Arsenal</a>
+                <a href="#infra-section" class="btn btn-ghost">Infrastructure</a>
+                <a href="#cinema-section" class="btn btn-ghost">3D Motion</a>
                 <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn btn-ghost" download>CV (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         ACT I-B: THE DUAL-CORE SPECTRUM ARCHITECTURE
+         Connecting Bare Metal, Spatial Computing, and Autonomous Workflows
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="section-wrapper is-dark-section" id="spectrum-section" aria-label="Capabilities Architecture">
+        <div class="section-inner">
+            <p class="sec-tag" data-enter>00 / Full-Spectrum Technical Architecture</p>
+            <h2 class="sec-title" data-enter>
+                The Dual-Core<br>
+                <em>Architecture</em>
+            </h2>
+            <p class="sec-sub" data-enter>
+                A unified technical practice: operating high-availability bare-metal enterprise infrastructure, engineering photorealistic 3D spatial computing, and orchestrating autonomous event-driven pipelines.
+            </p>
+
+            <div class="spectrum-grid" data-enter>
+                <!-- Vector 01 -->
+                <div class="spectrum-card">
+                    <div>
+                        <div class="spectrum-card-header">
+                            <span class="spectrum-badge"><span class="spectrum-dot"></span>VECTOR 01 // BARE METAL</span>
+                            <span class="spectrum-num">01</span>
+                        </div>
+                        <h3 class="spectrum-pillar-title" style="margin-top:14px;">Enterprise Infrastructure &amp; SecOps</h3>
+                        <p class="spectrum-pillar-desc" style="margin-top:6px;">
+                            Operating under strict financial market &amp; airport SLA pressure. Live middleware log isolation, Active Directory domain governance, and enterprise endpoint compliance.
+                        </p>
+
+                        <div class="spectrum-roles-block">
+                            <div class="spectrum-roles-heading">Suited Capacities &amp; Roles</div>
+                            <div class="spectrum-roles-list">
+                                <span class="role-pill">Desktop Support Lead / L2 Specialist</span>
+                                <span class="role-pill">L2 Application Support Specialist</span>
+                                <span class="role-pill">Cybersecurity Analyst &amp; SecOps</span>
+                            </div>
+                        </div>
+
+                        <div class="spectrum-proof-strip">
+                            <div class="spectrum-proof-item">
+                                <span class="sp-label">Fleet Scale</span>
+                                <span class="sp-val">150+ Linux &amp; Windows Servers</span>
+                            </div>
+                            <div class="spectrum-proof-item">
+                                <span class="sp-label">Triage Scope</span>
+                                <span class="sp-val">P1/P2 Outage Mitigation · SSMS SQL</span>
+                            </div>
+                            <div class="spectrum-proof-item">
+                                <span class="sp-label">Endpoint Rollout</span>
+                                <span class="sp-val">800 Branch Laptops · Trellix ENS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#infra-section" class="spectrum-jump-btn">
+                        <span>Inspect Operations Dossiers</span>
+                        <span>↓</span>
+                    </a>
+                </div>
+
+                <!-- Vector 02 -->
+                <div class="spectrum-card">
+                    <div>
+                        <div class="spectrum-card-header">
+                            <span class="spectrum-badge"><span class="spectrum-dot"></span>VECTOR 02 // PHOTONS</span>
+                            <span class="spectrum-num">02</span>
+                        </div>
+                        <h3 class="spectrum-pillar-title" style="margin-top:14px;">3D Spatial Computing &amp; CGI</h3>
+                        <p class="spectrum-pillar-desc" style="margin-top:6px;">
+                            Engineering photorealistic computational lighting, physically accurate material refraction, and real-time GPU particle physics that run directly in the browser.
+                        </p>
+
+                        <div class="spectrum-roles-block">
+                            <div class="spectrum-roles-heading">Suited Capacities &amp; Roles</div>
+                            <div class="spectrum-roles-list">
+                                <span class="role-pill">3D Artist &amp; Visualizer</span>
+                                <span class="role-pill">Game Development / Tech Artist</span>
+                                <span class="role-pill">Creative Technologist</span>
+                            </div>
+                        </div>
+
+                        <div class="spectrum-proof-strip">
+                            <div class="spectrum-proof-item">
+                                <span class="sp-label">Rendering Core</span>
+                                <span class="sp-val">Blender Cycles Physical IOR Optics</span>
+                            </div>
+                            <div class="spectrum-proof-item">
+                                <span class="sp-label">Real-Time Web</span>
+                                <span class="sp-val">Three.js Custom GLSL Vector Shaders</span>
+                            </div>
+                            <div class="spectrum-proof-item">
+                                <span class="sp-label">Spatial Logic</span>
+                                <span class="sp-val">Unreal Engine 5 Composition</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#cinema-section" class="spectrum-jump-btn">
+                        <span>Inspect 3D Cinematic Motion</span>
+                        <span>↓</span>
+                    </a>
+                </div>
+
+                <!-- Vector 03 -->
+                <div class="spectrum-card">
+                    <div>
+                        <div class="spectrum-card-header">
+                            <span class="spectrum-badge"><span class="spectrum-dot"></span>VECTOR 03 // ORCHESTRATION</span>
+                            <span class="spectrum-num">03</span>
+                        </div>
+                        <h3 class="spectrum-pillar-title" style="margin-top:14px;">Autonomous Webhooks &amp; Web Systems</h3>
+                        <p class="spectrum-pillar-desc" style="margin-top:6px;">
+                            Bridging customer touchpoints directly into accounting and monitoring pipelines. Architecting high-converting commerce platforms and algorithmic organic search engines.
+                        </p>
+
+                        <div class="spectrum-roles-block">
+                            <div class="spectrum-roles-heading">Suited Capacities &amp; Roles</div>
+                            <div class="spectrum-roles-list">
+                                <span class="role-pill">AI Workflow &amp; Automation Specialist</span>
+                                <span class="role-pill">Website Designer &amp; Web Developer</span>
+                                <span class="role-pill">Technical SEO &amp; Performance Analyst</span>
+                            </div>
+                        </div>
+
+                        <div class="spectrum-proof-strip">
+                            <div class="spectrum-proof-item">
+                                <span class="sp-label">Webhook Runtime</span>
+                                <span class="sp-val">&lt;120ms n8n / Zapier Event Dispatch</span>
+                            </div>
+                            <div class="spectrum-proof-item">
+                                <span class="sp-label">Production Web</span>
+                                <span class="sp-val">4 Live Commercial Deployments</span>
+                            </div>
+                            <div class="spectrum-proof-item">
+                                <span class="sp-label">Organic SEO</span>
+                                <span class="sp-val">Page 1 Google Ranks (0 Ad Spend)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#web-section" class="spectrum-jump-btn">
+                        <span>Inspect Web &amp; Automation</span>
+                        <span>↓</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Academic Anchor -->
+            <div class="spectrum-academic-strip" data-enter>
+                <div class="deg-icon">🎓</div>
+                <div class="academic-text">
+                    <span class="deg-title">Bachelor of Management Studies (TYBMS)</span>
+                    <span class="deg-sub">Royal College of Arts, Science &amp; Commerce (2023–2026) · Professional Focus: Systems Management &amp; Google Cybersecurity Specialization</span>
+                </div>
             </div>
         </div>
     </section>
@@ -1622,7 +2043,7 @@
          ACT II: THE HERO SHOWPIECE
          Cinema Display — AirPod 3D Motion Sequence
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <section class="section-wrapper" id="cinema-section" aria-label="3D Cinematic Motion">
+    <section class="section-wrapper is-dark-section" id="cinema-section" aria-label="3D Cinematic Motion">
         <div class="section-inner">
             <p class="sec-tag" data-enter>01 / Featured 3D Motion Study</p>
             <h2 class="sec-title" data-enter>
@@ -1676,7 +2097,7 @@
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          ACT III: 3D SPATIAL & ARCHVIZ GALLERY
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <section class="section-wrapper" id="gallery-section" aria-label="3D Spatial Environments">
+    <section class="section-wrapper is-dark-section" id="gallery-section" aria-label="3D Spatial Environments">
         <div class="section-inner">
             <p class="sec-tag" data-enter>02 / Spatial Environments</p>
             <h2 class="sec-title" data-enter>
@@ -2061,7 +2482,7 @@
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          ACT VI: TECHNICAL ARSENAL & DIRECT INTAKE
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <section class="section-wrapper" id="contact-section" aria-label="Capabilities and Contact">
+    <section class="section-wrapper is-dark-section" id="contact-section" aria-label="Capabilities and Contact">
         <div class="section-inner">
             <p class="sec-tag" data-enter>05 / Capabilities &amp; Contact</p>
             <h2 class="sec-title" data-enter>
@@ -2215,40 +2636,7 @@
                 </div>
             </div>
 
-            <!-- TIER 3: TARGET ROLES & FORMAL EDUCATION (FULL WIDTH) -->
-            <div class="intake-roles-section" data-enter>
-                <h3 class="intake-headline">
-                    Available for<br>
-                    <em>high-impact</em> roles.
-                </h3>
-                <p class="intake-desc">
-                    Available for hands-on technical roles across enterprise support, cybersecurity operations, 3D/game development, and web &amp; AI workflow automation (On-Site &amp; Worldwide Remote).
-                </p>
-
-                <div class="intake-roles-box">
-                    <div class="intake-roles-label">Target Roles &amp; Suited Capacities</div>
-                    <div class="intake-roles-tags">
-                        <span class="role-pill">Desktop Support Lead / L2 Specialist</span>
-                        <span class="role-pill">L2 Application Support Specialist</span>
-                        <span class="role-pill">Cybersecurity Analyst &amp; SecOps</span>
-                        <span class="role-pill">3D Artist &amp; Visualizer</span>
-                        <span class="role-pill">Game Development / Tech Artist</span>
-                        <span class="role-pill">Website Designer &amp; Web Developer</span>
-                        <span class="role-pill">Technical SEO &amp; Performance Analyst</span>
-                        <span class="role-pill">AI Workflow &amp; Automation Specialist</span>
-                    </div>
-                </div>
-
-                <div class="degree-pill-box">
-                    <span class="deg-icon">🎓</span>
-                    <div>
-                        <span class="deg-title">Bachelor of Management Studies (TYBMS)</span>
-                        <span class="deg-sub">Royal College of Arts, Science &amp; Commerce (2023–2026) · Pursuing Google Cybersecurity Specialization</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TIER 4: GLOBAL DIRECT INTAKE & DISPATCH (FULL WIDTH) -->
+            <!-- TIER 3: GLOBAL DIRECT INTAKE & DISPATCH (FULL WIDTH) -->
             <div class="contact-deck-wrapper" data-enter>
                 <div class="contact-deck-header">
                     <span class="contact-deck-title">Direct Intake &amp; Dispatch Channels</span>
@@ -2335,6 +2723,19 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 40) HEADER.classList.add('up');
             else HEADER.classList.remove('up');
+        });
+
+        // Dynamic Header Adaptation across Dark Sections
+        document.querySelectorAll('.is-dark-section').forEach(sec => {
+            ScrollTrigger.create({
+                trigger: sec,
+                start: 'top 52px',
+                end: 'bottom 52px',
+                onEnter: () => HEADER.classList.add('is-dark'),
+                onEnterBack: () => HEADER.classList.add('is-dark'),
+                onLeave: () => HEADER.classList.remove('is-dark'),
+                onLeaveBack: () => HEADER.classList.remove('is-dark')
+            });
         });
 
         // Reveal for [data-enter] Elements
@@ -2775,17 +3176,16 @@
                 el.addEventListener('mouseleave', () => ring.classList.remove('on'));
             });
 
-            const cinemaSec = document.getElementById('cinema-section');
-            if (cinemaSec) {
-                cinemaSec.addEventListener('mouseenter', () => {
+            document.querySelectorAll('.is-dark-section').forEach(sec => {
+                sec.addEventListener('mouseenter', () => {
                     ring.classList.add('dark');
                     dot.classList.add('dark');
                 });
-                cinemaSec.addEventListener('mouseleave', () => {
+                sec.addEventListener('mouseleave', () => {
                     ring.classList.remove('dark');
                     dot.classList.remove('dark');
                 });
-            }
+            });
         }
 
         // ── Lightbox ─────────────────────────────────────────────────────────
