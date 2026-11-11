@@ -94,7 +94,7 @@ export interface VelarisProps {
   children?: React.ReactNode;
 }
 
-const DEFAULT_COLORS = ["#86efac", "#4ade80", "#059669", "#000000"];
+const DEFAULT_COLORS = ["#4e4e4e", "#383838", "#222222", "#000000"];
 
 const Velaris = ({
   bg = "#000000",
