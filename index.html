@@ -996,13 +996,11 @@
             flex-shrink: 0;
         }
 
-        /* ── INTAKE DECK ── */
-        .intake-deck {
-            margin-top: 48px;
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: clamp(40px, 6vw, 80px);
-            align-items: start;
+        /* ── INTAKE SECTION (FULL-WIDTH SEQUENTIAL STACK) ── */
+        .intake-roles-section {
+            margin-top: 56px;
+            padding-top: 48px;
+            border-top: 1px solid var(--line);
         }
         .intake-headline {
             font-size: clamp(2.4rem, 4.4vw, 4.4rem);
@@ -1011,7 +1009,7 @@
             letter-spacing: -0.035em;
             color: var(--text-primary);
             font-family: 'DM Sans', sans-serif;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         .intake-headline em {
             font-family: 'Instrument Serif', serif;
@@ -1023,84 +1021,117 @@
             font-size: 15px;
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 24px;
-            max-width: 520px;
+            margin-bottom: 28px;
+            max-width: 820px;
         }
         .intake-roles-box {
-            padding: 18px 20px;
+            padding: 24px 26px;
             background: #ffffff;
             border: 1px solid var(--line-strong);
-            border-radius: 4px;
+            border-radius: 6px;
             margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         .intake-roles-label {
             font-family: 'DM Mono', monospace;
-            font-size: 10.5px;
+            font-size: 11px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             font-weight: 600;
         }
         .intake-roles-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
         .role-pill {
             font-family: 'DM Mono', monospace;
-            font-size: 11px;
+            font-size: 11.5px;
             letter-spacing: 0.04em;
             color: var(--text-primary);
-            background: rgba(0,0,0,0.04);
-            border: 1px solid var(--line);
-            padding: 5px 12px;
-            border-radius: 3px;
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            padding: 7px 14px;
+            border-radius: 4px;
             font-weight: 500;
+            transition: all 0.2s;
+        }
+        .role-pill:hover {
+            border-color: #0a0a0a;
+            background: #fafaf8;
+            transform: translateY(-1px);
         }
         .degree-pill-box {
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 14px 18px;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 24px;
             background: #ffffff;
             border: 1px solid var(--line);
-            border-radius: 4px;
+            border-radius: 6px;
         }
-        .deg-icon { font-size: 18px; line-height: 1; }
+        .deg-icon { font-size: 20px; line-height: 1; flex-shrink: 0; }
         .deg-title {
             display: block;
-            font-size: 13.5px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--text-primary);
         }
         .deg-sub {
             display: block;
-            font-size: 12px;
+            font-size: 12.5px;
             color: var(--text-secondary);
-            margin-top: 3px;
+            margin-top: 2px;
             line-height: 1.4;
         }
-        .contact-links-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+
+        /* ── DIRECT CONTACT DECK (FULL-WIDTH 3-COLUMN GRID) ── */
+        .contact-deck-wrapper {
+            margin-top: 48px;
+            padding-top: 40px;
+            border-top: 1px solid var(--line);
         }
-        .c-action {
+        .contact-deck-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 20px;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .contact-deck-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 11.5px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .contact-links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .c-action {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 18px 20px;
             background: #ffffff;
             border: 1px solid var(--line-strong);
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            min-height: 84px;
         }
         .c-action:hover {
             border-color: #0a0a0a;
-            background: var(--bg-hover);
-            transform: translateX(2px);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
         }
         .c-action.primary {
             background: #0a0a0a;
@@ -1108,8 +1139,7 @@
             border-color: #0a0a0a;
         }
         .c-action.primary:hover {
-            background: #262626;
-            color: #ffffff;
+            background: #1f1f1f;
         }
         .c-action.primary .c-action-label {
             color: rgba(255,255,255,0.65);
@@ -1123,19 +1153,21 @@
         .c-action-label {
             font-family: 'DM Mono', monospace;
             font-size: 10px;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--text-muted);
             font-weight: 600;
         }
         .c-action-val {
             font-family: 'DM Mono', monospace;
-            font-size: 12px;
+            font-size: 12.5px;
             color: var(--text-primary);
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .intake-location {
-            margin-top: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -1450,10 +1482,9 @@
                 white-space: normal !important;
                 font-size: 12px !important;
             }
-            .intake-deck {
-                grid-template-columns: 1fr !important;
-                gap: 32px !important;
-                margin-top: 32px !important;
+            .intake-roles-section {
+                margin-top: 36px !important;
+                padding-top: 32px !important;
             }
             .intake-headline {
                 font-size: clamp(2.2rem, 7.5vw, 3.0rem) !important;
@@ -1461,12 +1492,32 @@
             .intake-desc {
                 font-size: 13.5px !important;
                 line-height: 1.5 !important;
+                margin-bottom: 20px !important;
+            }
+            .intake-roles-box {
+                padding: 16px 16px !important;
+            }
+            .role-pill {
+                font-size: 10.5px !important;
+                padding: 6px 10px !important;
+            }
+            .degree-pill-box {
+                padding: 14px 16px !important;
+            }
+            .contact-deck-wrapper {
+                margin-top: 36px !important;
+                padding-top: 28px !important;
+            }
+            .contact-links-grid {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
             }
             .c-action {
+                min-height: auto !important;
                 padding: 14px 16px !important;
             }
             .c-action-val {
-                font-size: 11px !important;
+                font-size: 11.5px !important;
             }
 
             .site-footer {
@@ -2164,71 +2215,74 @@
                 </div>
             </div>
 
-            <!-- TIER 3: TARGET ROLES & INTAKE CONTACT DECK -->
-            <div class="intake-deck" data-enter>
-                <div class="intake-left">
-                    <h3 class="intake-headline">
-                        Available for<br>
-                        <em>high-impact</em> roles.
-                    </h3>
-                    <p class="intake-desc">
-                        Available for hands-on technical roles across enterprise support, cybersecurity operations, 3D/game development, and web &amp; AI workflow automation (On-Site &amp; Worldwide Remote).
-                    </p>
+            <!-- TIER 3: TARGET ROLES & FORMAL EDUCATION (FULL WIDTH) -->
+            <div class="intake-roles-section" data-enter>
+                <h3 class="intake-headline">
+                    Available for<br>
+                    <em>high-impact</em> roles.
+                </h3>
+                <p class="intake-desc">
+                    Available for hands-on technical roles across enterprise support, cybersecurity operations, 3D/game development, and web &amp; AI workflow automation (On-Site &amp; Worldwide Remote).
+                </p>
 
-                    <div class="intake-roles-box">
-                        <div class="intake-roles-label">Target Roles &amp; Suited Capacities</div>
-                        <div class="intake-roles-tags">
-                            <span class="role-pill">Desktop Support Lead / L2 Specialist</span>
-                            <span class="role-pill">L2 Application Support Specialist</span>
-                            <span class="role-pill">Cybersecurity Analyst &amp; SecOps</span>
-                            <span class="role-pill">3D Artist &amp; Visualizer</span>
-                            <span class="role-pill">Game Development / Tech Artist</span>
-                            <span class="role-pill">Website Designer &amp; Web Developer</span>
-                            <span class="role-pill">Technical SEO &amp; Performance Analyst</span>
-                            <span class="role-pill">AI Workflow &amp; Automation Specialist</span>
-                        </div>
-                    </div>
-
-                    <div class="degree-pill-box">
-                        <span class="deg-icon">🎓</span>
-                        <div>
-                            <span class="deg-title">Bachelor of Management Studies (TYBMS)</span>
-                            <span class="deg-sub">Royal College of Arts, Science &amp; Commerce (2023–2026) · Pursuing Google Cybersecurity Specialization</span>
-                        </div>
+                <div class="intake-roles-box">
+                    <div class="intake-roles-label">Target Roles &amp; Suited Capacities</div>
+                    <div class="intake-roles-tags">
+                        <span class="role-pill">Desktop Support Lead / L2 Specialist</span>
+                        <span class="role-pill">L2 Application Support Specialist</span>
+                        <span class="role-pill">Cybersecurity Analyst &amp; SecOps</span>
+                        <span class="role-pill">3D Artist &amp; Visualizer</span>
+                        <span class="role-pill">Game Development / Tech Artist</span>
+                        <span class="role-pill">Website Designer &amp; Web Developer</span>
+                        <span class="role-pill">Technical SEO &amp; Performance Analyst</span>
+                        <span class="role-pill">AI Workflow &amp; Automation Specialist</span>
                     </div>
                 </div>
 
-                <div class="intake-right">
-                    <div class="contact-links-grid">
-                        <a href="mailto:joelnadar825@gmail.com" class="c-action primary">
-                            <span class="c-action-label">Email Directly</span>
-                            <span class="c-action-val">joelnadar825@gmail.com ↗</span>
-                        </a>
-                        <a href="tel:+919321591870" class="c-action">
-                            <span class="c-action-label">Direct Phone</span>
-                            <span class="c-action-val">+91 93215 91870 →</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="c-action">
-                            <span class="c-action-label">LinkedIn</span>
-                            <span class="c-action-val">linkedin.com/in/joel-aka-shadowknight ↗</span>
-                        </a>
-                        <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="c-action">
-                            <span class="c-action-label">ArtStation</span>
-                            <span class="c-action-val">artstation.com/shadowknight010 ↗</span>
-                        </a>
-                        <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="c-action">
-                            <span class="c-action-label">Behance</span>
-                            <span class="c-action-val">behance.net/joeldaniel5 ↗</span>
-                        </a>
-                        <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="c-action download" download>
-                            <span class="c-action-label">Verified Resume</span>
-                            <span class="c-action-val">Download CV (PDF) ↓</span>
-                        </a>
+                <div class="degree-pill-box">
+                    <span class="deg-icon">🎓</span>
+                    <div>
+                        <span class="deg-title">Bachelor of Management Studies (TYBMS)</span>
+                        <span class="deg-sub">Royal College of Arts, Science &amp; Commerce (2023–2026) · Pursuing Google Cybersecurity Specialization</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- TIER 4: GLOBAL DIRECT INTAKE & DISPATCH (FULL WIDTH) -->
+            <div class="contact-deck-wrapper" data-enter>
+                <div class="contact-deck-header">
+                    <span class="contact-deck-title">Direct Intake &amp; Dispatch Channels</span>
                     <div class="intake-location">
                         <span class="live-dot-green"></span>
                         <span>Mumbai, India · Available for On-Site &amp; Worldwide Remote</span>
                     </div>
+                </div>
+
+                <div class="contact-links-grid">
+                    <a href="mailto:joelnadar825@gmail.com" class="c-action primary">
+                        <span class="c-action-label">Email Directly</span>
+                        <span class="c-action-val"><span>joelnadar825@gmail.com</span><span>↗</span></span>
+                    </a>
+                    <a href="tel:+919321591870" class="c-action">
+                        <span class="c-action-label">Direct Phone</span>
+                        <span class="c-action-val"><span>+91 93215 91870</span><span>→</span></span>
+                    </a>
+                    <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="c-action download" download>
+                        <span class="c-action-label">Verified Resume</span>
+                        <span class="c-action-val"><span>Download CV (PDF)</span><span>↓</span></span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="c-action">
+                        <span class="c-action-label">LinkedIn</span>
+                        <span class="c-action-val"><span>in/joel-aka-shadowknight</span><span>↗</span></span>
+                    </a>
+                    <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="c-action">
+                        <span class="c-action-label">ArtStation</span>
+                        <span class="c-action-val"><span>artstation.com/shadowknight010</span><span>↗</span></span>
+                    </a>
+                    <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="c-action">
+                        <span class="c-action-label">Behance</span>
+                        <span class="c-action-val"><span>behance.net/joeldaniel5</span><span>↗</span></span>
+                    </a>
                 </div>
             </div>
         </div>
