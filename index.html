@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en" data-type="software" style="color-scheme: light;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Joel Daniel Nadar — Systems Engineer, 3D Computational Artist & Web Architect based in Mumbai.">
+    <meta name="page-type" content="software">
+    <meta name="site-kind" content="software">
+    <title>Joel Daniel Nadar — Systems &amp; 3D</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Pre-bundled GLB base64 (file:/// compatible) -->
+    <script src="assets/character-model-data.js"></script>
+
+    <!-- Three.js -->
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg:          #fcfcfb;
+            --bg-subtle:   #f5f5f2;
+            --bg-card:     #ffffff;
+            --bg-dark:     #0d0d0c;
+            --bg-dark-card:#141413;
+            --line:        rgba(0,0,0,0.08);
+            --line-mid:    rgba(0,0,0,0.14);
+            --line-strong: rgba(0,0,0,0.22);
+            --text-primary:   #0a0a0a;
+            --text-secondary: #4a4a4a;
+            --text-muted:     #8a8a86;
+            --text-dark-pri:  #f5f5f2;
+            --text-dark-sec:  #999996;
+            --gutter: clamp(20px, 5.5vw, 100px);
+            --max-w: 1320px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text-secondary);
+            font-family: 'DM Sans', system-ui, sans-serif;
+            font-size: 15.5px;
+            line-height: 1.68;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { background: rgba(0,0,0,0.12); color: #000; }
+        :focus-visible { outline: 1.5px solid rgba(0,0,0,0.7); outline-offset: 4px; }
+
+        /* ── CUSTOM CURSOR (Desktop only) ───────────── */
+        .c-dot {
+            position: fixed; pointer-events: none; z-index: 9000;
+            width: 5px; height: 5px; border-radius: 50%;
+            background: #0a0a0a; transform: translate(-50%,-50%);
+            transition: width 0.15s, height 0.15s;
+        }
+        .c-ring {
+            position: fixed; pointer-events: none; z-index: 8999;
+            width: 32px; height: 32px; border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.25);
+            transform: translate(-50%,-50%);
+            transition: width 0.25s, height 0.25s, border-color 0.25s;
+        }
+        .c-ring.on { width: 56px; height: 56px; border-color: rgba(0,0,0,0.7); }
+        .c-ring.dark { border-color: rgba(255,255,255,0.4); }
+        .c-dot.dark { background: #ffffff; }
+
+        @media (hover: none), (pointer: coarse), (max-width: 900px) {
+            .c-dot, .c-ring { display: none !important; }
+        }
+
+        /* ── HEADER ────────────────────────────────── */
+        .site-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+            padding: 18px var(--gutter);
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s, background 0.3s, backdrop-filter 0.3s;
+        }
+        .site-header.up {
+            border-color: var(--line);
+            background: rgba(252,252,251,0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .header-logo {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--text-primary); text-decoration: none;
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 500;
+        }
+        .live-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #0a0a0a; animation: pulseDot 2.2s infinite;
+        }
+        @keyframes pulseDot { 0%,100%{opacity:0.95; transform:scale(1);} 50%{opacity:0.25; transform:scale(0.85);} }
+
+        .header-nav {
+            display: flex; align-items: center; gap: 28px;
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .header-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .header-nav a:hover { color: var(--text-primary); }
+        .header-actions { display: flex; align-items: center; gap: 10px; }
+
+        .btn {
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 8px 18px; border-radius: 3px;
+            text-decoration: none; transition: all 0.2s;
+            cursor: pointer; border: none; font-weight: 500;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-ghost { color: var(--text-primary); border: 1px solid var(--line-strong); background: transparent; }
+        .btn-ghost:hover { background: rgba(0,0,0,0.05); border-color: #0a0a0a; }
+        .btn-solid { color: #ffffff; background: #0a0a0a; border: 1px solid #0a0a0a; }
+        .btn-solid:hover { background: #262626; border-color: #262626; }
+
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: #0a0a0a; z-index: 300;
+            width: 0; will-change: width; pointer-events: none;
+        }
+
+        /* ── SECTION COMMON STYLING ─────────────────── */
+        .section-wrapper {
+            width: 100%;
+            padding: clamp(80px, 11vh, 150px) var(--gutter);
+            position: relative;
+        }
+        .section-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .sec-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--text-muted); margin-bottom: 20px;
+            display: flex; align-items: center; gap: 14px;
+        }
+        .sec-tag::before {
+            content: ''; width: 28px; height: 1.5px;
+            background: var(--text-primary); display: block;
+        }
+        .sec-title {
+            font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+            font-weight: 300; line-height: 1.05;
+            letter-spacing: -0.035em;
+            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            margin-bottom: 24px;
+        }
+        .sec-title em {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400; font-style: italic;
+            color: #555552;
+        }
+        .sec-sub {
+            font-size: 16px; color: var(--text-secondary);
+            max-width: 580px; line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════════════
+           ACT I: HERO SECTION
+        ═══════════════════════════════════════════ */
+        #hero-section {
+            min-height: 100svh;
+            height: 100svh;
+            width: 100%;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            padding: 0 var(--gutter);
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hero-character-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            order: 2;
+        }
+        #hero-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none;
+        }
+
+        .hero-content-frame {
+            position: relative;
+            z-index: 2;
+            padding: clamp(40px, 8vh, 80px) 0;
+            order: 1;
+        }
+        .hero-name {
+            font-size: clamp(4.4rem, 9.2vw, 9.8rem);
+            font-weight: 300; line-height: 0.92;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+        }
+        .hero-name em {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400; font-style: italic;
+            color: #555552;
+        }
+        .hero-role {
+            margin-top: 26px;
+            font-size: 16px; color: var(--text-secondary);
+            max-width: 480px; line-height: 1.65;
+        }
+        .hero-actions {
+            margin-top: 34px;
+            display: flex; align-items: center; gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* ═══════════════════════════════════════════
+           ACT II: THE CINEMA DISPLAY (AIRPOD 3D MOTION)
+        ═══════════════════════════════════════════ */
+        #cinema-section {
+            background: var(--bg-dark);
+            color: var(--text-dark-sec);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            position: relative;
+        }
+        #cinema-section .sec-tag { color: rgba(255,255,255,0.5); }
+        #cinema-section .sec-tag::before { background: #ffffff; }
+        #cinema-section .sec-title { color: var(--text-dark-pri); }
+        #cinema-section .sec-title em { color: rgba(255,255,255,0.6); }
+        #cinema-section .sec-sub { color: var(--text-dark-sec); }
+
+        .cinema-theater {
+            margin-top: 48px;
+            width: 100%;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #000000;
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 30px 100px rgba(0,0,0,0.7);
+            position: relative;
+        }
+        .cinema-screen {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            max-height: 75vh;
+            position: relative;
+            background: #050505;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .cinema-screen video {
+            width: 100%; height: 100%; object-fit: contain;
+            display: block;
+        }
+        .cinema-bar {
+            padding: 16px 24px;
+            background: #121211;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 14px;
+        }
+        .cinema-meta-left {
+            display: flex; align-items: center; gap: 20px;
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .cinema-meta-left .track-name { color: #ffffff; font-weight: 500; }
+        .cinema-meta-left .track-spec { color: rgba(255,255,255,0.45); }
+        .cinema-controls { display: flex; align-items: center; gap: 12px; }
+        .cin-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #ffffff; font-family: 'DM Mono', monospace;
+            font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 6px 14px; border-radius: 3px; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cin-btn:hover { background: rgba(255,255,255,0.2); }
+
+        .cinema-telemetry-grid {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .telemetry-cell {
+            background: var(--bg-dark-card);
+            padding: 20px 22px;
+        }
+        .telemetry-cell .t-label {
+            font-family: 'DM Mono', monospace; font-size: 10px;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: rgba(255,255,255,0.4); margin-bottom: 6px;
+        }
+        .telemetry-cell .t-val {
+            font-size: 13.5px; color: var(--text-dark-pri); font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════════
+           ACT III: 3D SPATIAL & ARCHVIZ GALLERY
+        ═══════════════════════════════════════════ */
+        #gallery-section {
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+        }
+        .gallery-grid {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 24px;
+        }
+        .gallery-card {
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            background: #ffffff;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+        .gallery-card:hover {
+            border-color: var(--line-mid);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .gallery-card-img-wrap {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background: #f0f0ee;
+        }
+        .gallery-card.featured .gallery-card-img-wrap { aspect-ratio: 16 / 10; }
+        .gallery-card.standard .gallery-card-img-wrap { aspect-ratio: 4 / 3; }
+        .gallery-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gallery-card:hover img { transform: scale(1.04); }
+        .gallery-card-info {
+            padding: 20px 24px;
+            display: flex; align-items: baseline; justify-content: space-between;
+        }
+        .gallery-card-title { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+        .gallery-card-meta {
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .gallery-subgrid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+        }
+
+        /* ═══════════════════════════════════════════
+           ACT IV: MISSION-CRITICAL INFRASTRUCTURE
+        ═══════════════════════════════════════════ */
+        #infra-section {
+            background: var(--bg-subtle);
+            border-bottom: 1px solid var(--line);
+        }
+        .metrics-banner {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .metric-block {
+            background: #ffffff;
+            padding: 32px 28px;
+            transition: background 0.2s;
+        }
+        .metric-block:hover { background: #fafaf8; }
+        .metric-num {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+            font-weight: 300; line-height: 1;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+        }
+        .metric-label {
+            margin-top: 10px;
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--text-muted); line-height: 1.45;
+        }
+
+        .infra-grid {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .infra-card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 28px 24px;
+            display: flex; flex-direction: column; justify-content: space-between;
+            transition: all 0.2s;
+        }
+        .infra-card:hover {
+            border-color: var(--line-mid);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.03);
+        }
+        .infra-card-header {
+            display: flex; justify-content: space-between; align-items: baseline;
+            margin-bottom: 14px;
+        }
+        .infra-period {
+            font-family: 'DM Mono', monospace; font-size: 10.5px;
+            color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .infra-role {
+            font-size: 15.5px; font-weight: 600; color: var(--text-primary);
+            margin-bottom: 4px; line-height: 1.35;
+        }
+        .infra-org { font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px; }
+        .infra-desc {
+            font-size: 14px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 24px;
+        }
+        .infra-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .i-tag {
+            font-family: 'DM Mono', monospace; font-size: 9.5px;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            padding: 3px 8px; border: 1px solid var(--line);
+            border-radius: 3px; color: var(--text-secondary);
+            background: var(--bg-subtle);
+        }
+
+        /* ═══════════════════════════════════════════
+           ACT V: WEB PLATFORMS & AUTOMATION
+        ═══════════════════════════════════════════ */
+        #web-section {
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+        }
+        .pipeline-card {
+            margin-top: 48px;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 32px 36px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .pipeline-title {
+            font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;
+        }
+        .pipeline-desc {
+            font-size: 14.5px; color: var(--text-secondary); max-width: 680px;
+        }
+        .pipeline-flow {
+            margin-top: 28px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+        }
+        .p-step {
+            padding: 16px 18px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--line);
+            border-radius: 3px;
+        }
+        .p-step-num {
+            font-family: 'DM Mono', monospace; font-size: 10px;
+            color: var(--text-muted); margin-bottom: 4px;
+        }
+        .p-step-title { font-size: 13.5px; font-weight: 600; color: var(--text-primary); }
+
+        .web-grid {
+            margin-top: 24px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+        }
+        .web-card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 24px 20px;
+            text-decoration: none;
+            display: flex; flex-direction: column; justify-content: space-between;
+            min-height: 180px;
+            transition: all 0.2s;
+        }
+        .web-card:hover {
+            border-color: var(--line-strong);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+        }
+        .web-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+        .web-card-name { font-size: 14.5px; font-weight: 600; color: var(--text-primary); }
+        .web-card-arrow {
+            font-size: 13px; color: var(--text-muted); transition: transform 0.2s, color 0.2s;
+        }
+        .web-card:hover .web-card-arrow { transform: translate(2px,-2px); color: var(--text-primary); }
+        .web-card-meta {
+            font-family: 'DM Mono', monospace; font-size: 10.5px;
+            color: var(--text-muted); line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════════
+           ACT VI: ARSENAL & DIRECT CONTACT
+        ═══════════════════════════════════════════ */
+        #contact-section {
+            background: var(--bg-subtle);
+        }
+        .contact-layout {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: clamp(40px, 6vw, 96px);
+            align-items: start;
+        }
+        .skills-table { display: flex; flex-direction: column; gap: 32px; }
+        .skills-group-head {
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--text-muted); margin-bottom: 12px;
+            padding-bottom: 8px; border-bottom: 1.5px solid var(--text-primary);
+        }
+        .skills-row {
+            display: flex; justify-content: space-between; align-items: baseline;
+            padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px;
+        }
+        .skills-row .sk-name { color: var(--text-primary); font-weight: 500; }
+        .skills-row .sk-level {
+            font-family: 'DM Mono', monospace; font-size: 10.5px;
+            color: var(--text-muted); letter-spacing: 0.04em;
+        }
+
+        .edu-card {
+            margin-top: 32px;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 20px 24px;
+            background: #ffffff;
+        }
+        .edu-title { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+        .edu-sub { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+        .edu-badge {
+            margin-top: 12px; padding-top: 10px;
+            border-top: 1px solid var(--line);
+            font-size: 12.5px; color: var(--text-muted);
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .hire-deck {
+            display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+        }
+        .hire-title {
+            font-size: clamp(2.4rem, 4.4vw, 4.4rem);
+            font-weight: 300; line-height: 1.05;
+            letter-spacing: -0.035em;
+            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            margin-bottom: 24px;
+        }
+        .hire-title em {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400; font-style: italic;
+            color: #555552;
+        }
+        .hire-links {
+            display: flex; flex-direction: column; gap: 12px; margin-top: 32px;
+        }
+        .h-link {
+            font-family: 'DM Mono', monospace; font-size: 11.5px;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-primary); text-decoration: none;
+            padding: 16px 22px;
+            border: 1px solid var(--line-strong);
+            border-radius: 3px;
+            transition: all 0.2s;
+            display: flex; align-items: center; justify-content: space-between;
+            font-weight: 500;
+        }
+        .h-link:hover { border-color: #0a0a0a; background: var(--bg-hover); }
+        .h-link.primary { color: #ffffff; background: #0a0a0a; border-color: #0a0a0a; }
+        .h-link.primary:hover { background: #262626; }
+
+        /* ── LIGHTBOX ───────────────────────────────── */
+        .lightbox {
+            position: fixed; inset: 0; z-index: 400;
+            background: rgba(10,10,10,0.96); backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: none; align-items: center; justify-content: center;
+            flex-direction: column; padding: 24px;
+        }
+        .lightbox.on { display: flex; }
+        .lightbox img {
+            max-width: 92vw; max-height: 84vh; object-fit: contain;
+            border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;
+            box-shadow: 0 24px 70px rgba(0,0,0,0.8);
+        }
+        .lb-close {
+            position: absolute; top: 24px; right: 24px;
+            width: 42px; height: 42px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(0,0,0,0.6); color: #ffffff;
+            font-size: 22px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .lb-close:hover { background: rgba(255,255,255,0.2); }
+        .lb-caption {
+            margin-top: 18px;
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7);
+        }
+
+        /* ── FOOTER ─────────────────────────────────── */
+        .site-footer {
+            padding: 32px var(--gutter);
+            border-top: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+            font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
+            color: var(--text-muted);
+            background: var(--bg);
+        }
+        .site-footer a { color: var(--text-muted); text-decoration: none; }
+        .site-footer a:hover { color: var(--text-primary); }
+
+        [data-enter] { opacity: 0; transform: translateY(24px); }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE MOBILE BREAKPOINTS (max-width: 900px)
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .cinema-telemetry-grid { grid-template-columns: repeat(2, 1fr); }
+            .metrics-banner { grid-template-columns: repeat(2, 1fr); }
+            .infra-grid { grid-template-columns: 1fr; }
+            .web-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 900px) {
+            .site-header { padding: 14px 20px; }
+            .header-nav { display: none !important; }
+
+            /* ── BULLETPROOF MOBILE HERO: 2 DISTINCT FRAMES ── */
+            #hero-section {
+                min-height: 100svh;
+                height: 100svh;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+                padding: 68px 20px 28px !important;
+                border-bottom: 1px solid var(--line);
+                overflow: hidden;
+            }
+
+            /* Dedicated character box at top: 38% of screen */
+            .hero-character-frame {
+                height: 38svh !important;
+                min-height: 220px !important;
+                width: 100% !important;
+                position: relative !important;
+                overflow: hidden !important;
+                order: 1 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            /* Dedicated typography box at bottom: 60% of screen */
+            .hero-content-frame {
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-end !important;
+                padding: 0 !important;
+                order: 2 !important;
+                z-index: 5 !important;
+            }
+
+            .sec-tag {
+                font-size: 9.5px !important;
+                letter-spacing: 0.16em !important;
+                margin-bottom: 12px !important;
+            }
+            .hero-name {
+                font-size: clamp(3.0rem, 12vw, 4.4rem) !important;
+                line-height: 0.95 !important;
+            }
+            .hero-role {
+                font-size: 14px !important;
+                margin-top: 12px !important;
+                line-height: 1.55 !important;
+            }
+            .hero-actions {
+                margin-top: 18px !important;
+                gap: 10px !important;
+            }
+            .hero-actions .btn {
+                padding: 8px 16px !important;
+                font-size: 10.5px !important;
+            }
+
+            /* Sections on mobile */
+            .section-wrapper {
+                padding: 64px 20px !important;
+            }
+            .sec-title {
+                font-size: clamp(2.0rem, 7.5vw, 2.8rem) !important;
+            }
+            .sec-sub {
+                font-size: 14.5px !important;
+            }
+
+            /* Cinema Section */
+            .cinema-theater {
+                margin-top: 28px;
+            }
+            .cinema-screen {
+                aspect-ratio: 16 / 9;
+                max-height: 45vh;
+            }
+            .cinema-bar {
+                padding: 14px 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .cinema-meta-left {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .cinema-controls {
+                width: 100%;
+                justify-content: flex-start;
+                gap: 8px;
+            }
+            .cinema-telemetry-grid {
+                grid-template-columns: 1fr;
+                margin-top: 24px;
+            }
+            .telemetry-cell {
+                padding: 14px 16px;
+            }
+
+            /* Gallery Section */
+            .gallery-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                margin-top: 32px !important;
+            }
+            .gallery-subgrid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            .gallery-card-info {
+                padding: 14px 16px;
+            }
+
+            /* Infrastructure Section */
+            .metrics-banner {
+                grid-template-columns: 1fr 1fr;
+                margin-top: 32px;
+            }
+            .metric-block {
+                padding: 20px 16px;
+            }
+            .metric-num {
+                font-size: clamp(2.2rem, 7.5vw, 3.2rem);
+            }
+            .infra-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-top: 28px;
+            }
+            .infra-card {
+                padding: 20px 18px;
+            }
+
+            /* Web Section */
+            .pipeline-card {
+                padding: 22px 18px;
+                margin-top: 28px;
+            }
+            .pipeline-flow {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-top: 20px;
+            }
+            .web-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                margin-top: 20px;
+            }
+            .web-card {
+                min-height: 140px;
+                padding: 18px 16px;
+            }
+
+            /* Contact Section */
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-top: 32px;
+            }
+            .hire-title {
+                font-size: clamp(2.2rem, 7.5vw, 3.0rem);
+            }
+            .hire-links {
+                margin-top: 20px;
+            }
+            .h-link {
+                padding: 14px 18px;
+            }
+
+            .site-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 24px 20px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#hero-section" class="skip-link">Skip to content</a>
+    <div id="progress-bar"></div>
+    <div class="c-dot" id="cDot" aria-hidden="true"></div>
+    <div class="c-ring" id="cRing" aria-hidden="true"></div>
+
+    <!-- ── HEADER ─────────────────────────────── -->
+    <header class="site-header" id="siteHdr">
+        <a href="#hero-section" class="header-logo">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>Joel Daniel Nadar</span>
+        </a>
+        <nav class="header-nav" aria-label="Sections">
+            <a href="#cinema-section">3D Motion</a>
+            <a href="#gallery-section">Visuals</a>
+            <a href="#infra-section">Infrastructure</a>
+            <a href="#web-section">Web &amp; Pipelines</a>
+            <a href="#contact-section">Arsenal &amp; Hire</a>
+        </nav>
+        <div class="header-actions">
+            <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn btn-ghost" download>CV</a>
+            <a href="mailto:joelnadar825@gmail.com" class="btn btn-solid">Hire</a>
+        </div>
+    </header>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         ACT I: THE HOOK (HERO)
+         Interactive 3D Skull Cowboy Vector Particles
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section id="hero-section" aria-label="Introduction">
+        <!-- Character Container (Self-contained, isolated frame) -->
+        <div class="hero-character-frame" id="charFrame">
+            <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        </div>
+
+        <!-- Content Container -->
+        <div class="hero-content-frame">
+            <p class="sec-tag" data-enter style="margin-bottom:14px;">
+                Systems · 3D · Mumbai
+            </p>
+            <h1 class="hero-name" data-enter>
+                Joel<br>
+                <em>Daniel</em><br>
+                Nadar
+            </h1>
+            <p class="hero-role" data-enter>
+                Mission-critical enterprise infrastructure at scale. Photorealistic 3D visual environments. Autonomous web systems.
+            </p>
+            <div class="hero-actions" data-enter>
+                <a href="#cinema-section" class="btn btn-solid">
+                    <span>Explore 3D Work</span>
+                    <span>↓</span>
+                </a>
+                <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn btn-ghost" download>Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         ACT II: THE HERO SHOWPIECE
+         Cinema Display — AirPod 3D Motion Sequence
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="section-wrapper" id="cinema-section" aria-label="3D Cinematic Motion">
+        <div class="section-inner">
+            <p class="sec-tag" data-enter>01 / Featured 3D Motion Study</p>
+            <h2 class="sec-title" data-enter>
+                AirPod Motion<br>
+                <em>Sequence Study</em>
+            </h2>
+            <p class="sec-sub" data-enter>
+                Commercial-grade product visualization engineered in Blender Cycles. Exploring optical surface caustics, subsurface polymer scattering, dynamic mechanical motion, and studio studio lighting setups.
+            </p>
+
+            <!-- Cinema Theater -->
+            <div class="cinema-theater" data-enter>
+                <div class="cinema-screen">
+                    <video id="airpodVid" src="assets/airpod.mp4" autoplay muted loop playsinline preload="auto"></video>
+                </div>
+                <div class="cinema-bar">
+                    <div class="cinema-meta-left">
+                        <span class="track-name">AIRPOD PRODUCT MOTION MASTER</span>
+                        <span class="track-spec">BLENDER CYCLES · 60 FPS · 4K COMPOSITE</span>
+                    </div>
+                    <div class="cinema-controls">
+                        <button class="cin-btn" id="cinPlayToggle" aria-label="Toggle playback">Pause</button>
+                        <button class="cin-btn" id="cinMuteToggle" aria-label="Toggle mute">Unmute</button>
+                        <button class="cin-btn" id="cinFullToggle" aria-label="Fullscreen">Fullscreen</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Telemetry Bar -->
+            <div class="cinema-telemetry-grid" data-enter>
+                <div class="telemetry-cell">
+                    <div class="t-label">Rendering Engine</div>
+                    <div class="t-val">Blender Cycles (Raytraced PBR)</div>
+                </div>
+                <div class="telemetry-cell">
+                    <div class="t-label">Core Technique</div>
+                    <div class="t-val">Subsurface Scattering &amp; Caustics</div>
+                </div>
+                <div class="telemetry-cell">
+                    <div class="t-label">Motion Logic</div>
+                    <div class="t-val">Mechanical Assembly Choreography</div>
+                </div>
+                <div class="telemetry-cell">
+                    <div class="t-label">Production Tier</div>
+                    <div class="t-val">Commercial Visualization</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         ACT III: 3D SPATIAL & ARCHVIZ GALLERY
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="section-wrapper" id="gallery-section" aria-label="3D Spatial Environments">
+        <div class="section-inner">
+            <p class="sec-tag" data-enter>02 / Spatial Environments</p>
+            <h2 class="sec-title" data-enter>
+                Photorealistic<br>
+                <em>Environments</em>
+            </h2>
+            <p class="sec-sub" data-enter>
+                Light simulation, environmental composition, and architectural material realism. Click any piece to inspect in full resolution.
+            </p>
+
+            <div class="gallery-grid">
+                <!-- Featured Wide Banner: Moon in the River -->
+                <div class="gallery-card featured" onclick="openLB('assets/moon-in-the-river.jpg','Moon in the River — Environmental Lighting Study')" data-enter>
+                    <div class="gallery-card-img-wrap">
+                        <img src="assets/moon-in-the-river.jpg" alt="Moon in the River photorealistic 3D render" loading="lazy">
+                    </div>
+                    <div class="gallery-card-info">
+                        <span class="gallery-card-title">Moon in the River</span>
+                        <span class="gallery-card-meta">Atmospheric Surrealism · Blender Cycles</span>
+                    </div>
+                </div>
+
+                <!-- Subgrid -->
+                <div class="gallery-subgrid">
+                    <div class="gallery-card standard" onclick="openLB('assets/interior.webp','Contemporary Living Space — Archviz Interior Study')" data-enter>
+                        <div class="gallery-card-img-wrap">
+                            <img src="assets/interior.webp" alt="Archviz interior living room render" loading="lazy">
+                        </div>
+                        <div class="gallery-card-info">
+                            <span class="gallery-card-title">Living Space</span>
+                            <span class="gallery-card-meta">Archviz Interior</span>
+                        </div>
+                    </div>
+                    <div class="gallery-card standard" onclick="openLB('assets/moon-drop.jpg','Moon Drop — Spatial Composition')" data-enter>
+                        <div class="gallery-card-img-wrap">
+                            <img src="assets/moon-drop.jpg" alt="Moon Drop surreal spatial render" loading="lazy">
+                        </div>
+                        <div class="gallery-card-info">
+                            <span class="gallery-card-title">Moon Drop</span>
+                            <span class="gallery-card-meta">Cosmic Spatial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lower Studies: Packaging & Refraction -->
+            <div class="gallery-grid" style="margin-top:24px;">
+                <div class="gallery-card standard" onclick="openLB('assets/terrarium-bottle.jpg','Terrarium Packaging & Organic Geometry')" data-enter>
+                    <div class="gallery-card-img-wrap">
+                        <img src="assets/terrarium-bottle.jpg" alt="Terrarium bottle packaging render" loading="lazy">
+                    </div>
+                    <div class="gallery-card-info">
+                        <span class="gallery-card-title">Terrarium Bottle</span>
+                        <span class="gallery-card-meta">Packaging &amp; Glass Simulation</span>
+                    </div>
+                </div>
+                <div class="gallery-card standard" onclick="openLB('assets/glass-with-ice.jpg','Glass & Ice Refraction — Physical IOR Optics Study')" data-enter>
+                    <div class="gallery-card-img-wrap">
+                        <img src="assets/glass-with-ice.jpg" alt="Glass and ice refraction material study" loading="lazy">
+                    </div>
+                    <div class="gallery-card-info">
+                        <span class="gallery-card-title">Glass &amp; Ice Optics</span>
+                        <span class="gallery-card-meta">PBR Refraction Physics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         ACT IV: MISSION-CRITICAL INFRASTRUCTURE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="section-wrapper" id="infra-section" aria-label="Infrastructure Operations">
+        <div class="section-inner">
+            <p class="sec-tag" data-enter>03 / High-Availability Infrastructure</p>
+            <h2 class="sec-title" data-enter>
+                Mission-Critical<br>
+                <em>Operations</em>
+            </h2>
+            <p class="sec-sub" data-enter>
+                Over 2.5 years operating enterprise-grade systems under strict financial SLA and international airport transit pressure. Real-time middleware log isolation, rapid incident triage, and team-wide automation.
+            </p>
+
+            <!-- Big Metrics Banner -->
+            <div class="metrics-banner" data-enter>
+                <div class="metric-block">
+                    <div class="metric-num">150+</div>
+                    <div class="metric-label">Linux &amp; Windows Servers<br>Live trading support</div>
+                </div>
+                <div class="metric-block">
+                    <div class="metric-num">800</div>
+                    <div class="metric-label">Enterprise Laptops<br>Branch fleet deployment</div>
+                </div>
+                <div class="metric-block">
+                    <div class="metric-num">P1/P2</div>
+                    <div class="metric-label">Incident Triage<br>Real-time outage forensics</div>
+                </div>
+                <div class="metric-block">
+                    <div class="metric-num">2.5<span style="font-size:1.8rem">yr</span></div>
+                    <div class="metric-label">High-Stakes Production<br>Enterprise operations</div>
+                </div>
+            </div>
+
+            <!-- Case Studies Grid -->
+            <div class="infra-grid">
+                <article class="infra-card" data-enter>
+                    <div>
+                        <div class="infra-card-header">
+                            <span class="i-tag">Trading Platform</span>
+                            <span class="infra-period">Apr 2024 – Oct 2025</span>
+                        </div>
+                        <h3 class="infra-role">Sharekhan Retail Trading Engine Support</h3>
+                        <p class="infra-org">Techigent Private Ltd.</p>
+                        <p class="infra-desc">
+                            Monitored and maintained 150+ Linux and Windows production servers powering Sharekhan's nationwide retail trading platform during active market hours. Executed middleware log diagnostics, SSMS SQL forensics, and engineered custom bash cron automation routines adopted team-wide. Handled high-pressure live outages during 3-month night shift rotations under strict financial SLA constraints.
+                        </p>
+                    </div>
+                    <div class="infra-tags">
+                        <span class="i-tag">RHEL / Ubuntu</span>
+                        <span class="i-tag">Windows Server</span>
+                        <span class="i-tag">SSMS SQL</span>
+                        <span class="i-tag">Bash Cron</span>
+                        <span class="i-tag">Fintech SLA</span>
+                    </div>
+                </article>
+
+                <article class="infra-card" data-enter>
+                    <div>
+                        <div class="infra-card-header">
+                            <span class="i-tag">Biometric Transit</span>
+                            <span class="infra-period">Aug 2025 – Present</span>
+                        </div>
+                        <h3 class="infra-role">DigiYatra Airport Biometric Support</h3>
+                        <p class="infra-org">International Airport Operations</p>
+                        <p class="infra-desc">
+                            Delivers front-line systems and network triage for DigiYatra biometric passenger boarding gates across a major international airport terminal. Diagnoses camera sensor feeds, local network dropped packets, and backend verification timeouts during peak passenger traffic waves.
+                        </p>
+                    </div>
+                    <div class="infra-tags">
+                        <span class="i-tag">Biometric Gates</span>
+                        <span class="i-tag">Network Triage</span>
+                        <span class="i-tag">Real-Time Telemetry</span>
+                        <span class="i-tag">Airport Transit</span>
+                    </div>
+                </article>
+
+                <article class="infra-card" data-enter>
+                    <div>
+                        <div class="infra-card-header">
+                            <span class="i-tag">Enterprise Rollout</span>
+                            <span class="infra-period">2023 – 2024</span>
+                        </div>
+                        <h3 class="infra-role">800-Laptop Enterprise Branch Rollout</h3>
+                        <p class="infra-org">Lauren Information Technologies</p>
+                        <p class="infra-desc">
+                            Spearheaded the provisioning, deployment, and security configuration of 800 enterprise laptops across branch locations. Configured Active Directory domain policies, Trellix ENS endpoint protection suites, BigFix patch management agents, and Jenkins CI/CD deployment routines.
+                        </p>
+                    </div>
+                    <div class="infra-tags">
+                        <span class="i-tag">BigFix</span>
+                        <span class="i-tag">Trellix ENS</span>
+                        <span class="i-tag">Active Directory</span>
+                        <span class="i-tag">Jenkins CI/CD</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         ACT V: SHIPPED PLATFORMS & AUTOMATION
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="section-wrapper" id="web-section" aria-label="Web Platforms and Automation">
+        <div class="section-inner">
+            <p class="sec-tag" data-enter>04 / Commercial Web &amp; Automation</p>
+            <h2 class="sec-title" data-enter>
+                Shipped Web<br>
+                <em>Platforms</em>
+            </h2>
+            <p class="sec-sub" data-enter>
+                Technical Lead at HideOut Marketing (Oct 2025 – Present). Architected 4 live commercial platforms from initial design systems through payment gateway integration, alongside autonomous webhook automation pipelines.
+            </p>
+
+            <!-- Webhook Card -->
+            <div class="pipeline-card" data-enter>
+                <div class="pipeline-title">Autonomous Webhook Financial Pipeline Architecture</div>
+                <p class="pipeline-desc">
+                    Engineered real-time data automation connecting front-end intake channels through n8n and Zapier webhook endpoints directly into live accounting sheets and operations monitoring dashboards.
+                </p>
+                <div class="pipeline-flow">
+                    <div class="p-step">
+                        <div class="p-step-num">STAGE 01</div>
+                        <div class="p-step-title">Customer Intake Event</div>
+                    </div>
+                    <div class="p-step">
+                        <div class="p-step-num">STAGE 02</div>
+                        <div class="p-step-title">n8n / Zapier Webhook Handler</div>
+                    </div>
+                    <div class="p-step">
+                        <div class="p-step-num">STAGE 03</div>
+                        <div class="p-step-title">Payload Sanitizer &amp; Validation</div>
+                    </div>
+                    <div class="p-step">
+                        <div class="p-step-num">STAGE 04</div>
+                        <div class="p-step-title">Live Financial Accounting Sheet</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Live Production Sites -->
+            <div class="web-grid">
+                <a href="https://rashaehasas.com" target="_blank" rel="noopener" class="web-card" data-enter>
+                    <div class="web-card-top">
+                        <span class="web-card-name">rashaehasas.com</span>
+                        <span class="web-card-arrow">↗</span>
+                    </div>
+                    <div class="web-card-meta">
+                        WooCommerce Store<br>
+                        Payment Gateway · SEO<br>
+                        Live E-Commerce Platform
+                    </div>
+                </a>
+
+                <a href="https://sutsmaxindia.in" target="_blank" rel="noopener" class="web-card" data-enter>
+                    <div class="web-card-top">
+                        <span class="web-card-name">sutsmaxindia.in</span>
+                        <span class="web-card-arrow">↗</span>
+                    </div>
+                    <div class="web-card-meta">
+                        Retail Commerce Platform<br>
+                        Payment API Architecture<br>
+                        Inventory Sync Logic
+                    </div>
+                </a>
+
+                <a href="https://hideoutmarketing.in" target="_blank" rel="noopener" class="web-card" data-enter>
+                    <div class="web-card-top">
+                        <span class="web-card-name">hideoutmarketing.in</span>
+                        <span class="web-card-arrow">↗</span>
+                    </div>
+                    <div class="web-card-meta">
+                        Agency Flagship Site<br>
+                        Figma Design System<br>
+                        CMS &amp; Webhook Intake
+                    </div>
+                </a>
+
+                <a href="https://shrividyajyotihighschool.in" target="_blank" rel="noopener" class="web-card" data-enter>
+                    <div class="web-card-top">
+                        <span class="web-card-name">shrividyajyoti...</span>
+                        <span class="web-card-arrow">↗</span>
+                    </div>
+                    <div class="web-card-meta">
+                        Educational Portal<br>
+                        Institutional CMS<br>
+                        Managed Server Hosting
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         ACT VI: TECHNICAL ARSENAL & DIRECT INTAKE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="section-wrapper" id="contact-section" aria-label="Capabilities and Contact">
+        <div class="section-inner">
+            <p class="sec-tag" data-enter>05 / Capabilities &amp; Contact</p>
+
+            <div class="contact-layout">
+                <div class="skills-table">
+                    <div>
+                        <div class="skills-group-head">Systems &amp; Enterprise Infrastructure</div>
+                        <div class="skills-row"><span class="sk-name">Linux — RHEL / Ubuntu</span><span class="sk-level">Production Fleet Operations</span></div>
+                        <div class="skills-row"><span class="sk-name">Windows Server / Active Directory</span><span class="sk-level">Domain Admin &amp; Group Policies</span></div>
+                        <div class="skills-row"><span class="sk-name">SSMS &amp; SQL Forensics</span><span class="sk-level">High-Severity Outage Diagnostics</span></div>
+                        <div class="skills-row"><span class="sk-name">Jenkins CI/CD Automation</span><span class="sk-level">Continuous Integration Pipelines</span></div>
+                        <div class="skills-row"><span class="sk-name">BigFix · Trellix ENS</span><span class="sk-level">800-Device Endpoint Security</span></div>
+                    </div>
+
+                    <div>
+                        <div class="skills-group-head">3D Computational &amp; Web Engineering</div>
+                        <div class="skills-row"><span class="sk-name">Blender Cycles</span><span class="sk-level">Photorealism · PBR Caustics · Archviz</span></div>
+                        <div class="skills-row"><span class="sk-name">Three.js / WebGL</span><span class="sk-level">Vector Stipple Particle Shaders</span></div>
+                        <div class="skills-row"><span class="sk-name">n8n · Zapier Webhooks</span><span class="sk-level">Autonomous Data Routing</span></div>
+                        <div class="skills-row"><span class="sk-name">WordPress · WooCommerce</span><span class="sk-level">4 Production Commercial Deployments</span></div>
+                        <div class="skills-row"><span class="sk-name">Unreal Engine 5</span><span class="sk-level">Spatial Logic &amp; Blueprints</span></div>
+                    </div>
+
+                    <div class="edu-card">
+                        <div class="edu-title">Bachelor of Management Studies (TYBMS)</div>
+                        <div class="edu-sub">Royal College of Arts, Science and Commerce · 2023 – 2026</div>
+                        <div class="edu-badge">
+                            <span>●</span>
+                            <span>Pursuing — Google Cybersecurity Professional Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hire-deck">
+                    <div>
+                        <h2 class="hire-title" data-enter>
+                            Available for<br>
+                            <em>high-impact</em><br>
+                            roles.
+                        </h2>
+                        <p class="sec-sub" data-enter>
+                            Ready to step into systems engineering, creative technologist, or hybrid technical leadership roles worldwide.
+                        </p>
+                        <div class="hire-links" data-enter>
+                            <a href="mailto:joelnadar825@gmail.com" class="h-link primary">
+                                <span>joelnadar825@gmail.com</span>
+                                <span>↗</span>
+                            </a>
+                            <a href="tel:+919321591870" class="h-link">
+                                <span>+91 93215 91870</span>
+                                <span>→</span>
+                            </a>
+                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="h-link" download>
+                                <span>Download Verified CV — PDF</span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div style="margin-top:36px; font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">
+                        Mumbai, India · Available for On-Site &amp; Remote
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ─────────────────────────────────── -->
+    <footer class="site-footer">
+        <span>© 2026 Joel Daniel Nadar — Systems &amp; 3D Technologist</span>
+        <div style="display:flex;gap:24px;">
+            <a href="assets/Joel_Daniel_Nadar_CV.pdf" download>CV.PDF</a>
+            <a href="mailto:joelnadar825@gmail.com">Email</a>
+            <a href="tel:+919321591870">+91 93215 91870</a>
+        </div>
+    </footer>
+
+    <!-- ── LIGHTBOX MODAL ─────────────────────────── -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Preview" onclick="closeLB(event)">
+        <button class="lb-close" aria-label="Close" onclick="closeLB()">×</button>
+        <img id="lb-img" src="" alt="">
+        <div class="lb-caption" id="lb-cap"></div>
+    </div>
+
+    <!-- ═════════════════════════════════════════════
+         THREE.JS & GSAP SHOWCASE CONTROLLER
+    ═════════════════════════════════════════════ -->
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const PROGBAR   = document.getElementById('progress-bar');
+        const HEADER    = document.getElementById('siteHdr');
+        const charFrame = document.getElementById('charFrame');
+
+        // Scroll Progress & Header Reveal
+        ScrollTrigger.create({
+            trigger: document.body,
+            start: 'top top',
+            end: 'bottom bottom',
+            onUpdate: (self) => {
+                PROGBAR.style.width = (self.progress * 100) + '%';
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) HEADER.classList.add('up');
+            else HEADER.classList.remove('up');
+        });
+
+        // Reveal for [data-enter] Elements
+        const enterSections = document.querySelectorAll('section');
+        enterSections.forEach((sec) => {
+            const els = sec.querySelectorAll('[data-enter]');
+            if (!els.length) return;
+            gsap.to(els, {
+                opacity: 1,
+                y: 0,
+                duration: 0.85,
+                stagger: 0.1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: sec,
+                    start: 'top 82%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        });
+
+        // Cinema Controls
+        const airpodVid     = document.getElementById('airpodVid');
+        const cinPlayToggle = document.getElementById('cinPlayToggle');
+        const cinMuteToggle = document.getElementById('cinMuteToggle');
+        const cinFullToggle = document.getElementById('cinFullToggle');
+
+        if (airpodVid && cinPlayToggle) {
+            cinPlayToggle.addEventListener('click', () => {
+                if (airpodVid.paused) {
+                    airpodVid.play();
+                    cinPlayToggle.textContent = 'Pause';
+                } else {
+                    airpodVid.pause();
+                    cinPlayToggle.textContent = 'Play';
+                }
+            });
+            cinMuteToggle.addEventListener('click', () => {
+                airpodVid.muted = !airpodVid.muted;
+                cinMuteToggle.textContent = airpodVid.muted ? 'Unmute' : 'Mute';
+            });
+            cinFullToggle.addEventListener('click', () => {
+                if (airpodVid.requestFullscreen) {
+                    airpodVid.requestFullscreen();
+                } else if (airpodVid.webkitRequestFullscreen) {
+                    airpodVid.webkitRequestFullscreen();
+                }
+            });
+        }
+
+        // ── Three.js Hero Character (Tactical Skull Cowboy Particles) ───────
+        const canvas = document.getElementById('hero-canvas');
+        const renderer = new THREE.WebGLRenderer({
+            canvas,
+            antialias: true,
+            alpha: true,
+            powerPreference: 'high-performance'
+        });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setClearColor(0x000000, 0);
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+        const scene  = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+
+        // ── Mouse & Touch Tracking ──────────────────────────────────────────
+        const mouse2D = new THREE.Vector2(9999, 9999);
+        let mouse3D   = new THREE.Vector3(9999, 0, 0);
+
+        function updateCoords(clientX, clientY) {
+            const rect = canvas.getBoundingClientRect();
+            mouse2D.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+            mouse2D.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            updateCoords(e.clientX, e.clientY);
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                updateCoords(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
+            mouse2D.set(9999, 9999);
+        });
+
+        // ── Particle System Setup ───────────────────────────────────────────
+        const characterGroup = new THREE.Group();
+        scene.add(characterGroup);
+
+        let origPositions = null;
+        let currPositions = null;
+        let particleGeo   = null;
+        let particlePoints= null;
+
+        const REPEL_RADIUS   = 0.38;
+        const REPEL_STRENGTH = 0.24;
+        const RETURN_SPEED   = 0.085;
+
+        // Extract Upper Body (y >= 0.52: chest, shoulders, arms, skull, hat)
+        function buildParticles(gltf) {
+            const model = gltf.scene;
+            const allVerts = [];
+
+            model.traverse((child) => {
+                if (!child.isMesh) return;
+                const geo = child.geometry.clone();
+                child.updateWorldMatrix(true, false);
+                geo.applyMatrix4(child.matrixWorld);
+                const pos = geo.attributes.position;
+                for (let i = 0; i < pos.count; i++) {
+                    const y = pos.getY(i);
+                    // Higher, cleaner crop: chest level & above (removes waist clutter)
+                    if (y >= 0.52) {
+                        allVerts.push(pos.getX(i), y, pos.getZ(i));
+                    }
+                }
+            });
+
+            if (!allVerts.length) return;
+
+            const raw = new Float32Array(allVerts);
+            const rawGeo = new THREE.BufferGeometry();
+            rawGeo.setAttribute('position', new THREE.BufferAttribute(raw.slice(), 3));
+            rawGeo.computeBoundingBox();
+
+            const bbMin = rawGeo.boundingBox.min;
+            const bbMax = rawGeo.boundingBox.max;
+            const bbCtr = new THREE.Vector3();
+            rawGeo.boundingBox.getCenter(bbCtr);
+
+            const height = bbMax.y - bbMin.y;
+            const scale = 2.0 / (height || 1);
+
+            const count = raw.length / 3;
+            origPositions = new Float32Array(raw.length);
+            currPositions = new Float32Array(raw.length);
+
+            for (let i = 0; i < count; i++) {
+                const i3 = i * 3;
+                origPositions[i3 + 0] = (raw[i3 + 0] - bbCtr.x) * scale;
+                origPositions[i3 + 1] = (raw[i3 + 1] - bbCtr.y) * scale;
+                origPositions[i3 + 2] = (raw[i3 + 2] - bbCtr.z) * scale;
+
+                currPositions[i3 + 0] = origPositions[i3 + 0];
+                currPositions[i3 + 1] = origPositions[i3 + 1];
+                currPositions[i3 + 2] = origPositions[i3 + 2];
+            }
+
+            // Dark ink stipple texture
+            const ptC = document.createElement('canvas');
+            ptC.width = 32; ptC.height = 32;
+            const ptX = ptC.getContext('2d');
+            const g = ptX.createRadialGradient(16, 16, 0, 16, 16, 16);
+            g.addColorStop(0,    'rgba(10, 10, 10, 0.95)');
+            g.addColorStop(0.35, 'rgba(15, 15, 15, 0.7)');
+            g.addColorStop(1,    'rgba(20, 20, 20, 0)');
+            ptX.fillStyle = g;
+            ptX.fillRect(0, 0, 32, 32);
+            const ptTex = new THREE.CanvasTexture(ptC);
+
+            particleGeo = new THREE.BufferGeometry();
+            particleGeo.setAttribute('position', new THREE.BufferAttribute(currPositions, 3));
+
+            const ptMat = new THREE.PointsMaterial({
+                color:        0x0a0a0a,
+                size:         0.030,
+                map:          ptTex,
+                transparent:  true,
+                blending:     THREE.NormalBlending,
+                depthWrite:   false,
+                opacity:      0.90,
+                sizeAttenuation: true
+            });
+
+            particlePoints = new THREE.Points(particleGeo, ptMat);
+            characterGroup.add(particlePoints);
+
+            updateFraming();
+        }
+
+        // Load Model
+        const loader = new GLTFLoader();
+        if (window.CHARACTER_MODEL_BASE64) {
+            try {
+                const bin = atob(window.CHARACTER_MODEL_BASE64);
+                const buf = new Uint8Array(bin.length);
+                for (let i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+                loader.parse(buf.buffer, '', buildParticles, () => loader.load('assets/character.glb', buildParticles));
+            } catch(e) {
+                loader.load('assets/character.glb', buildParticles);
+            }
+        } else {
+            loader.load('assets/character.glb', buildParticles);
+        }
+
+        // ── Responsive Camera & Placement ───────────────────────────────────
+        function updateFraming() {
+            const isMobile = window.innerWidth <= 900;
+            const w = isMobile ? charFrame.clientWidth  : window.innerWidth;
+            const h = isMobile ? charFrame.clientHeight : window.innerHeight;
+
+            camera.aspect = w / (h || 1);
+
+            if (isMobile) {
+                // Mobile: fits cleanly inside the dedicated top frame
+                camera.fov = 34;
+                camera.position.set(0, 0, 3.4);
+                camera.lookAt(0, 0, 0);
+                if (characterGroup) {
+                    characterGroup.position.set(0, 0, 0); // centered inside top frame
+                    characterGroup.scale.setScalar(0.92);
+                }
+            } else {
+                // Desktop: positioned on right side of viewport
+                camera.fov = 36;
+                camera.position.set(0, 0, 3.4);
+                camera.lookAt(0, 0, 0);
+                if (characterGroup) {
+                    characterGroup.position.set(0.65, -0.06, 0);
+                    characterGroup.scale.setScalar(1.0);
+                }
+            }
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+        }
+
+        window.addEventListener('resize', updateFraming);
+
+        // ── Repulsion Logic ─────────────────────────────────────────────────
+        const _planeN = new THREE.Vector3(0, 0, 1);
+
+        function computeRepulsion() {
+            if (!origPositions) return;
+
+            const raycaster = new THREE.Raycaster();
+            raycaster.setFromCamera(mouse2D, camera);
+            const plane = new THREE.Plane(_planeN, -characterGroup.position.z);
+            raycaster.ray.intersectPlane(plane, mouse3D);
+
+            const lm = mouse3D.clone().sub(characterGroup.position);
+            const s = characterGroup.scale.x || 1.0;
+            lm.divideScalar(s);
+
+            const count = origPositions.length / 3;
+            const r2    = REPEL_RADIUS * REPEL_RADIUS;
+
+            for (let i = 0; i < count; i++) {
+                const i3 = i * 3;
+                const ox = origPositions[i3], oy = origPositions[i3+1], oz = origPositions[i3+2];
+                const cx = currPositions[i3], cy = currPositions[i3+1], cz = currPositions[i3+2];
+                const dx = cx - lm.x, dy = cy - lm.y, dz = cz - lm.z;
+                const d2 = dx*dx + dy*dy + dz*dz;
+
+                if (d2 < r2 && d2 > 0.0001) {
+                    const d = Math.sqrt(d2);
+                    const f = (1 - d / REPEL_RADIUS) * REPEL_STRENGTH;
+                    currPositions[i3 + 0] = ox + (dx / d) * f;
+                    currPositions[i3 + 1] = oy + (dy / d) * f;
+                    currPositions[i3 + 2] = oz + (dz / d) * f;
+                } else {
+                    currPositions[i3 + 0] += (ox - cx) * RETURN_SPEED;
+                    currPositions[i3 + 1] += (oy - cy) * RETURN_SPEED;
+                    currPositions[i3 + 2] += (oz - cz) * RETURN_SPEED;
+                }
+            }
+            particleGeo.attributes.position.needsUpdate = true;
+        }
+
+        // ── Render Loop ─────────────────────────────────────────────────────
+        const clock = new THREE.Clock();
+        let elapsed = 0;
+        let isHeroVisible = true;
+
+        ScrollTrigger.create({
+            trigger: '#hero-section',
+            start: 'top top',
+            end: 'bottom top',
+            onLeave: () => { isHeroVisible = false; },
+            onEnterBack: () => { isHeroVisible = true; }
+        });
+
+        function render() {
+            requestAnimationFrame(render);
+            if (!isHeroVisible) return;
+
+            const dt = clock.getDelta();
+            elapsed += dt;
+
+            if (particlePoints) {
+                const isMobile = window.innerWidth <= 900;
+                const baseY = isMobile ? 0 : -0.06;
+                characterGroup.position.y = baseY + Math.sin(elapsed * 1.3) * 0.008;
+                characterGroup.rotation.y = Math.sin(elapsed * 0.35) * 0.03 - (isMobile ? 0 : 0.05);
+
+                computeRepulsion();
+            }
+
+            renderer.render(scene, camera);
+        }
+        render();
+
+        // ── Smooth Cursor ───────────────────────────────────────────────────
+        const dot  = document.getElementById('cDot');
+        const ring = document.getElementById('cRing');
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+
+        (function moveCursor() {
+            requestAnimationFrame(moveCursor);
+            if (window.innerWidth > 900) {
+                rx += (mx - rx) * 0.14;
+                ry += (my - ry) * 0.14;
+                dot.style.left  = mx + 'px';
+                dot.style.top   = my + 'px';
+                ring.style.left = rx + 'px';
+                ring.style.top  = ry + 'px';
+            }
+        })();
+
+        document.querySelectorAll('a, button, .gallery-card, .infra-card, .web-card').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('on'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('on'));
+        });
+
+        const cinemaSec = document.getElementById('cinema-section');
+        cinemaSec.addEventListener('mouseenter', () => {
+            ring.classList.add('dark');
+            dot.classList.add('dark');
+        });
+        cinemaSec.addEventListener('mouseleave', () => {
+            ring.classList.remove('dark');
+            dot.classList.remove('dark');
+        });
+
+        // ── Lightbox ─────────────────────────────────────────────────────────
+        window.openLB = function(src, caption) {
+            const lb  = document.getElementById('lightbox');
+            const img = document.getElementById('lb-img');
+            document.getElementById('lb-cap').textContent = caption;
+            img.src = src;
+            img.alt = caption;
+            lb.classList.add('on');
+            document.body.style.overflow = 'hidden';
+        };
+        window.closeLB = function(e) {
+            if (e && e.target !== e.currentTarget && !e.target.closest('.lb-close')) return;
+            const lb  = document.getElementById('lightbox');
+            lb.classList.remove('on');
+            document.body.style.overflow = '';
+        };
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('lightbox').classList.contains('on')) closeLB();
+        });
+
+    </script>
+</body>
+</html>

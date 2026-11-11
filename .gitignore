@@ -1,0 +1,11 @@
+# Ignore temporary verification screenshots and backups
+*.png
+!assets/*.png
+verify*.*
+tab_*.*
+chrome_*.*
+v2_*.*
+v3_*.*
+index_backup*.*
+index_previous*.*
+shadow.html
