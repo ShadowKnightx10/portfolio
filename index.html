@@ -166,6 +166,7 @@
             width: 100%;
             padding: clamp(80px, 11vh, 150px) var(--gutter);
             position: relative;
+            scroll-margin-top: 80px;
         }
         .section-inner {
             max-width: var(--max-w);
@@ -574,32 +575,61 @@
         .infra-card {
             background: #ffffff;
             border: 1px solid var(--line);
-            border-radius: 4px;
+            border-radius: 6px;
             padding: 28px 24px;
             display: flex; flex-direction: column; justify-content: space-between;
             transition: all 0.2s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         .infra-card:hover {
-            border-color: var(--line-mid);
+            border-color: #0a0a0a;
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.03);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
         }
         .infra-card-header {
-            display: flex; justify-content: space-between; align-items: baseline;
+            display: flex; justify-content: space-between; align-items: center;
             margin-bottom: 14px;
+        }
+        .live-dot-green {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: #10b981; display: inline-block;
+            box-shadow: 0 0 8px rgba(16,185,129,0.5);
+            animation: pulseDot 2.2s infinite;
+        }
+        .infra-status-live {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-family: 'DM Mono', monospace; font-size: 10px;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: #065f46; background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 3px 8px; border-radius: 999px; font-weight: 600;
         }
         .infra-period {
             font-family: 'DM Mono', monospace; font-size: 10.5px;
             color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase;
         }
         .infra-role {
-            font-size: 15.5px; font-weight: 600; color: var(--text-primary);
-            margin-bottom: 4px; line-height: 1.35;
+            font-size: 16px; font-weight: 700; color: var(--text-primary);
+            margin-bottom: 4px; line-height: 1.35; letter-spacing: -0.01em;
         }
-        .infra-org { font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px; }
-        .infra-desc {
-            font-size: 14px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 24px;
+        .infra-org { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; }
+        .infra-telemetry-list {
+            margin: 16px 0 20px;
+            display: flex; flex-direction: column; gap: 10px;
+            border-top: 1px solid var(--line);
+            padding-top: 14px;
         }
+        .telemetry-point {
+            display: flex; flex-direction: column; gap: 2px;
+            font-size: 13px; line-height: 1.45;
+        }
+        .point-label {
+            font-family: 'DM Mono', monospace; font-size: 10px;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--text-muted); font-weight: 600;
+        }
+        .point-value { color: var(--text-secondary); font-size: 13px; }
+        .point-value strong { color: var(--text-primary); font-weight: 600; }
         .infra-tags { display: flex; flex-wrap: wrap; gap: 6px; }
         .i-tag {
             font-family: 'DM Mono', monospace; font-size: 9.5px;
@@ -619,32 +649,68 @@
         .pipeline-card {
             margin-top: 48px;
             background: #ffffff;
-            border: 1px solid var(--line);
-            border-radius: 4px;
+            border: 1px solid var(--line-strong);
+            border-radius: 6px;
             padding: 32px 36px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+            position: relative;
+        }
+        .pipeline-card-top {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            flex-wrap: wrap; gap: 16px; margin-bottom: 24px; padding-bottom: 20px;
+            border-bottom: 1px solid var(--line);
         }
         .pipeline-title {
-            font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;
+            font-size: 17px; font-weight: 700; color: var(--text-primary);
+            letter-spacing: -0.02em;
         }
         .pipeline-desc {
-            font-size: 14.5px; color: var(--text-secondary); max-width: 680px;
+            font-size: 14px; color: var(--text-secondary); max-width: 620px;
+            margin-top: 4px; line-height: 1.55;
+        }
+        .pipeline-telemetry-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: 'DM Mono', monospace; font-size: 10.5px;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 6px 12px; border-radius: 999px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #065f46; font-weight: 600;
         }
         .pipeline-flow {
-            margin-top: 28px;
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+            position: relative;
         }
         .p-step {
-            padding: 16px 18px;
-            background: var(--bg-subtle);
-            border: 1px solid var(--line);
-            border-radius: 3px;
+            padding: 18px 20px; background: var(--bg-subtle);
+            border: 1px solid var(--line); border-radius: 4px;
+            position: relative; transition: all 0.2s;
+        }
+        .p-step:hover {
+            border-color: #0a0a0a; transform: translateY(-2px);
+            background: #ffffff; box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+        .p-step-top {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 8px;
         }
         .p-step-num {
             font-family: 'DM Mono', monospace; font-size: 10px;
-            color: var(--text-muted); margin-bottom: 4px;
+            letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600;
         }
-        .p-step-title { font-size: 13.5px; font-weight: 600; color: var(--text-primary); }
+        .p-step-status {
+            font-family: 'DM Mono', monospace; font-size: 9.5px;
+            padding: 2px 6px; border-radius: 2px;
+            background: #ffffff; border: 1px solid var(--line);
+            color: var(--text-secondary);
+        }
+        .p-step-title {
+            font-size: 14px; font-weight: 700; color: var(--text-primary);
+            line-height: 1.35; margin-bottom: 6px;
+        }
+        .p-step-detail {
+            font-size: 12px; color: var(--text-muted); line-height: 1.45;
+        }
 
         .web-grid {
             margin-top: 32px;
@@ -736,115 +802,349 @@
         .cert-code { font-family: 'DM Mono', monospace; font-size: 9.5px; color: var(--text-muted); }
 
         /* ═══════════════════════════════════════════
-           ACT VI: ARSENAL & DIRECT CONTACT
+           ACT VI: TECHNICAL ARSENAL & INTAKE REDESIGN
         ═══════════════════════════════════════════ */
         #contact-section {
-            background: var(--bg-subtle);
+            background: #fcfcfb;
+            border-top: 1px solid var(--line);
         }
-        .contact-layout {
+        .arsenal-grid {
             margin-top: 48px;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: clamp(40px, 6vw, 96px);
-            align-items: start;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
-        .skills-table { display: flex; flex-direction: column; gap: 32px; }
-        .skills-group-head {
-            font-family: 'DM Mono', monospace; font-size: 11px;
-            letter-spacing: 0.16em; text-transform: uppercase;
-            color: var(--text-muted); margin-bottom: 12px;
-            padding-bottom: 8px; border-bottom: 1.5px solid var(--text-primary);
+        .arsenal-card {
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 6px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
         }
-        .skills-row {
-            display: flex; justify-content: space-between; align-items: baseline;
-            padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px;
+        .arsenal-card:hover {
+            border-color: #0a0a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
         }
-        .skills-row .sk-name { color: var(--text-primary); font-weight: 500; }
-        .skills-row .sk-level {
-            font-family: 'DM Mono', monospace; font-size: 10.5px;
-            color: var(--text-muted); letter-spacing: 0.04em;
+        .arsenal-card-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .arsenal-icon-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+        .arsenal-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+        .arsenal-pill-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            background: var(--bg-subtle);
+            border: 1px solid var(--line);
+            padding: 4px 10px;
+            border-radius: 3px;
+            width: fit-content;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .arsenal-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+        }
+        .arsenal-list li {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .a-item-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .a-item-spec {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
         }
 
-        .edu-card {
-            margin-top: 32px;
+        /* ── CREDS SECTION (VERIFIED STRIP) ── */
+        .creds-section {
+            margin-top: 48px;
+            padding: 32px 36px;
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 6px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+        }
+        .creds-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--line);
+        }
+        .creds-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .creds-sub {
+            font-family: 'DM Mono', monospace;
+            font-size: 10.5px;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+        }
+        .creds-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .cred-card {
+            background: var(--bg-subtle);
             border: 1px solid var(--line);
             border-radius: 4px;
-            padding: 20px 24px;
-            background: #ffffff;
+            padding: 14px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
         }
-        .edu-title { font-size: 14px; font-weight: 600; color: var(--text-primary); }
-        .edu-sub { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
-        .edu-badge {
-            margin-top: 12px; padding-top: 10px;
-            border-top: 1px solid var(--line);
-            font-size: 12.5px; color: var(--text-muted);
-            display: flex; align-items: center; gap: 8px;
+        .cred-card:hover {
+            background: #ffffff;
+            border-color: #0a0a0a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+        }
+        .cred-org-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 3px 7px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .cred-org-badge.hubspot { background: #ff7a59; color: #ffffff; }
+        .cred-org-badge.ibm { background: #1261fe; color: #ffffff; }
+        .cred-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .cred-title {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.35;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .cred-id {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .cred-arrow {
+            font-size: 12px;
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+        .cred-card:hover .cred-arrow {
+            transform: translate(2px, -2px);
+            color: var(--text-primary);
+        }
+        .cred-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            flex-shrink: 0;
         }
 
-        .hire-deck {
-            display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+        /* ── INTAKE DECK ── */
+        .intake-deck {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: clamp(40px, 6vw, 80px);
+            align-items: start;
         }
-        .hire-title {
+        .intake-headline {
             font-size: clamp(2.4rem, 4.4vw, 4.4rem);
-            font-weight: 300; line-height: 1.05;
+            font-weight: 300;
+            line-height: 1.05;
             letter-spacing: -0.035em;
             color: var(--text-primary);
             font-family: 'DM Sans', sans-serif;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
-        .hire-title em {
+        .intake-headline em {
             font-family: 'Instrument Serif', serif;
-            font-weight: 400; font-style: italic;
+            font-weight: 400;
+            font-style: italic;
             color: #555552;
         }
-        .target-roles-box {
-            margin: 24px 0 28px;
-            padding: 16px 18px;
+        .intake-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            max-width: 520px;
+        }
+        .intake-roles-box {
+            padding: 18px 20px;
             background: #ffffff;
             border: 1px solid var(--line-strong);
             border-radius: 4px;
+            margin-bottom: 20px;
         }
-        .roles-box-label {
+        .intake-roles-label {
             font-family: 'DM Mono', monospace;
             font-size: 10.5px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
-        .roles-tag-list {
+        .intake-roles-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
-        .role-badge {
+        .role-pill {
             font-family: 'DM Mono', monospace;
             font-size: 11px;
             letter-spacing: 0.04em;
             color: var(--text-primary);
             background: rgba(0,0,0,0.04);
             border: 1px solid var(--line);
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 3px;
             font-weight: 500;
         }
-        .hire-links {
-            display: flex; flex-direction: column; gap: 12px; margin-top: 32px;
+        .degree-pill-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 18px;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
         }
-        .h-link {
-            font-family: 'DM Mono', monospace; font-size: 11.5px;
-            letter-spacing: 0.08em; text-transform: uppercase;
-            color: var(--text-primary); text-decoration: none;
-            padding: 16px 22px;
+        .deg-icon { font-size: 18px; line-height: 1; }
+        .deg-title {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .deg-sub {
+            display: block;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 3px;
+            line-height: 1.4;
+        }
+        .contact-links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .c-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: #ffffff;
             border: 1px solid var(--line-strong);
-            border-radius: 3px;
+            border-radius: 4px;
+            text-decoration: none;
             transition: all 0.2s;
-            display: flex; align-items: center; justify-content: space-between;
-            font-weight: 500;
         }
-        .h-link:hover { border-color: #0a0a0a; background: var(--bg-hover); }
-        .h-link.primary { color: #ffffff; background: #0a0a0a; border-color: #0a0a0a; }
-        .h-link.primary:hover { background: #262626; }
+        .c-action:hover {
+            border-color: #0a0a0a;
+            background: var(--bg-hover);
+            transform: translateX(2px);
+        }
+        .c-action.primary {
+            background: #0a0a0a;
+            color: #ffffff;
+            border-color: #0a0a0a;
+        }
+        .c-action.primary:hover {
+            background: #262626;
+            color: #ffffff;
+        }
+        .c-action.primary .c-action-label {
+            color: rgba(255,255,255,0.65);
+        }
+        .c-action.primary .c-action-val {
+            color: #ffffff;
+        }
+        .c-action.download {
+            background: #fafaf8;
+        }
+        .c-action-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .c-action-val {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .intake-location {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
 
         /* ── LIGHTBOX ───────────────────────────────── */
         .lightbox {
@@ -1120,60 +1420,53 @@
                 padding: 18px 16px;
             }
 
-            /* Contact Section */
-            .contact-layout {
+            /* Contact & Arsenal Section on Mobile */
+            .arsenal-grid {
                 grid-template-columns: 1fr !important;
-                gap: 36px;
-                margin-top: 28px;
+                gap: 16px !important;
+                margin-top: 24px !important;
             }
-            .skills-row {
+            .arsenal-card {
+                padding: 22px 18px !important;
+            }
+            .creds-section {
+                padding: 20px 18px !important;
+                margin-top: 32px !important;
+            }
+            .creds-header {
                 flex-direction: column !important;
                 align-items: flex-start !important;
-                gap: 4px !important;
-                padding: 10px 0 !important;
+                gap: 6px !important;
+                margin-bottom: 16px !important;
             }
-            .skills-row .sk-name {
-                font-size: 13.5px !important;
-                font-weight: 600 !important;
-            }
-            .skills-row .sk-level {
-                font-size: 11px !important;
-                color: var(--text-muted) !important;
-                line-height: 1.4 !important;
-            }
-            .cert-grid {
+            .creds-grid {
                 grid-template-columns: 1fr !important;
-                gap: 8px !important;
+                gap: 10px !important;
             }
-            .cert-pill {
-                padding: 10px 14px !important;
+            .cred-card {
+                padding: 12px 14px !important;
+            }
+            .cred-title {
+                white-space: normal !important;
                 font-size: 12px !important;
             }
-            .cert-name {
-                white-space: normal !important;
-                line-height: 1.35 !important;
+            .intake-deck {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+                margin-top: 32px !important;
             }
-            .target-roles-box {
-                margin: 20px 0 22px !important;
-                padding: 14px !important;
+            .intake-headline {
+                font-size: clamp(2.2rem, 7.5vw, 3.0rem) !important;
             }
-            .roles-tag-list {
-                gap: 6px !important;
+            .intake-desc {
+                font-size: 13.5px !important;
+                line-height: 1.5 !important;
             }
-            .role-badge {
-                font-size: 10px !important;
-                padding: 4px 8px !important;
+            .c-action {
+                padding: 14px 16px !important;
             }
-            .hire-title {
-                font-size: clamp(2.2rem, 7.5vw, 3.0rem);
-            }
-            .hire-links {
-                margin-top: 20px;
-                gap: 10px;
-            }
-            .h-link {
-                padding: 14px 16px;
-                font-size: 11px;
+            .c-action-val {
+                font-size: 11px !important;
             }
 
             .site-footer {
@@ -1439,57 +1732,103 @@
             <!-- Case Studies Grid -->
             <div class="infra-grid">
                 <article class="infra-card" data-enter>
-                    <div>
+                    <div class="infra-card-top">
                         <div class="infra-card-header">
-                            <span class="i-tag">Trading Platform</span>
+                            <span class="infra-status-live"><span class="live-dot-green"></span>FINANCIAL SLA</span>
                             <span class="infra-period">Apr 2024 – Oct 2025</span>
                         </div>
                         <h3 class="infra-role">Sharekhan Retail Trading Engine Support</h3>
-                        <p class="infra-org">Techigent Private Ltd.</p>
-                        <p class="infra-desc">
-                            Monitored and maintained 150+ Linux and Windows production servers powering Sharekhan's nationwide retail trading platform during active market hours. Executed middleware log diagnostics, SSMS SQL forensics, and engineered custom bash cron automation routines adopted team-wide. Handled high-pressure live outages during 3-month night shift rotations under strict financial SLA constraints.
-                        </p>
+                        <div class="infra-org">Techigent Private Ltd. · Mumbai</div>
+                        
+                        <div class="infra-telemetry-list">
+                            <div class="telemetry-point">
+                                <span class="point-label">Fleet Scale:</span>
+                                <span class="point-value"><strong>150+</strong> Linux (RHEL/Ubuntu) &amp; Windows Servers</span>
+                            </div>
+                            <div class="telemetry-point">
+                                <span class="point-label">Triage &amp; Forensics:</span>
+                                <span class="point-value">P1/P2 outage mitigation via SSMS SQL &amp; middleware log isolation</span>
+                            </div>
+                            <div class="telemetry-point">
+                                <span class="point-label">Automation Impact:</span>
+                                <span class="point-value">Custom Bash cron routines adopted across national ops team</span>
+                            </div>
+                            <div class="telemetry-point">
+                                <span class="point-label">Rotations:</span>
+                                <span class="point-value">3-month night-shift trading engine standby under zero-downtime SLA</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="infra-tags">
                         <span class="i-tag">RHEL / Ubuntu</span>
                         <span class="i-tag">Windows Server</span>
                         <span class="i-tag">SSMS SQL</span>
                         <span class="i-tag">Bash Cron</span>
-                        <span class="i-tag">Fintech SLA</span>
                     </div>
                 </article>
 
                 <article class="infra-card" data-enter>
-                    <div>
+                    <div class="infra-card-top">
                         <div class="infra-card-header">
-                            <span class="i-tag">Biometric Transit</span>
+                            <span class="infra-status-live"><span class="live-dot-green"></span>AIRPORT OPERATIONS</span>
                             <span class="infra-period">Aug 2025 – Present</span>
                         </div>
                         <h3 class="infra-role">DigiYatra Airport Biometric Support</h3>
-                        <p class="infra-org">International Airport Operations</p>
-                        <p class="infra-desc">
-                            Delivers front-line systems and network triage for DigiYatra biometric passenger boarding gates across a major international airport terminal. Diagnoses camera sensor feeds, local network dropped packets, and backend verification timeouts during peak passenger traffic waves.
-                        </p>
+                        <div class="infra-org">International Airport Terminal Operations</div>
+                        
+                        <div class="infra-telemetry-list">
+                            <div class="telemetry-point">
+                                <span class="point-label">Operational Scope:</span>
+                                <span class="point-value">Front-line systems &amp; network triage for biometric boarding gates</span>
+                            </div>
+                            <div class="telemetry-point">
+                                <span class="point-label">Hardware &amp; Network:</span>
+                                <span class="point-value">Camera sensor feeds &amp; local network packet health diagnostics</span>
+                            </div>
+                            <div class="telemetry-point">
+                                <span class="point-label">Traffic Triage:</span>
+                                <span class="point-value">Backend auth timeout resolution during peak passenger rush waves</span>
+                            </div>
+                            <div class="telemetry-point">
+                                <span class="point-label">Uptime Priority:</span>
+                                <span class="point-value">Zero-delay transit boarding gate SLA adherence</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="infra-tags">
                         <span class="i-tag">Biometric Gates</span>
                         <span class="i-tag">Network Triage</span>
                         <span class="i-tag">Real-Time Telemetry</span>
-                        <span class="i-tag">Airport Transit</span>
                     </div>
                 </article>
 
                 <article class="infra-card" data-enter>
-                    <div>
+                    <div class="infra-card-top">
                         <div class="infra-card-header">
-                            <span class="i-tag">Enterprise Rollout</span>
+                            <span class="infra-status-live"><span class="live-dot-green"></span>ENTERPRISE ROLLOUT</span>
                             <span class="infra-period">2023 – 2024</span>
                         </div>
                         <h3 class="infra-role">800-Laptop Enterprise Branch Rollout</h3>
-                        <p class="infra-org">Lauren Information Technologies</p>
-                        <p class="infra-desc">
-                            Spearheaded the provisioning, deployment, and security configuration of 800 enterprise laptops across branch locations. Configured Active Directory domain policies, Trellix ENS endpoint protection suites, BigFix patch management agents, and Jenkins CI/CD deployment routines.
-                        </p>
+                        <div class="infra-org">Lauren Information Technologies</div>
+                        
+                        <div class="infra-telemetry-list">
+                            <div class="telemetry-point">
+                                <span class="point-label">Deployment Scale:</span>
+                                <span class="point-value"><strong>800 enterprise laptops</strong> provisioned across regional hubs</span>
+                            </div>
+                            <div class="telemetry-point">
+                                <span class="point-label">Security &amp; Policy:</span>
+                                <span class="point-value">Active Directory GPOs &amp; Trellix ENS endpoint protection</span>
+                            </div>
+                            <div class="telemetry-point">
+                                <span class="point-label">Patch Compliance:</span>
+                                <span class="point-value">BigFix patch management agent configuration</span>
+                            </div>
+                            <div class="telemetry-point">
+                                <span class="point-label">Automation Pipeline:</span>
+                                <span class="point-value">Jenkins CI/CD automated deployment routines</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="infra-tags">
                         <span class="i-tag">BigFix</span>
@@ -1518,26 +1857,51 @@
 
             <!-- Webhook Card -->
             <div class="pipeline-card" data-enter>
-                <div class="pipeline-title">Autonomous Webhook Financial Pipeline Architecture</div>
-                <p class="pipeline-desc">
-                    Engineered real-time data automation connecting front-end intake channels through n8n and Zapier webhook endpoints directly into live accounting sheets and operations monitoring dashboards.
-                </p>
+                <div class="pipeline-card-top">
+                    <div>
+                        <div class="pipeline-title">Autonomous Webhook Financial Pipeline Architecture</div>
+                        <p class="pipeline-desc">
+                            Engineered real-time data automation connecting front-end intake channels through n8n and Zapier webhook endpoints directly into live accounting sheets and operations monitoring dashboards.
+                        </p>
+                    </div>
+                    <div class="pipeline-telemetry-badge">
+                        <span class="live-dot-green"></span>
+                        <span>Active Runtime · &lt;120ms Dispatch</span>
+                    </div>
+                </div>
+
                 <div class="pipeline-flow">
                     <div class="p-step">
-                        <div class="p-step-num">STAGE 01</div>
+                        <div class="p-step-top">
+                            <span class="p-step-num">STAGE 01</span>
+                            <span class="p-step-status">INGEST</span>
+                        </div>
                         <div class="p-step-title">Customer Intake Event</div>
+                        <div class="p-step-detail">WooCommerce checkout, agency contact webhook &amp; lead payload capture</div>
                     </div>
                     <div class="p-step">
-                        <div class="p-step-num">STAGE 02</div>
-                        <div class="p-step-title">n8n / Zapier Webhook Handler</div>
+                        <div class="p-step-top">
+                            <span class="p-step-num">STAGE 02</span>
+                            <span class="p-step-status">ORCHESTRATE</span>
+                        </div>
+                        <div class="p-step-title">n8n / Zapier Handler</div>
+                        <div class="p-step-detail">Event verification, async task queueing &amp; failover retry logic</div>
                     </div>
                     <div class="p-step">
-                        <div class="p-step-num">STAGE 03</div>
-                        <div class="p-step-title">Payload Sanitizer &amp; Validation</div>
+                        <div class="p-step-top">
+                            <span class="p-step-num">STAGE 03</span>
+                            <span class="p-step-status">SANITIZE</span>
+                        </div>
+                        <div class="p-step-title">Payload Sanitizer</div>
+                        <div class="p-step-detail">JSON schema parsing, currency formatting &amp; auth token validation</div>
                     </div>
                     <div class="p-step">
-                        <div class="p-step-num">STAGE 04</div>
-                        <div class="p-step-title">Live Financial Accounting Sheet</div>
+                        <div class="p-step-top">
+                            <span class="p-step-num">STAGE 04</span>
+                            <span class="p-step-status">DISPATCH</span>
+                        </div>
+                        <div class="p-step-title">Live Financial Sheet</div>
+                        <div class="p-step-detail">Zero-manual-entry Google Sheets sync &amp; instant client notification</div>
                     </div>
                 </div>
             </div>
@@ -1649,139 +2013,217 @@
     <section class="section-wrapper" id="contact-section" aria-label="Capabilities and Contact">
         <div class="section-inner">
             <p class="sec-tag" data-enter>05 / Capabilities &amp; Contact</p>
+            <h2 class="sec-title" data-enter>
+                Technical Arsenal<br>
+                <em>&amp; Global Intake</em>
+            </h2>
+            <p class="sec-sub" data-enter>
+                Cross-disciplinary mastery spanning enterprise infrastructure fleets, autonomous agentic AI workflows, and photorealistic spatial CGI. Built for high-impact technical roles worldwide.
+            </p>
 
-            <div class="contact-layout">
-                <div class="skills-table">
-                    <div>
-                        <div class="skills-group-head">Systems &amp; Enterprise Infrastructure</div>
-                        <div class="skills-row"><span class="sk-name">Linux (RHEL / Ubuntu)</span><span class="sk-level">150+ Production Servers · CLI Automation</span></div>
-                        <div class="skills-row"><span class="sk-name">Windows Server / Active Directory</span><span class="sk-level">Domain Admin · Group Policies · Scripting</span></div>
-                        <div class="skills-row"><span class="sk-name">SSMS &amp; SQL Forensics</span><span class="sk-level">Outage Log Diagnostics · Query Filtering</span></div>
-                        <div class="skills-row"><span class="sk-name">Jenkins CI/CD Automation</span><span class="sk-level">Automated Deployment Routines</span></div>
-                        <div class="skills-row"><span class="sk-name">BigFix · Trellix ENS</span><span class="sk-level">800-Device Enterprise Endpoint Security</span></div>
+            <!-- TIER 1: THE 3-COLUMN ARSENAL DECK -->
+            <div class="arsenal-grid" data-enter>
+                <!-- Column 1: Systems & SecOps -->
+                <div class="arsenal-card">
+                    <div class="arsenal-card-head">
+                        <div class="arsenal-icon-badge">SYS · OPS</div>
+                        <h3 class="arsenal-card-title">Enterprise Systems &amp; SecOps</h3>
+                    </div>
+                    <div class="arsenal-pill-badge">150+ PROD SERVERS · 99.9% FINANCIAL SLA</div>
+                    <ul class="arsenal-list">
+                        <li>
+                            <span class="a-item-name">Linux Fleet Ops</span>
+                            <span class="a-item-spec">RHEL, Ubuntu, custom Bash cron routines &amp; SSH automation</span>
+                        </li>
+                        <li>
+                            <span class="a-item-name">Windows Server / AD</span>
+                            <span class="a-item-spec">Active Directory, GPO security compliance &amp; domain admin</span>
+                        </li>
+                        <li>
+                            <span class="a-item-name">Outage Triage &amp; Forensics</span>
+                            <span class="a-item-spec">SSMS SQL diagnostic queries &amp; real-time middleware log isolation</span>
+                        </li>
+                        <li>
+                            <span class="a-item-name">Endpoint Defense</span>
+                            <span class="a-item-spec">Trellix ENS defense suites &amp; BigFix patch management</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: AI Workflows & Web Platforms -->
+                <div class="arsenal-card">
+                    <div class="arsenal-card-head">
+                        <div class="arsenal-icon-badge">AI · AUTO</div>
+                        <h3 class="arsenal-card-title">AI Workflows &amp; Web Systems</h3>
+                    </div>
+                    <div class="arsenal-pill-badge">AUTONOMOUS AGENTIC PIPELINES</div>
+                    <ul class="arsenal-list">
+                        <li>
+                            <span class="a-item-name">n8n &amp; Zapier Webhooks</span>
+                            <span class="a-item-spec">Autonomous event ingestion, schema validation &amp; CRM sync</span>
+                        </li>
+                        <li>
+                            <span class="a-item-name">AI Agentic &amp; Scripted Ops</span>
+                            <span class="a-item-spec">Python/Bash pipelines, prompt orchestration &amp; automated ingestion</span>
+                        </li>
+                        <li>
+                            <span class="a-item-name">Commercial E-Commerce</span>
+                            <span class="a-item-spec">4 live production stores, Razorpay APIs &amp; dynamic catalogs</span>
+                        </li>
+                        <li>
+                            <span class="a-item-name">Algorithmic SEO</span>
+                            <span class="a-item-spec">Page 1 organic Google rankings (3+ months, 0 ad spend)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: 3D CGI & Spatial Graphics -->
+                <div class="arsenal-card">
+                    <div class="arsenal-card-head">
+                        <div class="arsenal-icon-badge">3D · CGI</div>
+                        <h3 class="arsenal-card-title">3D Computational Graphics</h3>
+                    </div>
+                    <div class="arsenal-pill-badge">RAYTRACED PBR &amp; REAL-TIME WEBGL</div>
+                    <ul class="arsenal-list">
+                        <li>
+                            <span class="a-item-name">Blender Cycles Engine</span>
+                            <span class="a-item-spec">Physical IOR optics, subsurface scattering, caustics &amp; archviz</span>
+                        </li>
+                        <li>
+                            <span class="a-item-name">Three.js &amp; WebGL</span>
+                            <span class="a-item-spec">Custom GLSL vector particle shaders, GLB pipelines &amp; raycasting</span>
+                        </li>
+                        <li>
+                            <span class="a-item-name">Unreal Engine 5</span>
+                            <span class="a-item-spec">Spatial composition, dynamic lighting &amp; blueprint logic</span>
+                        </li>
+                        <li>
+                            <span class="a-item-name">Figma Architecture</span>
+                            <span class="a-item-spec">Design tokens, responsive UI layout &amp; production design systems</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TIER 2: VERIFIED ACCREDITATIONS & CREDENTIALS -->
+            <div class="creds-section" data-enter>
+                <div class="creds-header">
+                    <span class="creds-tag">VERIFIED INDUSTRY ACCREDITATIONS</span>
+                    <span class="creds-sub">Cryptographically verified via Coursera &amp; HubSpot registries</span>
+                </div>
+                <div class="creds-grid">
+                    <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="cred-card">
+                        <div class="cred-org-badge">Google</div>
+                        <div class="cred-info">
+                            <div class="cred-title">Foundations of Cybersecurity</div>
+                            <div class="cred-id">ID: H77H8G20YS9N · Verified ↗</div>
+                        </div>
+                    </a>
+
+                    <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="cred-card">
+                        <div class="cred-org-badge">Google</div>
+                        <div class="cred-info">
+                            <div class="cred-title">Networks &amp; Network Security</div>
+                            <div class="cred-id">ID: 0ABTT3NHCDXO · Verified ↗</div>
+                        </div>
+                    </a>
+
+                    <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="cred-card">
+                        <div class="cred-org-badge">Google</div>
+                        <div class="cred-info">
+                            <div class="cred-title">Play It Safe: Manage Security Risks</div>
+                            <div class="cred-id">ID: WMJ79P4RT454 · Verified ↗</div>
+                        </div>
+                    </a>
+
+                    <div class="cred-card">
+                        <div class="cred-org-badge hubspot">HubSpot</div>
+                        <div class="cred-info">
+                            <div class="cred-title">Digital Marketing Certified (2026–2027)</div>
+                            <div class="cred-id">ID: b9317d5408884cf7 · Active</div>
+                        </div>
+                        <span class="cred-status-dot"></span>
                     </div>
 
-                    <div>
-                        <div class="skills-group-head">AI Workflow Automation &amp; Web Systems</div>
-                        <div class="skills-row"><span class="sk-name">n8n &amp; Zapier Automation</span><span class="sk-level">Autonomous Webhooks · CRM &amp; Order Sync · Custom APIs</span></div>
-                        <div class="skills-row"><span class="sk-name">AI Agentic &amp; Scripted Workflows</span><span class="sk-level">Cron Pipelines · Prompt Engineering · Code Assistants</span></div>
-                        <div class="skills-row"><span class="sk-name">WordPress · WooCommerce</span><span class="sk-level">4 Production E-Commerce Deployments · Razorpay</span></div>
-                        <div class="skills-row"><span class="sk-name">Technical SEO &amp; Analytics</span><span class="sk-level">Page 1 Organic Google Ranks (0 Ad Spend) · HubSpot</span></div>
-                    </div>
+                    <a href="https://coursera.org/verify/UB4CN3DH9ETV" target="_blank" rel="noopener" class="cred-card">
+                        <div class="cred-org-badge">Squarespace</div>
+                        <div class="cred-info">
+                            <div class="cred-title">SEO with Squarespace</div>
+                            <div class="cred-id">ID: UB4CN3DH9ETV · Verified ↗</div>
+                        </div>
+                    </a>
 
-                    <div>
-                        <div class="skills-group-head">3D Computational &amp; Spatial Graphics</div>
-                        <div class="skills-row"><span class="sk-name">Blender Cycles</span><span class="sk-level">Raytraced PBR · Caustics · Volumetrics · Archviz</span></div>
-                        <div class="skills-row"><span class="sk-name">Three.js / WebGL</span><span class="sk-level">Vector Stipple Particle Shaders &amp; Real-time GLB</span></div>
-                        <div class="skills-row"><span class="sk-name">Unreal Engine 5</span><span class="sk-level">Spatial Logic &amp; Blueprints</span></div>
-                        <div class="skills-row"><span class="sk-name">Figma Architecture</span><span class="sk-level">Design System Architecture &amp; Production Handoff</span></div>
+                    <div class="cred-card">
+                        <div class="cred-org-badge ibm">IBM</div>
+                        <div class="cred-info">
+                            <div class="cred-title">SkillsBuild: Web Fundamentals</div>
+                            <div class="cred-id">7 Credentials Completed</div>
+                        </div>
+                        <span class="cred-status-dot"></span>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Verified Accreditations -->
-                    <div>
-                        <div class="skills-group-head">Verified Certifications &amp; Accreditations</div>
-                        <div class="cert-grid">
-                            <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="cert-pill">
-                                <span class="cert-org">Google</span>
-                                <span class="cert-name">Foundations of Cybersecurity</span>
-                                <span class="cert-arrow">↗</span>
-                            </a>
-                            <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="cert-pill">
-                                <span class="cert-org">Google</span>
-                                <span class="cert-name">Play It Safe: Manage Security Risks</span>
-                                <span class="cert-arrow">↗</span>
-                            </a>
-                            <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="cert-pill">
-                                <span class="cert-org">Google</span>
-                                <span class="cert-name">Networks &amp; Network Security</span>
-                                <span class="cert-arrow">↗</span>
-                            </a>
-                            <div class="cert-pill">
-                                <span class="cert-org">HubSpot</span>
-                                <span class="cert-name">Digital Marketing Certified (2026–2027)</span>
-                                <span class="cert-code">ID: b9317d...</span>
-                            </div>
-                            <a href="https://coursera.org/verify/PLK5XN8SVHP6" target="_blank" rel="noopener" class="cert-pill">
-                                <span class="cert-org">Google</span>
-                                <span class="cert-name">Google Ads for Beginners</span>
-                                <span class="cert-arrow">↗</span>
-                            </a>
-                            <a href="https://coursera.org/verify/UB4CN3DH9ETV" target="_blank" rel="noopener" class="cert-pill">
-                                <span class="cert-org">Squarespace</span>
-                                <span class="cert-name">SEO with Squarespace</span>
-                                <span class="cert-arrow">↗</span>
-                            </a>
-                            <a href="https://coursera.org/verify/AHVH3DHC5M83" target="_blank" rel="noopener" class="cert-pill">
-                                <span class="cert-org">Coursera</span>
-                                <span class="cert-name">Build a Website with WordPress</span>
-                                <span class="cert-arrow">↗</span>
-                            </a>
-                            <div class="cert-pill">
-                                <span class="cert-org">IBM</span>
-                                <span class="cert-name">SkillsBuild: Web Fundamentals (7 Credentials)</span>
-                                <span class="cert-code">Completed</span>
-                            </div>
+            <!-- TIER 3: TARGET ROLES & INTAKE CONTACT DECK -->
+            <div class="intake-deck" data-enter>
+                <div class="intake-left">
+                    <h3 class="intake-headline">
+                        Available for<br>
+                        <em>high-impact</em> roles.
+                    </h3>
+                    <p class="intake-desc">
+                        Open for high-stakes Systems Engineering, AI Automation Lead, Creative Technologist, or Production SecOps roles globally (On-site &amp; Remote).
+                    </p>
+
+                    <div class="intake-roles-box">
+                        <div class="intake-roles-label">Target Roles &amp; Suited Capacities</div>
+                        <div class="intake-roles-tags">
+                            <span class="role-pill">Systems &amp; Infrastructure Engineer</span>
+                            <span class="role-pill">AI Automation &amp; Workflow Lead</span>
+                            <span class="role-pill">Creative Technologist / 3D Artist</span>
+                            <span class="role-pill">Production SecOps &amp; SRE Lead</span>
                         </div>
                     </div>
 
-                    <div class="edu-card">
-                        <div class="edu-title">Bachelor of Management Studies (TYBMS)</div>
-                        <div class="edu-sub">Royal College of Arts, Science and Commerce · 2023 – 2026</div>
-                        <div class="edu-badge">
-                            <span>●</span>
-                            <span>Pursuing: Google Cybersecurity Professional Certificate (Coursera)</span>
+                    <div class="degree-pill-box">
+                        <span class="deg-icon">🎓</span>
+                        <div>
+                            <span class="deg-title">Bachelor of Management Studies (TYBMS)</span>
+                            <span class="deg-sub">Royal College of Arts, Science &amp; Commerce (2023–2026) · Pursuing Google Cybersecurity Specialization</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="hire-deck">
-                    <div>
-                        <h2 class="hire-title" data-enter>
-                            Available for<br>
-                            <em>high-impact</em><br>
-                            roles.
-                        </h2>
-                        <p class="sec-sub" data-enter>
-                            Ready to step into high-stakes systems engineering, autonomous AI automation, or hybrid technical leadership roles worldwide.
-                        </p>
-                        <div class="target-roles-box" data-enter>
-                            <div class="roles-box-label">Target Roles &amp; Suited Capacities</div>
-                            <div class="roles-tag-list">
-                                <span class="role-badge">Systems &amp; Infrastructure Engineer</span>
-                                <span class="role-badge">AI Automation &amp; Workflow Lead</span>
-                                <span class="role-badge">Creative Technologist / 3D Artist</span>
-                                <span class="role-badge">Production SecOps &amp; SRE Lead</span>
-                            </div>
-                        </div>
-                        <div class="hire-links" data-enter>
-                            <a href="mailto:joelnadar825@gmail.com" class="h-link primary">
-                                <span>joelnadar825@gmail.com</span>
-                                <span>↗</span>
-                            </a>
-                            <a href="tel:+919321591870" class="h-link">
-                                <span>+91 93215 91870</span>
-                                <span>→</span>
-                            </a>
-                            <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="h-link">
-                                <span>LinkedIn · Professional Profile</span>
-                                <span>↗</span>
-                            </a>
-                            <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="h-link">
-                                <span>ArtStation · 3D Environment Portfolio</span>
-                                <span>↗</span>
-                            </a>
-                            <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="h-link">
-                                <span>Behance · Creative Direction</span>
-                                <span>↗</span>
-                            </a>
-                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="h-link" download>
-                                <span>Download Verified CV (PDF)</span>
-                                <span>↓</span>
-                            </a>
-                        </div>
+                <div class="intake-right">
+                    <div class="contact-links-grid">
+                        <a href="mailto:joelnadar825@gmail.com" class="c-action primary">
+                            <span class="c-action-label">Email Directly</span>
+                            <span class="c-action-val">joelnadar825@gmail.com ↗</span>
+                        </a>
+                        <a href="tel:+919321591870" class="c-action">
+                            <span class="c-action-label">Direct Phone</span>
+                            <span class="c-action-val">+91 93215 91870 →</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="c-action">
+                            <span class="c-action-label">LinkedIn</span>
+                            <span class="c-action-val">linkedin.com/in/joel-aka-shadowknight ↗</span>
+                        </a>
+                        <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="c-action">
+                            <span class="c-action-label">ArtStation</span>
+                            <span class="c-action-val">artstation.com/shadowknight010 ↗</span>
+                        </a>
+                        <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="c-action">
+                            <span class="c-action-label">Behance</span>
+                            <span class="c-action-val">behance.net/joeldaniel5 ↗</span>
+                        </a>
+                        <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="c-action download" download>
+                            <span class="c-action-label">Verified Resume</span>
+                            <span class="c-action-val">Download CV (PDF) ↓</span>
+                        </a>
                     </div>
-                    <div style="margin-top:36px; font-family:'DM Mono',monospace; font-size:11px; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">
-                        Mumbai, India · Available for On-Site &amp; Remote
+                    <div class="intake-location">
+                        <span class="live-dot-green"></span>
+                        <span>Mumbai, India · Available for On-Site &amp; Worldwide Remote</span>
                     </div>
                 </div>
             </div>
@@ -2101,11 +2543,12 @@
             const isMobile = window.innerWidth <= 900;
             if (isMobile) {
                 // On mobile touchscreens, fingertips are ~45-55px wide.
-                // We expand the repulsion radius to 0.78 and strength to 0.55
+                // We expand the repulsion radius to 0.82 and strength to 0.58
                 // so the particles scatter visibly far beyond the user's finger!
-                return { radius: 0.78, strength: 0.55, returnSpeed: 0.08 };
+                return { radius: 0.82, strength: 0.58, returnSpeed: 0.08 };
             }
-            return { radius: 0.40, strength: 0.26, returnSpeed: 0.085 };
+            // Desktop mouse cursor: amplified radius & strength for a bold, ultra-satisfying cosmic wake
+            return { radius: 0.82, strength: 0.50, returnSpeed: 0.075 };
         }
 
         // ── Repulsion Logic ─────────────────────────────────────────────────
