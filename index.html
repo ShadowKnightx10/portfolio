@@ -396,6 +396,168 @@
             flex-wrap: wrap;
         }
 
+        /* ── CHAPTER TRANSITION GATES ── */
+        .chapter-gate {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: 4px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+        }
+        .chapter-gate.light-gate {
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            color: var(--text-muted);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .chapter-gate.light-gate .gate-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 3px 8px;
+            border-radius: 2px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+        .chapter-gate.light-gate .gate-desc {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .chapter-gate.dark-gate {
+            background: #141413;
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.45);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .chapter-gate.dark-gate .gate-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            color: #000000;
+            padding: 3px 8px;
+            border-radius: 2px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+        .chapter-gate.dark-gate .gate-desc {
+            color: #e5e5e0;
+            font-weight: 600;
+        }
+
+        /* ── VELARIS WEBGL AMBIENT CANVAS ── */
+        .velaris-bg-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.72;
+            mix-blend-mode: screen;
+        }
+
+        /* ── LIQUID METAL 3D BUTTON EFFECT ── */
+        .btn-liquid-metal {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-decoration: none;
+            color: #ffffff !important;
+            cursor: pointer;
+            overflow: hidden;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            background: linear-gradient(180deg, #2a2a29 0%, #141413 50%, #070707 100%);
+            border: 1px solid rgba(255,255,255,0.24);
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.8),
+                0 4px 16px rgba(0,0,0,0.5),
+                inset 0 1px 1px rgba(255,255,255,0.4),
+                inset 0 -1px 2px rgba(0,0,0,0.8);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-liquid-metal::before {
+            content: '';
+            position: absolute;
+            inset: -60%;
+            background: conic-gradient(
+                from 0deg at 50% 50%,
+                rgba(255,255,255,0) 0deg,
+                rgba(255,255,255,0.25) 50deg,
+                rgba(16,185,129,0.4) 110deg,
+                rgba(255,255,255,0) 180deg,
+                rgba(255,255,255,0.3) 250deg,
+                rgba(16,185,129,0.3) 310deg,
+                rgba(255,255,255,0) 360deg
+            );
+            opacity: 0.45;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            animation: liquidMetalSpin 8s linear infinite;
+            transition: opacity 0.3s;
+        }
+        .btn-liquid-metal:hover::before {
+            opacity: 0.9;
+            animation-duration: 3s;
+        }
+        .btn-liquid-metal:hover {
+            border-color: rgba(255,255,255,0.55);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 
+                0 0 0 1px rgba(255,255,255,0.25),
+                0 12px 28px rgba(0,0,0,0.6),
+                0 0 20px rgba(16,185,129,0.3),
+                inset 0 1px 2px rgba(255,255,255,0.7);
+        }
+        .btn-liquid-metal:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 
+                0 2px 8px rgba(0,0,0,0.6),
+                inset 0 2px 4px rgba(0,0,0,0.8);
+        }
+        .btn-liquid-metal span {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+        }
+        @keyframes liquidMetalSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .liquid-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(16,185,129,0.5) 40%, rgba(255,255,255,0) 70%);
+            transform: translate(-50%, -50%) scale(0);
+            animation: liquidRippleAnim 0.6s ease-out forwards;
+            pointer-events: none;
+            z-index: 5;
+        }
+        @keyframes liquidRippleAnim {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0.95; }
+            100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+        }
+
         /* ═══════════════════════════════════════════
            ACT I-B: THE DUAL-CORE SPECTRUM ARCHITECTURE
         ═══════════════════════════════════════════ */
@@ -404,6 +566,12 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
             border-top: 1px solid rgba(255,255,255,0.08);
             color: var(--text-dark-sec);
+            position: relative;
+            overflow: hidden;
+        }
+        #spectrum-section .section-inner {
+            position: relative;
+            z-index: 2;
         }
         #spectrum-section .sec-tag { color: rgba(255,255,255,0.5); }
         #spectrum-section .sec-tag::before { background: #ffffff; }
@@ -1128,110 +1296,165 @@
             line-height: 1.45;
         }
 
-        /* ── CREDS SECTION (VERIFIED STRIP) ── */
-        .creds-section {
+        /* ── ROADMAP BOARD (VERIFIED ACCREDITATIONS & MILESTONES) ── */
+        .roadmap-board {
             margin-top: 48px;
-            padding: 32px 36px;
-            background: #121211;
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 6px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            padding: 36px 36px 40px;
+            background: #0d0d0c;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
         }
-        .creds-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+        .roadmap-header {
+            margin-bottom: 28px;
         }
-        .creds-tag {
-            font-family: 'DM Mono', monospace;
+        .roadmap-top-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #d4d4d8;
             font-size: 11px;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
+            font-weight: 500;
+            padding: 3px 11px;
+            border-radius: 9999px;
+            letter-spacing: 0.02em;
+            margin-bottom: 12px;
+        }
+        .roadmap-title {
+            font-size: clamp(1.4rem, 2.4vw, 1.85rem);
             font-weight: 700;
             color: #ffffff;
+            letter-spacing: -0.025em;
+            line-height: 1.25;
+            margin: 0 0 6px 0;
+            font-family: 'DM Sans', sans-serif;
         }
-        .creds-sub {
-            font-family: 'DM Mono', monospace;
-            font-size: 10.5px;
-            color: rgba(255,255,255,0.45);
-            letter-spacing: 0.04em;
+        .roadmap-subtitle {
+            font-size: 13.5px;
+            color: #8a8a86;
+            line-height: 1.5;
+            margin: 0;
+            max-width: 680px;
         }
-        .creds-grid {
+        .roadmap-columns {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
-        .cred-card {
-            background: #181817;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 4px;
-            padding: 14px 16px;
+        .roadmap-col {
+            display: flex;
+            flex-direction: column;
+        }
+        .roadmap-col-header {
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .roadmap-quarter {
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+        .roadmap-period {
+            font-size: 11.5px;
+            color: #888884;
+            margin-top: 2px;
+            font-family: 'DM Mono', monospace;
+        }
+        .roadmap-cards-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+        .roadmap-card {
+            background: #141413;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            padding: 15px 16px;
+            display: flex;
+            flex-direction: column;
             text-decoration: none;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.2s ease,
+                        background 0.2s ease,
+                        box-shadow 0.2s ease;
+            min-height: 140px;
+        }
+        a.roadmap-card:hover {
+            background: #181817;
+            border-color: rgba(255, 255, 255, 0.24);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+        }
+        div.roadmap-card:hover {
+            border-color: rgba(255, 255, 255, 0.16);
+            background: #181817;
+        }
+        .roadmap-card-top {
             display: flex;
             align-items: center;
-            gap: 12px;
-            transition: all 0.2s;
+            justify-content: space-between;
+            margin-bottom: 10px;
         }
-        .cred-card:hover {
-            background: #222220;
-            border-color: rgba(255,255,255,0.3);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-        }
-        .cred-org-badge {
-            font-family: 'DM Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-weight: 700;
+        .roadmap-pill {
             background: #ffffff;
-            color: #000000;
-            padding: 3px 7px;
-            border-radius: 2px;
-            flex-shrink: 0;
+            color: #0c0c0b;
+            font-size: 10.5px;
+            font-weight: 600;
+            padding: 2.5px 9px;
+            border-radius: 9999px;
+            letter-spacing: 0.01em;
+            line-height: 1.2;
         }
-        .cred-org-badge.hubspot { background: #ff7a59; color: #ffffff; }
-        .cred-org-badge.ibm { background: #1261fe; color: #ffffff; }
-        .cred-info {
-            flex: 1;
-            min-width: 0;
+        .roadmap-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
         }
-        .cred-title {
-            font-size: 12.5px;
+        .roadmap-card-title {
+            font-size: 13px;
             font-weight: 600;
             color: #ffffff;
             line-height: 1.35;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            margin-bottom: 4px;
         }
-        .cred-id {
+        .roadmap-card-desc {
+            font-size: 11.5px;
+            color: #888884;
+            line-height: 1.45;
+            margin-bottom: 10px;
+            flex: 1;
+        }
+        .roadmap-card-meta {
             font-family: 'DM Mono', monospace;
-            font-size: 10px;
-            color: rgba(255,255,255,0.45);
-            margin-top: 2px;
+            font-size: 9.5px;
+            color: #a1a1aa;
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+            display: block;
         }
-        .cred-arrow {
-            font-size: 12px;
-            color: rgba(255,255,255,0.4);
-            transition: transform 0.2s;
+        .roadmap-status-text {
+            font-size: 11px;
+            font-weight: 500;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
-        .cred-card:hover .cred-arrow {
-            transform: translate(2px, -2px);
-            color: #ffffff;
+        .status-shipped {
+            color: #10b981;
         }
-        .cred-status-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #10b981;
-            box-shadow: 0 0 6px rgba(16,185,129,0.7);
-            flex-shrink: 0;
+        .status-in-progress {
+            color: #f59e0b;
+        }
+        .status-planned {
+            color: #71717a;
         }
 
         /* ── INTAKE SECTION (FULL-WIDTH SEQUENTIAL STACK) ── */
@@ -1476,6 +1699,7 @@
             .infra-grid { grid-template-columns: 1fr; }
             .web-grid { grid-template-columns: repeat(2, 1fr); }
             .gallery-grid { grid-template-columns: 1fr; }
+            .roadmap-columns { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 900px) {
@@ -1706,26 +1930,13 @@
             .arsenal-card {
                 padding: 22px 18px !important;
             }
-            .creds-section {
-                padding: 20px 18px !important;
+            .roadmap-board {
+                padding: 22px 16px 26px !important;
                 margin-top: 32px !important;
             }
-            .creds-header {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 6px !important;
-                margin-bottom: 16px !important;
-            }
-            .creds-grid {
+            .roadmap-columns {
                 grid-template-columns: 1fr !important;
-                gap: 10px !important;
-            }
-            .cred-card {
-                padding: 12px 14px !important;
-            }
-            .cred-title {
-                white-space: normal !important;
-                font-size: 12px !important;
+                gap: 20px !important;
             }
             .hero-trivector-dock {
                 grid-template-columns: 1fr !important;
@@ -1817,7 +2028,7 @@
         </nav>
         <div class="header-actions">
             <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn btn-ghost" download>CV</a>
-            <a href="mailto:joelnadar825@gmail.com" class="btn btn-solid">Hire</a>
+            <a href="mailto:joelnadar825@gmail.com" class="btn-liquid-metal"><span>Hire</span></a>
         </div>
     </header>
 
@@ -1871,7 +2082,7 @@
             </div>
 
             <div class="hero-actions" data-enter>
-                <a href="#spectrum-section" class="btn btn-solid">
+                <a href="#spectrum-section" class="btn-liquid-metal">
                     <span>Explore Full Spectrum</span>
                     <span>↓</span>
                 </a>
@@ -1887,7 +2098,19 @@
          Connecting Bare Metal, Spatial Computing, and Autonomous Workflows
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section class="section-wrapper is-dark-section" id="spectrum-section" aria-label="Capabilities Architecture">
+        <!-- Velaris Living WebGL Simplex Noise Background -->
+        <canvas id="velaris-canvas" class="velaris-bg-canvas" aria-hidden="true"></canvas>
+
         <div class="section-inner">
+            <!-- CHAPTER GATE: CORE ENGINE -->
+            <div class="chapter-gate dark-gate" data-enter>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="gate-badge">ACT 00 // CORE ENGINE</span>
+                    <span class="gate-desc">The Dual-Core Architectural Practice</span>
+                </div>
+                <span>Bare Metal · Spatial Computing · Autonomous Pipelines</span>
+            </div>
+
             <p class="sec-tag" data-enter>00 / Full-Spectrum Technical Architecture</p>
             <h2 class="sec-title" data-enter>
                 The Dual-Core<br>
@@ -1936,7 +2159,7 @@
                     </div>
 
                     <a href="#infra-section" class="spectrum-jump-btn">
-                        <span>Inspect Operations Dossiers</span>
+                        <span>Inspect Operations Dossiers (Act 03)</span>
                         <span>↓</span>
                     </a>
                 </div>
@@ -1979,7 +2202,7 @@
                     </div>
 
                     <a href="#cinema-section" class="spectrum-jump-btn">
-                        <span>Inspect 3D Cinematic Motion</span>
+                        <span>Inspect 3D Cinematic Motion (Act 01)</span>
                         <span>↓</span>
                     </a>
                 </div>
@@ -2022,7 +2245,7 @@
                     </div>
 
                     <a href="#web-section" class="spectrum-jump-btn">
-                        <span>Inspect Web &amp; Automation</span>
+                        <span>Inspect Web &amp; Automation (Act 04)</span>
                         <span>↓</span>
                     </a>
                 </div>
@@ -2045,6 +2268,15 @@
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section class="section-wrapper is-dark-section" id="cinema-section" aria-label="3D Cinematic Motion">
         <div class="section-inner">
+            <!-- CHAPTER GATE: SPATIAL COMPUTING & 3D MOTION -->
+            <div class="chapter-gate dark-gate" data-enter>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="gate-badge">ACT 01 // PHOTONS</span>
+                    <span class="gate-desc">Entering 3D Spatial Computing &amp; Motion Suite</span>
+                </div>
+                <span>Keyframed PBR · Volumetric Caustics · Optical Refraction</span>
+            </div>
+
             <p class="sec-tag" data-enter>01 / Featured 3D Motion Study</p>
             <h2 class="sec-title" data-enter>
                 AirPod Motion<br>
@@ -2172,6 +2404,15 @@
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section class="section-wrapper" id="infra-section" aria-label="Infrastructure Operations">
         <div class="section-inner">
+            <!-- CHAPTER GATE: BARE METAL INFRASTRUCTURE -->
+            <div class="chapter-gate light-gate" data-enter>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="gate-badge">ACT 03 // BARE METAL</span>
+                    <span class="gate-desc">Entering Mission-Critical Infrastructure Dossier</span>
+                </div>
+                <span>150+ Servers · Airport Biometrics · Incident SLA</span>
+            </div>
+
             <p class="sec-tag" data-enter>03 / High-Availability Infrastructure</p>
             <h2 class="sec-title" data-enter>
                 Mission-Critical<br>
@@ -2318,6 +2559,15 @@
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
     <section class="section-wrapper" id="web-section" aria-label="Web Platforms and Automation">
         <div class="section-inner">
+            <!-- CHAPTER GATE: WEB & AUTOMATION -->
+            <div class="chapter-gate light-gate" data-enter>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="gate-badge">ACT 04 // ORCHESTRATION</span>
+                    <span class="gate-desc">Entering Autonomous Webhooks &amp; Web Systems</span>
+                </div>
+                <span>&lt;120ms Event Dispatch · 4 Commercial Stores · Page 1 SEO</span>
+            </div>
+
             <p class="sec-tag" data-enter>04 / Commercial Web &amp; Automation</p>
             <h2 class="sec-title" data-enter>
                 Shipped Web<br>
@@ -2577,61 +2827,230 @@
                 </div>
             </div>
 
-            <!-- TIER 2: VERIFIED ACCREDITATIONS & CREDENTIALS -->
-            <div class="creds-section" data-enter>
-                <div class="creds-header">
-                    <span class="creds-tag">VERIFIED INDUSTRY ACCREDITATIONS</span>
-                    <span class="creds-sub">Cryptographically verified via Coursera &amp; HubSpot registries</span>
+            <!-- TIER 2: TECHNICAL PROGRESSION & SECURITY ROADMAP BOARD -->
+            <div class="creds-section roadmap-board" id="creds-section" data-enter>
+                <div class="roadmap-header">
+                    <span class="roadmap-top-badge">Roadmap</span>
+                    <h3 class="roadmap-title">What I Am Building &amp; Securing In 2026</h3>
+                    <p class="roadmap-subtitle">A quarter-by-quarter trajectory of verified accreditations, active engineering specializations, and targeted defensive milestones.</p>
                 </div>
-                <div class="creds-grid">
-                    <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="cred-card">
-                        <div class="cred-org-badge">Google</div>
-                        <div class="cred-info">
-                            <div class="cred-title">Foundations of Cybersecurity</div>
-                            <div class="cred-id">ID: H77H8G20YS9N · Verified ↗</div>
-                        </div>
-                    </a>
 
-                    <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="cred-card">
-                        <div class="cred-org-badge">Google</div>
-                        <div class="cred-info">
-                            <div class="cred-title">Networks &amp; Network Security</div>
-                            <div class="cred-id">ID: 0ABTT3NHCDXO · Verified ↗</div>
+                <div class="roadmap-columns">
+                    <!-- COLUMN 1: Q1 2026 -->
+                    <div class="roadmap-col">
+                        <div class="roadmap-col-header">
+                            <div class="roadmap-quarter">Q1 2026</div>
+                            <div class="roadmap-period">Jan – Mar</div>
                         </div>
-                    </a>
+                        <div class="roadmap-cards-stack">
+                            <!-- Card 1: Foundations of Cybersecurity -->
+                            <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">Security</span>
+                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">Foundations of Cybersecurity</div>
+                                <div class="roadmap-card-desc">Core security models, SIEM architectures, compliance &amp; threat profiling.</div>
+                                <span class="roadmap-card-meta">ID: H77H8G20YS9N · Google Verified ↗</span>
+                                <div class="roadmap-status-text status-shipped">Shipped</div>
+                            </a>
 
-                    <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="cred-card">
-                        <div class="cred-org-badge">Google</div>
-                        <div class="cred-info">
-                            <div class="cred-title">Play It Safe: Manage Security Risks</div>
-                            <div class="cred-id">ID: WMJ79P4RT454 · Verified ↗</div>
+                            <!-- Card 2: IBM Web Fundamentals -->
+                            <div class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">Platform</span>
+                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">SkillsBuild: Web Fundamentals</div>
+                                <div class="roadmap-card-desc">Enterprise frontend architecture, DOM pipelines &amp; web standards.</div>
+                                <span class="roadmap-card-meta">IBM SkillsBuild · 7 Credentials Verified</span>
+                                <div class="roadmap-status-text status-shipped">Shipped</div>
+                            </div>
                         </div>
-                    </a>
-
-                    <div class="cred-card">
-                        <div class="cred-org-badge hubspot">HubSpot</div>
-                        <div class="cred-info">
-                            <div class="cred-title">Digital Marketing Certified (2026–2027)</div>
-                            <div class="cred-id">ID: b9317d5408884cf7 · Active</div>
-                        </div>
-                        <span class="cred-status-dot"></span>
                     </div>
 
-                    <a href="https://coursera.org/verify/UB4CN3DH9ETV" target="_blank" rel="noopener" class="cred-card">
-                        <div class="cred-org-badge">Squarespace</div>
-                        <div class="cred-info">
-                            <div class="cred-title">SEO with Squarespace</div>
-                            <div class="cred-id">ID: UB4CN3DH9ETV · Verified ↗</div>
+                    <!-- COLUMN 2: Q2 2026 -->
+                    <div class="roadmap-col">
+                        <div class="roadmap-col-header">
+                            <div class="roadmap-quarter">Q2 2026</div>
+                            <div class="roadmap-period">Apr – Jun</div>
                         </div>
-                    </a>
+                        <div class="roadmap-cards-stack">
+                            <!-- Card 1: Networks & Network Security -->
+                            <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">Security</span>
+                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">Networks &amp; Network Security</div>
+                                <div class="roadmap-card-desc">TCP/IP packet inspection, intrusion detection, firewall ACLs &amp; LAN defense.</div>
+                                <span class="roadmap-card-meta">ID: 0ABTT3NHCDXO · Google Verified ↗</span>
+                                <div class="roadmap-status-text status-shipped">Shipped</div>
+                            </a>
 
-                    <div class="cred-card">
-                        <div class="cred-org-badge ibm">IBM</div>
-                        <div class="cred-info">
-                            <div class="cred-title">SkillsBuild: Web Fundamentals</div>
-                            <div class="cred-id">7 Credentials Completed</div>
+                            <!-- Card 2: Play It Safe: Manage Security Risks -->
+                            <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">Security</span>
+                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">Play It Safe: Manage Security Risks</div>
+                                <div class="roadmap-card-desc">Threat modeling, incident mitigation, compliance audits &amp; risk escalation.</div>
+                                <span class="roadmap-card-meta">ID: WMJ79P4RT454 · Google Verified ↗</span>
+                                <div class="roadmap-status-text status-shipped">Shipped</div>
+                            </a>
+
+                            <!-- Card 3: HubSpot Digital Marketing -->
+                            <div class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">Growth</span>
+                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">Digital Marketing Certified</div>
+                                <div class="roadmap-card-desc">Search telemetry, conversion optimization &amp; technical lifecycle tracking.</div>
+                                <span class="roadmap-card-meta">ID: b9317d5408884cf7 · HubSpot Active (2026–2027)</span>
+                                <div class="roadmap-status-text status-shipped">Shipped</div>
+                            </div>
                         </div>
-                        <span class="cred-status-dot"></span>
+                    </div>
+
+                    <!-- COLUMN 3: Q3 2026 -->
+                    <div class="roadmap-col">
+                        <div class="roadmap-col-header">
+                            <div class="roadmap-quarter">Q3 2026</div>
+                            <div class="roadmap-period">Jul – Sep</div>
+                        </div>
+                        <div class="roadmap-cards-stack">
+                            <!-- Card 1: Google Cybersecurity Capstone -->
+                            <div class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">Security</span>
+                                    <span class="roadmap-icon status-in-progress" title="In Progress">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <circle cx="8" cy="8" r="6" stroke="rgba(245, 158, 11, 0.25)" stroke-width="2"/>
+                                            <path d="M8 2A6 6 0 0 1 14 8" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">Cyber Capstone &amp; Automation</div>
+                                <div class="roadmap-card-desc">Python security scripting, live SOC triage simulation &amp; detection engineering.</div>
+                                <span class="roadmap-card-meta">Google Professional Certificate · Final Capstone</span>
+                                <div class="roadmap-status-text status-in-progress">In Progress</div>
+                            </div>
+
+                            <!-- Card 2: TYBMS Degree -->
+                            <div class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">Core</span>
+                                    <span class="roadmap-icon status-in-progress" title="In Progress">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <circle cx="8" cy="8" r="6" stroke="rgba(245, 158, 11, 0.25)" stroke-width="2"/>
+                                            <path d="M8 2A6 6 0 0 1 14 8" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">Bachelor of Management Studies</div>
+                                <div class="roadmap-card-desc">Royal College (2023–2026) — Strategic management, operations &amp; IT systems.</div>
+                                <span class="roadmap-card-meta">University of Mumbai · Final Academic Year</span>
+                                <div class="roadmap-status-text status-in-progress">In Progress</div>
+                            </div>
+
+                            <!-- Card 3: SEO with Squarespace -->
+                            <a href="https://coursera.org/verify/UB4CN3DH9ETV" target="_blank" rel="noopener" class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">Analytics</span>
+                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">Technical SEO Architecture</div>
+                                <div class="roadmap-card-desc">Structured data schema, XML indexing, sitemaps &amp; Core Web Vitals.</div>
+                                <span class="roadmap-card-meta">ID: UB4CN3DH9ETV · Squarespace Verified ↗</span>
+                                <div class="roadmap-status-text status-shipped">Shipped</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- COLUMN 4: Q4 2026 -->
+                    <div class="roadmap-col">
+                        <div class="roadmap-col-header">
+                            <div class="roadmap-quarter">Q4 2026</div>
+                            <div class="roadmap-period">Oct – Dec</div>
+                        </div>
+                        <div class="roadmap-cards-stack">
+                            <!-- Card 1: CompTIA Security+ -->
+                            <div class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">Security</span>
+                                    <span class="roadmap-icon status-planned" title="Planned Target">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <circle cx="8" cy="8" r="6" stroke="#71717a" stroke-width="1.6"/>
+                                            <polyline points="8 4.5 8 8 10.5 8" stroke="#71717a" stroke-width="1.6" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">CompTIA Security+ (SY0-701)</div>
+                                <div class="roadmap-card-desc">Enterprise security baseline, cryptographic protocols &amp; incident response.</div>
+                                <span class="roadmap-card-meta">Global Security Benchmark · Target Q4</span>
+                                <div class="roadmap-status-text status-planned">Planned</div>
+                            </div>
+
+                            <!-- Card 2: Enterprise SSO & SCIM Provisioning -->
+                            <div class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">SecOps</span>
+                                    <span class="roadmap-icon status-planned" title="Planned Target">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <circle cx="8" cy="8" r="6" stroke="#71717a" stroke-width="1.6"/>
+                                            <polyline points="8 4.5 8 8 10.5 8" stroke="#71717a" stroke-width="1.6" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">SSO, IAM &amp; SCIM Provisioning</div>
+                                <div class="roadmap-card-desc">Enterprise sign-on with automated user provisioning &amp; Zero-Trust policy.</div>
+                                <span class="roadmap-card-meta">Enterprise Identity Infrastructure</span>
+                                <div class="roadmap-status-text status-planned">Planned</div>
+                            </div>
+
+                            <!-- Card 3: Blue Team Level 1 (BTL1) -->
+                            <div class="roadmap-card">
+                                <div class="roadmap-card-top">
+                                    <span class="roadmap-pill">SecOps</span>
+                                    <span class="roadmap-icon status-planned" title="Planned Target">
+                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            <circle cx="8" cy="8" r="6" stroke="#71717a" stroke-width="1.6"/>
+                                            <polyline points="8 4.5 8 8 10.5 8" stroke="#71717a" stroke-width="1.6" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="roadmap-card-title">Blue Team Level 1 (BTL1)</div>
+                                <div class="roadmap-card-desc">Practical defensive operations, digital forensics, packet inspection &amp; threat hunting.</div>
+                                <span class="roadmap-card-meta">Security Blue Team · Defensive Milestone</span>
+                                <div class="roadmap-status-text status-planned">Planned</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3207,6 +3626,197 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && document.getElementById('lightbox').classList.contains('on')) closeLB();
         });
+
+        // ── VELARIS LIVING NOISE SHADER (WebGL Ambient Substrate) ──
+        (function initVelaris() {
+            const canvas = document.getElementById('velaris-canvas');
+            const section = document.getElementById('spectrum-section');
+            if (!canvas || !section) return;
+
+            const gl = canvas.getContext('webgl', { antialias: false, alpha: true, depth: false, powerPreference: 'low-power' });
+            if (!gl) return;
+
+            const vSrc = `
+                attribute vec2 position;
+                varying vec2 vUv;
+                void main() {
+                    vUv = position * 0.5 + 0.5;
+                    gl_Position = vec4(position, 0.0, 1.0);
+                }
+            `;
+
+            const fSrc = `
+                precision mediump float;
+                varying vec2 vUv;
+
+                uniform vec2  u_resolution;
+                uniform float u_time;
+                uniform float u_grain;
+                uniform vec3  u_colors[4];
+                uniform vec3  u_bg;
+
+                vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+
+                float snoise(vec2 v){
+                    const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+                    vec2 i  = floor(v + dot(v, C.yy) );
+                    vec2 x0 = v -   i + dot(i, C.xx);
+                    vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+                    vec4 x12 = x0.xyxy + C.xxzz;
+                    x12.xy -= i1;
+                    i = mod(i, 289.0);
+                    vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 )) + i.x + vec3(0.0, i1.x, 1.0 ));
+                    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+                    m = m*m ;
+                    m = m*m ;
+                    vec3 x = 2.0 * fract(p * C.www) - 1.0;
+                    vec3 h = abs(x) - 0.5;
+                    vec3 ox = floor(x + 0.5);
+                    vec3 a0 = x - ox;
+                    m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+                    vec3 g;
+                    g.x  = a0.x  * x0.x  + h.x  * x0.y;
+                    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+                    return 130.0 * dot(m, g);
+                }
+
+                void main() {
+                    vec2 uv = vUv;
+                    float ratio = u_resolution.x / u_resolution.y;
+                    vec2 p = uv - 0.5;
+                    p.x *= ratio;
+
+                    float t = u_time * 0.09;
+
+                    float n1 = snoise(p * 0.45 + vec2(t * 0.14, -t * 0.20));
+                    float n2 = snoise(p * 0.60 + vec2(-t * 0.12, t * 0.16) + n1 * 0.25);
+                    float n3 = snoise(p * 0.80 + vec2(t * 0.08, -t * 0.12) + n2 * 0.2);
+
+                    vec3 col = u_bg;
+                    
+                    float dist = length(p) * 1.35;
+                    float vignette = 1.0 - smoothstep(0.35, 1.3, dist);
+                    
+                    col = mix(col, u_colors[0], smoothstep(-0.25, 0.5, n1) * 0.75);
+                    col = mix(col, u_colors[1], smoothstep(-0.15, 0.6, n2) * 0.65);
+                    col = mix(col, u_colors[2], smoothstep(-0.35, 0.4, n3) * 0.5);
+                    col = mix(col, u_colors[3], smoothstep(0.0, 0.7, n1 * n2) * 0.45);
+
+                    float glow = smoothstep(0.85, 0.0, dist) * 0.25;
+                    col += u_colors[1] * glow;
+
+                    col = mix(col * 0.25, col, vignette);
+
+                    float grain = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453 + u_time);
+                    col += (grain - 0.5) * u_grain * 0.08;
+
+                    gl_FragColor = vec4(col, 1.0);
+                }
+            `;
+
+            function createShader(type, src) {
+                const s = gl.createShader(type);
+                gl.shaderSource(s, src);
+                gl.compileShader(s);
+                return s;
+            }
+
+            const vs = createShader(gl.VERTEX_SHADER, vSrc);
+            const fs = createShader(gl.FRAGMENT_SHADER, fSrc);
+            const program = gl.createProgram();
+            gl.attachShader(program, vs);
+            gl.attachShader(program, fs);
+            gl.linkProgram(program);
+            gl.useProgram(program);
+
+            const buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+
+            const pos = gl.getAttribLocation(program, 'position');
+            gl.enableVertexAttribArray(pos);
+            gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+
+            const locs = {
+                res: gl.getUniformLocation(program, 'u_resolution'),
+                time: gl.getUniformLocation(program, 'u_time'),
+                grain: gl.getUniformLocation(program, 'u_grain'),
+                colors: gl.getUniformLocation(program, 'u_colors'),
+                bg: gl.getUniformLocation(program, 'u_bg'),
+            };
+
+            function hexToRgb(hex) {
+                const h = hex.replace('#', '');
+                return [
+                    parseInt(h.slice(0, 2), 16) / 255,
+                    parseInt(h.slice(2, 4), 16) / 255,
+                    parseInt(h.slice(4, 6), 16) / 255
+                ];
+            }
+
+            const themeBg = hexToRgb('#090908');
+            const themeColors = new Float32Array([
+                ...hexToRgb('#064e3b'),
+                ...hexToRgb('#065f46'),
+                ...hexToRgb('#0f172a'),
+                ...hexToRgb('#022c22')
+            ]);
+
+            let isVisible = false;
+            const io = new IntersectionObserver(([entry]) => {
+                isVisible = entry.isIntersecting;
+            }, { threshold: 0.02 });
+            io.observe(section);
+
+            function resize() {
+                const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+                const w = section.clientWidth;
+                const h = section.clientHeight;
+                if (!w || !h) return;
+                canvas.width = w * dpr;
+                canvas.height = h * dpr;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            let startTime = performance.now();
+            function renderShader() {
+                requestAnimationFrame(renderShader);
+                if (!isVisible) return;
+                const elapsed = (performance.now() - startTime) * 0.001;
+                gl.uniform2f(locs.res, canvas.width, canvas.height);
+                gl.uniform1f(locs.time, elapsed * 1.1);
+                gl.uniform1f(locs.grain, 0.18);
+                gl.uniform3fv(locs.bg, themeBg);
+                gl.uniform3fv(locs.colors, themeColors);
+                gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            }
+            renderShader();
+        })();
+
+        // ── LIQUID METAL BUTTON INTERACTION & RIPPLES ──
+        (function initLiquidMetal() {
+            document.querySelectorAll('.btn-liquid-metal').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const ripple = document.createElement('span');
+                    ripple.className = 'liquid-ripple';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.style.width = '30px';
+                    ripple.style.height = '30px';
+
+                    this.appendChild(ripple);
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        })();
 
     </script>
 </body>
