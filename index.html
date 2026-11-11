@@ -2547,16 +2547,13 @@
         function getRepelParams() {
             const isMobile = window.innerWidth <= 900;
             if (isMobile) {
-                // Mobile touchscreen: fingertips are ~45-50px wide.
-                // Perspective ray distance covers all depth layers (hat, gun, chest, coat) uniformly.
-                // Radius of 0.42 gives generous room around the fingertip,
-                // while strength of 0.22 creates a natural, tactile ripple without blowing particles apart.
-                return { radius: 0.42, strength: 0.22, returnSpeed: 0.10, ease: 0.24 };
+                // Mobile touchscreen: wider radius (0.58) for an expansive, gentle touch field,
+                // with a softened strength (0.095) so it ripples gracefully instead of punching a hole.
+                return { radius: 0.58, strength: 0.095, returnSpeed: 0.085, ease: 0.18 };
             }
-            // Desktop mouse cursor: precise pointing.
-            // Radius of 0.35 covers a targeted, natural circle (~size of the hat crown/hand).
-            // Strength of 0.18 gives a subtle, organic fluid ink-stipple ripple.
-            return { radius: 0.35, strength: 0.18, returnSpeed: 0.09, ease: 0.22 };
+            // Desktop mouse cursor: wider radius (0.50) with a gentle, featherlight strength (0.075)
+            // creates a soft, organic magnetic wave rather than a stark hollow hole!
+            return { radius: 0.50, strength: 0.075, returnSpeed: 0.085, ease: 0.18 };
         }
 
         // ── Repulsion Logic (Perspective Ray-Line Distance) ──────────────────
