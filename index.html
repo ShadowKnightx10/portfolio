@@ -905,16 +905,17 @@
             .site-header { padding: 14px 20px; }
             .header-nav { display: none !important; }
 
-            /* ── MOBILE HERO: HEADER UP, CHARACTER ON SURFACE BELOW ── */
+            /* ── MOBILE HERO: HEADER UP, SPACIOUS CHARACTER CANVAS BELOW ── */
             #hero-section {
                 min-height: 100svh;
-                height: 100svh;
+                height: auto !important;
+                max-height: none !important;
                 display: flex !important;
                 flex-direction: column !important;
-                justify-content: space-between !important;
+                justify-content: flex-start !important;
                 padding: 0 !important;
                 border-bottom: 2px solid #0a0a0a; /* Physical surface floor dividing Act I & Act II */
-                overflow: hidden;
+                overflow: visible !important;
                 position: relative;
                 background: var(--bg);
             }
@@ -923,21 +924,22 @@
             .hero-content-frame {
                 order: 1 !important;
                 flex: 0 0 auto !important;
-                padding: calc(60px + env(safe-area-inset-top, 0px)) 24px 0 !important;
+                padding: calc(70px + env(safe-area-inset-top, 0px)) 20px 0 !important;
                 margin: 0 !important;
                 z-index: 5 !important;
             }
 
-            /* Character at bottom: order 2, standing on the 2nd section border */
+            /* Character below content: order 2, dedicated spacious frame with room to breathe */
             .hero-character-frame {
                 order: 2 !important;
-                flex: 1 1 0 !important;
+                flex: 0 0 auto !important;
                 width: 100% !important;
-                min-height: 240px !important;
+                height: clamp(340px, 46vh, 440px) !important;
+                min-height: 320px !important;
                 position: relative !important;
                 overflow: hidden !important;
                 display: block !important;
-                margin: 0 !important;
+                margin: 20px 0 0 !important;
                 padding: 0 !important;
             }
             #hero-canvas {
@@ -1123,6 +1125,44 @@
                 grid-template-columns: 1fr !important;
                 gap: 36px;
                 margin-top: 28px;
+            }
+            .skills-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px !important;
+                padding: 10px 0 !important;
+            }
+            .skills-row .sk-name {
+                font-size: 13.5px !important;
+                font-weight: 600 !important;
+            }
+            .skills-row .sk-level {
+                font-size: 11px !important;
+                color: var(--text-muted) !important;
+                line-height: 1.4 !important;
+            }
+            .cert-grid {
+                grid-template-columns: 1fr !important;
+                gap: 8px !important;
+            }
+            .cert-pill {
+                padding: 10px 14px !important;
+                font-size: 12px !important;
+            }
+            .cert-name {
+                white-space: normal !important;
+                line-height: 1.35 !important;
+            }
+            .target-roles-box {
+                margin: 20px 0 22px !important;
+                padding: 14px !important;
+            }
+            .roles-tag-list {
+                gap: 6px !important;
+            }
+            .role-badge {
+                font-size: 10px !important;
+                padding: 4px 8px !important;
             }
             .hire-title {
                 font-size: clamp(2.2rem, 7.5vw, 3.0rem);
@@ -2022,14 +2062,13 @@
             const vHalfW = vHalfH * camera.aspect;
 
             if (isMobile) {
-                // Character sits at bottom of hero frame, standing directly on the bottom border
-                // Character raw half-width is ~1.02 * scale.
-                const maxScaleByWidth = (vHalfW * 0.90) / 1.02;
-                const scale = Math.min(0.88, maxScaleByWidth);
+                // Ensure character fits fully with generous margin on all sides (width and height)
+                const maxScaleByWidth  = (vHalfW * 0.82) / 1.05;
+                const maxScaleByHeight = (vHalfH * 0.82) / 1.0;
+                const scale = Math.min(0.80, maxScaleByWidth, maxScaleByHeight);
 
-                // Bottom of character = -1.0 * scale + targetBaseY.
-                // We want bottom to touch -vHalfH:
-                targetBaseY = scale - vHalfH;
+                // Center cleanly so hat, gun, elbows, and entire belt/holsters float with clear breathing room
+                targetBaseY = 0.0;
                 targetBaseX = 0;
 
                 if (characterGroup) {
@@ -2039,8 +2078,9 @@
             } else {
                 // Desktop: Inside the right column of #hero-section.
                 // Center character cleanly with generous margin, gun pointing toward the left text
-                const maxScaleByWidth = (vHalfW * 0.88) / 1.02;
-                const scale = Math.min(0.85, maxScaleByWidth);
+                const maxScaleByWidth  = (vHalfW * 0.88) / 1.02;
+                const maxScaleByHeight = (vHalfH * 0.88) / 1.0;
+                const scale = Math.min(0.85, maxScaleByWidth, maxScaleByHeight);
 
                 targetBaseY = 0;
                 targetBaseX = 0;
@@ -2056,6 +2096,17 @@
         }
 
         window.addEventListener('resize', updateFraming);
+
+        function getRepelParams() {
+            const isMobile = window.innerWidth <= 900;
+            if (isMobile) {
+                // On mobile touchscreens, fingertips are ~45-55px wide.
+                // We expand the repulsion radius to 0.78 and strength to 0.55
+                // so the particles scatter visibly far beyond the user's finger!
+                return { radius: 0.78, strength: 0.55, returnSpeed: 0.08 };
+            }
+            return { radius: 0.40, strength: 0.26, returnSpeed: 0.085 };
+        }
 
         // ── Repulsion Logic ─────────────────────────────────────────────────
         const _planeN = new THREE.Vector3(0, 0, 1);
@@ -2073,7 +2124,8 @@
             lm.divideScalar(s);
 
             const count = origPositions.length / 3;
-            const r2    = REPEL_RADIUS * REPEL_RADIUS;
+            const { radius, strength, returnSpeed } = getRepelParams();
+            const r2 = radius * radius;
 
             for (let i = 0; i < count; i++) {
                 const i3 = i * 3;
@@ -2084,14 +2136,14 @@
 
                 if (d2 < r2 && d2 > 0.0001) {
                     const d = Math.sqrt(d2);
-                    const f = (1 - d / REPEL_RADIUS) * REPEL_STRENGTH;
+                    const f = (1 - d / radius) * strength;
                     currPositions[i3 + 0] = ox + (dx / d) * f;
                     currPositions[i3 + 1] = oy + (dy / d) * f;
                     currPositions[i3 + 2] = oz + (dz / d) * f;
                 } else {
-                    currPositions[i3 + 0] += (ox - cx) * RETURN_SPEED;
-                    currPositions[i3 + 1] += (oy - cy) * RETURN_SPEED;
-                    currPositions[i3 + 2] += (oz - cz) * RETURN_SPEED;
+                    currPositions[i3 + 0] += (ox - cx) * returnSpeed;
+                    currPositions[i3 + 1] += (oy - cy) * returnSpeed;
+                    currPositions[i3 + 2] += (oz - cz) * returnSpeed;
                 }
             }
             particleGeo.attributes.position.needsUpdate = true;
