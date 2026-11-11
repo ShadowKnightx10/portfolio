@@ -559,34 +559,93 @@
         .p-step-title { font-size: 13.5px; font-weight: 600; color: var(--text-primary); }
 
         .web-grid {
-            margin-top: 24px;
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+            margin-top: 32px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
         }
         .web-card {
             background: #ffffff;
             border: 1px solid var(--line);
             border-radius: 4px;
-            padding: 24px 20px;
+            overflow: hidden;
             text-decoration: none;
-            display: flex; flex-direction: column; justify-content: space-between;
-            min-height: 180px;
-            transition: all 0.2s;
+            display: flex; flex-direction: column;
+            transition: all 0.25s ease;
         }
         .web-card:hover {
-            border-color: var(--line-strong);
+            border-color: var(--line-mid);
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
         }
-        .web-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
-        .web-card-name { font-size: 14.5px; font-weight: 600; color: var(--text-primary); }
+        .web-card-img-wrap {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #f0f0ee;
+            position: relative;
+            border-bottom: 1px solid var(--line);
+        }
+        .web-card-img-wrap img {
+            width: 100%; height: 100%; object-fit: cover; object-position: top center;
+            display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .web-card:hover .web-card-img-wrap img { transform: scale(1.04); }
+        .web-card-body {
+            padding: 22px 24px;
+            display: flex; flex-direction: column; justify-content: space-between; flex: 1;
+        }
+        .web-card-top {
+            display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;
+        }
+        .web-card-name { font-size: 16px; font-weight: 600; color: var(--text-primary); }
         .web-card-arrow {
-            font-size: 13px; color: var(--text-muted); transition: transform 0.2s, color 0.2s;
+            font-size: 14px; color: var(--text-muted); transition: transform 0.2s, color 0.2s;
         }
-        .web-card:hover .web-card-arrow { transform: translate(2px,-2px); color: var(--text-primary); }
-        .web-card-meta {
+        .web-card:hover .web-card-arrow { transform: translate(3px, -3px); color: var(--text-primary); }
+        .web-card-role {
             font-family: 'DM Mono', monospace; font-size: 10.5px;
-            color: var(--text-muted); line-height: 1.5;
+            letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+            margin-bottom: 10px;
         }
+        .web-card-desc {
+            font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;
+        }
+        .web-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+        /* ── VERIFIED CERTIFICATIONS ────────────────── */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .cert-pill {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 11px 14px;
+            text-decoration: none;
+            display: flex; align-items: center; justify-content: space-between; gap: 8px;
+            font-size: 12.5px;
+            transition: all 0.2s;
+        }
+        .cert-pill:hover {
+            border-color: var(--line-strong);
+            background: #fafaf8;
+        }
+        .cert-org {
+            font-family: 'DM Mono', monospace; font-size: 9.5px;
+            font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-primary);
+            background: var(--bg-subtle);
+            padding: 2px 6px; border-radius: 2px;
+        }
+        .cert-name {
+            color: var(--text-secondary); font-size: 12px; font-weight: 500;
+            flex: 1; margin: 0 4px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .cert-arrow { font-size: 11px; color: var(--text-muted); }
+        .cert-code { font-family: 'DM Mono', monospace; font-size: 9.5px; color: var(--text-muted); }
 
         /* ═══════════════════════════════════════════
            ACT VI: ARSENAL & DIRECT CONTACT
@@ -1267,53 +1326,101 @@
                 </div>
             </div>
 
-            <!-- 4 Live Production Sites -->
+            <!-- 4 Live Production Sites (Real Captured Showcases) -->
             <div class="web-grid">
                 <a href="https://rashaehasas.com" target="_blank" rel="noopener" class="web-card" data-enter>
-                    <div class="web-card-top">
-                        <span class="web-card-name">rashaehasas.com</span>
-                        <span class="web-card-arrow">↗</span>
+                    <div class="web-card-img-wrap">
+                        <img src="assets/site-rashaehasas.jpg" alt="Rasha E Hasas live e-commerce platform preview" loading="lazy">
                     </div>
-                    <div class="web-card-meta">
-                        WooCommerce Store<br>
-                        Payment Gateway · SEO<br>
-                        Live E-Commerce Platform
+                    <div class="web-card-body">
+                        <div>
+                            <div class="web-card-top">
+                                <span class="web-card-name">Rasha E Hasas</span>
+                                <span class="web-card-arrow">↗</span>
+                            </div>
+                            <div class="web-card-role">Luxury E-Commerce · Perfume Flagship</div>
+                            <p class="web-card-desc">
+                                Engineered end-to-end WooCommerce store featuring 50+ luxury fragrance products, payment gateway integration, and on-page SEO strategy that achieved and sustained Page 1 Google keyword rankings for 3+ months with zero paid ad spend.
+                            </p>
+                        </div>
+                        <div class="web-card-tags">
+                            <span class="i-tag">WooCommerce</span>
+                            <span class="i-tag">Page 1 SEO</span>
+                            <span class="i-tag">Razorpay</span>
+                            <span class="i-tag">50+ Products</span>
+                        </div>
                     </div>
                 </a>
 
                 <a href="https://sutsmaxindia.in" target="_blank" rel="noopener" class="web-card" data-enter>
-                    <div class="web-card-top">
-                        <span class="web-card-name">sutsmaxindia.in</span>
-                        <span class="web-card-arrow">↗</span>
+                    <div class="web-card-img-wrap">
+                        <img src="assets/site-sutsmax.jpg" alt="Sutsmax India retail commerce website preview" loading="lazy">
                     </div>
-                    <div class="web-card-meta">
-                        Retail Commerce Platform<br>
-                        Payment API Architecture<br>
-                        Inventory Sync Logic
+                    <div class="web-card-body">
+                        <div>
+                            <div class="web-card-top">
+                                <span class="web-card-name">Sutsmax India</span>
+                                <span class="web-card-arrow">↗</span>
+                            </div>
+                            <div class="web-card-role">Retail Commerce Platform</div>
+                            <p class="web-card-desc">
+                                Architected full retail commerce platform for an established incense manufacturer, implementing dynamic product catalog taxonomy, payment API integration, and automated inventory sync routines.
+                            </p>
+                        </div>
+                        <div class="web-card-tags">
+                            <span class="i-tag">E-Commerce</span>
+                            <span class="i-tag">Payment APIs</span>
+                            <span class="i-tag">Product Catalog</span>
+                            <span class="i-tag">WordPress</span>
+                        </div>
                     </div>
                 </a>
 
                 <a href="https://hideoutmarketing.in" target="_blank" rel="noopener" class="web-card" data-enter>
-                    <div class="web-card-top">
-                        <span class="web-card-name">hideoutmarketing.in</span>
-                        <span class="web-card-arrow">↗</span>
+                    <div class="web-card-img-wrap">
+                        <img src="assets/site-hideout.jpg" alt="HideOut Marketing digital agency website preview" loading="lazy">
                     </div>
-                    <div class="web-card-meta">
-                        Agency Flagship Site<br>
-                        Figma Design System<br>
-                        CMS &amp; Webhook Intake
+                    <div class="web-card-body">
+                        <div>
+                            <div class="web-card-top">
+                                <span class="web-card-name">HideOut Marketing</span>
+                                <span class="web-card-arrow">↗</span>
+                            </div>
+                            <div class="web-card-role">Agency Flagship Platform</div>
+                            <p class="web-card-desc">
+                                Technical Lead directing end-to-end Figma-to-WordPress delivery. Implemented custom agency design system, dynamic service portfolios, and webhook intake automation pipelines for client onboarding.
+                            </p>
+                        </div>
+                        <div class="web-card-tags">
+                            <span class="i-tag">Figma to Web</span>
+                            <span class="i-tag">WordPress</span>
+                            <span class="i-tag">n8n Webhook</span>
+                            <span class="i-tag">Agency CMS</span>
+                        </div>
                     </div>
                 </a>
 
                 <a href="https://shrividyajyotihighschool.in" target="_blank" rel="noopener" class="web-card" data-enter>
-                    <div class="web-card-top">
-                        <span class="web-card-name">shrividyajyoti...</span>
-                        <span class="web-card-arrow">↗</span>
+                    <div class="web-card-img-wrap">
+                        <img src="assets/site-svjh.jpg" alt="Shri Vidya Jyoti High School educational portal preview" loading="lazy">
                     </div>
-                    <div class="web-card-meta">
-                        Educational Portal<br>
-                        Institutional CMS<br>
-                        Managed Server Hosting
+                    <div class="web-card-body">
+                        <div>
+                            <div class="web-card-top">
+                                <span class="web-card-name">Shri Vidya Jyoti School</span>
+                                <span class="web-card-arrow">↗</span>
+                            </div>
+                            <div class="web-card-role">Institutional Educational Portal</div>
+                            <p class="web-card-desc">
+                                Delivered full-cycle institutional portal for an accredited school, including administrative CMS architecture, student admissions intake workflows, and managed cloud server hosting infrastructure.
+                            </p>
+                        </div>
+                        <div class="web-card-tags">
+                            <span class="i-tag">Educational Portal</span>
+                            <span class="i-tag">Admissions CMS</span>
+                            <span class="i-tag">Managed Hosting</span>
+                            <span class="i-tag">Security</span>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -1331,20 +1438,68 @@
                 <div class="skills-table">
                     <div>
                         <div class="skills-group-head">Systems &amp; Enterprise Infrastructure</div>
-                        <div class="skills-row"><span class="sk-name">Linux (RHEL / Ubuntu)</span><span class="sk-level">Production Fleet Operations</span></div>
-                        <div class="skills-row"><span class="sk-name">Windows Server / Active Directory</span><span class="sk-level">Domain Admin &amp; Group Policies</span></div>
-                        <div class="skills-row"><span class="sk-name">SSMS &amp; SQL Forensics</span><span class="sk-level">High-Severity Outage Diagnostics</span></div>
-                        <div class="skills-row"><span class="sk-name">Jenkins CI/CD Automation</span><span class="sk-level">Continuous Integration Pipelines</span></div>
-                        <div class="skills-row"><span class="sk-name">BigFix · Trellix ENS</span><span class="sk-level">800-Device Endpoint Security</span></div>
+                        <div class="skills-row"><span class="sk-name">Linux (RHEL / Ubuntu)</span><span class="sk-level">150+ Production Servers · CLI Automation</span></div>
+                        <div class="skills-row"><span class="sk-name">Windows Server / Active Directory</span><span class="sk-level">Domain Admin · Group Policies · Scripting</span></div>
+                        <div class="skills-row"><span class="sk-name">SSMS &amp; SQL Forensics</span><span class="sk-level">Outage Log Diagnostics · Query Filtering</span></div>
+                        <div class="skills-row"><span class="sk-name">Jenkins CI/CD Automation</span><span class="sk-level">Automated Deployment Routines</span></div>
+                        <div class="skills-row"><span class="sk-name">BigFix · Trellix ENS</span><span class="sk-level">800-Device Enterprise Endpoint Security</span></div>
                     </div>
 
                     <div>
                         <div class="skills-group-head">3D Computational &amp; Web Engineering</div>
-                        <div class="skills-row"><span class="sk-name">Blender Cycles</span><span class="sk-level">Photorealism · PBR Caustics · Archviz</span></div>
-                        <div class="skills-row"><span class="sk-name">Three.js / WebGL</span><span class="sk-level">Vector Stipple Particle Shaders</span></div>
-                        <div class="skills-row"><span class="sk-name">n8n · Zapier Webhooks</span><span class="sk-level">Autonomous Data Routing</span></div>
+                        <div class="skills-row"><span class="sk-name">Blender Cycles</span><span class="sk-level">Raytraced PBR · Caustics · Volumetrics · Archviz</span></div>
+                        <div class="skills-row"><span class="sk-name">Three.js / WebGL</span><span class="sk-level">Vector Stipple Particle Shaders &amp; GLB</span></div>
+                        <div class="skills-row"><span class="sk-name">n8n · Zapier Webhooks</span><span class="sk-level">Autonomous Form-to-Sheets Data Routing</span></div>
                         <div class="skills-row"><span class="sk-name">WordPress · WooCommerce</span><span class="sk-level">4 Production Commercial Deployments</span></div>
                         <div class="skills-row"><span class="sk-name">Unreal Engine 5</span><span class="sk-level">Spatial Logic &amp; Blueprints</span></div>
+                        <div class="skills-row"><span class="sk-name">Figma to Web</span><span class="sk-level">Design System Architecture &amp; On-Page SEO</span></div>
+                    </div>
+
+                    <!-- Verified Accreditations -->
+                    <div>
+                        <div class="skills-group-head">Verified Certifications &amp; Accreditations</div>
+                        <div class="cert-grid">
+                            <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="cert-pill">
+                                <span class="cert-org">Google</span>
+                                <span class="cert-name">Foundations of Cybersecurity</span>
+                                <span class="cert-arrow">↗</span>
+                            </a>
+                            <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="cert-pill">
+                                <span class="cert-org">Google</span>
+                                <span class="cert-name">Play It Safe: Manage Security Risks</span>
+                                <span class="cert-arrow">↗</span>
+                            </a>
+                            <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="cert-pill">
+                                <span class="cert-org">Google</span>
+                                <span class="cert-name">Networks &amp; Network Security</span>
+                                <span class="cert-arrow">↗</span>
+                            </a>
+                            <div class="cert-pill">
+                                <span class="cert-org">HubSpot</span>
+                                <span class="cert-name">Digital Marketing Certified (2026–2027)</span>
+                                <span class="cert-code">ID: b9317d...</span>
+                            </div>
+                            <a href="https://coursera.org/verify/PLK5XN8SVHP6" target="_blank" rel="noopener" class="cert-pill">
+                                <span class="cert-org">Google</span>
+                                <span class="cert-name">Google Ads for Beginners</span>
+                                <span class="cert-arrow">↗</span>
+                            </a>
+                            <a href="https://coursera.org/verify/UB4CN3DH9ETV" target="_blank" rel="noopener" class="cert-pill">
+                                <span class="cert-org">Squarespace</span>
+                                <span class="cert-name">SEO with Squarespace</span>
+                                <span class="cert-arrow">↗</span>
+                            </a>
+                            <a href="https://coursera.org/verify/AHVH3DHC5M83" target="_blank" rel="noopener" class="cert-pill">
+                                <span class="cert-org">Coursera</span>
+                                <span class="cert-name">Build a Website with WordPress</span>
+                                <span class="cert-arrow">↗</span>
+                            </a>
+                            <div class="cert-pill">
+                                <span class="cert-org">IBM</span>
+                                <span class="cert-name">SkillsBuild: Web Fundamentals (7 Credentials)</span>
+                                <span class="cert-code">Completed</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="edu-card">
@@ -1352,7 +1507,7 @@
                         <div class="edu-sub">Royal College of Arts, Science and Commerce · 2023 – 2026</div>
                         <div class="edu-badge">
                             <span>●</span>
-                            <span>Pursuing: Google Cybersecurity Professional Certificate</span>
+                            <span>Pursuing: Google Cybersecurity Professional Certificate (Coursera)</span>
                         </div>
                     </div>
                 </div>
@@ -1376,6 +1531,18 @@
                                 <span>+91 93215 91870</span>
                                 <span>→</span>
                             </a>
+                            <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="h-link">
+                                <span>LinkedIn · Professional Profile</span>
+                                <span>↗</span>
+                            </a>
+                            <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="h-link">
+                                <span>ArtStation · 3D Environment Portfolio</span>
+                                <span>↗</span>
+                            </a>
+                            <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="h-link">
+                                <span>Behance · Creative Direction</span>
+                                <span>↗</span>
+                            </a>
                             <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="h-link" download>
                                 <span>Download Verified CV (PDF)</span>
                                 <span>↓</span>
@@ -1393,7 +1560,11 @@
     <!-- ── FOOTER ─────────────────────────────────── -->
     <footer class="site-footer">
         <span>© 2026 Joel Daniel Nadar · Systems &amp; 3D Technologist</span>
-        <div style="display:flex;gap:24px;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener">ArtStation</a>
+            <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener">Behance</a>
+            <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener">GitHub</a>
             <a href="assets/Joel_Daniel_Nadar_CV.pdf" download>CV.PDF</a>
             <a href="mailto:joelnadar825@gmail.com">Email</a>
             <a href="tel:+919321591870">+91 93215 91870</a>
