@@ -206,7 +206,6 @@
         ═══════════════════════════════════════════ */
         #hero-section {
             min-height: 100svh;
-            height: 100svh;
             width: 100%;
             position: relative;
             display: grid;
@@ -221,6 +220,7 @@
             position: relative;
             width: 100%;
             height: 100%;
+            min-height: 560px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -236,29 +236,117 @@
         .hero-content-frame {
             position: relative;
             z-index: 2;
-            padding: clamp(40px, 8vh, 80px) 0;
+            padding: clamp(70px, 9vh, 90px) 0 40px;
             order: 1;
         }
+        .hero-kicker-strip {
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .hero-discipline-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 10.5px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .hero-discipline-tag::before {
+            content: '';
+            width: 24px;
+            height: 1.5px;
+            background: var(--text-primary);
+            display: inline-block;
+        }
+        .hero-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10.5px;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            background: rgba(0,0,0,0.03);
+            border: 1px solid var(--line-strong);
+            padding: 4px 10px;
+            border-radius: 999px;
+            width: fit-content;
+        }
+        .hero-status-pill .live-dot {
+            background: #10b981;
+            box-shadow: 0 0 8px rgba(16,185,129,0.5);
+        }
+        .hero-status-pill strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
         .hero-name {
-            font-size: clamp(4.4rem, 9.2vw, 9.8rem);
-            font-weight: 300; line-height: 0.92;
-            letter-spacing: -0.04em;
+            font-size: clamp(3.6rem, 6.2vw, 6.8rem);
+            font-weight: 700;
+            line-height: 0.90;
+            letter-spacing: -0.045em;
             color: var(--text-primary);
             font-family: 'DM Sans', sans-serif;
-        }
-        .hero-name em {
-            font-family: 'Instrument Serif', serif;
-            font-weight: 400; font-style: italic;
-            color: #555552;
+            text-transform: none;
+            margin: 0;
         }
         .hero-role {
-            margin-top: 26px;
-            font-size: 16px; color: var(--text-secondary);
-            max-width: 480px; line-height: 1.65;
+            margin-top: 18px;
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            line-height: 1.55;
         }
+        .hero-role strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .hero-badges-row {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            max-width: 520px;
+        }
+        .hero-badge {
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 4px;
+            padding: 6px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .hero-badge:hover {
+            border-color: #0a0a0a;
+            transform: translateY(-1px);
+        }
+        .hero-badge .badge-accent {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+        .hero-badge .badge-text {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
         .hero-actions {
-            margin-top: 34px;
-            display: flex; align-items: center; gap: 14px;
+            margin-top: 22px;
+            display: flex; align-items: center; gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -709,6 +797,37 @@
             font-weight: 400; font-style: italic;
             color: #555552;
         }
+        .target-roles-box {
+            margin: 24px 0 28px;
+            padding: 16px 18px;
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 4px;
+        }
+        .roles-box-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10.5px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .roles-tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .role-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.04em;
+            color: var(--text-primary);
+            background: rgba(0,0,0,0.04);
+            border: 1px solid var(--line);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
         .hire-links {
             display: flex; flex-direction: column; gap: 12px; margin-top: 32px;
         }
@@ -831,33 +950,65 @@
                 touch-action: none !important;
             }
 
-            .sec-tag {
-                font-size: 9.5px !important;
-                letter-spacing: 0.16em !important;
+            .hero-kicker-strip {
                 margin-bottom: 8px !important;
+                gap: 5px !important;
+            }
+            .hero-discipline-tag {
+                font-size: 8px !important;
+                letter-spacing: 0.12em !important;
+                line-height: 1.3 !important;
+                gap: 6px !important;
+            }
+            .hero-discipline-tag::before {
+                width: 14px !important;
+            }
+            .hero-status-pill {
+                font-size: 8.5px !important;
+                padding: 2.5px 8px !important;
+                letter-spacing: 0.03em !important;
+                gap: 6px !important;
             }
             .hero-name {
-                font-size: clamp(2.8rem, 11vw, 4.0rem) !important;
-                line-height: 0.94 !important;
-                letter-spacing: -0.04em !important;
+                font-size: clamp(2.6rem, 10.5vw, 3.8rem) !important;
+                font-weight: 700 !important;
+                line-height: 0.90 !important;
+                letter-spacing: -0.045em !important;
             }
             .hero-role {
-                font-size: 13.5px !important;
-                line-height: 1.5 !important;
-                margin-top: 10px !important;
-                max-width: 320px !important;
+                font-size: 11.5px !important;
+                line-height: 1.45 !important;
+                margin-top: 8px !important;
+                max-width: 100% !important;
                 color: var(--text-secondary) !important;
             }
+            .hero-badges-row {
+                margin-top: 8px !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 5px !important;
+                max-width: 100% !important;
+            }
+            .hero-badge {
+                padding: 4px 7px !important;
+            }
+            .hero-badge .badge-accent {
+                font-size: 8.5px !important;
+                letter-spacing: 0.05em !important;
+            }
+            .hero-badge .badge-text {
+                font-size: 9px !important;
+                line-height: 1.2 !important;
+            }
             .hero-actions {
-                margin-top: 14px !important;
+                margin-top: 10px !important;
                 display: flex !important;
-                gap: 8px !important;
+                gap: 6px !important;
                 flex-wrap: wrap !important;
             }
             .hero-actions .btn {
-                padding: 8px 14px !important;
-                font-size: 10px !important;
-                letter-spacing: 0.08em !important;
+                padding: 6px 10px !important;
+                font-size: 9px !important;
+                letter-spacing: 0.06em !important;
             }
 
             /* Sections on mobile */
@@ -1037,23 +1188,48 @@
 
         <!-- Content Container -->
         <div class="hero-content-frame">
-            <p class="sec-tag" data-enter style="margin-bottom:14px;">
-                Systems · 3D · Mumbai
-            </p>
+            <div class="hero-kicker-strip" data-enter>
+                <div class="hero-discipline-tag">
+                    ENTERPRISE INFRASTRUCTURE · 3D COMPUTATIONAL CGI · AI WORKFLOW AUTOMATION · SECOPS
+                </div>
+                <div class="hero-status-pill">
+                    <span class="live-dot" aria-hidden="true"></span>
+                    <span><strong>Systems Engineer &amp; AI Automation Lead</strong> · Mumbai (Available Globally)</span>
+                </div>
+            </div>
             <h1 class="hero-name" data-enter>
                 Joel<br>
-                <em>Daniel</em><br>
+                Daniel<br>
                 Nadar
             </h1>
             <p class="hero-role" data-enter>
-                Mission-critical enterprise infrastructure at scale. Photorealistic 3D visual environments. Autonomous web systems.
+                Operating high-availability enterprise infrastructure across <strong>150+ production servers</strong> under live market &amp; airport SLA pressure. Architecting autonomous AI pipelines (n8n/Zapier), photorealistic 3D computational environments, and hardened web platforms. Built for roles demanding zero-latency execution, rapid incident triage, and hybrid systems leadership.
             </p>
+            <div class="hero-badges-row" data-enter>
+                <div class="hero-badge">
+                    <span class="badge-accent">150+ Servers · 99.9% SLA</span>
+                    <span class="badge-text">RHEL, Windows Server, DigiYatra Biometrics</span>
+                </div>
+                <div class="hero-badge">
+                    <span class="badge-accent">AI &amp; Workflow Automation</span>
+                    <span class="badge-text">n8n, Zapier Webhooks, Bash/Python Pipelines</span>
+                </div>
+                <div class="hero-badge">
+                    <span class="badge-accent">3D Computational CGI</span>
+                    <span class="badge-text">Blender Cycles PBR, Three.js WebGL Shaders</span>
+                </div>
+                <div class="hero-badge">
+                    <span class="badge-accent">SecOps &amp; Compliance</span>
+                    <span class="badge-text">Google Cybersecurity Certified, Trellix ENS</span>
+                </div>
+            </div>
             <div class="hero-actions" data-enter>
                 <a href="#cinema-section" class="btn btn-solid">
                     <span>Explore 3D Work</span>
                     <span>↓</span>
                 </a>
-                <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn btn-ghost" download>Download CV</a>
+                <a href="#contact-section" class="btn btn-ghost">Target Roles &amp; Arsenal</a>
+                <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn btn-ghost" download>CV (PDF)</a>
             </div>
         </div>
     </section>
@@ -1446,13 +1622,19 @@
                     </div>
 
                     <div>
-                        <div class="skills-group-head">3D Computational &amp; Web Engineering</div>
+                        <div class="skills-group-head">AI Workflow Automation &amp; Web Systems</div>
+                        <div class="skills-row"><span class="sk-name">n8n &amp; Zapier Automation</span><span class="sk-level">Autonomous Webhooks · CRM &amp; Order Sync · Custom APIs</span></div>
+                        <div class="skills-row"><span class="sk-name">AI Agentic &amp; Scripted Workflows</span><span class="sk-level">Cron Pipelines · Prompt Engineering · Code Assistants</span></div>
+                        <div class="skills-row"><span class="sk-name">WordPress · WooCommerce</span><span class="sk-level">4 Production E-Commerce Deployments · Razorpay</span></div>
+                        <div class="skills-row"><span class="sk-name">Technical SEO &amp; Analytics</span><span class="sk-level">Page 1 Organic Google Ranks (0 Ad Spend) · HubSpot</span></div>
+                    </div>
+
+                    <div>
+                        <div class="skills-group-head">3D Computational &amp; Spatial Graphics</div>
                         <div class="skills-row"><span class="sk-name">Blender Cycles</span><span class="sk-level">Raytraced PBR · Caustics · Volumetrics · Archviz</span></div>
-                        <div class="skills-row"><span class="sk-name">Three.js / WebGL</span><span class="sk-level">Vector Stipple Particle Shaders &amp; GLB</span></div>
-                        <div class="skills-row"><span class="sk-name">n8n · Zapier Webhooks</span><span class="sk-level">Autonomous Form-to-Sheets Data Routing</span></div>
-                        <div class="skills-row"><span class="sk-name">WordPress · WooCommerce</span><span class="sk-level">4 Production Commercial Deployments</span></div>
+                        <div class="skills-row"><span class="sk-name">Three.js / WebGL</span><span class="sk-level">Vector Stipple Particle Shaders &amp; Real-time GLB</span></div>
                         <div class="skills-row"><span class="sk-name">Unreal Engine 5</span><span class="sk-level">Spatial Logic &amp; Blueprints</span></div>
-                        <div class="skills-row"><span class="sk-name">Figma to Web</span><span class="sk-level">Design System Architecture &amp; On-Page SEO</span></div>
+                        <div class="skills-row"><span class="sk-name">Figma Architecture</span><span class="sk-level">Design System Architecture &amp; Production Handoff</span></div>
                     </div>
 
                     <!-- Verified Accreditations -->
@@ -1520,8 +1702,17 @@
                             roles.
                         </h2>
                         <p class="sec-sub" data-enter>
-                            Ready to step into systems engineering, creative technologist, or hybrid technical leadership roles worldwide.
+                            Ready to step into high-stakes systems engineering, autonomous AI automation, or hybrid technical leadership roles worldwide.
                         </p>
+                        <div class="target-roles-box" data-enter>
+                            <div class="roles-box-label">Target Roles &amp; Suited Capacities</div>
+                            <div class="roles-tag-list">
+                                <span class="role-badge">Systems &amp; Infrastructure Engineer</span>
+                                <span class="role-badge">AI Automation &amp; Workflow Lead</span>
+                                <span class="role-badge">Creative Technologist / 3D Artist</span>
+                                <span class="role-badge">Production SecOps &amp; SRE Lead</span>
+                            </div>
+                        </div>
                         <div class="hire-links" data-enter>
                             <a href="mailto:joelnadar825@gmail.com" class="h-link primary">
                                 <span>joelnadar825@gmail.com</span>
