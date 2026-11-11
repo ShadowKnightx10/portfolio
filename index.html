@@ -65,6 +65,17 @@
         ::selection { background: rgba(0,0,0,0.12); color: #000; }
         :focus-visible { outline: 1.5px solid rgba(0,0,0,0.7); outline-offset: 4px; }
 
+        /* ── ACCESSIBLE SKIP LINK ──────────────────── */
+        .skip-link {
+            position: fixed; top: -100px; left: 20px; z-index: 9999;
+            background: #0a0a0a; color: #ffffff;
+            padding: 8px 16px; border-radius: 3px;
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            text-decoration: none; transition: top 0.2s ease;
+        }
+        .skip-link:focus { top: 16px; }
+
         /* ── CUSTOM CURSOR (Desktop only) ───────────── */
         .c-dot {
             position: fixed; pointer-events: none; z-index: 9000;
@@ -668,40 +679,39 @@
             .site-header { padding: 14px 20px; }
             .header-nav { display: none !important; }
 
-            /* ── BULLETPROOF MOBILE HERO: 2 DISTINCT FRAMES ── */
+            /* ── MOBILE HERO: HEADER UP, CHARACTER ON SURFACE BELOW ── */
             #hero-section {
                 min-height: 100svh;
                 height: 100svh;
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: space-between !important;
-                padding: 68px 20px 28px !important;
-                border-bottom: 1px solid var(--line);
+                padding: 72px 20px 0 !important; /* Zero bottom padding so character sits on bottom border */
+                border-bottom: 2px solid var(--text-primary); /* Acts as the floor/surface screen edge */
                 overflow: hidden;
             }
 
-            /* Dedicated character box at top: 38% of screen */
+            /* Header up at top: order 1 */
+            .hero-content-frame {
+                order: 1 !important;
+                padding: 0 !important;
+                margin-top: 6px !important;
+                z-index: 5 !important;
+            }
+
+            /* Character at bottom: order 2, standing on the 2nd section border */
             .hero-character-frame {
-                height: 38svh !important;
-                min-height: 220px !important;
+                height: 46svh !important;
+                max-height: 400px !important;
+                min-height: 240px !important;
                 width: 100% !important;
                 position: relative !important;
                 overflow: hidden !important;
-                order: 1 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-
-            /* Dedicated typography box at bottom: 60% of screen */
-            .hero-content-frame {
-                flex: 1 !important;
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: flex-end !important;
-                padding: 0 !important;
                 order: 2 !important;
-                z-index: 5 !important;
+                display: flex !important;
+                align-items: flex-end !important;
+                justify-content: center !important;
+                margin-bottom: 0 !important;
             }
 
             .sec-tag {
@@ -1550,22 +1560,22 @@
             camera.aspect = w / (h || 1);
 
             if (isMobile) {
-                // Mobile: fits cleanly inside the dedicated top frame
+                // Mobile: Character sits at the bottom of the hero, standing on the 2nd section border
                 camera.fov = 34;
-                camera.position.set(0, 0, 3.4);
+                camera.position.set(0, 0, 3.2);
                 camera.lookAt(0, 0, 0);
                 if (characterGroup) {
-                    characterGroup.position.set(0, 0, 0); // centered inside top frame
-                    characterGroup.scale.setScalar(0.92);
+                    characterGroup.position.set(0, -0.18, 0); // flush to bottom edge surface
+                    characterGroup.scale.setScalar(0.96);
                 }
             } else {
-                // Desktop: positioned on right side of viewport
+                // Desktop: Pulled inward from right edge so arms and hat are never cut off
                 camera.fov = 36;
                 camera.position.set(0, 0, 3.4);
                 camera.lookAt(0, 0, 0);
                 if (characterGroup) {
-                    characterGroup.position.set(0.65, -0.06, 0);
-                    characterGroup.scale.setScalar(1.0);
+                    characterGroup.position.set(0.32, -0.04, 0); // perfectly balanced in right half
+                    characterGroup.scale.setScalar(0.95);
                 }
             }
             camera.updateProjectionMatrix();
@@ -1636,7 +1646,7 @@
 
             if (particlePoints) {
                 const isMobile = window.innerWidth <= 900;
-                const baseY = isMobile ? 0 : -0.06;
+                const baseY = isMobile ? -0.18 : -0.04;
                 characterGroup.position.y = baseY + Math.sin(elapsed * 1.3) * 0.008;
                 characterGroup.rotation.y = Math.sin(elapsed * 0.35) * 0.03 - (isMobile ? 0 : 0.05);
 
