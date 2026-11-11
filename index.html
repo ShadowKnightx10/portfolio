@@ -2348,12 +2348,17 @@
 
         function updateCoords(clientX, clientY) {
             const rect = canvas.getBoundingClientRect();
+            if (!rect.width || !rect.height) return;
             mouse2D.x = ((clientX - rect.left) / rect.width) * 2 - 1;
             mouse2D.y = -((clientY - rect.top) / rect.height) * 2 + 1;
         }
 
         window.addEventListener('mousemove', (e) => {
             updateCoords(e.clientX, e.clientY);
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouse2D.set(9999, 9999);
         });
 
         window.addEventListener('touchstart', (e) => {
@@ -2542,48 +2547,104 @@
         function getRepelParams() {
             const isMobile = window.innerWidth <= 900;
             if (isMobile) {
-                // On mobile touchscreens, fingertips are ~45-55px wide.
-                // We expand the repulsion radius to 0.82 and strength to 0.58
-                // so the particles scatter visibly far beyond the user's finger!
-                return { radius: 0.82, strength: 0.58, returnSpeed: 0.08 };
+                // Mobile touchscreen: fingertips are ~45-50px wide.
+                // Perspective ray distance covers all depth layers (hat, gun, chest, coat) uniformly.
+                // Radius of 0.42 gives generous room around the fingertip,
+                // while strength of 0.22 creates a natural, tactile ripple without blowing particles apart.
+                return { radius: 0.42, strength: 0.22, returnSpeed: 0.10, ease: 0.24 };
             }
-            // Desktop mouse cursor: amplified radius & strength for a bold, ultra-satisfying cosmic wake
-            return { radius: 0.82, strength: 0.50, returnSpeed: 0.075 };
+            // Desktop mouse cursor: precise pointing.
+            // Radius of 0.35 covers a targeted, natural circle (~size of the hat crown/hand).
+            // Strength of 0.18 gives a subtle, organic fluid ink-stipple ripple.
+            return { radius: 0.35, strength: 0.18, returnSpeed: 0.09, ease: 0.22 };
         }
 
-        // ── Repulsion Logic ─────────────────────────────────────────────────
-        const _planeN = new THREE.Vector3(0, 0, 1);
+        // ── Repulsion Logic (Perspective Ray-Line Distance) ──────────────────
+        const raycaster = new THREE.Raycaster();
+        const _invMat = new THREE.Matrix4();
+        const _localRayOrigin = new THREE.Vector3();
+        const _localRayDir = new THREE.Vector3();
+        const _rayP1 = new THREE.Vector3();
 
         function computeRepulsion() {
             if (!origPositions) return;
 
-            const raycaster = new THREE.Raycaster();
-            raycaster.setFromCamera(mouse2D, camera);
-            const plane = new THREE.Plane(_planeN, -characterGroup.position.z);
-            raycaster.ray.intersectPlane(plane, mouse3D);
-
-            const lm = mouse3D.clone().sub(characterGroup.position);
-            const s = characterGroup.scale.x || 1.0;
-            lm.divideScalar(s);
-
+            const { radius, strength, returnSpeed, ease } = getRepelParams();
             const count = origPositions.length / 3;
-            const { radius, strength, returnSpeed } = getRepelParams();
+
+            // When cursor/touch is outside the canvas frame or resting, smoothly return all particles
+            const isOutside = Math.abs(mouse2D.x) > 1.25 || Math.abs(mouse2D.y) > 1.25;
+
+            if (isOutside) {
+                for (let i = 0; i < count; i++) {
+                    const i3 = i * 3;
+                    currPositions[i3 + 0] += (origPositions[i3 + 0] - currPositions[i3 + 0]) * returnSpeed;
+                    currPositions[i3 + 1] += (origPositions[i3 + 1] - currPositions[i3 + 1]) * returnSpeed;
+                    currPositions[i3 + 2] += (origPositions[i3 + 2] - currPositions[i3 + 2]) * returnSpeed;
+                }
+                particleGeo.attributes.position.needsUpdate = true;
+                return;
+            }
+
+            // Cast camera ray from mouse/touch point
+            raycaster.setFromCamera(mouse2D, camera);
+            const ray = raycaster.ray;
+
+            // Transform ray into characterGroup's local coordinate frame:
+            // This makes repulsion 100% invariant to group translation, rotation, and scaling!
+            characterGroup.updateMatrixWorld();
+            _invMat.copy(characterGroup.matrixWorld).invert();
+
+            _localRayOrigin.copy(ray.origin).applyMatrix4(_invMat);
+            _rayP1.copy(ray.origin).add(ray.direction).applyMatrix4(_invMat);
+            _localRayDir.subVectors(_rayP1, _localRayOrigin).normalize();
+
+            const Ox = _localRayOrigin.x, Oy = _localRayOrigin.y, Oz = _localRayOrigin.z;
+            const Dx = _localRayDir.x,    Dy = _localRayDir.y,    Dz = _localRayDir.z;
             const r2 = radius * radius;
 
             for (let i = 0; i < count; i++) {
                 const i3 = i * 3;
-                const ox = origPositions[i3], oy = origPositions[i3+1], oz = origPositions[i3+2];
-                const cx = currPositions[i3], cy = currPositions[i3+1], cz = currPositions[i3+2];
-                const dx = cx - lm.x, dy = cy - lm.y, dz = cz - lm.z;
-                const d2 = dx*dx + dy*dy + dz*dz;
+                const ox = origPositions[i3 + 0];
+                const oy = origPositions[i3 + 1];
+                const oz = origPositions[i3 + 2];
 
-                if (d2 < r2 && d2 > 0.0001) {
+                const cx = currPositions[i3 + 0];
+                const cy = currPositions[i3 + 1];
+                const cz = currPositions[i3 + 2];
+
+                // Vector from local ray origin to particle's original rest position
+                const vx = ox - Ox;
+                const vy = oy - Oy;
+                const vz = oz - Oz;
+
+                // Projection along ray direction
+                const proj = vx * Dx + vy * Dy + vz * Dz;
+
+                // Perpendicular vector from ray to particle
+                const perpX = vx - proj * Dx;
+                const perpY = vy - proj * Dy;
+                const perpZ = vz - proj * Dz;
+
+                const d2 = perpX * perpX + perpY * perpY + perpZ * perpZ;
+
+                if (proj > 0 && d2 < r2 && d2 > 0.00001) {
                     const d = Math.sqrt(d2);
-                    const f = (1 - d / radius) * strength;
-                    currPositions[i3 + 0] = ox + (dx / d) * f;
-                    currPositions[i3 + 1] = oy + (dy / d) * f;
-                    currPositions[i3 + 2] = oz + (dz / d) * f;
+                    // Smooth quadratic falloff: 0 at perimeter, maximum at center
+                    const ratio = d / radius;
+                    const falloff = (1.0 - ratio) * (1.0 - ratio);
+                    const f = falloff * strength;
+
+                    const tx = ox + (perpX / d) * f;
+                    const ty = oy + (perpY / d) * f;
+                    const tz = oz + (perpZ / d) * f;
+
+                    // Smoothly ease toward target displacement
+                    currPositions[i3 + 0] += (tx - cx) * ease;
+                    currPositions[i3 + 1] += (ty - cy) * ease;
+                    currPositions[i3 + 2] += (tz - cz) * ease;
                 } else {
+                    // Smoothly ease back toward original position
                     currPositions[i3 + 0] += (ox - cx) * returnSpeed;
                     currPositions[i3 + 1] += (oy - cy) * returnSpeed;
                     currPositions[i3 + 2] += (oz - cz) * returnSpeed;
