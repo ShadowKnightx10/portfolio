@@ -354,10 +354,51 @@
             background: var(--bg);
             border-bottom: 1px solid var(--line);
         }
-        .gallery-grid {
-            margin-top: 48px;
+        .gallery-hero-card {
+            margin-top: 40px;
+            width: 100%;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            background: #ffffff;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+        .gallery-hero-card:hover {
+            border-color: var(--line-mid);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .gallery-hero-img-wrap {
+            width: 100%;
+            aspect-ratio: 21 / 9;
+            max-height: 520px;
+            overflow: hidden;
+            position: relative;
+            background: #080808;
+        }
+        .gallery-hero-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gallery-hero-card:hover img { transform: scale(1.03); }
+        .gallery-hero-info {
+            padding: 20px 28px;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+            background: #ffffff;
+            border-top: 1px solid var(--line);
+        }
+        .gallery-hero-title { font-size: 15.5px; font-weight: 600; color: var(--text-primary); }
+        .gallery-hero-meta {
+            font-family: 'DM Mono', monospace; font-size: 11px;
+            color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;
+        }
+
+        .gallery-studies-grid {
+            margin-top: 24px;
             display: grid;
-            grid-template-columns: 1.4fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 24px;
         }
         .gallery-card {
@@ -367,6 +408,7 @@
             overflow: hidden;
             cursor: pointer;
             position: relative;
+            display: flex; flex-direction: column;
             transition: all 0.25s ease;
         }
         .gallery-card:hover {
@@ -376,28 +418,26 @@
         }
         .gallery-card-img-wrap {
             width: 100%;
+            aspect-ratio: 16 / 10;
             overflow: hidden;
             position: relative;
             background: #f0f0ee;
         }
-        .gallery-card.featured .gallery-card-img-wrap { aspect-ratio: 16 / 10; }
-        .gallery-card.standard .gallery-card-img-wrap { aspect-ratio: 4 / 3; }
         .gallery-card img {
             width: 100%; height: 100%; object-fit: cover;
             display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .gallery-card:hover img { transform: scale(1.04); }
         .gallery-card-info {
-            padding: 20px 24px;
+            padding: 18px 22px;
             display: flex; align-items: baseline; justify-content: space-between;
+            background: #ffffff;
+            border-top: 1px solid var(--line);
         }
-        .gallery-card-title { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+        .gallery-card-title { font-size: 14.5px; font-weight: 600; color: var(--text-primary); }
         .gallery-card-meta {
-            font-family: 'DM Mono', monospace; font-size: 11px;
+            font-family: 'DM Mono', monospace; font-size: 10.5px;
             color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase;
-        }
-        .gallery-subgrid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
         }
 
         /* ═══════════════════════════════════════════
@@ -806,17 +846,26 @@
             }
 
             /* Gallery Section */
-            .gallery-grid {
-                grid-template-columns: 1fr !important;
-                gap: 16px !important;
-                margin-top: 24px !important;
+            .gallery-hero-img-wrap {
+                aspect-ratio: 16 / 10 !important;
+                max-height: 280px !important;
             }
-            .gallery-subgrid {
+            .gallery-hero-info {
+                padding: 14px 16px !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px !important;
+            }
+            .gallery-studies-grid {
                 grid-template-columns: 1fr !important;
                 gap: 16px !important;
+                margin-top: 16px !important;
+            }
+            .gallery-card-img-wrap {
+                aspect-ratio: 16 / 10 !important;
             }
             .gallery-card-info {
-                padding: 14px 16px;
+                padding: 14px 16px !important;
             }
 
             /* Infrastructure Section */
@@ -1019,53 +1068,53 @@
                 Light simulation, environmental composition, and architectural material realism. Click any piece to inspect in full resolution.
             </p>
 
-            <div class="gallery-grid">
-                <!-- Featured Wide Banner: Moon in the River -->
-                <div class="gallery-card featured" onclick="openLB('assets/moon-in-the-river.jpg','Moon in the River — Environmental Lighting Study')" data-enter>
-                    <div class="gallery-card-img-wrap">
-                        <img src="assets/moon-in-the-river.jpg" alt="Moon in the River photorealistic 3D render" loading="lazy">
-                    </div>
-                    <div class="gallery-card-info">
-                        <span class="gallery-card-title">Moon in the River</span>
-                        <span class="gallery-card-meta">Atmospheric Surrealism · Blender Cycles</span>
-                    </div>
+            <!-- Widescreen Masterpiece Showcase: Moon in the River -->
+            <div class="gallery-hero-card" onclick="openLB('assets/moon-in-the-river.jpg','Moon in the River — Environmental Lighting Study')" data-enter>
+                <div class="gallery-hero-img-wrap">
+                    <img src="assets/moon-in-the-river.jpg" alt="Moon in the River photorealistic 3D render" loading="lazy">
                 </div>
-
-                <!-- Subgrid -->
-                <div class="gallery-subgrid">
-                    <div class="gallery-card standard" onclick="openLB('assets/interior.webp','Contemporary Living Space — Archviz Interior Study')" data-enter>
-                        <div class="gallery-card-img-wrap">
-                            <img src="assets/interior.webp" alt="Archviz interior living room render" loading="lazy">
-                        </div>
-                        <div class="gallery-card-info">
-                            <span class="gallery-card-title">Living Space</span>
-                            <span class="gallery-card-meta">Archviz Interior</span>
-                        </div>
+                <div class="gallery-hero-info">
+                    <div>
+                        <div class="gallery-hero-title">Moon in the River</div>
+                        <div style="font-size:13px; color:var(--text-secondary); margin-top:3px;">Atmospheric surrealism &amp; water caustic wave optics</div>
                     </div>
-                    <div class="gallery-card standard" onclick="openLB('assets/moon-drop.jpg','Moon Drop — Spatial Composition')" data-enter>
-                        <div class="gallery-card-img-wrap">
-                            <img src="assets/moon-drop.jpg" alt="Moon Drop surreal spatial render" loading="lazy">
-                        </div>
-                        <div class="gallery-card-info">
-                            <span class="gallery-card-title">Moon Drop</span>
-                            <span class="gallery-card-meta">Cosmic Spatial</span>
-                        </div>
-                    </div>
+                    <span class="gallery-hero-meta">Blender Cycles · Raytraced PBR</span>
                 </div>
             </div>
 
-            <!-- Lower Studies: Packaging & Refraction -->
-            <div class="gallery-grid" style="margin-top:24px;">
-                <div class="gallery-card standard" onclick="openLB('assets/terrarium-bottle.jpg','Terrarium Packaging & Organic Geometry')" data-enter>
+            <!-- Balanced 2x2 Spatial Studies Matrix -->
+            <div class="gallery-studies-grid">
+                <div class="gallery-card" onclick="openLB('assets/interior.webp','Contemporary Living Space — Archviz Interior Study')" data-enter>
+                    <div class="gallery-card-img-wrap">
+                        <img src="assets/interior.webp" alt="Archviz interior living room render" loading="lazy">
+                    </div>
+                    <div class="gallery-card-info">
+                        <span class="gallery-card-title">Living Space</span>
+                        <span class="gallery-card-meta">Archviz Interior</span>
+                    </div>
+                </div>
+
+                <div class="gallery-card" onclick="openLB('assets/moon-drop.jpg','Moon Drop — Spatial Composition')" data-enter>
+                    <div class="gallery-card-img-wrap">
+                        <img src="assets/moon-drop.jpg" alt="Moon Drop surreal spatial render" loading="lazy">
+                    </div>
+                    <div class="gallery-card-info">
+                        <span class="gallery-card-title">Moon Drop</span>
+                        <span class="gallery-card-meta">Cosmic Spatial</span>
+                    </div>
+                </div>
+
+                <div class="gallery-card" onclick="openLB('assets/terrarium-bottle.jpg','Terrarium Packaging & Organic Geometry')" data-enter>
                     <div class="gallery-card-img-wrap">
                         <img src="assets/terrarium-bottle.jpg" alt="Terrarium bottle packaging render" loading="lazy">
                     </div>
                     <div class="gallery-card-info">
                         <span class="gallery-card-title">Terrarium Bottle</span>
-                        <span class="gallery-card-meta">Packaging &amp; Glass Simulation</span>
+                        <span class="gallery-card-meta">Packaging &amp; Glass</span>
                     </div>
                 </div>
-                <div class="gallery-card standard" onclick="openLB('assets/glass-with-ice.jpg','Glass & Ice Refraction — Physical IOR Optics Study')" data-enter>
+
+                <div class="gallery-card" onclick="openLB('assets/glass-with-ice.jpg','Glass & Ice Refraction — Physical IOR Optics Study')" data-enter>
                     <div class="gallery-card-img-wrap">
                         <img src="assets/glass-with-ice.jpg" alt="Glass and ice refraction material study" loading="lazy">
                     </div>
