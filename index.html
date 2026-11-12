@@ -120,9 +120,11 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
         }
-        .site-header.is-dark.up {
-            border-color: rgba(255,255,255,0.08);
-            background: rgba(13,13,12,0.92);
+        .site-header.is-dark {
+            border-color: rgba(255,255,255,0.08) !important;
+            background: rgba(13,13,12,0.92) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
         }
         .site-header.is-dark .header-logo {
             color: #ffffff;
@@ -967,14 +969,27 @@
         .spatial-reel-pinned {
             position: relative;
             width: 100%;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            cursor: grab;
+            padding: 10px 0 20px;
+            user-select: none;
+        }
+        .spatial-reel-pinned.is-dragging {
+            cursor: grabbing;
+            scroll-behavior: auto;
+        }
+        .spatial-reel-pinned::-webkit-scrollbar {
+            display: none;
         }
         .spatial-reel-track {
             display: flex;
-            gap: 28px;
+            gap: 24px;
             width: max-content;
-            will-change: transform;
-            padding: 8px 4px 20px;
+            padding: 8px 4px 16px;
         }
         .spatial-reel-card {
             flex: 0 0 540px;
@@ -1420,18 +1435,18 @@
         .cert-code { font-family: 'DM Mono', monospace; font-size: 9.5px; color: var(--text-muted); }
 
         /* ═══════════════════════════════════════════
-           ACT V: TECHNICAL ARSENAL & DIRECT INTAKE (LIGHT SECTION)
+           ACT V: TECHNICAL ARSENAL & DIRECT INTAKE (OBSIDIAN DARK)
         ═══════════════════════════════════════════ */
         #contact-section {
             background: transparent;
-            border-top: 1px solid var(--line);
-            color: var(--text-secondary);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-dark-sec);
         }
-        #contact-section .sec-tag { color: var(--text-muted); }
-        #contact-section .sec-tag::before { background: var(--text-primary); }
-        #contact-section .sec-title { color: var(--text-primary); }
-        #contact-section .sec-title em { color: #555552; }
-        #contact-section .sec-sub { color: var(--text-secondary); }
+        #contact-section .sec-tag { color: rgba(255,255,255,0.5); }
+        #contact-section .sec-tag::before { background: #ffffff; }
+        #contact-section .sec-title { color: var(--text-dark-pri); }
+        #contact-section .sec-title em { color: rgba(255,255,255,0.6); }
+        #contact-section .sec-sub { color: var(--text-dark-sec); }
 
         .arsenal-grid {
             margin-top: 48px;
@@ -1440,19 +1455,19 @@
             gap: 20px;
         }
         .arsenal-card {
-            background: #ffffff;
-            border: 1px solid var(--line-strong);
+            background: #141413;
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 6px;
             padding: 28px 24px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
             transition: all 0.2s ease;
         }
         .arsenal-card:hover {
-            border-color: #0a0a0a;
+            border-color: rgba(255,255,255,0.3);
             transform: translateY(-2px);
-            box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.6);
         }
         .arsenal-card-head {
             display: flex;
@@ -1465,15 +1480,16 @@
             font-size: 10px;
             letter-spacing: 0.12em;
             font-weight: 700;
-            background: #0a0a0a;
+            background: #20201f;
             color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.15);
             padding: 4px 8px;
             border-radius: 3px;
         }
         .arsenal-card-title {
             font-size: 16px;
             font-weight: 700;
-            color: var(--text-primary);
+            color: #ffffff;
             letter-spacing: -0.02em;
             margin: 0;
         }
@@ -1481,9 +1497,9 @@
             font-family: 'DM Mono', monospace;
             font-size: 10px;
             letter-spacing: 0.08em;
-            color: var(--text-secondary);
-            background: var(--bg-subtle);
-            border: 1px solid var(--line);
+            color: rgba(255,255,255,0.65);
+            background: #1a1a19;
+            border: 1px solid rgba(255,255,255,0.12);
             padding: 4px 10px;
             border-radius: 3px;
             width: fit-content;
@@ -1497,7 +1513,7 @@
             display: flex;
             flex-direction: column;
             gap: 14px;
-            border-top: 1px solid var(--line);
+            border-top: 1px solid rgba(255,255,255,0.08);
             padding-top: 18px;
         }
         .arsenal-list li {
@@ -1507,23 +1523,13 @@
         }
         .a-item-name {
             font-family: 'DM Mono', monospace;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-        .a-item-spec {
-            font-size: 12px;
-            color: var(--text-secondary);
-            line-height: 1.45;
-        }
-        .a-item-name {
-            font-size: 14px;
+            font-size: 12.5px;
             font-weight: 600;
             color: #ffffff;
         }
         .a-item-spec {
-            font-size: 12.5px;
-            color: #9c9c96;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
             line-height: 1.45;
         }
 
@@ -3736,14 +3742,18 @@
         });
 
         // Dynamic Header Adaptation across Dark Sections
-        document.querySelectorAll('.is-dark-section').forEach(sec => {
+        document.querySelectorAll('.is-dark-section, .site-footer').forEach(sec => {
             ScrollTrigger.create({
                 trigger: sec,
                 start: 'top 52px',
-                end: 'bottom 52px',
+                end: () => (sec.id === 'contact-section' || sec.classList.contains('site-footer')) ? 'max' : 'bottom 52px',
                 onEnter: () => HEADER.classList.add('is-dark'),
                 onEnterBack: () => HEADER.classList.add('is-dark'),
-                onLeave: () => HEADER.classList.remove('is-dark'),
+                onLeave: () => {
+                    if (sec.id !== 'contact-section' && !sec.classList.contains('site-footer')) {
+                        HEADER.classList.remove('is-dark');
+                    }
+                },
                 onLeaveBack: () => HEADER.classList.remove('is-dark')
             });
         });
@@ -4281,7 +4291,7 @@
             updateClock();
         })();
 
-        // ── SPATIAL EXHIBITION HORIZONTAL SCROLL & REEL ──
+        // ── SPATIAL EXHIBITION HORIZONTAL DRAG & ARROW REEL ──
         (function initSpatialReel() {
             const track = document.getElementById('spatialReelTrack');
             const container = document.getElementById('spatialReelPinned');
@@ -4293,102 +4303,110 @@
 
             if (!track || !container) return;
 
-            let currentIndex = 0;
+            // Kill any old ScrollTrigger instance to prevent pin-spacers
+            if (window._spatialST) {
+                window._spatialST.kill();
+                window._spatialST = null;
+            }
 
-            function scrollToCard(index) {
-                currentIndex = Math.max(0, Math.min(cards.length - 1, index));
-                const card = cards[currentIndex];
-                if (!card) return;
-
-                if (window.innerWidth <= 900) {
-                    container.scrollTo({
-                        left: card.offsetLeft - 16,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    if (window._spatialST) {
-                        const totalScroll = window._spatialST.end - window._spatialST.start;
-                        const targetY = window._spatialST.start + (totalScroll * (currentIndex / (cards.length - 1)));
-                        window.scrollTo({ top: targetY, behavior: 'smooth' });
-                    } else {
-                        track.style.transform = `translateX(-${card.offsetLeft}px)`;
-                    }
+            // Update Progress Bar & Counter on Scroll
+            function updateReelStatus() {
+                const scrollLeft = container.scrollLeft;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                if (maxScroll > 0 && fillBar) {
+                    const ratio = Math.min(1, Math.max(0, scrollLeft / maxScroll));
+                    fillBar.style.width = Math.min(100, Math.max(20, ratio * 100)) + '%';
                 }
-                updateCounter(currentIndex + 1);
+
+                // Detect card closest to view center
+                let activeIdx = 0;
+                let minDiff = Infinity;
+                const containerCenter = scrollLeft + (container.clientWidth / 2);
+
+                cards.forEach((card, idx) => {
+                    const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+                    const diff = Math.abs(containerCenter - cardCenter);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        activeIdx = idx;
+                    }
+                });
+
+                if (countEl) countEl.textContent = '0' + (activeIdx + 1);
             }
 
-            function updateCounter(num) {
-                if (countEl) countEl.textContent = '0' + num;
-                if (fillBar) fillBar.style.width = ((num / cards.length) * 100) + '%';
-            }
+            container.addEventListener('scroll', updateReelStatus, { passive: true });
 
+            // Arrow button navigation
             if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % cards.length;
-                    scrollToCard(currentIndex);
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    container.scrollBy({ left: 540, behavior: 'smooth' });
                 });
             }
             if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-                    scrollToCard(currentIndex);
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    container.scrollBy({ left: -540, behavior: 'smooth' });
                 });
             }
 
-            function setupGSAPReel() {
-                if (window.innerWidth <= 900 || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-                    if (window._spatialST) {
-                        window._spatialST.kill();
-                        window._spatialST = null;
+            // Tactile Mouse Drag-to-Pan
+            let isDown = false;
+            let startX = 0;
+            let scrollStart = 0;
+            let hasDragged = false;
+
+            container.addEventListener('mousedown', (e) => {
+                isDown = true;
+                hasDragged = false;
+                container.classList.add('is-dragging');
+                startX = e.pageX - container.offsetLeft;
+                scrollStart = container.scrollLeft;
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (!isDown) return;
+                isDown = false;
+                container.classList.remove('is-dragging');
+            });
+
+            container.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - container.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                if (Math.abs(walk) > 5) hasDragged = true;
+                container.scrollLeft = scrollStart - walk;
+            });
+
+            // Prevent card click lightbox if the user was dragging
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (hasDragged) {
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
+                        hasDragged = false;
                     }
-                    return;
-                }
+                }, true);
+            });
 
-                if (window._spatialST) {
-                    window._spatialST.kill();
-                    window._spatialST = null;
-                }
-
-                const totalScroll = track.scrollWidth - container.clientWidth;
-                if (totalScroll <= 0) return;
-
+            // Subtle vertical scroll parallax (moves cards slightly as you scroll down naturally without pinning)
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && window.innerWidth > 900) {
                 gsap.to(track, {
-                    x: -totalScroll,
+                    x: -80,
                     ease: "none",
                     scrollTrigger: {
                         trigger: container,
-                        start: "top 14%",
-                        end: () => "+=" + (totalScroll * 1.1),
-                        pin: true,
-                        scrub: 0.8,
-                        invalidateOnRefresh: true,
-                        onUpdate: (self) => {
-                            window._spatialST = self;
-                            const p = self.progress;
-                            if (fillBar) fillBar.style.width = Math.min(100, Math.max(15, p * 100)) + '%';
-                            const activeIndex = Math.min(cards.length, Math.floor(p * cards.length) + 1);
-                            if (countEl) countEl.textContent = '0' + activeIndex;
-                            currentIndex = activeIndex - 1;
-                        }
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1
                     }
                 });
             }
 
-            window.addEventListener('load', setupGSAPReel);
-            window.addEventListener('resize', setupGSAPReel);
-            setTimeout(setupGSAPReel, 600);
-
-            // Touch / mobile container scroll listener
-            container.addEventListener('scroll', () => {
-                if (window.innerWidth > 900) return;
-                const scrollLeft = container.scrollLeft;
-                const maxScroll = container.scrollWidth - container.clientWidth;
-                if (maxScroll <= 0) return;
-                const progress = scrollLeft / maxScroll;
-                if (fillBar) fillBar.style.width = Math.min(100, Math.max(15, progress * 100)) + '%';
-                const activeIndex = Math.min(cards.length, Math.floor(progress * cards.length) + 1);
-                if (countEl) countEl.textContent = '0' + activeIndex;
-            }, { passive: true });
+            // Initial status update
+            updateReelStatus();
         })();
 
     </script>
