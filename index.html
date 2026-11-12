@@ -1770,7 +1770,14 @@
                 border-bottom: 2px solid #0a0a0a; /* Physical surface floor dividing Act I & Act II */
                 overflow: visible !important;
                 position: relative;
-                background: transparent !important;
+                background-color: #fbfbf9 !important;
+                background-image: 
+                    radial-gradient(ellipse 65% 55% at 20% 25%, rgba(15, 15, 20, 0.038) 0%, transparent 70%),
+                    radial-gradient(ellipse 55% 65% at 80% 75%, rgba(35, 35, 40, 0.03) 0%, transparent 65%),
+                    radial-gradient(ellipse 70% 55% at 50% 15%, rgba(10, 10, 15, 0.032) 0%, transparent 75%),
+                    radial-gradient(ellipse 55% 65% at 30% 85%, rgba(45, 45, 50, 0.025) 0%, transparent 60%) !important;
+                background-size: 140% 140% !important;
+                animation: liquidDriftLight 22s ease-in-out infinite alternate !important;
             }
 
             /* Header up at top: order 1 */
