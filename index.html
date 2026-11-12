@@ -1502,12 +1502,13 @@
         .cert-code { font-family: 'DM Mono', monospace; font-size: 9.5px; color: var(--text-muted); }
 
         /* ═══════════════════════════════════════════
-           ACT V: TECHNICAL ARSENAL & DIRECT INTAKE (OBSIDIAN DARK)
+           ACT V: EXECUTIVE DIRECT INTAKE & DISPATCH (OBSIDIAN DARK)
         ═══════════════════════════════════════════ */
         #contact-section {
             background: transparent;
             border-top: 1px solid rgba(255,255,255,0.08);
             color: var(--text-dark-sec);
+            position: relative;
         }
         #contact-section .sec-tag { color: rgba(255,255,255,0.5); }
         #contact-section .sec-tag::before { background: #ffffff; }
@@ -1515,99 +1516,13 @@
         #contact-section .sec-title em { color: rgba(255,255,255,0.6); }
         #contact-section .sec-sub { color: var(--text-dark-sec); }
 
-        .arsenal-grid {
-            margin-top: 48px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .arsenal-card {
-            background: #141413;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 6px;
-            padding: 28px 24px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-            transition: all 0.2s ease;
-        }
-        .arsenal-card:hover {
-            border-color: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.6);
-        }
-        .arsenal-card-head {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        .arsenal-icon-badge {
-            font-family: 'DM Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.12em;
-            font-weight: 700;
-            background: #20201f;
-            color: #ffffff;
-            border: 1px solid rgba(255,255,255,0.15);
-            padding: 4px 8px;
-            border-radius: 3px;
-        }
-        .arsenal-card-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-            margin: 0;
-        }
-        .arsenal-pill-badge {
-            font-family: 'DM Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.08em;
-            color: rgba(255,255,255,0.65);
-            background: #1a1a19;
-            border: 1px solid rgba(255,255,255,0.12);
-            padding: 4px 10px;
-            border-radius: 3px;
-            width: fit-content;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        .arsenal-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 18px;
-        }
-        .arsenal-list li {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .a-item-name {
-            font-family: 'DM Mono', monospace;
-            font-size: 12.5px;
-            font-weight: 600;
-            color: #ffffff;
-        }
-        .a-item-spec {
-            font-size: 12px;
-            color: rgba(255,255,255,0.6);
-            line-height: 1.45;
-        }
-
-        /* ── ROADMAP BOARD (VERIFIED ACCREDITATIONS & MILESTONES) ── */
+        /* ── ROADMAP PROGRESSION BOARD (INSIDE DRAWER) ── */
         .roadmap-board {
-            margin-top: 48px;
-            padding: 36px 36px 40px;
+            margin-top: 0;
+            padding: 32px 32px 36px;
             background: #0d0d0c;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
             position: relative;
         }
         .roadmap-header {
@@ -2025,6 +1940,117 @@
             background: #ecfdf5 !important;
             border-color: #10b981 !important;
             color: #065f46 !important;
+        }
+        .btn-tactile-compose {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 6px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11.5px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn-tactile-compose:hover {
+            background: rgba(255, 255, 255, 0.16);
+            border-color: rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* ── INTERACTIVE ROADMAP DRAWER ── */
+        .roadmap-drawer-wrapper {
+            margin-top: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: #111110;
+            overflow: hidden;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .roadmap-drawer-wrapper:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+        }
+        .roadmap-toggle-bar {
+            width: 100%;
+            padding: 20px 24px;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+        .roadmap-toggle-bar:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .roadmap-toggle-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .roadmap-toggle-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+        .roadmap-toggle-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+        .roadmap-toggle-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .roadmap-toggle-chevron {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-size: 14px;
+        }
+        .roadmap-drawer-wrapper.is-open .roadmap-toggle-chevron {
+            transform: rotate(180deg);
+        }
+        .roadmap-drawer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+            opacity: 0;
+            border-top: 1px solid transparent;
+        }
+        .roadmap-drawer-wrapper.is-open .roadmap-drawer-content {
+            max-height: 2500px;
+            opacity: 1;
+            border-top-color: rgba(255, 255, 255, 0.08);
+        }
+        .roadmap-drawer-inner {
+            padding: 24px 24px 32px;
         }
 
         /* 3-Pillar Secondary Grid */
@@ -3329,437 +3355,367 @@
     </section>
 
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         ACT VI: TECHNICAL ARSENAL & DIRECT INTAKE (LIGHT SECTION)
+         ACT V: EXECUTIVE DIRECT INTAKE & DISPATCH (OBSIDIAN DARK)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <section class="section-wrapper is-dark-section" id="contact-section" aria-label="Capabilities and Contact">
+    <section class="section-wrapper is-dark-section" id="contact-section" aria-label="Executive Intake and Contact">
         <div class="section-inner">
-            <!-- CHAPTER GATE: TECHNICAL ARSENAL & DIRECT INTAKE -->
+            <!-- CHAPTER GATE: EXECUTIVE INTAKE -->
             <div class="chapter-gate dark-gate" data-enter>
                 <div style="display:flex;align-items:center;gap:10px;">
-                    <span class="gate-badge">ACT 05 // GLOBAL INTAKE</span>
-                    <span class="gate-desc">Enterprise Arsenal, Verified Roadmap &amp; Direct Dispatch</span>
+                    <span class="gate-badge">ACT 05 // DIRECT INTAKE</span>
+                    <span class="gate-desc">Executive Dispatch &amp; Technical Engagement</span>
                 </div>
-                <span>Available Worldwide · Remote or Relocation · SLAs Active</span>
+                <span>Available Worldwide · Remote &amp; On-Site · Active SLA Triage</span>
             </div>
 
-            <p class="sec-tag" data-enter>05 / Capabilities &amp; Contact</p>
-            <h2 class="sec-title" data-enter>
-                Technical Arsenal<br>
-                <em>&amp; Global Intake</em>
-            </h2>
-            <p class="sec-sub" data-enter>
-                Cross-disciplinary mastery spanning enterprise infrastructure fleets, autonomous agentic AI workflows, and photorealistic spatial CGI. Built for high-impact technical roles worldwide.
-            </p>
-
-            <!-- TIER 1: THE 3-COLUMN ARSENAL DECK -->
-            <div class="arsenal-grid" data-enter>
-                <!-- Column 1: Systems & SecOps -->
-                <div class="arsenal-card">
-                    <div class="arsenal-card-head">
-                        <div class="arsenal-icon-badge">SYS · OPS</div>
-                        <h3 class="arsenal-card-title">Enterprise Systems &amp; SecOps</h3>
-                    </div>
-                    <div class="arsenal-pill-badge">150+ PROD SERVERS · 99.9% FINANCIAL SLA</div>
-                    <ul class="arsenal-list">
-                        <li>
-                            <span class="a-item-name">Linux Fleet Ops</span>
-                            <span class="a-item-spec">RHEL, Ubuntu, custom Bash cron routines &amp; SSH automation</span>
-                        </li>
-                        <li>
-                            <span class="a-item-name">Windows Server / AD</span>
-                            <span class="a-item-spec">Active Directory, GPO security compliance &amp; domain admin</span>
-                        </li>
-                        <li>
-                            <span class="a-item-name">Outage Triage &amp; Forensics</span>
-                            <span class="a-item-spec">SSMS SQL diagnostic queries &amp; real-time middleware log isolation</span>
-                        </li>
-                        <li>
-                            <span class="a-item-name">Endpoint Defense</span>
-                            <span class="a-item-spec">Trellix ENS defense suites &amp; BigFix patch management</span>
-                        </li>
-                    </ul>
+            <!-- Top Status & Live Mumbai Clock HUD -->
+            <div class="contact-status-hud" data-enter>
+                <div class="hud-pill">
+                    <span class="hud-beacon"></span>
+                    <span>Open for Enterprise Roles, Infrastructure Operations &amp; High-Impact Commissions</span>
                 </div>
-
-                <!-- Column 2: AI Workflows & Web Platforms -->
-                <div class="arsenal-card">
-                    <div class="arsenal-card-head">
-                        <div class="arsenal-icon-badge">AI · AUTO</div>
-                        <h3 class="arsenal-card-title">AI Workflows &amp; Web Systems</h3>
-                    </div>
-                    <div class="arsenal-pill-badge">AUTONOMOUS AGENTIC PIPELINES</div>
-                    <ul class="arsenal-list">
-                        <li>
-                            <span class="a-item-name">n8n &amp; Zapier Webhooks</span>
-                            <span class="a-item-spec">Autonomous event ingestion, schema validation &amp; CRM sync</span>
-                        </li>
-                        <li>
-                            <span class="a-item-name">AI Agentic &amp; Scripted Ops</span>
-                            <span class="a-item-spec">Python/Bash pipelines, prompt orchestration &amp; automated ingestion</span>
-                        </li>
-                        <li>
-                            <span class="a-item-name">Commercial E-Commerce</span>
-                            <span class="a-item-spec">4 live production stores, Razorpay APIs &amp; dynamic catalogs</span>
-                        </li>
-                        <li>
-                            <span class="a-item-name">Algorithmic SEO</span>
-                            <span class="a-item-spec">Page 1 organic Google rankings (3+ months, 0 ad spend)</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: 3D CGI & Spatial Graphics -->
-                <div class="arsenal-card">
-                    <div class="arsenal-card-head">
-                        <div class="arsenal-icon-badge">3D · CGI</div>
-                        <h3 class="arsenal-card-title">3D Computational Graphics</h3>
-                    </div>
-                    <div class="arsenal-pill-badge">RAYTRACED PBR &amp; REAL-TIME WEBGL</div>
-                    <ul class="arsenal-list">
-                        <li>
-                            <span class="a-item-name">Blender Cycles Engine</span>
-                            <span class="a-item-spec">Physical IOR optics, subsurface scattering, caustics &amp; archviz</span>
-                        </li>
-                        <li>
-                            <span class="a-item-name">Three.js &amp; WebGL</span>
-                            <span class="a-item-spec">Custom GLSL vector particle shaders, GLB pipelines &amp; raycasting</span>
-                        </li>
-                        <li>
-                            <span class="a-item-name">Unreal Engine 5</span>
-                            <span class="a-item-spec">Spatial composition, dynamic lighting &amp; blueprint logic</span>
-                        </li>
-                        <li>
-                            <span class="a-item-name">Figma Architecture</span>
-                            <span class="a-item-spec">Design tokens, responsive UI layout &amp; production design systems</span>
-                        </li>
-                    </ul>
+                <div class="hud-time">
+                    <span>MUMBAI, IN</span>
+                    <span class="clock-live" id="liveTimeText">02:25 AM IST</span>
+                    <span>(UTC+5:30)</span>
                 </div>
             </div>
 
-            <!-- TIER 2: TECHNICAL PROGRESSION & SECURITY ROADMAP BOARD -->
-            <div class="creds-section roadmap-board" id="creds-section" data-enter>
-                <div class="roadmap-header">
-                    <span class="roadmap-top-badge">Roadmap</span>
-                    <h3 class="roadmap-title">What I Am Building &amp; Securing In 2026</h3>
-                    <p class="roadmap-subtitle">A quarter-by-quarter trajectory of verified accreditations, active engineering specializations, and targeted defensive milestones.</p>
-                </div>
-
-                <div class="roadmap-columns">
-                    <!-- COLUMN 1: Q1 2026 -->
-                    <div class="roadmap-col">
-                        <div class="roadmap-col-header">
-                            <div class="roadmap-quarter">Q1 2026</div>
-                            <div class="roadmap-period">Jan – Mar</div>
-                        </div>
-                        <div class="roadmap-cards-stack">
-                            <!-- Card 1: Foundations of Cybersecurity -->
-                            <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">Security</span>
-                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">Foundations of Cybersecurity</div>
-                                <div class="roadmap-card-desc">Core security models, SIEM architectures, compliance &amp; threat profiling.</div>
-                                <span class="roadmap-card-meta">ID: H77H8G20YS9N · Google Verified ↗</span>
-                                <div class="roadmap-status-text status-shipped">Shipped</div>
-                            </a>
-
-                            <!-- Card 2: IBM Web Fundamentals -->
-                            <div class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">Platform</span>
-                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">SkillsBuild: Web Fundamentals</div>
-                                <div class="roadmap-card-desc">Enterprise frontend architecture, DOM pipelines &amp; web standards.</div>
-                                <span class="roadmap-card-meta">IBM SkillsBuild · 7 Credentials Verified</span>
-                                <div class="roadmap-status-text status-shipped">Shipped</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- COLUMN 2: Q2 2026 -->
-                    <div class="roadmap-col">
-                        <div class="roadmap-col-header">
-                            <div class="roadmap-quarter">Q2 2026</div>
-                            <div class="roadmap-period">Apr – Jun</div>
-                        </div>
-                        <div class="roadmap-cards-stack">
-                            <!-- Card 1: Networks & Network Security -->
-                            <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">Security</span>
-                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">Networks &amp; Network Security</div>
-                                <div class="roadmap-card-desc">TCP/IP packet inspection, intrusion detection, firewall ACLs &amp; LAN defense.</div>
-                                <span class="roadmap-card-meta">ID: 0ABTT3NHCDXO · Google Verified ↗</span>
-                                <div class="roadmap-status-text status-shipped">Shipped</div>
-                            </a>
-
-                            <!-- Card 2: Play It Safe: Manage Security Risks -->
-                            <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">Security</span>
-                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">Play It Safe: Manage Security Risks</div>
-                                <div class="roadmap-card-desc">Threat modeling, incident mitigation, compliance audits &amp; risk escalation.</div>
-                                <span class="roadmap-card-meta">ID: WMJ79P4RT454 · Google Verified ↗</span>
-                                <div class="roadmap-status-text status-shipped">Shipped</div>
-                            </a>
-
-                            <!-- Card 3: HubSpot Digital Marketing -->
-                            <div class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">Growth</span>
-                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">Digital Marketing Certified</div>
-                                <div class="roadmap-card-desc">Search telemetry, conversion optimization &amp; technical lifecycle tracking.</div>
-                                <span class="roadmap-card-meta">ID: b9317d5408884cf7 · HubSpot Active (2026–2027)</span>
-                                <div class="roadmap-status-text status-shipped">Shipped</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- COLUMN 3: Q3 2026 -->
-                    <div class="roadmap-col">
-                        <div class="roadmap-col-header">
-                            <div class="roadmap-quarter">Q3 2026</div>
-                            <div class="roadmap-period">Jul – Sep</div>
-                        </div>
-                        <div class="roadmap-cards-stack">
-                            <!-- Card 1: Google Cybersecurity Capstone -->
-                            <div class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">Security</span>
-                                    <span class="roadmap-icon status-in-progress" title="In Progress">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <circle cx="8" cy="8" r="6" stroke="rgba(245, 158, 11, 0.25)" stroke-width="2"/>
-                                            <path d="M8 2A6 6 0 0 1 14 8" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">Cyber Capstone &amp; Automation</div>
-                                <div class="roadmap-card-desc">Python security scripting, live SOC triage simulation &amp; detection engineering.</div>
-                                <span class="roadmap-card-meta">Google Professional Certificate · Final Capstone</span>
-                                <div class="roadmap-status-text status-in-progress">In Progress</div>
-                            </div>
-
-                            <!-- Card 2: TYBMS Degree -->
-                            <div class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">Core</span>
-                                    <span class="roadmap-icon status-in-progress" title="In Progress">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <circle cx="8" cy="8" r="6" stroke="rgba(245, 158, 11, 0.25)" stroke-width="2"/>
-                                            <path d="M8 2A6 6 0 0 1 14 8" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">Bachelor of Management Studies</div>
-                                <div class="roadmap-card-desc">Royal College (2023–2026) — Strategic management, operations &amp; IT systems.</div>
-                                <span class="roadmap-card-meta">University of Mumbai · Final Academic Year</span>
-                                <div class="roadmap-status-text status-in-progress">In Progress</div>
-                            </div>
-
-                            <!-- Card 3: SEO with Squarespace -->
-                            <a href="https://coursera.org/verify/UB4CN3DH9ETV" target="_blank" rel="noopener" class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">Analytics</span>
-                                    <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">Technical SEO Architecture</div>
-                                <div class="roadmap-card-desc">Structured data schema, XML indexing, sitemaps &amp; Core Web Vitals.</div>
-                                <span class="roadmap-card-meta">ID: UB4CN3DH9ETV · Squarespace Verified ↗</span>
-                                <div class="roadmap-status-text status-shipped">Shipped</div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- COLUMN 4: Q4 2026 -->
-                    <div class="roadmap-col">
-                        <div class="roadmap-col-header">
-                            <div class="roadmap-quarter">Q4 2026</div>
-                            <div class="roadmap-period">Oct – Dec</div>
-                        </div>
-                        <div class="roadmap-cards-stack">
-                            <!-- Card 1: CompTIA Security+ -->
-                            <div class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">Security</span>
-                                    <span class="roadmap-icon status-planned" title="Planned Target">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <circle cx="8" cy="8" r="6" stroke="#71717a" stroke-width="1.6"/>
-                                            <polyline points="8 4.5 8 8 10.5 8" stroke="#71717a" stroke-width="1.6" stroke-linecap="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">CompTIA Security+ (SY0-701)</div>
-                                <div class="roadmap-card-desc">Enterprise security baseline, cryptographic protocols &amp; incident response.</div>
-                                <span class="roadmap-card-meta">Global Security Benchmark · Target Q4</span>
-                                <div class="roadmap-status-text status-planned">Planned</div>
-                            </div>
-
-                            <!-- Card 2: Enterprise SSO & SCIM Provisioning -->
-                            <div class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">SecOps</span>
-                                    <span class="roadmap-icon status-planned" title="Planned Target">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <circle cx="8" cy="8" r="6" stroke="#71717a" stroke-width="1.6"/>
-                                            <polyline points="8 4.5 8 8 10.5 8" stroke="#71717a" stroke-width="1.6" stroke-linecap="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">SSO, IAM &amp; SCIM Provisioning</div>
-                                <div class="roadmap-card-desc">Enterprise sign-on with automated user provisioning &amp; Zero-Trust policy.</div>
-                                <span class="roadmap-card-meta">Enterprise Identity Infrastructure</span>
-                                <div class="roadmap-status-text status-planned">Planned</div>
-                            </div>
-
-                            <!-- Card 3: Blue Team Level 1 (BTL1) -->
-                            <div class="roadmap-card">
-                                <div class="roadmap-card-top">
-                                    <span class="roadmap-pill">SecOps</span>
-                                    <span class="roadmap-icon status-planned" title="Planned Target">
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                            <circle cx="8" cy="8" r="6" stroke="#71717a" stroke-width="1.6"/>
-                                            <polyline points="8 4.5 8 8 10.5 8" stroke="#71717a" stroke-width="1.6" stroke-linecap="round"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="roadmap-card-title">Blue Team Level 1 (BTL1)</div>
-                                <div class="roadmap-card-desc">Practical defensive operations, digital forensics, packet inspection &amp; threat hunting.</div>
-                                <span class="roadmap-card-meta">Security Blue Team · Defensive Milestone</span>
-                                <div class="roadmap-status-text status-planned">Planned</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Editorial Headline Hook -->
+            <div class="contact-hero-block" data-enter>
+                <h2 class="contact-big-title">
+                    Let’s build something<br>
+                    <em>extraordinary.</em>
+                </h2>
+                <p class="contact-big-sub">
+                    Operating high-availability bare-metal fleets across 150+ production servers, architecting autonomous event-driven AI pipelines, and crafting commercial photorealistic 3D spatial computing. Available for on-site incident triage and worldwide remote engagements.
+                </p>
             </div>
 
-            <!-- TIER 3: WORLD-CLASS EDITORIAL CONTACT FINALE -->
-            <div class="contact-deck-wrapper" data-enter>
-                <!-- Top Status & Live Mumbai Clock HUD -->
-                <div class="contact-status-hud">
-                    <div class="hud-pill">
-                        <span class="hud-beacon"></span>
-                        <span>Open for Global Roles &amp; High-Impact Technical Contracts</span>
-                    </div>
-                    <div class="hud-time">
-                        <span>MUMBAI, IN</span>
-                        <span class="clock-live" id="liveTimeText">09:20 PM IST</span>
-                        <span>(UTC+5:30)</span>
-                    </div>
-                </div>
-
-                <!-- Editorial Headline -->
-                <div class="contact-hero-block">
-                    <h2 class="contact-big-title">
-                        Let’s build something<br>
-                        <em>extraordinary.</em>
-                    </h2>
-                    <p class="contact-big-sub">
-                        Have an infrastructure challenge, an autonomous AI pipeline to automate, or a photorealistic 3D vision to bring to life? My inbox is always open.
-                    </p>
-                </div>
-
-                <!-- The Magnetic Email Monolith -->
-                <div class="contact-email-monolith">
-                    <span class="monolith-label">DIRECT INBOX</span>
-                    <div class="monolith-body">
-                        <a href="mailto:joelnadar825@gmail.com" class="monolith-email-link" title="Click to email directly">
-                            <span>joelnadar825@gmail.com</span>
-                            <svg class="monolith-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            <!-- The Magnetic Email Monolith -->
+            <div class="contact-email-monolith" data-enter>
+                <span class="monolith-label">PRIMARY DISPATCH &amp; DIRECT INTAKE</span>
+                <div class="monolith-body">
+                    <a href="mailto:joelnadar825@gmail.com" class="monolith-email-link" title="Click to compose direct email">
+                        <span>joelnadar825@gmail.com</span>
+                        <svg class="monolith-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    </a>
+                    <div class="monolith-actions">
+                        <button type="button" class="btn-tactile-copy" onclick="copyContact('joelnadar825@gmail.com', this, 'Copy Address')">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span class="btn-text">Copy Address</span>
+                        </button>
+                        <a href="mailto:joelnadar825@gmail.com" class="btn-tactile-compose">
+                            <span>Compose Mail ↗</span>
                         </a>
-                        <div class="monolith-actions">
-                            <button type="button" class="btn-tactile-copy" onclick="copyContact('joelnadar825@gmail.com', this, 'Copy Address')">
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                                <span class="btn-text">Copy Address</span>
-                            </button>
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3-Pillar Direct Channels Grid -->
+            <div class="contact-channels-grid" data-enter>
+                <!-- Channel 1: Direct Voice & WhatsApp -->
+                <div class="channel-card">
+                    <span class="channel-eyebrow">VOICE &amp; SECURE COMMS</span>
+                    <div class="channel-title">Direct Mobile &amp; WhatsApp</div>
+                    <a href="tel:+919321591870" class="channel-highlight">+91 93215 91870</a>
+                    <p class="channel-note">Direct priority line for urgent incident triage, technical discussions &amp; scheduling.</p>
+                    <div class="channel-action-row">
+                        <a href="tel:+919321591870" class="channel-link-btn primary">Call Direct →</a>
+                        <button type="button" class="channel-link-btn" onclick="copyContact('+919321591870', this, 'Copy Number')">
+                            <span class="btn-text">Copy Number</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- 3-Pillar Secondary Grid -->
-                <div class="contact-channels-grid">
-                    <!-- Direct Voice & WhatsApp -->
-                    <div class="channel-card">
-                        <span class="channel-eyebrow">VOICE &amp; SECURE COMMS</span>
-                        <div class="channel-title">Direct Mobile &amp; WhatsApp</div>
-                        <a href="tel:+919321591870" class="channel-highlight">+91 93215 91870</a>
-                        <p class="channel-note">Available for rapid technical triage, introductory discussions &amp; WhatsApp scheduling.</p>
-                        <div class="channel-action-row">
-                            <a href="tel:+919321591870" class="channel-link-btn primary">Call Now →</a>
-                            <button type="button" class="channel-link-btn" onclick="copyContact('+919321591870', this, 'Copy Number')">
-                                <span class="btn-text">Copy Number</span>
-                            </button>
-                        </div>
+                <!-- Channel 2: Verified Curriculum Vitae & Roadmap -->
+                <div class="channel-card">
+                    <span class="channel-eyebrow">ENGINEERING DOSSIER</span>
+                    <div class="channel-title">Verified CV &amp; Roadmap</div>
+                    <div class="channel-highlight cv-highlight">Joel_Daniel_Nadar_CV.pdf</div>
+                    <p class="channel-note">Complete verified dossier: 150+ server ops, Trellix ENS, n8n AI pipelines &amp; 3D spatial specs.</p>
+                    <div class="channel-action-row">
+                        <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="channel-link-btn primary" download>Download CV ↓</a>
+                        <a href="detailed_roadmap.html" target="_blank" rel="noopener" class="channel-link-btn">Inspect Roadmap ↗</a>
                     </div>
+                </div>
 
-                    <!-- Verified Curriculum Vitae -->
-                    <div class="channel-card">
-                        <span class="channel-eyebrow">ENGINEERING DOSSIER</span>
-                        <div class="channel-title">Verified Curriculum Vitae</div>
-                        <div class="channel-highlight cv-highlight">Joel_Daniel_Nadar_CV.pdf</div>
-                        <p class="channel-note">Complete verified trajectory: 150+ server ops, Trellix ENS, n8n AI workflows, 3D CGI.</p>
-                        <div class="channel-action-row">
-                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="channel-link-btn primary" download>Download PDF ↓</a>
-                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" target="_blank" rel="noopener" class="channel-link-btn">Inspect Online ↗</a>
-                        </div>
+                <!-- Channel 3: Verified Portfolios & Network Proof -->
+                <div class="channel-card networks-card">
+                    <span class="channel-eyebrow">VERIFIED NETWORKS</span>
+                    <div class="channel-title">Professional &amp; Creative Proof</div>
+                    <p class="channel-note">Direct technical profiles, active GitHub automation pipelines &amp; Blender 3D PBR studies.</p>
+                    <div class="channel-networks-list">
+                        <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="net-row">
+                            <span class="net-brand"><span class="net-tag-pill">IN</span> LinkedIn</span>
+                            <span class="net-meta">Systems &amp; SecOps Network ↗</span>
+                        </a>
+                        <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener" class="net-row">
+                            <span class="net-brand"><span class="net-tag-pill">GH</span> GitHub</span>
+                            <span class="net-meta">Automation Repos ↗</span>
+                        </a>
+                        <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="net-row">
+                            <span class="net-brand"><span class="net-tag-pill">AS</span> ArtStation</span>
+                            <span class="net-meta">3D CGI &amp; PBR Studies ↗</span>
+                        </a>
+                        <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="net-row">
+                            <span class="net-brand"><span class="net-tag-pill">BE</span> Behance</span>
+                            <span class="net-meta">Spatial Environments ↗</span>
+                        </a>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Verified Portfolios -->
-                    <div class="channel-card networks-card">
-                        <span class="channel-eyebrow">VERIFIED NETWORKS</span>
-                        <div class="channel-title">Professional &amp; Creative Proof</div>
-                        <p class="channel-note">Direct profiles, active code repositories &amp; photorealistic project breakdowns.</p>
-                        <div class="channel-networks-list">
-                            <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="net-row">
-                                <span class="net-brand"><span class="net-tag-pill">IN</span> LinkedIn</span>
-                                <span class="net-meta">Systems &amp; SecOps Network ↗</span>
-                            </a>
-                            <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener" class="net-row">
-                                <span class="net-brand"><span class="net-tag-pill">GH</span> GitHub</span>
-                                <span class="net-meta">Automation Repos ↗</span>
-                            </a>
-                            <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="net-row">
-                                <span class="net-brand"><span class="net-tag-pill">AS</span> ArtStation</span>
-                                <span class="net-meta">3D CGI &amp; PBR Studies ↗</span>
-                            </a>
-                            <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="net-row">
-                                <span class="net-brand"><span class="net-tag-pill">BE</span> Behance</span>
-                                <span class="net-meta">Spatial Environments ↗</span>
-                            </a>
+            <!-- COLLAPSIBLE 2026 CYBERSECURITY PROGRESSION BOARD -->
+            <div class="roadmap-drawer-wrapper" id="roadmapDrawerWrap" data-enter>
+                <button type="button" class="roadmap-toggle-bar" id="roadmapToggleBtn" aria-expanded="false" onclick="toggleRoadmapDrawer()">
+                    <div class="roadmap-toggle-left">
+                        <span class="roadmap-toggle-badge">PROGRESSION BOARD</span>
+                        <span class="roadmap-toggle-title">2026 Cybersecurity Specializations &amp; Verified Milestone Trajectory</span>
+                    </div>
+                    <div class="roadmap-toggle-right">
+                        <span class="roadmap-toggle-hint" id="roadmapToggleHint">Expand Board (11 Milestones)</span>
+                        <span class="roadmap-toggle-chevron" id="roadmapChevron">↓</span>
+                    </div>
+                </button>
+                
+                <div class="roadmap-drawer-content" id="roadmapDrawerContent">
+                    <div class="roadmap-drawer-inner">
+                        <div class="roadmap-board" id="creds-section">
+                            <div class="roadmap-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+                                <div>
+                                    <span class="roadmap-top-badge">Roadmap</span>
+                                    <h3 class="roadmap-title">What I Am Building &amp; Securing In 2026</h3>
+                                    <p class="roadmap-subtitle">A quarter-by-quarter trajectory of verified accreditations, active engineering specializations, and targeted defensive milestones.</p>
+                                </div>
+                                <a href="detailed_roadmap.html" target="_blank" rel="noopener" class="channel-link-btn" style="white-space:nowrap;">
+                                    Inspect Interactive Dossier ↗
+                                </a>
+                            </div>
+
+                            <div class="roadmap-columns">
+                                <!-- COLUMN 1: Q1 2026 -->
+                                <div class="roadmap-col">
+                                    <div class="roadmap-col-header">
+                                        <div class="roadmap-quarter">Q1 2026</div>
+                                        <div class="roadmap-period">Jan – Mar</div>
+                                    </div>
+                                    <div class="roadmap-cards-stack">
+                                        <!-- Card 1: Foundations of Cybersecurity -->
+                                        <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">Security</span>
+                                                <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">Foundations of Cybersecurity</div>
+                                            <div class="roadmap-card-desc">Core security models, SIEM architectures, compliance &amp; threat profiling.</div>
+                                            <span class="roadmap-card-meta">ID: H77H8G20YS9N · Google Verified ↗</span>
+                                            <div class="roadmap-status-text status-shipped">Shipped</div>
+                                        </a>
+
+                                        <!-- Card 2: IBM Web Fundamentals -->
+                                        <div class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">Platform</span>
+                                                <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">SkillsBuild: Web Fundamentals</div>
+                                            <div class="roadmap-card-desc">Enterprise frontend architecture, DOM pipelines &amp; web standards.</div>
+                                            <span class="roadmap-card-meta">IBM SkillsBuild · 7 Credentials Verified</span>
+                                            <div class="roadmap-status-text status-shipped">Shipped</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- COLUMN 2: Q2 2026 -->
+                                <div class="roadmap-col">
+                                    <div class="roadmap-col-header">
+                                        <div class="roadmap-quarter">Q2 2026</div>
+                                        <div class="roadmap-period">Apr – Jun</div>
+                                    </div>
+                                    <div class="roadmap-cards-stack">
+                                        <!-- Card 1: Networks & Network Security -->
+                                        <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">Security</span>
+                                                <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">Networks &amp; Network Security</div>
+                                            <div class="roadmap-card-desc">TCP/IP packet inspection, intrusion detection, firewall ACLs &amp; LAN defense.</div>
+                                            <span class="roadmap-card-meta">ID: 0ABTT3NHCDXO · Google Verified ↗</span>
+                                            <div class="roadmap-status-text status-shipped">Shipped</div>
+                                        </a>
+
+                                        <!-- Card 2: Play It Safe: Manage Security Risks -->
+                                        <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">Security</span>
+                                                <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">Play It Safe: Manage Security Risks</div>
+                                            <div class="roadmap-card-desc">Threat modeling, incident mitigation, compliance audits &amp; risk escalation.</div>
+                                            <span class="roadmap-card-meta">ID: WMJ79P4RT454 · Google Verified ↗</span>
+                                            <div class="roadmap-status-text status-shipped">Shipped</div>
+                                        </a>
+
+                                        <!-- Card 3: HubSpot Digital Marketing -->
+                                        <div class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">Growth</span>
+                                                <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">Digital Marketing Certified</div>
+                                            <div class="roadmap-card-desc">Search telemetry, conversion optimization &amp; technical lifecycle tracking.</div>
+                                            <span class="roadmap-card-meta">ID: b9317d5408884cf7 · HubSpot Active (2026–2027)</span>
+                                            <div class="roadmap-status-text status-shipped">Shipped</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- COLUMN 3: Q3 2026 -->
+                                <div class="roadmap-col">
+                                    <div class="roadmap-col-header">
+                                        <div class="roadmap-quarter">Q3 2026</div>
+                                        <div class="roadmap-period">Jul – Sep</div>
+                                    </div>
+                                    <div class="roadmap-cards-stack">
+                                        <!-- Card 1: Google Cybersecurity Capstone -->
+                                        <div class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">Security</span>
+                                                <span class="roadmap-icon status-in-progress" title="In Progress">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <circle cx="8" cy="8" r="6" stroke="rgba(245, 158, 11, 0.25)" stroke-width="2"/>
+                                                        <path d="M8 2A6 6 0 0 1 14 8" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">Cyber Capstone &amp; Automation</div>
+                                            <div class="roadmap-card-desc">Python security scripting, live SOC triage simulation &amp; detection engineering.</div>
+                                            <span class="roadmap-card-meta">Google Professional Certificate · Final Capstone</span>
+                                            <div class="roadmap-status-text status-in-progress">In Progress</div>
+                                        </div>
+
+                                        <!-- Card 2: TYBMS Degree -->
+                                        <div class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">Core</span>
+                                                <span class="roadmap-icon status-in-progress" title="In Progress">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <circle cx="8" cy="8" r="6" stroke="rgba(245, 158, 11, 0.25)" stroke-width="2"/>
+                                                        <path d="M8 2A6 6 0 0 1 14 8" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">Bachelor of Management Studies</div>
+                                            <div class="roadmap-card-desc">Royal College (2023–2026) — Strategic management, operations &amp; IT systems.</div>
+                                            <span class="roadmap-card-meta">University of Mumbai · Final Academic Year</span>
+                                            <div class="roadmap-status-text status-in-progress">In Progress</div>
+                                        </div>
+
+                                        <!-- Card 3: SEO with Squarespace -->
+                                        <a href="https://coursera.org/verify/UB4CN3DH9ETV" target="_blank" rel="noopener" class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">Analytics</span>
+                                                <span class="roadmap-icon status-shipped" title="Shipped &amp; Verified">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">Technical SEO Architecture</div>
+                                            <div class="roadmap-card-desc">Structured data schema, XML indexing, sitemaps &amp; Core Web Vitals.</div>
+                                            <span class="roadmap-card-meta">ID: UB4CN3DH9ETV · Squarespace Verified ↗</span>
+                                            <div class="roadmap-status-text status-shipped">Shipped</div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- COLUMN 4: Q4 2026 -->
+                                <div class="roadmap-col">
+                                    <div class="roadmap-col-header">
+                                        <div class="roadmap-quarter">Q4 2026</div>
+                                        <div class="roadmap-period">Oct – Dec</div>
+                                    </div>
+                                    <div class="roadmap-cards-stack">
+                                        <!-- Card 1: CompTIA Security+ -->
+                                        <div class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">Security</span>
+                                                <span class="roadmap-icon status-planned" title="Planned Target">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <circle cx="8" cy="8" r="6" stroke="#71717a" stroke-width="1.6"/>
+                                                        <polyline points="8 4.5 8 8 10.5 8" stroke="#71717a" stroke-width="1.6" stroke-linecap="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">CompTIA Security+ (SY0-701)</div>
+                                            <div class="roadmap-card-desc">Enterprise security baseline, cryptographic protocols &amp; incident response.</div>
+                                            <span class="roadmap-card-meta">Global Security Benchmark · Target Q4</span>
+                                            <div class="roadmap-status-text status-planned">Planned</div>
+                                        </div>
+
+                                        <!-- Card 2: Enterprise SSO & SCIM Provisioning -->
+                                        <div class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">SecOps</span>
+                                                <span class="roadmap-icon status-planned" title="Planned Target">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <circle cx="8" cy="8" r="6" stroke="#71717a" stroke-width="1.6"/>
+                                                        <polyline points="8 4.5 8 8 10.5 8" stroke="#71717a" stroke-width="1.6" stroke-linecap="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">SSO, IAM &amp; SCIM Provisioning</div>
+                                            <div class="roadmap-card-desc">Enterprise sign-on with automated user provisioning &amp; Zero-Trust policy.</div>
+                                            <span class="roadmap-card-meta">Enterprise Identity Infrastructure</span>
+                                            <div class="roadmap-status-text status-planned">Planned</div>
+                                        </div>
+
+                                        <!-- Card 3: Blue Team Level 1 (BTL1) -->
+                                        <div class="roadmap-card">
+                                            <div class="roadmap-card-top">
+                                                <span class="roadmap-pill">SecOps</span>
+                                                <span class="roadmap-icon status-planned" title="Planned Target">
+                                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                                        <circle cx="8" cy="8" r="6" stroke="#71717a" stroke-width="1.6"/>
+                                                        <polyline points="8 4.5 8 8 10.5 8" stroke="#71717a" stroke-width="1.6" stroke-linecap="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="roadmap-card-title">Blue Team Level 1 (BTL1)</div>
+                                            <div class="roadmap-card-desc">Practical defensive operations, digital forensics, packet inspection &amp; threat hunting.</div>
+                                            <span class="roadmap-card-meta">Security Blue Team · Defensive Milestone</span>
+                                            <div class="roadmap-status-text status-planned">Planned</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -4361,6 +4317,22 @@
             setInterval(updateClock, 1000);
             updateClock();
         })();
+
+        // ── INTERACTIVE ROADMAP DRAWER TOGGLE ──
+        window.toggleRoadmapDrawer = function() {
+            const wrap = document.getElementById('roadmapDrawerWrap');
+            const hint = document.getElementById('roadmapToggleHint');
+            const btn = document.getElementById('roadmapToggleBtn');
+            if (!wrap) return;
+            const isOpen = wrap.classList.toggle('is-open');
+            if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (hint) {
+                hint.textContent = isOpen ? 'Collapse Board' : 'Expand Board (11 Milestones)';
+            }
+            if (typeof ScrollTrigger !== 'undefined') {
+                setTimeout(() => ScrollTrigger.refresh(), 350);
+            }
+        };
 
         // ── SPATIAL EXHIBITION PINNED HORIZONTAL GALLERY & REEL ──
         (function initSpatialReel() {
