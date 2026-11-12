@@ -1627,296 +1627,331 @@
             line-height: 1.4;
         }
 
-        /* ── DIRECT INTAKE & DISPATCH REDESIGN (EXECUTIVE DECK) ── */
+        /* ═══════════════════════════════════════════
+           WORLD-CLASS CONTACT FINALE (LINEAR / STRIPE STYLE)
+        ═══════════════════════════════════════════ */
         .contact-deck-wrapper {
-            margin-top: 56px;
-            padding-top: 48px;
+            margin-top: 64px;
+            padding-top: 56px;
             border-top: 1px solid var(--line);
+            position: relative;
         }
-        .contact-deck-header {
+
+        /* Top Status HUD */
+        .contact-status-hud {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 24px;
-            margin-bottom: 36px;
+            gap: 16px;
+            margin-bottom: 32px;
         }
-        .contact-deck-kicker {
+        .hud-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 14px;
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 999px;
             font-family: 'DM Mono', monospace;
             font-size: 11px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            font-weight: 500;
+        }
+        .hud-beacon {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+            animation: pulseBeacon 2s infinite;
+        }
+        @keyframes pulseBeacon {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.7; }
+        }
+        .hud-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+        }
+        .hud-time .clock-live {
+            color: var(--text-primary);
+            font-weight: 600;
+            background: var(--bg-subtle);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--line);
+        }
+
+        /* Editorial Header */
+        .contact-big-title {
+            font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+            font-weight: 300;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            margin-bottom: 18px;
+        }
+        .contact-big-title em {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-style: italic;
+            color: #555552;
+        }
+        .contact-big-sub {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 680px;
+            line-height: 1.65;
+            margin-bottom: 40px;
+        }
+
+        /* The Magnetic Email Monolith */
+        .contact-email-monolith {
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 12px;
+            padding: 32px 36px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .contact-email-monolith:hover {
+            border-color: #0a0a0a;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+        }
+        .monolith-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .monolith-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .monolith-email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(1.4rem, 3.2vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+            font-family: 'DM Sans', sans-serif;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .monolith-email-link:hover {
+            color: #000000;
+            transform: translateX(4px);
+        }
+        .monolith-arrow {
+            color: var(--text-muted);
+            transition: transform 0.2s, color 0.2s;
+        }
+        .monolith-email-link:hover .monolith-arrow {
+            color: var(--text-primary);
+            transform: translate(3px, -3px);
+        }
+        .monolith-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-tactile-copy {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: #0a0a0a;
+            color: #ffffff;
+            border: 1px solid #0a0a0a;
+            border-radius: 6px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11.5px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn-tactile-copy:hover {
+            background: #262626;
+            border-color: #262626;
+            transform: translateY(-1px);
+        }
+        .btn-tactile-copy.copied {
+            background: #ecfdf5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+        }
+
+        /* 3-Pillar Secondary Grid */
+        .contact-channels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .channel-card {
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 10px;
+            padding: 26px 24px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.02);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .channel-card:hover {
+            border-color: #0a0a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+        }
+        .channel-eyebrow {
+            font-family: 'DM Mono', monospace;
+            font-size: 9.5px;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--text-muted);
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            display: block;
         }
-        .contact-deck-headline {
-            font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-            font-weight: 400;
-            letter-spacing: -0.03em;
-            line-height: 1.15;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-        .contact-deck-sub {
-            font-size: 14.5px;
-            color: var(--text-secondary);
-            max-width: 620px;
-            line-height: 1.6;
-        }
-        .intake-status-card {
-            background: #ffffff;
-            border: 1px solid var(--line-strong);
-            border-radius: 6px;
-            padding: 16px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-        }
-        .intake-location {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'DM Mono', monospace;
-            font-size: 11.5px;
-            color: var(--text-primary);
-            letter-spacing: 0.04em;
-            font-weight: 500;
-        }
-        .intake-sla-badge {
-            font-family: 'DM Mono', monospace;
-            font-size: 10.5px;
-            color: #059669;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.25);
-            padding: 3px 8px;
-            border-radius: 3px;
-            width: fit-content;
-            letter-spacing: 0.04em;
-            font-weight: 600;
-        }
-
-        /* 3-Column Primary Channels */
-        .contact-primary-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-bottom: 24px;
-        }
-        .contact-card.primary-channel {
-            background: #ffffff;
-            border: 1px solid var(--line-strong);
-            border-radius: 8px;
-            padding: 24px 22px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.03);
-            transition: all 0.2s ease;
-        }
-        .contact-card.primary-channel:hover {
-            border-color: #0a0a0a;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.07);
-        }
-        .c-card-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 14px;
-        }
-        .c-channel-tag {
-            font-family: 'DM Mono', monospace;
-            font-size: 9.5px;
-            letter-spacing: 0.12em;
-            font-weight: 700;
-            background: #0a0a0a;
-            color: #ffffff;
-            padding: 3px 7px;
-            border-radius: 2px;
-            text-transform: uppercase;
-        }
-        .c-channel-speed {
-            font-family: 'DM Mono', monospace;
-            font-size: 9.5px;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-        .c-channel-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.06em;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-        .c-channel-val {
+        .channel-title {
             font-size: 15px;
             font-weight: 700;
             color: var(--text-primary);
-            font-family: 'DM Mono', monospace;
-            letter-spacing: -0.01em;
-            margin-bottom: 10px;
-            word-break: break-all;
+            letter-spacing: -0.015em;
+            margin-bottom: 6px;
         }
-        .c-channel-desc {
+        .channel-highlight {
+            font-family: 'DM Mono', monospace;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        .channel-highlight.cv-highlight {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        .channel-note {
             font-size: 12.5px;
             color: var(--text-secondary);
             line-height: 1.5;
             margin-bottom: 20px;
             flex: 1;
         }
-        .c-card-actions {
+        .channel-action-row {
             display: flex;
             align-items: center;
             gap: 8px;
             margin-top: auto;
         }
-        .btn-c-primary {
+        .channel-link-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            padding: 9px 16px;
-            background: #0a0a0a;
-            color: #ffffff;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.2s;
-            flex: 1;
-        }
-        .btn-c-primary:hover {
-            background: #262626;
-            transform: translateY(-1px);
-        }
-        .btn-c-ghost {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 9px 14px;
+            padding: 8px 14px;
             background: var(--bg-subtle);
-            color: var(--text-primary);
             border: 1px solid var(--line-strong);
             border-radius: 4px;
+            color: var(--text-primary);
             font-family: 'DM Mono', monospace;
-            font-size: 11px;
+            font-size: 10.5px;
             letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
-            font-weight: 500;
         }
-        .btn-c-ghost:hover {
-            background: #ffffff;
+        .channel-link-btn.primary {
+            background: #0a0a0a;
+            color: #ffffff;
             border-color: #0a0a0a;
+            flex: 1;
         }
-        .btn-c-ghost.copied {
+        .channel-link-btn:hover {
+            border-color: #0a0a0a;
+            background: #ffffff;
+        }
+        .channel-link-btn.primary:hover {
+            background: #262626;
+            color: #ffffff;
+        }
+        .channel-link-btn.copied {
             background: #ecfdf5 !important;
             border-color: #10b981 !important;
             color: #065f46 !important;
-            font-weight: 700;
         }
 
-        /* Networks Card */
-        .contact-networks-card {
-            background: #ffffff;
-            border: 1px solid var(--line-strong);
-            border-radius: 8px;
-            padding: 24px 26px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.02);
+        /* Networks inside channel card */
+        .channel-networks-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
         }
-        .networks-header {
+        .net-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid var(--line);
-        }
-        .networks-title {
-            font-family: 'DM Mono', monospace;
-            font-size: 11.5px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-        .networks-sub {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-        .networks-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-        .network-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 14px;
+            padding: 9px 12px;
             background: var(--bg-subtle);
             border: 1px solid var(--line);
-            border-radius: 6px;
+            border-radius: 5px;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
         }
-        .network-item:hover {
+        .net-row:hover {
             border-color: #0a0a0a;
             background: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+            transform: translateX(2px);
         }
-        .network-brand {
+        .net-brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        .network-icon {
-            font-family: 'DM Mono', monospace;
+            gap: 8px;
             font-size: 12px;
-            font-weight: 700;
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .net-tag-pill {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            padding: 1.5px 5px;
             background: #0a0a0a;
             color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .network-name {
-            font-size: 12.5px;
+            border-radius: 3px;
             font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.2;
         }
-        .network-handle {
+        .net-meta {
             font-family: 'DM Mono', monospace;
             font-size: 10px;
             color: var(--text-muted);
-            margin-top: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 140px;
         }
-        .network-arrow {
-            font-size: 13px;
-            color: var(--text-muted);
-            transition: transform 0.2s, color 0.2s;
-        }
-        .network-item:hover .network-arrow {
+        .net-row:hover .net-meta {
             color: var(--text-primary);
-            transform: translate(2px, -2px);
         }
 
         /* ── LIGHTBOX ───────────────────────────────── */
@@ -3344,145 +3379,100 @@
                 </div>
             </div>
 
-            <!-- TIER 3: EXECUTIVE DIRECT INTAKE & DISPATCH (REDESIGNED) -->
+            <!-- TIER 3: WORLD-CLASS EDITORIAL CONTACT FINALE -->
             <div class="contact-deck-wrapper" data-enter>
-                <div class="contact-deck-header">
-                    <div>
-                        <div class="contact-deck-kicker">DIRECT INTAKE &amp; DISPATCH</div>
-                        <h3 class="contact-deck-headline">Initiate Direct Technical Intake</h3>
-                        <p class="contact-deck-sub">
-                            Direct dispatch for high-availability enterprise infrastructure operations, autonomous AI automation pipelines, and photorealistic 3D spatial computing commissions.
-                        </p>
+                <!-- Top Status & Live Mumbai Clock HUD -->
+                <div class="contact-status-hud">
+                    <div class="hud-pill">
+                        <span class="hud-beacon"></span>
+                        <span>Open for Global Roles &amp; High-Impact Technical Contracts</span>
                     </div>
-                    <div class="intake-status-card">
-                        <div class="intake-location">
-                            <span class="live-dot-green"></span>
-                            <span>Mumbai, India · Available Globally (Remote &amp; On-Site)</span>
-                        </div>
-                        <div class="intake-sla-badge">Typical Dispatch Triage: &lt; 2 Hours</div>
+                    <div class="hud-time">
+                        <span>MUMBAI, IN</span>
+                        <span class="clock-live" id="liveTimeText">09:20 PM IST</span>
+                        <span>(UTC+5:30)</span>
                     </div>
                 </div>
 
-                <!-- Primary Direct Comms Grid -->
-                <div class="contact-primary-grid">
-                    <!-- Direct Email Card with 1-Click Copy -->
-                    <div class="contact-card primary-channel">
-                        <div class="c-card-top">
-                            <span class="c-channel-tag">PRIMARY DISPATCH</span>
-                            <span class="c-channel-speed">HIGHEST PRIORITY</span>
-                        </div>
-                        <div class="c-channel-label">Direct Email Intake</div>
-                        <div class="c-channel-val">joelnadar825@gmail.com</div>
-                        <p class="c-channel-desc">
-                            Direct mailbox monitored under SLA. Ideal for job offers, enterprise contracts, and architectural inquiries.
-                        </p>
-                        <div class="c-card-actions">
-                            <a href="mailto:joelnadar825@gmail.com" class="btn-c-primary">
-                                <span>Write Email</span>
-                                <span>↗</span>
-                            </a>
-                            <button type="button" class="btn-c-ghost" onclick="copyContact('joelnadar825@gmail.com', this, 'Copy Email')">
-                                <span class="btn-text">Copy Email</span>
+                <!-- Editorial Headline -->
+                <div class="contact-hero-block">
+                    <h2 class="contact-big-title">
+                        Let’s build something<br>
+                        <em>extraordinary.</em>
+                    </h2>
+                    <p class="contact-big-sub">
+                        Have an infrastructure challenge, an autonomous AI pipeline to automate, or a photorealistic 3D vision to bring to life? My inbox is always open.
+                    </p>
+                </div>
+
+                <!-- The Magnetic Email Monolith -->
+                <div class="contact-email-monolith">
+                    <span class="monolith-label">DIRECT INBOX</span>
+                    <div class="monolith-body">
+                        <a href="mailto:joelnadar825@gmail.com" class="monolith-email-link" title="Click to email directly">
+                            <span>joelnadar825@gmail.com</span>
+                            <svg class="monolith-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <div class="monolith-actions">
+                            <button type="button" class="btn-tactile-copy" onclick="copyContact('joelnadar825@gmail.com', this, 'Copy Address')">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <span class="btn-text">Copy Address</span>
                             </button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Direct Voice & Phone Card with 1-Click Copy -->
-                    <div class="contact-card primary-channel">
-                        <div class="c-card-top">
-                            <span class="c-channel-tag">DIRECT LINE</span>
-                            <span class="c-channel-speed">VOICE &amp; WHATSAPP</span>
-                        </div>
-                        <div class="c-channel-label">Direct Voice &amp; Scheduling</div>
-                        <div class="c-channel-val">+91 93215 91870</div>
-                        <p class="c-channel-desc">
-                            Direct voice, SMS, and WhatsApp dispatch for high-priority outage triage, interviews, and immediate scheduling.
-                        </p>
-                        <div class="c-card-actions">
-                            <a href="tel:+919321591870" class="btn-c-primary">
-                                <span>Call Direct</span>
-                                <span>→</span>
-                            </a>
-                            <button type="button" class="btn-c-ghost" onclick="copyContact('+919321591870', this, 'Copy Number')">
+                <!-- 3-Pillar Secondary Grid -->
+                <div class="contact-channels-grid">
+                    <!-- Direct Voice & WhatsApp -->
+                    <div class="channel-card">
+                        <span class="channel-eyebrow">VOICE &amp; SECURE COMMS</span>
+                        <div class="channel-title">Direct Mobile &amp; WhatsApp</div>
+                        <a href="tel:+919321591870" class="channel-highlight">+91 93215 91870</a>
+                        <p class="channel-note">Available for rapid technical triage, introductory discussions &amp; WhatsApp scheduling.</p>
+                        <div class="channel-action-row">
+                            <a href="tel:+919321591870" class="channel-link-btn primary">Call Now →</a>
+                            <button type="button" class="channel-link-btn" onclick="copyContact('+919321591870', this, 'Copy Number')">
                                 <span class="btn-text">Copy Number</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Verified Resume Card -->
-                    <div class="contact-card primary-channel">
-                        <div class="c-card-top">
-                            <span class="c-channel-tag">ENGINEERING DOSSIER</span>
-                            <span class="c-channel-speed">PDF SPEC</span>
-                        </div>
-                        <div class="c-channel-label">Verified Curriculum Vitae</div>
-                        <div class="c-channel-val">Joel_Daniel_Nadar_CV.pdf</div>
-                        <p class="c-channel-desc">
-                            Complete verified career dossier covering 150+ server operations, Trellix ENS, n8n AI pipelines, and Blender 3D specs.
-                        </p>
-                        <div class="c-card-actions">
-                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn-c-primary" download>
-                                <span>Download PDF</span>
-                                <span>↓</span>
-                            </a>
-                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" target="_blank" rel="noopener" class="btn-c-ghost">
-                                <span>Inspect Online</span>
-                                <span>↗</span>
-                            </a>
+                    <!-- Verified Curriculum Vitae -->
+                    <div class="channel-card">
+                        <span class="channel-eyebrow">ENGINEERING DOSSIER</span>
+                        <div class="channel-title">Verified Curriculum Vitae</div>
+                        <div class="channel-highlight cv-highlight">Joel_Daniel_Nadar_CV.pdf</div>
+                        <p class="channel-note">Complete verified trajectory: 150+ server ops, Trellix ENS, n8n AI workflows, 3D CGI.</p>
+                        <div class="channel-action-row">
+                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="channel-link-btn primary" download>Download PDF ↓</a>
+                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" target="_blank" rel="noopener" class="channel-link-btn">Inspect Online ↗</a>
                         </div>
                     </div>
-                </div>
 
-                <!-- Professional & Creative Verification Matrix -->
-                <div class="contact-networks-card">
-                    <div class="networks-header">
-                        <span class="networks-title">Verified Professional &amp; Creative Portfolios</span>
-                        <span class="networks-sub">Direct external references &amp; code repositories</span>
-                    </div>
-                    <div class="networks-grid">
-                        <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="network-item">
-                            <div class="network-brand">
-                                <span class="network-icon">in</span>
-                                <div>
-                                    <div class="network-name">LinkedIn</div>
-                                    <div class="network-handle">in/joel-aka-shadowknight</div>
-                                </div>
-                            </div>
-                            <span class="network-arrow">↗</span>
-                        </a>
-
-                        <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="network-item">
-                            <div class="network-brand">
-                                <span class="network-icon">🎨</span>
-                                <div>
-                                    <div class="network-name">ArtStation</div>
-                                    <div class="network-handle">artstation.com/shadowknight010</div>
-                                </div>
-                            </div>
-                            <span class="network-arrow">↗</span>
-                        </a>
-
-                        <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="network-item">
-                            <div class="network-brand">
-                                <span class="network-icon">Bē</span>
-                                <div>
-                                    <div class="network-name">Behance</div>
-                                    <div class="network-handle">behance.net/joeldaniel5</div>
-                                </div>
-                            </div>
-                            <span class="network-arrow">↗</span>
-                        </a>
-
-                        <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener" class="network-item">
-                            <div class="network-brand">
-                                <span class="network-icon">⌨</span>
-                                <div>
-                                    <div class="network-name">GitHub</div>
-                                    <div class="network-handle">github.com/ShadowKnightx10</div>
-                                </div>
-                            </div>
-                            <span class="network-arrow">↗</span>
-                        </a>
+                    <!-- Verified Portfolios -->
+                    <div class="channel-card networks-card">
+                        <span class="channel-eyebrow">VERIFIED NETWORKS</span>
+                        <div class="channel-title">Professional &amp; Creative Proof</div>
+                        <p class="channel-note">Direct profiles, active code repositories &amp; photorealistic project breakdowns.</p>
+                        <div class="channel-networks-list">
+                            <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="net-row">
+                                <span class="net-brand"><span class="net-tag-pill">IN</span> LinkedIn</span>
+                                <span class="net-meta">Systems &amp; SecOps Network ↗</span>
+                            </a>
+                            <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener" class="net-row">
+                                <span class="net-brand"><span class="net-tag-pill">GH</span> GitHub</span>
+                                <span class="net-meta">Automation Repos ↗</span>
+                            </a>
+                            <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="net-row">
+                                <span class="net-brand"><span class="net-tag-pill">AS</span> ArtStation</span>
+                                <span class="net-meta">3D CGI &amp; PBR Studies ↗</span>
+                            </a>
+                            <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="net-row">
+                                <span class="net-brand"><span class="net-tag-pill">BE</span> Behance</span>
+                                <span class="net-meta">Spatial Environments ↗</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -4060,6 +4050,29 @@
                 console.error('Failed to copy to clipboard:', err);
             });
         };
+
+        // ── LIVE MUMBAI (IST) WORLD CLOCK ──────────────
+        (function initMumbaiClock() {
+            function updateClock() {
+                const el = document.getElementById('liveTimeText');
+                if (!el) return;
+                try {
+                    const now = new Date();
+                    const formatted = now.toLocaleTimeString('en-US', {
+                        timeZone: 'Asia/Kolkata',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: true
+                    });
+                    el.textContent = formatted + ' IST';
+                } catch (e) {
+                    // Fallback
+                }
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
+        })();
 
     </script>
 </body>
