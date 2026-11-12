@@ -483,7 +483,7 @@
         }
 
         /* Dark sections: Obsidian black BG with subtle translucent white/silver liquid flow */
-        .is-dark-section, #spectrum-section, #cinema-section, #gallery-section, #contact-section {
+        .is-dark-section, #spectrum-section, #gallery-section, #web-section {
             background-color: #090908 !important;
             background-image: 
                 radial-gradient(ellipse 65% 55% at 20% 25%, rgba(255, 255, 255, 0.065) 0%, transparent 70%),
@@ -495,7 +495,7 @@
         }
 
         /* Light sections: Warm crisp white BG with subtle translucent dark graphite liquid flow */
-        .is-light-section, #hero-section, #infra-section, #web-section {
+        .is-light-section, #hero-section, #cinema-section, #infra-section, #contact-section {
             background-color: #fbfbf9 !important;
             background-image: 
                 radial-gradient(ellipse 65% 55% at 20% 25%, rgba(15, 15, 20, 0.038) 0%, transparent 70%),
@@ -799,15 +799,15 @@
         ═══════════════════════════════════════════ */
         #cinema-section {
             background: transparent;
-            color: var(--text-dark-sec);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--line);
             position: relative;
         }
-        #cinema-section .sec-tag { color: rgba(255,255,255,0.5); }
-        #cinema-section .sec-tag::before { background: #ffffff; }
-        #cinema-section .sec-title { color: var(--text-dark-pri); }
-        #cinema-section .sec-title em { color: rgba(255,255,255,0.6); }
-        #cinema-section .sec-sub { color: var(--text-dark-sec); }
+        #cinema-section .sec-tag { color: var(--text-muted); }
+        #cinema-section .sec-tag::before { background: var(--text-primary); }
+        #cinema-section .sec-title { color: var(--text-primary); }
+        #cinema-section .sec-title em { color: #555552; }
+        #cinema-section .sec-sub { color: var(--text-secondary); }
 
         .cinema-theater {
             margin-top: 48px;
@@ -815,8 +815,8 @@
             border-radius: 6px;
             overflow: hidden;
             background: #000000;
-            border: 1px solid rgba(255,255,255,0.14);
-            box-shadow: 0 30px 100px rgba(0,0,0,0.7);
+            border: 1px solid rgba(0,0,0,0.12);
+            box-shadow: 0 24px 70px rgba(0,0,0,0.16);
             position: relative;
         }
         .cinema-screen {
@@ -860,23 +860,26 @@
             margin-top: 40px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 4px;
-            overflow: hidden;
+            gap: 12px;
         }
         .telemetry-cell {
-            background: var(--bg-dark-card);
+            background: #ffffff;
+            border: 1px solid var(--line-mid);
+            border-radius: 4px;
             padding: 20px 22px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            transition: border-color 0.2s;
+        }
+        .telemetry-cell:hover {
+            border-color: var(--line-strong);
         }
         .telemetry-cell .t-label {
             font-family: 'DM Mono', monospace; font-size: 10px;
             letter-spacing: 0.14em; text-transform: uppercase;
-            color: rgba(255,255,255,0.4); margin-bottom: 6px;
+            color: var(--text-muted); margin-bottom: 6px;
         }
         .telemetry-cell .t-val {
-            font-size: 13.5px; color: var(--text-dark-pri); font-weight: 500;
+            font-size: 13.5px; color: var(--text-primary); font-weight: 600;
         }
 
         /* ═══════════════════════════════════════════
@@ -1094,28 +1097,35 @@
         ═══════════════════════════════════════════ */
         #web-section {
             background: transparent;
-            border-bottom: 1px solid var(--line);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-dark-sec);
         }
+        #web-section .sec-tag { color: rgba(255,255,255,0.5); }
+        #web-section .sec-tag::before { background: #ffffff; }
+        #web-section .sec-title { color: var(--text-dark-pri); }
+        #web-section .sec-title em { color: #a1a1aa; }
+        #web-section .sec-sub { color: rgba(255,255,255,0.7); }
+
         .pipeline-card {
             margin-top: 48px;
-            background: #ffffff;
-            border: 1px solid var(--line-strong);
+            background: #141413;
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: 6px;
             padding: 32px 36px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
             position: relative;
         }
         .pipeline-card-top {
             display: flex; align-items: flex-start; justify-content: space-between;
             flex-wrap: wrap; gap: 16px; margin-bottom: 24px; padding-bottom: 20px;
-            border-bottom: 1px solid var(--line);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .pipeline-title {
-            font-size: 17px; font-weight: 700; color: var(--text-primary);
+            font-size: 17px; font-weight: 700; color: #ffffff;
             letter-spacing: -0.02em;
         }
         .pipeline-desc {
-            font-size: 14px; color: var(--text-secondary); max-width: 620px;
+            font-size: 14px; color: rgba(255,255,255,0.7); max-width: 620px;
             margin-top: 4px; line-height: 1.55;
         }
         .pipeline-telemetry-badge {
@@ -1123,22 +1133,22 @@
             font-family: 'DM Mono', monospace; font-size: 10.5px;
             letter-spacing: 0.08em; text-transform: uppercase;
             padding: 6px 12px; border-radius: 999px;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #065f46; font-weight: 600;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #34d399; font-weight: 600;
         }
         .pipeline-flow {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
             position: relative;
         }
         .p-step {
-            padding: 18px 20px; background: var(--bg-subtle);
-            border: 1px solid var(--line); border-radius: 4px;
+            padding: 18px 20px; background: #1a1a19;
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 4px;
             position: relative; transition: all 0.2s;
         }
         .p-step:hover {
-            border-color: #0a0a0a; transform: translateY(-2px);
-            background: #ffffff; box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            border-color: rgba(255,255,255,0.3); transform: translateY(-2px);
+            background: #222221; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
         .p-step-top {
             display: flex; align-items: center; justify-content: space-between;
@@ -1146,20 +1156,20 @@
         }
         .p-step-num {
             font-family: 'DM Mono', monospace; font-size: 10px;
-            letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600;
+            letter-spacing: 0.1em; color: rgba(255,255,255,0.45); font-weight: 600;
         }
         .p-step-status {
             font-family: 'DM Mono', monospace; font-size: 9.5px;
             padding: 2px 6px; border-radius: 2px;
-            background: #ffffff; border: 1px solid var(--line);
-            color: var(--text-secondary);
+            background: #262624; border: 1px solid rgba(255,255,255,0.12);
+            color: #e5e5e0;
         }
         .p-step-title {
-            font-size: 14px; font-weight: 700; color: var(--text-primary);
+            font-size: 14px; font-weight: 700; color: #ffffff;
             line-height: 1.35; margin-bottom: 6px;
         }
         .p-step-detail {
-            font-size: 12px; color: var(--text-muted); line-height: 1.45;
+            font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.45;
         }
 
         .web-grid {
@@ -1167,8 +1177,8 @@
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
         }
         .web-card {
-            background: #ffffff;
-            border: 1px solid var(--line);
+            background: #141413;
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 4px;
             overflow: hidden;
             text-decoration: none;
@@ -1176,17 +1186,18 @@
             transition: all 0.25s ease;
         }
         .web-card:hover {
-            border-color: var(--line-mid);
+            border-color: rgba(255,255,255,0.3);
+            background: #181817;
             transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.6);
         }
         .web-card-img-wrap {
             width: 100%;
             aspect-ratio: 16 / 10;
             overflow: hidden;
-            background: #f0f0ee;
+            background: #1a1a19;
             position: relative;
-            border-bottom: 1px solid var(--line);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .web-card-img-wrap img {
             width: 100%; height: 100%; object-fit: cover; object-position: top center;
@@ -1200,20 +1211,25 @@
         .web-card-top {
             display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;
         }
-        .web-card-name { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+        .web-card-name { font-size: 16px; font-weight: 600; color: #ffffff; }
         .web-card-arrow {
-            font-size: 14px; color: var(--text-muted); transition: transform 0.2s, color 0.2s;
+            font-size: 14px; color: rgba(255,255,255,0.5); transition: transform 0.2s, color 0.2s;
         }
-        .web-card:hover .web-card-arrow { transform: translate(3px, -3px); color: var(--text-primary); }
+        .web-card:hover .web-card-arrow { transform: translate(3px, -3px); color: #ffffff; }
         .web-card-role {
             font-family: 'DM Mono', monospace; font-size: 10.5px;
-            letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+            letter-spacing: 0.08em; text-transform: uppercase; color: #10b981;
             margin-bottom: 10px;
         }
         .web-card-desc {
-            font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;
+            font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 16px;
         }
         .web-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .web-card .i-tag {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #d4d4d8;
+        }
 
         /* ── VERIFIED CERTIFICATIONS ────────────────── */
         .cert-grid {
@@ -1252,18 +1268,18 @@
         .cert-code { font-family: 'DM Mono', monospace; font-size: 9.5px; color: var(--text-muted); }
 
         /* ═══════════════════════════════════════════
-           ACT VI: TECHNICAL ARSENAL & INTAKE REDESIGN
+           ACT V: TECHNICAL ARSENAL & DIRECT INTAKE (LIGHT SECTION)
         ═══════════════════════════════════════════ */
         #contact-section {
             background: transparent;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            color: var(--text-dark-sec);
+            border-top: 1px solid var(--line);
+            color: var(--text-secondary);
         }
-        #contact-section .sec-tag { color: rgba(255,255,255,0.5); }
-        #contact-section .sec-tag::before { background: #ffffff; }
-        #contact-section .sec-title { color: var(--text-dark-pri); }
-        #contact-section .sec-title em { color: #8e8e89; }
-        #contact-section .sec-sub { color: #9c9c96; }
+        #contact-section .sec-tag { color: var(--text-muted); }
+        #contact-section .sec-tag::before { background: var(--text-primary); }
+        #contact-section .sec-title { color: var(--text-primary); }
+        #contact-section .sec-title em { color: #555552; }
+        #contact-section .sec-sub { color: var(--text-secondary); }
 
         .arsenal-grid {
             margin-top: 48px;
@@ -1272,19 +1288,19 @@
             gap: 20px;
         }
         .arsenal-card {
-            background: #121211;
-            border: 1px solid rgba(255,255,255,0.12);
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
             border-radius: 6px;
             padding: 28px 24px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             transition: all 0.2s ease;
         }
         .arsenal-card:hover {
-            border-color: rgba(255,255,255,0.35);
+            border-color: #0a0a0a;
             transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.08);
         }
         .arsenal-card-head {
             display: flex;
@@ -1297,15 +1313,15 @@
             font-size: 10px;
             letter-spacing: 0.12em;
             font-weight: 700;
-            background: #ffffff;
-            color: #000000;
+            background: #0a0a0a;
+            color: #ffffff;
             padding: 4px 8px;
             border-radius: 3px;
         }
         .arsenal-card-title {
             font-size: 16px;
             font-weight: 700;
-            color: #ffffff;
+            color: var(--text-primary);
             letter-spacing: -0.02em;
             margin: 0;
         }
@@ -1313,9 +1329,9 @@
             font-family: 'DM Mono', monospace;
             font-size: 10px;
             letter-spacing: 0.08em;
-            color: rgba(255,255,255,0.6);
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
+            color: var(--text-secondary);
+            background: var(--bg-subtle);
+            border: 1px solid var(--line);
             padding: 4px 10px;
             border-radius: 3px;
             width: fit-content;
@@ -1329,13 +1345,24 @@
             display: flex;
             flex-direction: column;
             gap: 14px;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid var(--line);
             padding-top: 18px;
         }
         .arsenal-list li {
             display: flex;
             flex-direction: column;
             gap: 2px;
+        }
+        .a-item-name {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .a-item-spec {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.45;
         }
         .a-item-name {
             font-size: 14px;
@@ -1600,102 +1627,296 @@
             line-height: 1.4;
         }
 
-        /* ── DIRECT CONTACT DECK (FULL-WIDTH 3-COLUMN GRID) ── */
+        /* ── DIRECT INTAKE & DISPATCH REDESIGN (EXECUTIVE DECK) ── */
         .contact-deck-wrapper {
-            margin-top: 48px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            margin-top: 56px;
+            padding-top: 48px;
+            border-top: 1px solid var(--line);
         }
         .contact-deck-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 24px;
+            gap: 24px;
+            margin-bottom: 36px;
         }
-        .contact-deck-title {
+        .contact-deck-kicker {
             font-family: 'DM Mono', monospace;
-            font-size: 11.5px;
-            letter-spacing: 0.12em;
+            font-size: 11px;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
+            color: var(--text-muted);
             font-weight: 600;
+            margin-bottom: 6px;
         }
-        .contact-links-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+        .contact-deck-headline {
+            font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 10px;
         }
-        .c-action {
+        .contact-deck-sub {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            max-width: 620px;
+            line-height: 1.6;
+        }
+        .intake-status-card {
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 6px;
+            padding: 16px 20px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            gap: 10px;
-            padding: 18px 20px;
-            background: #121211;
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 6px;
-            text-decoration: none;
-            transition: all 0.2s;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-            min-height: 84px;
-        }
-        .c-action:hover {
-            border-color: rgba(255,255,255,0.35);
-            background: #1c1c1b;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.6);
-        }
-        .c-action.primary {
-            background: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
-        .c-action.primary:hover {
-            background: #f0f0eb;
-            border-color: #f0f0eb;
-        }
-        .c-action.primary .c-action-label {
-            color: rgba(0,0,0,0.65);
-        }
-        .c-action.primary .c-action-val {
-            color: #000000;
-            font-weight: 700;
-        }
-        .c-action.download {
-            background: #181817;
-            border-color: rgba(255,255,255,0.16);
-        }
-        .c-action.download:hover {
-            background: #242422;
-        }
-        .c-action-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
-            font-weight: 600;
-        }
-        .c-action-val {
-            font-family: 'DM Mono', monospace;
-            font-size: 12.5px;
-            color: #ffffff;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         .intake-location {
             display: flex;
             align-items: center;
             gap: 8px;
             font-family: 'DM Mono', monospace;
+            font-size: 11.5px;
+            color: var(--text-primary);
+            letter-spacing: 0.04em;
+            font-weight: 500;
+        }
+        .intake-sla-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 10.5px;
+            color: #059669;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 3px 8px;
+            border-radius: 3px;
+            width: fit-content;
+            letter-spacing: 0.04em;
+            font-weight: 600;
+        }
+
+        /* 3-Column Primary Channels */
+        .contact-primary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+        .contact-card.primary-channel {
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 8px;
+            padding: 24px 22px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+            transition: all 0.2s ease;
+        }
+        .contact-card.primary-channel:hover {
+            border-color: #0a0a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+        }
+        .c-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+        .c-channel-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 9.5px;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 3px 7px;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+        .c-channel-speed {
+            font-family: 'DM Mono', monospace;
+            font-size: 9.5px;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .c-channel-label {
+            font-family: 'DM Mono', monospace;
             font-size: 11px;
-            color: rgba(255,255,255,0.45);
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .c-channel-val {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: 'DM Mono', monospace;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+        .c-channel-desc {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        .c-card-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+        .btn-c-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 16px;
+            background: #0a0a0a;
+            color: #ffffff;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
             letter-spacing: 0.08em;
             text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.2s;
+            flex: 1;
+        }
+        .btn-c-primary:hover {
+            background: #262626;
+            transform: translateY(-1px);
+        }
+        .btn-c-ghost {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 14px;
+            background: var(--bg-subtle);
+            color: var(--text-primary);
+            border: 1px solid var(--line-strong);
+            border-radius: 4px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .btn-c-ghost:hover {
+            background: #ffffff;
+            border-color: #0a0a0a;
+        }
+        .btn-c-ghost.copied {
+            background: #ecfdf5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+            font-weight: 700;
+        }
+
+        /* Networks Card */
+        .contact-networks-card {
+            background: #ffffff;
+            border: 1px solid var(--line-strong);
+            border-radius: 8px;
+            padding: 24px 26px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.02);
+        }
+        .networks-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--line);
+        }
+        .networks-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 11.5px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .networks-sub {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .networks-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .network-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .network-item:hover {
+            border-color: #0a0a0a;
+            background: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+        }
+        .network-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .network-icon {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background: #0a0a0a;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .network-name {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+        .network-handle {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 140px;
+        }
+        .network-arrow {
+            font-size: 13px;
+            color: var(--text-muted);
+            transition: transform 0.2s, color 0.2s;
+        }
+        .network-item:hover .network-arrow {
+            color: var(--text-primary);
+            transform: translate(2px, -2px);
         }
 
         /* ── LIGHTBOX ───────────────────────────────── */
@@ -1731,14 +1952,14 @@
         /* ── FOOTER ─────────────────────────────────── */
         .site-footer {
             padding: 32px var(--gutter);
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid var(--line);
             display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
             font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
-            color: rgba(255,255,255,0.4);
-            background: transparent;
+            color: var(--text-muted);
+            background: #fbfbf9;
         }
-        .site-footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
-        .site-footer a:hover { color: #ffffff; }
+        .site-footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .site-footer a:hover { color: var(--text-primary); }
 
         [data-enter] { opacity: 0; transform: translateY(24px); }
 
@@ -2038,16 +2259,19 @@
                 margin-top: 36px !important;
                 padding-top: 28px !important;
             }
-            .contact-links-grid {
+            .contact-primary-grid {
+                grid-template-columns: 1fr !important;
+                gap: 14px !important;
+            }
+            .contact-card.primary-channel {
+                padding: 20px 18px !important;
+            }
+            .networks-grid {
                 grid-template-columns: 1fr !important;
                 gap: 10px !important;
             }
-            .c-action {
-                min-height: auto !important;
-                padding: 14px 16px !important;
-            }
-            .c-action-val {
-                font-size: 11.5px !important;
+            .network-handle {
+                max-width: 180px !important;
             }
 
             .site-footer {
@@ -2320,12 +2544,12 @@
 
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          ACT II: THE HERO SHOWPIECE
-         Cinema Display — AirPod 3D Motion Sequence
+         Cinema Display — AirPod 3D Motion Sequence (Light Section)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <section class="section-wrapper is-dark-section" id="cinema-section" aria-label="3D Cinematic Motion">
+    <section class="section-wrapper" id="cinema-section" aria-label="3D Cinematic Motion">
         <div class="section-inner">
             <!-- CHAPTER GATE: SPATIAL COMPUTING & 3D MOTION -->
-            <div class="chapter-gate dark-gate" data-enter>
+            <div class="chapter-gate light-gate" data-enter>
                 <div style="display:flex;align-items:center;gap:10px;">
                     <span class="gate-badge">ACT 01 // PHOTONS</span>
                     <span class="gate-desc">Entering 3D Spatial Computing &amp; Motion Suite</span>
@@ -2611,12 +2835,12 @@
     </section>
 
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         ACT V: SHIPPED PLATFORMS & AUTOMATION
+         ACT V: SHIPPED PLATFORMS & AUTOMATION (DARK SECTION)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <section class="section-wrapper" id="web-section" aria-label="Web Platforms and Automation">
+    <section class="section-wrapper is-dark-section" id="web-section" aria-label="Web Platforms and Automation">
         <div class="section-inner">
             <!-- CHAPTER GATE: WEB & AUTOMATION -->
-            <div class="chapter-gate light-gate" data-enter>
+            <div class="chapter-gate dark-gate" data-enter>
                 <div style="display:flex;align-items:center;gap:10px;">
                     <span class="gate-badge">ACT 04 // ORCHESTRATION</span>
                     <span class="gate-desc">Entering Autonomous Webhooks &amp; Web Systems</span>
@@ -2786,10 +3010,19 @@
     </section>
 
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         ACT VI: TECHNICAL ARSENAL & DIRECT INTAKE
+         ACT VI: TECHNICAL ARSENAL & DIRECT INTAKE (LIGHT SECTION)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <section class="section-wrapper is-dark-section" id="contact-section" aria-label="Capabilities and Contact">
+    <section class="section-wrapper" id="contact-section" aria-label="Capabilities and Contact">
         <div class="section-inner">
+            <!-- CHAPTER GATE: TECHNICAL ARSENAL & DIRECT INTAKE -->
+            <div class="chapter-gate light-gate" data-enter>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="gate-badge">ACT 05 // GLOBAL INTAKE</span>
+                    <span class="gate-desc">Enterprise Arsenal, Verified Roadmap &amp; Direct Dispatch</span>
+                </div>
+                <span>Available Worldwide · Remote or Relocation · SLAs Active</span>
+            </div>
+
             <p class="sec-tag" data-enter>05 / Capabilities &amp; Contact</p>
             <h2 class="sec-title" data-enter>
                 Technical Arsenal<br>
@@ -3111,41 +3344,146 @@
                 </div>
             </div>
 
-            <!-- TIER 3: GLOBAL DIRECT INTAKE & DISPATCH (FULL WIDTH) -->
+            <!-- TIER 3: EXECUTIVE DIRECT INTAKE & DISPATCH (REDESIGNED) -->
             <div class="contact-deck-wrapper" data-enter>
                 <div class="contact-deck-header">
-                    <span class="contact-deck-title">Direct Intake &amp; Dispatch Channels</span>
-                    <div class="intake-location">
-                        <span class="live-dot-green"></span>
-                        <span>Mumbai, India · Available for On-Site &amp; Worldwide Remote</span>
+                    <div>
+                        <div class="contact-deck-kicker">DIRECT INTAKE &amp; DISPATCH</div>
+                        <h3 class="contact-deck-headline">Initiate Direct Technical Intake</h3>
+                        <p class="contact-deck-sub">
+                            Direct dispatch for high-availability enterprise infrastructure operations, autonomous AI automation pipelines, and photorealistic 3D spatial computing commissions.
+                        </p>
+                    </div>
+                    <div class="intake-status-card">
+                        <div class="intake-location">
+                            <span class="live-dot-green"></span>
+                            <span>Mumbai, India · Available Globally (Remote &amp; On-Site)</span>
+                        </div>
+                        <div class="intake-sla-badge">Typical Dispatch Triage: &lt; 2 Hours</div>
                     </div>
                 </div>
 
-                <div class="contact-links-grid">
-                    <a href="mailto:joelnadar825@gmail.com" class="c-action primary">
-                        <span class="c-action-label">Email Directly</span>
-                        <span class="c-action-val"><span>joelnadar825@gmail.com</span><span>↗</span></span>
-                    </a>
-                    <a href="tel:+919321591870" class="c-action">
-                        <span class="c-action-label">Direct Phone</span>
-                        <span class="c-action-val"><span>+91 93215 91870</span><span>→</span></span>
-                    </a>
-                    <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="c-action download" download>
-                        <span class="c-action-label">Verified Resume</span>
-                        <span class="c-action-val"><span>Download CV (PDF)</span><span>↓</span></span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="c-action">
-                        <span class="c-action-label">LinkedIn</span>
-                        <span class="c-action-val"><span>in/joel-aka-shadowknight</span><span>↗</span></span>
-                    </a>
-                    <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="c-action">
-                        <span class="c-action-label">ArtStation</span>
-                        <span class="c-action-val"><span>artstation.com/shadowknight010</span><span>↗</span></span>
-                    </a>
-                    <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="c-action">
-                        <span class="c-action-label">Behance</span>
-                        <span class="c-action-val"><span>behance.net/joeldaniel5</span><span>↗</span></span>
-                    </a>
+                <!-- Primary Direct Comms Grid -->
+                <div class="contact-primary-grid">
+                    <!-- Direct Email Card with 1-Click Copy -->
+                    <div class="contact-card primary-channel">
+                        <div class="c-card-top">
+                            <span class="c-channel-tag">PRIMARY DISPATCH</span>
+                            <span class="c-channel-speed">HIGHEST PRIORITY</span>
+                        </div>
+                        <div class="c-channel-label">Direct Email Intake</div>
+                        <div class="c-channel-val">joelnadar825@gmail.com</div>
+                        <p class="c-channel-desc">
+                            Direct mailbox monitored under SLA. Ideal for job offers, enterprise contracts, and architectural inquiries.
+                        </p>
+                        <div class="c-card-actions">
+                            <a href="mailto:joelnadar825@gmail.com" class="btn-c-primary">
+                                <span>Write Email</span>
+                                <span>↗</span>
+                            </a>
+                            <button type="button" class="btn-c-ghost" onclick="copyContact('joelnadar825@gmail.com', this, 'Copy Email')">
+                                <span class="btn-text">Copy Email</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Direct Voice & Phone Card with 1-Click Copy -->
+                    <div class="contact-card primary-channel">
+                        <div class="c-card-top">
+                            <span class="c-channel-tag">DIRECT LINE</span>
+                            <span class="c-channel-speed">VOICE &amp; WHATSAPP</span>
+                        </div>
+                        <div class="c-channel-label">Direct Voice &amp; Scheduling</div>
+                        <div class="c-channel-val">+91 93215 91870</div>
+                        <p class="c-channel-desc">
+                            Direct voice, SMS, and WhatsApp dispatch for high-priority outage triage, interviews, and immediate scheduling.
+                        </p>
+                        <div class="c-card-actions">
+                            <a href="tel:+919321591870" class="btn-c-primary">
+                                <span>Call Direct</span>
+                                <span>→</span>
+                            </a>
+                            <button type="button" class="btn-c-ghost" onclick="copyContact('+919321591870', this, 'Copy Number')">
+                                <span class="btn-text">Copy Number</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Verified Resume Card -->
+                    <div class="contact-card primary-channel">
+                        <div class="c-card-top">
+                            <span class="c-channel-tag">ENGINEERING DOSSIER</span>
+                            <span class="c-channel-speed">PDF SPEC</span>
+                        </div>
+                        <div class="c-channel-label">Verified Curriculum Vitae</div>
+                        <div class="c-channel-val">Joel_Daniel_Nadar_CV.pdf</div>
+                        <p class="c-channel-desc">
+                            Complete verified career dossier covering 150+ server operations, Trellix ENS, n8n AI pipelines, and Blender 3D specs.
+                        </p>
+                        <div class="c-card-actions">
+                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn-c-primary" download>
+                                <span>Download PDF</span>
+                                <span>↓</span>
+                            </a>
+                            <a href="assets/Joel_Daniel_Nadar_CV.pdf" target="_blank" rel="noopener" class="btn-c-ghost">
+                                <span>Inspect Online</span>
+                                <span>↗</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional & Creative Verification Matrix -->
+                <div class="contact-networks-card">
+                    <div class="networks-header">
+                        <span class="networks-title">Verified Professional &amp; Creative Portfolios</span>
+                        <span class="networks-sub">Direct external references &amp; code repositories</span>
+                    </div>
+                    <div class="networks-grid">
+                        <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="network-item">
+                            <div class="network-brand">
+                                <span class="network-icon">in</span>
+                                <div>
+                                    <div class="network-name">LinkedIn</div>
+                                    <div class="network-handle">in/joel-aka-shadowknight</div>
+                                </div>
+                            </div>
+                            <span class="network-arrow">↗</span>
+                        </a>
+
+                        <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="network-item">
+                            <div class="network-brand">
+                                <span class="network-icon">🎨</span>
+                                <div>
+                                    <div class="network-name">ArtStation</div>
+                                    <div class="network-handle">artstation.com/shadowknight010</div>
+                                </div>
+                            </div>
+                            <span class="network-arrow">↗</span>
+                        </a>
+
+                        <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="network-item">
+                            <div class="network-brand">
+                                <span class="network-icon">Bē</span>
+                                <div>
+                                    <div class="network-name">Behance</div>
+                                    <div class="network-handle">behance.net/joeldaniel5</div>
+                                </div>
+                            </div>
+                            <span class="network-arrow">↗</span>
+                        </a>
+
+                        <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener" class="network-item">
+                            <div class="network-brand">
+                                <span class="network-icon">⌨</span>
+                                <div>
+                                    <div class="network-name">GitHub</div>
+                                    <div class="network-handle">github.com/ShadowKnightx10</div>
+                                </div>
+                            </div>
+                            <span class="network-arrow">↗</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3705,6 +4043,23 @@
                 });
             });
         })();
+
+        // ── 1-CLICK TACTILE CONTACT COPY ───────────────
+        window.copyContact = function(text, btn, defaultLabel) {
+            if (!navigator.clipboard) return;
+            navigator.clipboard.writeText(text).then(() => {
+                const textSpan = btn.querySelector('.btn-text') || btn;
+                const prev = textSpan.innerText;
+                textSpan.innerText = 'Copied! ✓';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    textSpan.innerText = prev;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy to clipboard:', err);
+            });
+        };
 
     </script>
 </body>
