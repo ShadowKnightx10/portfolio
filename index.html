@@ -77,33 +77,12 @@
         }
         .skip-link:focus-visible { top: 16px; }
 
-        /* ── CUSTOM CURSOR (Desktop pointer only) ───────────── */
+                /* ── CUSTOM CURSOR (Disabled to prevent floating circle artifacts) ── */
         .c-dot, .c-ring {
-            display: none;
-            position: fixed; pointer-events: none;
-            transform: translate(-50%,-50%);
-            opacity: 0;
-            will-change: transform, left, top;
-        }
-
-        @media (min-width: 901px) and (hover: hover) and (pointer: fine) {
-            .c-dot {
-                display: block;
-                z-index: 9000;
-                width: 5px; height: 5px; border-radius: 50%;
-                background: #0a0a0a;
-                transition: opacity 0.3s ease, width 0.15s, height 0.15s;
-            }
-            .c-ring {
-                display: block;
-                z-index: 8999;
-                width: 32px; height: 32px; border-radius: 50%;
-                border: 1px solid rgba(0,0,0,0.25);
-                transition: opacity 0.3s ease, width 0.25s, height 0.25s, border-color 0.25s;
-            }
-            .c-ring.on { width: 56px; height: 56px; border-color: rgba(0,0,0,0.7); }
-            .c-ring.dark { border-color: rgba(255,255,255,0.4); }
-            .c-dot.dark { background: #ffffff; }
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
         }
 
         /* ── HEADER ────────────────────────────────── */
@@ -5511,6 +5490,8 @@
     background-image: none !important;
     color: #0a0a0a !important;
     border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+    position: relative;
+    z-index: 2;
 }
 #contact-section.is-light-section .sec-tag {
     color: #71717a !important;
@@ -5524,82 +5505,231 @@
 #contact-section.is-light-section .contact-hero-subtitle {
     color: #52525b !important;
 }
+
 #contact-section.is-light-section .contact-dark-deck {
-    display: grid;
-    grid-template-columns: 1.25fr 1fr;
-    gap: 32px;
-    align-items: stretch;
+    display: grid !important;
+    grid-template-columns: 1.25fr 1fr !important;
+    gap: 28px !important;
+    align-items: stretch !important;
+    margin-top: 36px !important;
 }
-#contact-section.is-light-section .contact-intake-card-dark {
+@media (max-width: 900px) {
+    #contact-section.is-light-section .contact-dark-deck {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Outer Card Frames */
+#contact-section.is-light-section .contact-intake-card-dark,
+#contact-section.is-light-section .contact-proof-card-dark {
     background: #fbfbfa !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 16px !important;
+    padding: 32px 32px !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
     color: #0a0a0a !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
 }
+
+/* Inner Feature Blocks (White Cards) */
 #contact-section.is-light-section .intake-email-block-dark {
     background: #ffffff !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 22px 24px !important;
+    margin: 20px 0 16px 0 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
-}
-#contact-section.is-light-section .intake-email-value-dark {
-    color: #0a0a0a !important;
-}
-#contact-section.is-light-section .intake-email-value-dark:hover {
-    color: #2563eb !important;
-}
-#contact-section.is-light-section .btn-dark-copy {
-    background: #0a0a0a !important;
-    color: #ffffff !important;
-    border: 1px solid #0a0a0a !important;
-}
-#contact-section.is-light-section .btn-dark-compose {
-    background: #ffffff !important;
-    color: #0a0a0a !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
-}
-#contact-section.is-light-section .btn-dark-compose:hover {
-    background: #f4f4f5 !important;
-    border-color: #0a0a0a !important;
 }
 #contact-section.is-light-section .intake-phone-block {
     background: #ffffff !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 20px 24px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+}
+#contact-section.is-light-section .contact-cv-box {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 24px 24px !important;
+    margin-bottom: 24px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Typography & Labels */
+#contact-section.is-light-section .intake-label {
+    font-family: 'DM Mono', monospace !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.12em !important;
+    color: #71717a !important;
+    text-transform: uppercase !important;
+}
+#contact-section.is-light-section .intake-email-value-dark {
+    font-family: 'DM Mono', monospace !important;
+    font-size: clamp(18px, 2.2vw, 24px) !important;
+    font-weight: 600 !important;
+    color: #0a0a0a !important;
+    display: block !important;
+    margin: 8px 0 16px 0 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+#contact-section.is-light-section .intake-email-value-dark:hover {
+    color: #2563eb !important;
 }
 #contact-section.is-light-section .intake-phone-val-dark {
+    font-family: 'DM Mono', monospace !important;
+    font-size: 17.5px !important;
+    font-weight: 600 !important;
     color: #0a0a0a !important;
+    text-decoration: none !important;
+    display: block !important;
+    margin-top: 2px !important;
+    transition: color 0.2s ease !important;
 }
-#contact-section.is-light-section .intake-meta-strip {
-    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
-    color: #71717a !important;
+#contact-section.is-light-section .intake-phone-val-dark:hover {
+    color: #059669 !important;
 }
-#contact-section.is-light-section #liveTimeText {
+
+/* Buttons System */
+#contact-section.is-light-section .btn-dark-copy {
+    background: #0a0a0a !important;
+    color: #ffffff !important;
+    border: 1px solid #0a0a0a !important;
+    border-radius: 8px !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 10px 18px !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+}
+#contact-section.is-light-section .btn-dark-copy:hover {
+    background: #18181b !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+#contact-section.is-light-section .btn-dark-compose {
+    background: #ffffff !important;
     color: #0a0a0a !important;
+    border: 1px solid rgba(0, 0, 0, 0.14) !important;
+    border-radius: 8px !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 10px 16px !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: all 0.2s ease !important;
 }
-#contact-section.is-light-section .contact-proof-card-dark {
-    background: #fbfbfa !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    color: #0a0a0a !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+#contact-section.is-light-section .btn-dark-compose:hover {
+    background: #f4f4f5 !important;
+    border-color: #0a0a0a !important;
+    transform: translateY(-1px) !important;
 }
-#contact-section.is-light-section .contact-cv-box h4 {
-    color: #0a0a0a !important;
+#contact-section.is-light-section .btn-whatsapp-pill {
+    background: #059669 !important;
+    color: #ffffff !important;
+    border: 1px solid #059669 !important;
+    border-radius: 8px !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 10px 16px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25) !important;
 }
-#contact-section.is-light-section .contact-cv-box p {
-    color: #52525b !important;
+#contact-section.is-light-section .btn-whatsapp-pill:hover {
+    background: #047857 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35) !important;
 }
+
+/* CV Download Button */
+#contact-section.is-light-section .btn-cv-download {
+    background: #0a0a0a !important;
+    color: #ffffff !important;
+    border: 1px solid #0a0a0a !important;
+    border-radius: 8px !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+#contact-section.is-light-section .btn-cv-download:hover {
+    background: #18181b !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Network Proof Tiles */
 #contact-section.is-light-section .network-dark-tile {
     background: #ffffff !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    color: #0a0a0a !important;
+    border-radius: 10px !important;
+    padding: 13px 16px !important;
+    color: #18181b !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.2s ease !important;
 }
 #contact-section.is-light-section .network-dark-tile:hover {
+    background: #ffffff !important;
     border-color: #0a0a0a !important;
-    background: #f4f4f5 !important;
     transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06) !important;
 }
 #contact-section.is-light-section .network-dark-tile svg {
-    color: #0a0a0a !important;
+    color: #18181b !important;
 }
+
+/* Meta Strip & Live IST */
+#contact-section.is-light-section .intake-meta-strip {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    padding-top: 24px !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+    margin-top: 24px !important;
+    font-size: 12px !important;
+    color: #71717a !important;
+    font-family: 'DM Mono', monospace !important;
+}
+#contact-section.is-light-section #liveTimeText {
+    color: #0a0a0a !important;
+    font-weight: 700 !important;
+}
+
+/* Footer in Light Contact Section */
 #contact-section.is-light-section .site-footer-dark {
     border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
     padding-top: 28px !important;
@@ -6636,14 +6766,14 @@
                 <!-- LEFT COLUMN: Primary Direct Intake Hub -->
                 <div class="contact-intake-card-dark">
                     <div>
-                        <div class="contact-intake-status-badge" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:6px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#34d399;font-family:'DM Mono',monospace;">
-                            <span class="live-dot-green" style="width:7px;height:7px;background:#10b981;border-radius:50%;display:block;box-shadow:0 0 8px #10b981;"></span>
+                        <div class="contact-intake-status-badge" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);padding:6px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#065f46;font-family:'DM Mono',monospace;">
+                            <span class="live-dot-green" style="width:7px;height:7px;background:#10b981;border-radius:50%;display:block;box-shadow:0 0 6px rgba(16,185,129,0.5);"></span>
                             <span>Open for Full-Time Roles &amp; Projects</span>
                         </div>
 
-                        <!-- Direct Email Monolith Box -->
+                        <!-- Direct Email Box -->
                         <div class="intake-email-block-dark">
-                            <span class="intake-label" style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#a1a1aa;text-transform:uppercase;">PRIMARY DIRECT EMAIL</span>
+                            <span class="intake-label">PRIMARY DIRECT EMAIL</span>
                             <a href="mailto:joelnadar825@gmail.com" class="intake-email-value-dark" title="Click to email joelnadar825@gmail.com">
                                 joelnadar825@gmail.com
                             </a>
@@ -6659,13 +6789,13 @@
                         </div>
 
                         <!-- Instant Phone & WhatsApp -->
-                        <div class="intake-phone-block" style="background:#1b1b19;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+                        <div class="intake-phone-block">
                             <div>
-                                <span class="intake-label" style="display:block;margin-bottom:4px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#a1a1aa;text-transform:uppercase;">PHONE &amp; WHATSAPP</span>
+                                <span class="intake-label" style="display:block;margin-bottom:4px;">PHONE &amp; WHATSAPP</span>
                                 <a href="tel:+919321591870" class="intake-phone-val-dark">+91 93215 91870</a>
                             </div>
-                            <div class="intake-phone-actions" style="display:flex;gap:8px;flex-wrap:wrap;">
-                                <a href="https://wa.me/919321591870" target="_blank" rel="noopener" class="btn-dark-copy" style="background:#059669 !important;color:#ffffff !important;border-color:#059669 !important;">
+                            <div class="intake-phone-actions" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                                <a href="https://wa.me/919321591870" target="_blank" rel="noopener" class="btn-whatsapp-pill">
                                     WhatsApp ↗
                                 </a>
                                 <a href="tel:+919321591870" class="btn-dark-compose">
@@ -6679,28 +6809,28 @@
                     </div>
 
                     <!-- Location & Live IST Telemetry -->
-                    <div class="intake-meta-strip" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);margin-top:24px;font-size:12.5px;color:#a1a1aa;font-family:'DM Mono',monospace;">
-                        <div>📍 Mumbai, Maharashtra, India · UTC+5:30</div>
+                    <div class="intake-meta-strip">
+                        <div>📍 Mumbai, India · UTC+5:30</div>
                         <div>
-                            <span class="clock-live" id="liveTimeText" style="font-weight:700;color:#ffffff;">02:50 AM IST</span>
+                            <span class="clock-live" id="liveTimeText">--:--:-- IST</span>
                         </div>
-                        <div>● Mumbai IST · direct intake</div>
+                        <div>● Direct Intake Active</div>
                     </div>
                 </div>
 
                 <!-- RIGHT COLUMN: Verified CV & Network Proof -->
                 <div class="contact-proof-card-dark">
                     <!-- Verified Curriculum Vitae Card -->
-                    <div class="contact-cv-box" style="margin-bottom:28px;">
+                    <div class="contact-cv-box">
                         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                            <span style="background:rgba(59,130,246,0.15);color:#60a5fa;border:1px solid rgba(59,130,246,0.3);padding:4px 10px;border-radius:4px;font-size:11px;font-family:'DM Mono',monospace;font-weight:600;">VERIFIED RESUME (2025/2026)</span>
+                            <span style="background:rgba(37,99,235,0.08);color:#1d4ed8;border:1px solid rgba(37,99,235,0.22);padding:4px 10px;border-radius:6px;font-size:11px;font-family:'DM Mono',monospace;font-weight:600;">VERIFIED RESUME · 2026</span>
                             <span style="font-size:12px;color:#71717a;font-family:'DM Mono',monospace;">PDF · 177 KB</span>
                         </div>
-                        <h4 style="font-family:'DM Sans',sans-serif;font-size:19px;font-weight:600;color:#ffffff;margin-bottom:8px;">Curriculum Vitae</h4>
-                        <p style="font-size:13.5px;line-height:1.6;color:#a1a1aa;margin-bottom:20px;">
+                        <h4 style="font-family:'DM Sans',sans-serif;font-size:19px;font-weight:600;color:#0a0a0a;margin-bottom:8px;">Curriculum Vitae</h4>
+                        <p style="font-size:13.5px;line-height:1.6;color:#52525b;margin-bottom:20px;">
                             A concise summary of my 3+ years in systems and production support, server monitoring (150+ Linux/Windows servers), airport biometric gate operations, and technical certifications.
                         </p>
-                        <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn-dark-copy" style="width:100%;justify-content:center;padding:12px 20px;text-decoration:none;" download>
+                        <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn-cv-download" download>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                             <span>Download Joel_Daniel_Nadar_CV.pdf</span>
                         </a>
@@ -6708,7 +6838,7 @@
 
                     <!-- Online Profiles & Network Proof -->
                     <div class="contact-networks-box">
-                        <span style="display:block;margin-bottom:14px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#a1a1aa;text-transform:uppercase;">PROFESSIONAL &amp; CREATIVE PROOF</span>
+                        <span class="intake-label" style="display:block;margin-bottom:14px;">PROFESSIONAL &amp; CREATIVE PROOF</span>
                         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
                             <a href="https://linkedin.com/in/joel-nadar-899881267" target="_blank" rel="noopener" class="network-dark-tile">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6c0-.89-.72-1.6-1.6-1.6Z"/></svg>
