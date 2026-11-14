@@ -1009,14 +1009,14 @@
             gap: 24px;
             width: max-content;
             will-change: transform;
-            padding-left: max(var(--gutter), calc((100vw - var(--max-w)) / 2 + var(--gutter)));
+            padding-left: max(0px, calc((100% - var(--max-w)) / 2));
             padding-right: max(var(--gutter), calc((100vw - var(--max-w)) / 2 + var(--gutter)));
             padding-top: 6px;
             padding-bottom: 12px;
         }
         @media (max-width: 900px) {
             .spatial-reel-track {
-                padding-left: var(--gutter);
+                padding-left: 0;
                 padding-right: var(--gutter);
                 will-change: auto;
             }
@@ -6840,11 +6840,11 @@
                     <div class="contact-networks-box">
                         <span class="intake-label" style="display:block;margin-bottom:14px;">PROFESSIONAL &amp; CREATIVE PROOF</span>
                         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-                            <a href="https://linkedin.com/in/joel-nadar-899881267" target="_blank" rel="noopener" class="network-dark-tile">
+                            <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="network-dark-tile">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6c0-.89-.72-1.6-1.6-1.6Z"/></svg>
                                 <span>LinkedIn ↗</span>
                             </a>
-                            <a href="https://artstation.com/joelnadar" target="_blank" rel="noopener" class="network-dark-tile">
+                            <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="network-dark-tile">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m0 17.723 2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.332h13.674l-3.04-5.264H0v.427zm24 .07-7.447-12.92a2.41 2.41 0 0 0-2.14-1.343 2.41 2.41 0 0 0-2.14 1.343L4.82 17.793h4.63l4.78-8.29 4.79 8.29H24zM10.82 17.793l3.29-5.71 3.3 5.71h-6.59z"/></svg>
                                 <span>ArtStation ↗</span>
                             </a>
@@ -6852,7 +6852,7 @@
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
                                 <span>GitHub ↗</span>
                             </a>
-                            <a href="https://behance.net/joelnadar" target="_blank" rel="noopener" class="network-dark-tile">
+                            <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="network-dark-tile">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.976 3-3.411 0-5.75-2.6-5.75-6 0-3.559 2.39-6 5.75-6 3.484 0 5.568 2.529 5.385 6.094h-8.385c.09 1.838 1.438 3.094 3.25 3.094 1.422 0 2.502-.688 2.891-1.781l1.835 1.593zm-7.976-5h5.531c-.131-1.641-1.281-2.453-2.656-2.453-1.422 0-2.672.828-2.875 2.453zm-11.75-7h5.836c2.518 0 3.964 1.094 3.964 2.922 0 1.203-.688 2.188-1.781 2.656 1.453.453 2.234 1.625 2.234 3.125 0 2.203-1.688 3.297-4.297 3.297h-6.047v-12zm2.75 4.812h2.516c.922 0 1.578-.391 1.578-1.234 0-.797-.641-1.203-1.578-1.203h-2.516v2.437zm0 4.813h2.781c1.062 0 1.766-.453 1.766-1.359 0-.969-.734-1.391-1.766-1.391h-2.781v2.75z"/></svg>
                                 <span>Behance ↗</span>
                             </a>
