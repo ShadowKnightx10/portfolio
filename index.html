@@ -4285,6 +4285,23 @@
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
     color: #18181b !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 8px 16px !important;
+}
+#skills-section.is-light-section .tool-pill-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0 !important;
+}
+#skills-section.is-light-section .tool-pill-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+    display: block !important;
 }
 
 #skills-section.is-light-section .tool-pill:hover {
@@ -5579,17 +5596,13 @@
                     <h3 class="infra-card-title">Sharekhan (Mirae Asset)</h3>
                     <p class="infra-card-role">Production Support Engineer · Techigent Technologies · Mumbai</p>
                     <ul class="infra-bullets">
-                        <li><strong>Server Health:</strong> Daily pre-market verification on 150+ production servers hosting TradeTiger and online trading platforms.</li>
-                        <li><strong>Database Queries:</strong> Ran regular SQL Server (SSMS) queries to verify transaction log shipping and data integrity.</li>
-                        <li><strong>Service Availability:</strong> Monitored critical trading services, checking port listening states, memory utilization, and error logs before trading bells.</li>
-                        <li><strong>Issue Escalation:</strong> Triaged incoming alerts, documented incident details in ticketing systems, and escalated complex database/network issues to L3 and DBA teams.</li>
+                        <li><strong>150+ Trading Servers:</strong> Daily pre-market health verifications on 150+ production servers and SQL Server transaction log integrity for TradeTiger.</li>
+                        <li><strong>Platform Triage:</strong> Monitored critical routing services during 24/7 night shifts and escalated complex database incidents to L3/DBA teams.</li>
                     </ul>
                     <div class="infra-tags">
                         <span class="infra-tag">150+ SERVERS</span>
                         <span class="infra-tag">SQL SERVER (SSMS)</span>
-                        <span class="infra-tag">LINUX &amp; WINDOWS</span>
                         <span class="infra-tag">NIGHT SHIFTS (24/7)</span>
-                        <span class="infra-tag">PRE-MARKET AUDITS</span>
                     </div>
                 </div>
 
@@ -5602,16 +5615,12 @@
                     <h3 class="infra-card-title">DigiYatra Passenger Gates</h3>
                     <p class="infra-card-role">Desktop &amp; Biometric Support Engineer · CSMIA Airport T2 · Mumbai</p>
                     <ul class="infra-bullets">
-                        <li><strong>Biometric Kiosks:</strong> Maintenance of facial recognition cameras, barcode scanners, and e-gates at Terminal 2.</li>
-                        <li><strong>Rapid Response:</strong> Kept hardware uptime high during peak departure waves when thousands of passengers boarded.</li>
-                        <li><strong>Network Checks:</strong> Verify LAN connectivity, IP allocations, and communication between entry gates and central verification backends.</li>
-                        <li><strong>System Maintenance:</strong> Run scheduled hardware reboots, camera alignment calibrations, and client software updates during low-traffic windows.</li>
+                        <li><strong>Biometric Uptime:</strong> Maintained facial recognition cameras, barcode scanners, and automated e-gates during peak passenger departures at Terminal 2.</li>
+                        <li><strong>Field Operations:</strong> Verified LAN connectivity, IP allocation, camera alignment calibrations, and scheduled hardware maintenance.</li>
                     </ul>
                     <div class="infra-tags">
                         <span class="infra-tag">DIGIYATRA BIOMETRICS</span>
                         <span class="infra-tag">CSMIA AIRPORT T2</span>
-                        <span class="infra-tag">BARCODE SCANNERS</span>
-                        <span class="infra-tag">TERMINAL HARDWARE</span>
                         <span class="infra-tag">ON-SITE SUPPORT</span>
                     </div>
                 </div>
@@ -5625,17 +5634,13 @@
                     <h3 class="infra-card-title">Enterprise System Rollout</h3>
                     <p class="infra-card-role">Desktop Support Engineer · Corporate Fleet Deployment</p>
                     <ul class="infra-bullets">
-                        <li><strong>800+ Devices:</strong> Configured Windows 10/11 on 800+ commercial laptops following corporate image standards.</li>
-                        <li><strong>Domain Join:</strong> Added devices to Active Directory domains, assigned OU permissions, and configured user group policies.</li>
-                        <li><strong>Security &amp; Encryption:</strong> Configured BitLocker full-disk encryption, deployed Trellix (McAfee) endpoint protection, and verified compliance.</li>
-                        <li><strong>User Handoff:</strong> Guided end-users through initial login, Outlook email configuration, VPN setup, and general desktop troubleshooting.</li>
+                        <li><strong>800+ Enterprise Laptops:</strong> Provisioned and deployed 800+ commercial systems with Windows 10/11 images and Active Directory domain joins.</li>
+                        <li><strong>Endpoint Security:</strong> Configured BitLocker encryption, deployed Trellix (McAfee) endpoint suites, and guided user onboarding.</li>
                     </ul>
                     <div class="infra-tags">
-                        <span class="infra-tag">800 LAPTOPS</span>
+                        <span class="infra-tag">800+ LAPTOPS</span>
                         <span class="infra-tag">ACTIVE DIRECTORY</span>
-                        <span class="infra-tag">BITLOCKER ENCRYPTION</span>
-                        <span class="infra-tag">TRELLIX ENDPOINT</span>
-                        <span class="infra-tag">DOMAIN MIGRATION</span>
+                        <span class="infra-tag">BITLOCKER &amp; TRELLIX</span>
                     </div>
                 </div>
             </div>
@@ -5660,7 +5665,7 @@
                             <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
                         </div>
                         <h4 class="cert-title">Foundations of Cybersecurity</h4>
-                        <p class="cert-desc">Core security models, the CIA triad, NIST Cybersecurity Framework, Linux command line basics, and SIEM tool fundamentals.</p>
+                        <p class="cert-desc">Core security models, CIA triad, NIST framework, and Linux CLI fundamentals.</p>
                         <div class="cert-footer">
                             <span class="cert-id">ID: H77H8G26YS9N</span>
                             <a href="https://coursera.org/verify/H77H8G26YS9N" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
@@ -5673,7 +5678,7 @@
                             <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
                         </div>
                         <h4 class="cert-title">Networks &amp; Network Security</h4>
-                        <p class="cert-desc">TCP/IP and OSI network architecture, packet inspection, intrusion detection (IDS/IPS), and firewall rules.</p>
+                        <p class="cert-desc">TCP/IP network architecture, packet inspection, intrusion detection, and firewalls.</p>
                         <div class="cert-footer">
                             <span class="cert-id">ID: 0ABTT3NHCDXO</span>
                             <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
@@ -5686,7 +5691,7 @@
                             <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
                         </div>
                         <h4 class="cert-title">Play It Safe: Manage Security Risks</h4>
-                        <p class="cert-desc">Threat modeling, vulnerability assessments, security audit compliance, and incident escalation procedures.</p>
+                        <p class="cert-desc">Threat modeling, vulnerability assessments, and incident escalation compliance.</p>
                         <div class="cert-footer">
                             <span class="cert-id">ID: WHJ79P4RT454</span>
                             <a href="https://coursera.org/verify/WHJ79P4RT454" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
@@ -5699,7 +5704,7 @@
                             <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED SUITE</span>
                         </div>
                         <h4 class="cert-title">Web &amp; Systems Fundamentals</h4>
-                        <p class="cert-desc">Enterprise frontend basics, client-server communications, DOM architecture, and accessible web standards.</p>
+                        <p class="cert-desc">Enterprise frontend architecture, client-server communications, and web standards.</p>
                         <div class="cert-footer">
                             <span class="cert-id">7 Verified Credentials</span>
                             <span class="cert-verify-link" style="color:#a1a1aa;">IBM Certified</span>
@@ -5712,7 +5717,7 @@
                             <span class="cert-status-badge" style="background:rgba(239,68,68,0.15);color:#f87171;"><span class="status-dot" style="background:#ef4444;"></span>IN ACTIVE STUDY</span>
                         </div>
                         <h4 class="cert-title">CompTIA Security+ (SY0-701)</h4>
-                        <p class="cert-desc">Currently working through the official syllabus covering enterprise security architecture, cryptography, and defensive incident response.</p>
+                        <p class="cert-desc">Active study covering security architecture, cryptography, and defensive response.</p>
                         <div class="cert-footer">
                             <span class="cert-id">Target Milestone: 2026</span>
                             <span class="cert-verify-link" style="color:#f87171;">Active Prep</span>
@@ -5749,13 +5754,12 @@
                         </div>
 
                         <p class="degree-desc">
-                            Combining practical IT production support with formal business and management governance. Coursework covers IT systems management, organizational behavior, financial strategy, and risk governance—giving me a strong foundation for technical leadership and cross-functional operations.
+                            Combines hands-on IT production support with formal management governance. Core focus on IT systems management, organizational strategy, and risk governance for cross-functional technical leadership.
                         </p>
 
                         <div class="degree-tags">
-                            <span class="degree-tag">IT Governance</span>
+                            <span class="degree-tag">IT Systems Governance</span>
                             <span class="degree-tag">Operations</span>
-                            <span class="degree-tag">Risk Management</span>
                             <span class="degree-tag">University Degree</span>
                         </div>
                     </div>
@@ -5866,58 +5870,58 @@
                 <!-- Lane 1: 3D, Game Engines & Creative Software -->
                 <div class="marquee-track-lane lane-left">
                     <div class="marquee-inner">
-                        <div class="tool-pill"><span class="pill-name">Blender</span><span class="pill-role">Cycles Raytracing</span></div>
-                        <div class="tool-pill"><span class="pill-name">Unreal Engine</span><span class="pill-role">Lighting &amp; Environments</span></div>
-                        <div class="tool-pill"><span class="pill-name">Unity Engine</span><span class="pill-role">Interactive &amp; Real-Time</span></div>
-                        <div class="tool-pill"><span class="pill-name">Substance Painter</span><span class="pill-role">PBR Texturing</span></div>
-                        <div class="tool-pill"><span class="pill-name">Autodesk 3ds Max</span><span class="pill-role">Hard Surface</span></div>
-                        <div class="tool-pill"><span class="pill-name">Autodesk Maya</span><span class="pill-role">3D Animation</span></div>
-                        <div class="tool-pill"><span class="pill-name">Adobe Photoshop</span><span class="pill-role">Texture &amp; Post</span></div>
-                        <div class="tool-pill"><span class="pill-name">Adobe Premiere Pro</span><span class="pill-role">Video Editing</span></div>
-                        <div class="tool-pill"><span class="pill-name">Adobe Illustrator</span><span class="pill-role">Vector Assets</span></div>
-                        <div class="tool-pill"><span class="pill-name">Adobe Audition</span><span class="pill-role">Audio Cleanup</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.51 2.03a1.5 1.5 0 0 0-1.55 1.25l-.46 2.45a7.99 7.99 0 0 0-3.3 1.52l-2.2-1.18a1.5 1.5 0 0 0-1.95.59l-.02.04a1.5 1.5 0 0 0 .58 1.95l2.12 1.14a8.04 8.04 0 0 0-.73 3.21c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8c-.5 0-.99.05-1.47.14l.43-2.31a1.5 1.5 0 0 0-.95-1.7zm.49 8.97a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" fill="#E87D0D"/></svg></span><span class="pill-name">Blender</span><span class="pill-role">Cycles Raytracing</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0E1118"/><path d="M12 5.5c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5 6.5-2.91 6.5-6.5-2.91-6.5-6.5-6.5zm2.8 9.3c-.6.4-1.6.7-2.8.7s-2.2-.3-2.8-.7c-.3-.2-.5-.6-.5-1v-4.5c0-.4.3-.8.7-.8h1.2c.4 0 .7.4.7.8v3.5c0 .2.3.4.7.4s.7-.2.7-.4V9.5c0-.4.3-.8.7-.8h1.2c.4 0 .7.4.7.8v4.5c0 .4-.2.8-.6 1z" fill="#FFFFFF"/></svg></span><span class="pill-name">Unreal Engine</span><span class="pill-role">Lighting &amp; Environments</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L4 6.6v9.2L12 22l8-6.2V6.6L12 2zm0 3.2l5.4 3.1-2.4 1.4-3-1.7V5.2zm-1.5 5.7l3 1.7v3.5l-3-1.7v-3.5zm-5 1.3l5.4-3.1v2.8l-3 1.7-2.4-1.4zm2.4 4.5l3-1.7v3.5l-3-1.7v-1.8zm10.6-2.8l-2.4 1.4-3-1.7v-2.8l5.4 3.1zm-3.9 3.1l-3 1.7v-3.5l3 1.7v.1z" fill="#18181b"/></svg></span><span class="pill-name">Unity Engine</span><span class="pill-role">Interactive &amp; Real-Time</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#002B37"/><text x="4" y="16" fill="#00E5FF" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Pt</text></svg></span><span class="pill-name">Substance Painter</span><span class="pill-role">PBR Texturing</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#0696D7"/><text x="3" y="16" fill="#FFFFFF" font-family="'Inter', sans-serif" font-weight="900" font-size="10">3M</text></svg></span><span class="pill-name">Autodesk 3ds Max</span><span class="pill-role">Hard Surface</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#205B6F"/><text x="5" y="16" fill="#4BDBE0" font-family="'Inter', sans-serif" font-weight="900" font-size="11">M</text></svg></span><span class="pill-name">Autodesk Maya</span><span class="pill-role">3D Animation</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#001E36"/><text x="4" y="16" fill="#31A8FF" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Ps</text></svg></span><span class="pill-name">Adobe Photoshop</span><span class="pill-role">Texture &amp; Post</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#00005B"/><text x="4" y="16" fill="#9999FF" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Pr</text></svg></span><span class="pill-name">Adobe Premiere Pro</span><span class="pill-role">Video Editing</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#330000"/><text x="5" y="16" fill="#FF9A00" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Ai</text></svg></span><span class="pill-name">Adobe Illustrator</span><span class="pill-role">Vector Assets</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#003534"/><text x="3" y="16" fill="#00E5D2" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Au</text></svg></span><span class="pill-name">Adobe Audition</span><span class="pill-role">Audio Cleanup</span></div>
                         <!-- Duplicate set for seamless continuous loop -->
-                        <div class="tool-pill"><span class="pill-name">Blender</span><span class="pill-role">Cycles Raytracing</span></div>
-                        <div class="tool-pill"><span class="pill-name">Unreal Engine</span><span class="pill-role">Lighting &amp; Environments</span></div>
-                        <div class="tool-pill"><span class="pill-name">Unity Engine</span><span class="pill-role">Interactive &amp; Real-Time</span></div>
-                        <div class="tool-pill"><span class="pill-name">Substance Painter</span><span class="pill-role">PBR Texturing</span></div>
-                        <div class="tool-pill"><span class="pill-name">Autodesk 3ds Max</span><span class="pill-role">Hard Surface</span></div>
-                        <div class="tool-pill"><span class="pill-name">Autodesk Maya</span><span class="pill-role">3D Animation</span></div>
-                        <div class="tool-pill"><span class="pill-name">Adobe Photoshop</span><span class="pill-role">Texture &amp; Post</span></div>
-                        <div class="tool-pill"><span class="pill-name">Adobe Premiere Pro</span><span class="pill-role">Video Editing</span></div>
-                        <div class="tool-pill"><span class="pill-name">Adobe Illustrator</span><span class="pill-role">Vector Assets</span></div>
-                        <div class="tool-pill"><span class="pill-name">Adobe Audition</span><span class="pill-role">Audio Cleanup</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.51 2.03a1.5 1.5 0 0 0-1.55 1.25l-.46 2.45a7.99 7.99 0 0 0-3.3 1.52l-2.2-1.18a1.5 1.5 0 0 0-1.95.59l-.02.04a1.5 1.5 0 0 0 .58 1.95l2.12 1.14a8.04 8.04 0 0 0-.73 3.21c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8c-.5 0-.99.05-1.47.14l.43-2.31a1.5 1.5 0 0 0-.95-1.7zm.49 8.97a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" fill="#E87D0D"/></svg></span><span class="pill-name">Blender</span><span class="pill-role">Cycles Raytracing</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0E1118"/><path d="M12 5.5c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5 6.5-2.91 6.5-6.5-2.91-6.5-6.5-6.5zm2.8 9.3c-.6.4-1.6.7-2.8.7s-2.2-.3-2.8-.7c-.3-.2-.5-.6-.5-1v-4.5c0-.4.3-.8.7-.8h1.2c.4 0 .7.4.7.8v3.5c0 .2.3.4.7.4s.7-.2.7-.4V9.5c0-.4.3-.8.7-.8h1.2c.4 0 .7.4.7.8v4.5c0 .4-.2.8-.6 1z" fill="#FFFFFF"/></svg></span><span class="pill-name">Unreal Engine</span><span class="pill-role">Lighting &amp; Environments</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L4 6.6v9.2L12 22l8-6.2V6.6L12 2zm0 3.2l5.4 3.1-2.4 1.4-3-1.7V5.2zm-1.5 5.7l3 1.7v3.5l-3-1.7v-3.5zm-5 1.3l5.4-3.1v2.8l-3 1.7-2.4-1.4zm2.4 4.5l3-1.7v3.5l-3-1.7v-1.8zm10.6-2.8l-2.4 1.4-3-1.7v-2.8l5.4 3.1zm-3.9 3.1l-3 1.7v-3.5l3 1.7v.1z" fill="#18181b"/></svg></span><span class="pill-name">Unity Engine</span><span class="pill-role">Interactive &amp; Real-Time</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#002B37"/><text x="4" y="16" fill="#00E5FF" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Pt</text></svg></span><span class="pill-name">Substance Painter</span><span class="pill-role">PBR Texturing</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#0696D7"/><text x="3" y="16" fill="#FFFFFF" font-family="'Inter', sans-serif" font-weight="900" font-size="10">3M</text></svg></span><span class="pill-name">Autodesk 3ds Max</span><span class="pill-role">Hard Surface</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#205B6F"/><text x="5" y="16" fill="#4BDBE0" font-family="'Inter', sans-serif" font-weight="900" font-size="11">M</text></svg></span><span class="pill-name">Autodesk Maya</span><span class="pill-role">3D Animation</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#001E36"/><text x="4" y="16" fill="#31A8FF" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Ps</text></svg></span><span class="pill-name">Adobe Photoshop</span><span class="pill-role">Texture &amp; Post</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#00005B"/><text x="4" y="16" fill="#9999FF" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Pr</text></svg></span><span class="pill-name">Adobe Premiere Pro</span><span class="pill-role">Video Editing</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#330000"/><text x="5" y="16" fill="#FF9A00" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Ai</text></svg></span><span class="pill-name">Adobe Illustrator</span><span class="pill-role">Vector Assets</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#003534"/><text x="3" y="16" fill="#00E5D2" font-family="'Inter', sans-serif" font-weight="900" font-size="11">Au</text></svg></span><span class="pill-name">Adobe Audition</span><span class="pill-role">Audio Cleanup</span></div>
                     </div>
                 </div>
 
                 <!-- Lane 2: Enterprise IT, Biometrics, Web & Automation -->
                 <div class="marquee-track-lane lane-right" style="margin-top:12px;">
                     <div class="marquee-inner">
-                        <div class="tool-pill"><span class="pill-name">Windows Server</span><span class="pill-role">Enterprise OS</span></div>
-                        <div class="tool-pill"><span class="pill-name">Active Directory (AD DS)</span><span class="pill-role">User &amp; Domain</span></div>
-                        <div class="tool-pill"><span class="pill-name">SQL Server (SSMS)</span><span class="pill-role">Queries &amp; Logs</span></div>
-                        <div class="tool-pill"><span class="pill-name">Trellix / McAfee</span><span class="pill-role">Endpoint Security</span></div>
-                        <div class="tool-pill"><span class="pill-name">DigiYatra Biometrics</span><span class="pill-role">Airport Gates</span></div>
-                        <div class="tool-pill"><span class="pill-name">WordPress CMS</span><span class="pill-role">Web Platform</span></div>
-                        <div class="tool-pill"><span class="pill-name">WooCommerce</span><span class="pill-role">E-Commerce</span></div>
-                        <div class="tool-pill"><span class="pill-name">n8n Automation</span><span class="pill-role">Webhooks &amp; Sync</span></div>
-                        <div class="tool-pill"><span class="pill-name">Zapier</span><span class="pill-role">Pipelines</span></div>
-                        <div class="tool-pill"><span class="pill-name">Figma</span><span class="pill-role">UI Mockups</span></div>
-                        <div class="tool-pill"><span class="pill-name">Razorpay APIs</span><span class="pill-role">Payments</span></div>
-                        <div class="tool-pill"><span class="pill-name">Canva</span><span class="pill-role">Graphics</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M3 4.5L10.5 3.5V11.2H3V4.5ZM3 12.8H10.5V20.5L3 19.5V12.8ZM11.8 3.3L21 2V11.2H11.8V3.3ZM11.8 12.8H21V22L11.8 20.7V12.8Z" fill="#0078D4"/></svg></span><span class="pill-name">Windows Server</span><span class="pill-role">Enterprise OS</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="6" height="4" rx="1"/><rect x="15" y="4" width="6" height="4" rx="1"/><rect x="9" y="16" width="6" height="4" rx="1"/><path d="M6 8v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8M12 13v3"/></svg></span><span class="pill-name">Active Directory</span><span class="pill-role">User &amp; Domain</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></span><span class="pill-name">SQL Server</span><span class="pill-role">Queries &amp; Logs</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="pill-name">Trellix / McAfee</span><span class="pill-role">Endpoint Security</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="11" r="3"/><path d="M8.5 17a4 4 0 0 1 7 0"/></svg></span><span class="pill-name">DigiYatra</span><span class="pill-role">Biometric Gates</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#21759B"><circle cx="12" cy="12" r="10" fill="none" stroke="#21759B" stroke-width="2"/><path d="M4.5 12c0 2.9 1.6 5.4 3.9 6.7L4.7 9.8c-.1.7-.2 1.4-.2 2.2zm11.2-5.4c.5 0 .9.2.9.7 0 .4-.2.8-.5 1.4l-1.9 5.5-1.4-4.2 1.3-3.4h1.6zm-5.4 0c.5 0 .8.2.8.7 0 .3-.1.7-.3 1.2l-2.6 7.6-1.5-4.5.8-5h2.8zm-2 12.3l2.8-8.1 2 5.9-1.3 3.8c-1.1.4-2.3.6-3.5.4zm8.6-2.1c1.5-1.4 2.5-3.5 2.5-5.8 0-1.4-.3-2.7-.9-3.8l-3.3 9.7 1.7-.1z"/></svg></span><span class="pill-name">WordPress CMS</span><span class="pill-role">Web Platform</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#96588A"/><path d="M4 8.5c0-.8.6-1.5 1.4-1.5h13.2c.8 0 1.4.7 1.4 1.5v7c0 .8-.6 1.5-1.4 1.5H5.4c-.8 0-1.4-.7-1.4-1.5v-7zm3 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" fill="#FFFFFF"/></svg></span><span class="pill-name">WooCommerce</span><span class="pill-role">E-Commerce</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EA4B71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 12h3M15 7.5 12 12l3 4.5"/></svg></span><span class="pill-name">n8n Automation</span><span class="pill-role">Webhooks &amp; Sync</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93" stroke="#FF4A00" stroke-width="3" stroke-linecap="round"/></svg></span><span class="pill-name">Zapier</span><span class="pill-role">Pipelines</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 1 0-8h4v8H8z" fill="#F24E1E"/><path d="M12 4h4a4 4 0 0 1 0 8h-4V4z" fill="#FF7262"/><path d="M12 12h4a4 4 0 0 1 0 8h-4v-8z" fill="#1ABCFE"/><path d="M8 20a4 4 0 0 1-4-4 4 4 0 0 1 4-4h4v4a4 4 0 0 1-4 4z" fill="#0ACF83"/><circle cx="8" cy="12" r="4" fill="#A259FF"/></svg></span><span class="pill-name">Figma</span><span class="pill-role">UI Mockups</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#0C2340"/><path d="M15.5 5h-7L6 14.5l4-1.2L12 9l2.5 10 3.5-9.5-2.5-4.5z" fill="#3395FF"/></svg></span><span class="pill-name">Razorpay APIs</span><span class="pill-role">Payments</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00C4CC"/><text x="7" y="16.5" fill="#FFFFFF" font-family="'Inter', cursive, sans-serif" font-weight="900" font-size="14" font-style="italic">C</text></svg></span><span class="pill-name">Canva</span><span class="pill-role">Graphics</span></div>
                         <!-- Duplicate set for seamless continuous loop -->
-                        <div class="tool-pill"><span class="pill-name">Windows Server</span><span class="pill-role">Enterprise OS</span></div>
-                        <div class="tool-pill"><span class="pill-name">Active Directory (AD DS)</span><span class="pill-role">User &amp; Domain</span></div>
-                        <div class="tool-pill"><span class="pill-name">SQL Server (SSMS)</span><span class="pill-role">Queries &amp; Logs</span></div>
-                        <div class="tool-pill"><span class="pill-name">Trellix / McAfee</span><span class="pill-role">Endpoint Security</span></div>
-                        <div class="tool-pill"><span class="pill-name">DigiYatra Biometrics</span><span class="pill-role">Airport Gates</span></div>
-                        <div class="tool-pill"><span class="pill-name">WordPress CMS</span><span class="pill-role">Web Platform</span></div>
-                        <div class="tool-pill"><span class="pill-name">WooCommerce</span><span class="pill-role">E-Commerce</span></div>
-                        <div class="tool-pill"><span class="pill-name">n8n Automation</span><span class="pill-role">Webhooks &amp; Sync</span></div>
-                        <div class="tool-pill"><span class="pill-name">Zapier</span><span class="pill-role">Pipelines</span></div>
-                        <div class="tool-pill"><span class="pill-name">Figma</span><span class="pill-role">UI Mockups</span></div>
-                        <div class="tool-pill"><span class="pill-name">Razorpay APIs</span><span class="pill-role">Payments</span></div>
-                        <div class="tool-pill"><span class="pill-name">Canva</span><span class="pill-role">Graphics</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M3 4.5L10.5 3.5V11.2H3V4.5ZM3 12.8H10.5V20.5L3 19.5V12.8ZM11.8 3.3L21 2V11.2H11.8V3.3ZM11.8 12.8H21V22L11.8 20.7V12.8Z" fill="#0078D4"/></svg></span><span class="pill-name">Windows Server</span><span class="pill-role">Enterprise OS</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="6" height="4" rx="1"/><rect x="15" y="4" width="6" height="4" rx="1"/><rect x="9" y="16" width="6" height="4" rx="1"/><path d="M6 8v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8M12 13v3"/></svg></span><span class="pill-name">Active Directory</span><span class="pill-role">User &amp; Domain</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></span><span class="pill-name">SQL Server</span><span class="pill-role">Queries &amp; Logs</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="pill-name">Trellix / McAfee</span><span class="pill-role">Endpoint Security</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="11" r="3"/><path d="M8.5 17a4 4 0 0 1 7 0"/></svg></span><span class="pill-name">DigiYatra</span><span class="pill-role">Biometric Gates</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#21759B"><circle cx="12" cy="12" r="10" fill="none" stroke="#21759B" stroke-width="2"/><path d="M4.5 12c0 2.9 1.6 5.4 3.9 6.7L4.7 9.8c-.1.7-.2 1.4-.2 2.2zm11.2-5.4c.5 0 .9.2.9.7 0 .4-.2.8-.5 1.4l-1.9 5.5-1.4-4.2 1.3-3.4h1.6zm-5.4 0c.5 0 .8.2.8.7 0 .3-.1.7-.3 1.2l-2.6 7.6-1.5-4.5.8-5h2.8zm-2 12.3l2.8-8.1 2 5.9-1.3 3.8c-1.1.4-2.3.6-3.5.4zm8.6-2.1c1.5-1.4 2.5-3.5 2.5-5.8 0-1.4-.3-2.7-.9-3.8l-3.3 9.7 1.7-.1z"/></svg></span><span class="pill-name">WordPress CMS</span><span class="pill-role">Web Platform</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#96588A"/><path d="M4 8.5c0-.8.6-1.5 1.4-1.5h13.2c.8 0 1.4.7 1.4 1.5v7c0 .8-.6 1.5-1.4 1.5H5.4c-.8 0-1.4-.7-1.4-1.5v-7zm3 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" fill="#FFFFFF"/></svg></span><span class="pill-name">WooCommerce</span><span class="pill-role">E-Commerce</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EA4B71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 12h3M15 7.5 12 12l3 4.5"/></svg></span><span class="pill-name">n8n Automation</span><span class="pill-role">Webhooks &amp; Sync</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93" stroke="#FF4A00" stroke-width="3" stroke-linecap="round"/></svg></span><span class="pill-name">Zapier</span><span class="pill-role">Pipelines</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 1 0-8h4v8H8z" fill="#F24E1E"/><path d="M12 4h4a4 4 0 0 1 0 8h-4V4z" fill="#FF7262"/><path d="M12 12h4a4 4 0 0 1 0 8h-4v-8z" fill="#1ABCFE"/><path d="M8 20a4 4 0 0 1-4-4 4 4 0 0 1 4-4h4v4a4 4 0 0 1-4 4z" fill="#0ACF83"/><circle cx="8" cy="12" r="4" fill="#A259FF"/></svg></span><span class="pill-name">Figma</span><span class="pill-role">UI Mockups</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#0C2340"/><path d="M15.5 5h-7L6 14.5l4-1.2L12 9l2.5 10 3.5-9.5-2.5-4.5z" fill="#3395FF"/></svg></span><span class="pill-name">Razorpay APIs</span><span class="pill-role">Payments</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00C4CC"/><text x="7" y="16.5" fill="#FFFFFF" font-family="'Inter', cursive, sans-serif" font-weight="900" font-size="14" font-style="italic">C</text></svg></span><span class="pill-name">Canva</span><span class="pill-role">Graphics</span></div>
                     </div>
                 </div>
             </div>
@@ -5928,7 +5932,7 @@
          CHAPTER 03: DIGITAL ART & FREELANCE SHOWCASE (DARK SECTION)
          ===================================================================== -->
     <section class="section-wrapper is-dark-section" id="showcase-section" aria-label="3D Work, Animation, and Client Web Projects">
-        <div class="section-inner">
+        <div class="section-inner no-skew">
             <!-- CHAPTER GATE: CREATIVE SHOWCASE -->
             <div class="chapter-gate dark-gate" data-enter>
                 <div style="display:flex;align-items:center;gap:10px;">
@@ -5969,8 +5973,11 @@
                 </div>
             </div>
 
-            <!-- PART 2: HORIZONTAL PINNED SPATIAL REEL (5 LIGHTING STUDIES) -->
-            <div id="spatialExhibitionSection" style="margin-top:72px;">
+        </div><!-- /section-inner Part 1 -->
+
+        <!-- PART 2: HORIZONTAL PINNED SPATIAL REEL (5 LIGHTING STUDIES) -->
+        <div id="spatialExhibitionSection" class="no-skew" style="margin-top:72px; width:100%; position:relative;">
+            <div class="section-inner no-skew">
                 <div class="spatial-intro-flex" data-enter>
                     <div>
                         <p class="sec-tag">02 / SELECTED 3D RENDERS</p>
@@ -5989,8 +5996,9 @@
                         </div>
                     </div>
                 </div>
+            </div><!-- /section-inner header -->
 
-                <div class="spatial-reel-viewport" id="spatialReelViewport" style="margin-top:32px;">
+            <div class="spatial-reel-viewport" id="spatialReelViewport" style="margin-top:32px;">
                     <div class="spatial-reel-track" id="spatialReelTrack">
                         <!-- Card 1: Moon in the River -->
                         <div class="spatial-reel-card is-flagship" onclick="openLB('assets/moon-in-the-river.jpg','Moon in the River — Environmental Lighting Study')">
@@ -6035,35 +6043,37 @@
                         </div>
 
                         <!-- Card 4: Glass Optics & Ice -->
-                        <div class="spatial-reel-card" onclick="openLB('assets/glass-with-ice.jpg','Terracotta & Glass — Optical Refraction Study')">
+                        <div class="spatial-reel-card" onclick="openLB('assets/glass-with-ice.jpg','Glass Optics & Ice — Optical Refraction Study')">
                             <div class="reel-card-img-wrap">
-                                <img src="assets/glass-with-ice.jpg" alt="Terracotta and Glass material study" loading="lazy">
-                                <span class="reel-badge">GLASS REFRACTION</span>
+                                <img src="assets/glass-with-ice.jpg" alt="Glass Optics and Ice material study" loading="lazy">
+                                <span class="reel-badge">LIQUID OPTICS</span>
                             </div>
                             <div class="reel-card-info">
-                                <div class="reel-card-meta"><span>04 · OPTICS</span><span>IOR 1.45 CAUSTICS</span></div>
+                                <div class="reel-card-meta"><span>04 · CAUSTICS</span><span>IOR 1.33 &amp; 1.45 OPTICS</span></div>
                                 <h4 class="reel-card-title">Glass Optics &amp; Ice</h4>
-                                <p class="reel-card-desc">Curved architectural arches contrasting rough earthy clay with refractive glass caustics.</p>
+                                <p class="reel-card-desc">Photorealistic study of liquid light transmission, internal ice reflections, and subtle condensation caustics.</p>
                                 <span class="reel-action-link">INSPECT FULL RENDER ↗</span>
                             </div>
                         </div>
 
                         <!-- Card 5: Terrarium Bottle -->
-                        <div class="spatial-reel-card" onclick="openLB('assets/terrarium-bottle.jpg','The Corridor — Hard Surface Architectural Study')">
+                        <div class="spatial-reel-card" onclick="openLB('assets/terrarium-bottle.jpg','Terrarium Bottle — Glass Transmission & Organic Study')">
                             <div class="reel-card-img-wrap">
-                                <img src="assets/terrarium-bottle.jpg" alt="The Corridor hard surface render" loading="lazy">
-                                <span class="reel-badge">HARD SURFACE</span>
+                                <img src="assets/terrarium-bottle.jpg" alt="Terrarium Bottle glass and organic render" loading="lazy">
+                                <span class="reel-badge">GLASS &amp; ORGANICS</span>
                             </div>
                             <div class="reel-card-info">
-                                <div class="reel-card-meta"><span>05 · PERSPECTIVE</span><span>CONCRETE PBR &amp; DEPTH</span></div>
-                                <h4 class="reel-card-title">The Corridor</h4>
-                                <p class="reel-card-desc">One-point perspective hallway testing brutalist concrete textures, indirect bounce illumination, and shadows.</p>
+                                <div class="reel-card-meta"><span>05 · MACRO OPTICS</span><span>BLENDER CYCLES PBR</span></div>
+                                <h4 class="reel-card-title">Terrarium Bottle</h4>
+                                <p class="reel-card-desc">Macro study exploring curved glass bottle thickness, interior transmission, and subsurface scattering on organic foliage.</p>
                                 <span class="reel-action-link">INSPECT FULL RENDER ↗</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div><!-- /spatial-reel-viewport -->
 
+            <div class="section-inner no-skew">
                 <div class="spatial-reel-progress-wrap">
                     <div class="reel-progress-bar">
                         <div class="reel-progress-fill" id="reelProgressFill"></div>
@@ -6071,9 +6081,11 @@
                     <div class="spatial-sub-prompt">SCROLL DOWN TO EXPLORE · CLICK ANY PIECE TO INSPECT</div>
                 </div>
             </div>
+        </div><!-- /#spatialExhibitionSection -->
 
-            <!-- PART 3: FREELANCE CLIENT WEBSITES & N8N AUTOMATION PIPELINES -->
-            <div id="web-editorial-anchor" style="margin-top:72px;">
+        <!-- PART 3: FREELANCE CLIENT WEBSITES & N8N AUTOMATION PIPELINES -->
+        <div class="section-inner no-skew" style="margin-top:72px;">
+            <div id="web-editorial-anchor">
                 <div class="web-intro-header" data-enter>
                     <p class="sec-tag">03 / FREELANCE CLIENT WORK &amp; AUTOMATION</p>
                     <h3 class="sec-title" style="font-size:clamp(26px, 3.4vw, 40px); margin-bottom:12px;">
@@ -7245,7 +7257,8 @@
             const mm = gsap.matchMedia();
             mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
                 // Target inner containers (never pinned outer wrappers) to preserve ScrollTrigger pin geometry
-                const skewTargets = gsap.utils.toArray('.section-inner, .hero-content-frame');
+                // Target inner containers (never pinned outer wrappers or sections containing pinned ScrollTriggers)
+                const skewTargets = gsap.utils.toArray('.section-inner:not(#showcase-section .section-inner):not(.no-skew), .hero-content-frame');
                 skewTargets.forEach(el => el.classList.add('velocity-skew-target'));
 
                 const clampSkew = gsap.utils.clamp(-1.5, 1.5);
