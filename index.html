@@ -3526,11 +3526,16 @@
 }
 
 /* --- MUSEUM-GRADE WHITE CONTACT SECTION --- */
-#contact-section {
-    background-color: #ffffff !important;
-    background-image: none !important;
-    color: #0a0a0a !important;
-    border-top: 1px solid var(--line-strong);
+#contact-section.is-dark-section {
+    background-color: #090908 !important;
+    background-image: 
+        radial-gradient(ellipse 65% 55% at 20% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 65% at 80% 75%, rgba(225, 225, 235, 0.04) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 55% at 50% 15%, rgba(255, 255, 255, 0.03) 0%, transparent 75%),
+        radial-gradient(ellipse 55% 65% at 30% 85%, rgba(190, 190, 205, 0.025) 0%, transparent 60%) !important;
+    background-size: 140% 140% !important;
+    color: #e4e4e7 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     position: relative;
 }
 #contact-section .sec-tag {
@@ -4116,6 +4121,441 @@
     }
 }
 
+
+/* ═════════════════════════════════════════════════════════════════════
+   STRICT 50/50 ALTERNATING RHYTHM & BULLETPROOF CONTRAST ENGINE
+   ═════════════════════════════════════════════════════════════════════ */
+
+/* Reset base wrappers */
+.section-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   DARK SECTIONS (Chapter 01 Experience, Chapter 03 Showcase, Chapter 05 Contact)
+   ───────────────────────────────────────────────────────────────────── */
+.is-dark-section {
+    background-color: #090908 !important;
+    background-image: 
+        radial-gradient(ellipse 65% 55% at 20% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 65% at 80% 75%, rgba(225, 225, 235, 0.04) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 55% at 50% 15%, rgba(255, 255, 255, 0.03) 0%, transparent 75%),
+        radial-gradient(ellipse 55% 65% at 30% 85%, rgba(190, 190, 205, 0.025) 0%, transparent 60%) !important;
+    background-size: 140% 140% !important;
+    color: #e4e4e7 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Force stark pure white headings in ALL dark sections */
+.is-dark-section .sec-title,
+.is-dark-section h2,
+.is-dark-section h3,
+.is-dark-section .contact-hero-title,
+.is-dark-section .cinema-title,
+.is-dark-section .spatial-sec-title,
+.is-dark-section .infra-title,
+.is-dark-section .accreditations-intro .sec-title {
+    color: #ffffff !important;
+}
+
+.is-dark-section .sec-title em,
+.is-dark-section h2 em,
+.is-dark-section h3 em,
+.is-dark-section .contact-hero-title em,
+.is-dark-section .cinema-title em,
+.is-dark-section .spatial-sec-title em {
+    color: #d4d4d8 !important;
+    font-style: italic;
+}
+
+.is-dark-section .sec-tag {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+.is-dark-section .sec-tag::before {
+    background: #ffffff !important;
+}
+
+.is-dark-section .sec-sub,
+.is-dark-section .contact-hero-subtitle,
+.is-dark-section .cinema-desc,
+.is-dark-section .spatial-sec-desc {
+    color: #a1a1aa !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   LIGHT SECTIONS (Chapter 00 Hero, Chapter 02 Skills, Chapter 04 How I Work)
+   ───────────────────────────────────────────────────────────────────── */
+.is-light-section {
+    background-color: #fbfbf9 !important;
+    background-image: 
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(240, 240, 235, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 100% 100%, rgba(245, 245, 240, 0.6) 0%, transparent 60%) !important;
+    color: #27272a !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.is-light-section .sec-title,
+.is-light-section h2,
+.is-light-section h3 {
+    color: #0a0a0a !important;
+}
+
+.is-light-section .sec-title em,
+.is-light-section h2 em,
+.is-light-section h3 em {
+    color: #52525b !important;
+    font-style: italic;
+}
+
+.is-light-section .sec-tag {
+    color: #71717a !important;
+}
+.is-light-section .sec-tag::before {
+    background: #0a0a0a !important;
+}
+
+.is-light-section .sec-sub {
+    color: #52525b !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   CHAPTER 02 LIGHT OVERHAUL: CARDS & DUAL-LANE MARQUEE
+   ───────────────────────────────────────────────────────────────────── */
+#skills-section.is-light-section .spectrum-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+    color: #18181b !important;
+}
+
+#skills-section.is-light-section .spectrum-card:hover {
+    border-color: rgba(0, 0, 0, 0.16) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06) !important;
+}
+
+#skills-section.is-light-section .spectrum-card-title {
+    color: #0a0a0a !important;
+}
+
+#skills-section.is-light-section .spectrum-card-desc {
+    color: #52525b !important;
+}
+
+#skills-section.is-light-section .spectrum-tag {
+    background: #f4f4f5 !important;
+    color: #27272a !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+#skills-section.is-light-section .spectrum-row-label {
+    color: #71717a !important;
+}
+
+#skills-section.is-light-section .spectrum-row-val {
+    color: #0a0a0a !important;
+    font-weight: 500 !important;
+}
+
+#skills-section.is-light-section .spectrum-card-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+#skills-section.is-light-section .spectrum-card-footer a {
+    color: #0a0a0a !important;
+}
+
+/* Light Marquee Container & Badges */
+#skills-section.is-light-section .tools-marquee-container {
+    background: #f4f4f2 !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+}
+
+#skills-section.is-light-section .tools-marquee-header span {
+    color: #71717a !important;
+}
+
+#skills-section.is-light-section .tool-pill {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+    color: #18181b !important;
+}
+
+#skills-section.is-light-section .tool-pill:hover {
+    border-color: #0a0a0a !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+#skills-section.is-light-section .tool-pill .pill-name {
+    color: #0a0a0a !important;
+    font-weight: 600 !important;
+}
+
+#skills-section.is-light-section .tool-pill .pill-role {
+    color: #71717a !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   CHAPTER 04 LIGHT OVERHAUL: HOW I WORK & PERSONAL TEAM NOTE
+   ───────────────────────────────────────────────────────────────────── */
+#promise-section.is-light-section .promise-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 32px 28px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+#promise-section.is-light-section .promise-card:hover {
+    transform: translateY(-3px) !important;
+    border-color: rgba(0, 0, 0, 0.16) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06) !important;
+}
+
+#promise-section.is-light-section .promise-card-num {
+    font-family: 'DM Mono', monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.12em !important;
+    color: #71717a !important;
+    margin-bottom: 14px !important;
+}
+
+#promise-section.is-light-section .promise-card-title {
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #0a0a0a !important;
+    margin-bottom: 12px !important;
+    line-height: 1.35 !important;
+}
+
+#promise-section.is-light-section .promise-card-body {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    color: #52525b !important;
+}
+
+/* Personal Team Note Block (Replaces Cringe Sales Quote) */
+.personal-team-note {
+    margin-top: 48px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 16px;
+    padding: 44px 48px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+.personal-team-note::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 4px; height: 100%;
+    background: #0a0a0a;
+}
+
+.personal-team-note-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #71717a;
+    margin-bottom: 12px;
+}
+
+.personal-team-note-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(24px, 2.8vw, 32px);
+    font-weight: 400;
+    color: #0a0a0a;
+    line-height: 1.25;
+    margin-bottom: 18px;
+}
+
+.personal-team-note-body {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #3f3f46;
+    margin-bottom: 24px;
+}
+
+.personal-team-note-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.author-name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #0a0a0a;
+}
+
+.author-role {
+    font-size: 13px;
+    color: #71717a;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   CHAPTER 05 DARK OVERHAUL: MUSEUM-GRADE OBSIDIAN CONTACT DECK
+   ───────────────────────────────────────────────────────────────────── */
+#contact-section.is-dark-section .contact-dark-deck {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+    margin-top: 48px;
+}
+
+#contact-section.is-dark-section .contact-intake-card-dark {
+    background: #141413 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 36px 36px !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+#contact-section.is-dark-section .intake-email-block-dark {
+    background: #1b1b19 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 24px !important;
+    margin: 24px 0 20px 0 !important;
+}
+
+#contact-section.is-dark-section .intake-email-value-dark {
+    font-family: 'DM Mono', monospace !important;
+    font-size: clamp(17px, 2.2vw, 22px) !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    display: block !important;
+    margin: 8px 0 16px 0 !important;
+    letter-spacing: -0.01em !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+
+#contact-section.is-dark-section .intake-email-value-dark:hover {
+    color: #10b981 !important;
+}
+
+#contact-section.is-dark-section .btn-dark-copy {
+    background: #ffffff !important;
+    color: #0a0a0a !important;
+    border: 1px solid #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+#contact-section.is-dark-section .btn-dark-copy:hover {
+    background: #e4e4e7 !important;
+    transform: translateY(-1px) !important;
+}
+
+#contact-section.is-dark-section .btn-dark-compose {
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: all 0.2s ease !important;
+}
+
+#contact-section.is-dark-section .btn-dark-compose:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#contact-section.is-dark-section .intake-phone-val-dark {
+    font-family: 'DM Mono', monospace !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+#contact-section.is-dark-section .contact-proof-card-dark {
+    background: #141413 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 32px 32px !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5) !important;
+}
+
+#contact-section.is-dark-section .network-dark-tile {
+    background: #1b1b19 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px !important;
+    padding: 14px 18px !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+#contact-section.is-dark-section .network-dark-tile:hover {
+    background: #242422 !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+    transform: translateY(-2px) !important;
+}
+
+#contact-section.is-dark-section .site-footer-dark {
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding-top: 40px !important;
+    color: #71717a !important;
+    font-size: 13px !important;
+}
+
+#contact-section.is-dark-section .site-footer-dark a {
+    color: #a1a1aa !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+#contact-section.is-dark-section .site-footer-dark a:hover {
+    color: #ffffff !important;
+}
+
+@media (max-width: 900px) {
+    #contact-section.is-dark-section .contact-dark-deck {
+        grid-template-columns: 1fr !important;
+    }
+    .personal-team-note {
+        padding: 32px 24px !important;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -4135,7 +4575,7 @@
             <a href="#experience-section">Experience &amp; Certs</a>
             <a href="#skills-section">Skills &amp; Tools</a>
             <a href="#showcase-section">Creative Showcase</a>
-            <a href="#promise-section">My Promise</a>
+            <a href="#promise-section">How I Work</a>
             <a href="#contact-section">Contact</a>
         </nav>
         <div class="header-actions">
@@ -4145,9 +4585,9 @@
     </header>
 
     <!-- =====================================================================
-         CHAPTER 00: HERO & INTRODUCTION
+         CHAPTER 00: HERO & INTRODUCTION (LIGHT SECTION)
          ===================================================================== -->
-    <section id="hero-section" aria-label="Introduction">
+    <section id="hero-section" class="is-light-section" aria-label="Introduction">
         <div class="hero-character-frame" id="charFrame">
             <canvas id="hero-canvas" aria-hidden="true"></canvas>
         </div>
@@ -4178,15 +4618,15 @@
                     <span class="trivector-title">Systems &amp; Support</span>
                     <span class="trivector-sub">150+ Servers · Linux, SQL, AD</span>
                 </a>
-                <a href="#showcase-section" class="trivector-card">
-                    <span class="trivector-tag">CREATIVE</span>
-                    <span class="trivector-title">3D Art &amp; Motion</span>
-                    <span class="trivector-sub">Blender Cycles · UE &amp; Unity</span>
-                </a>
                 <a href="#skills-section" class="trivector-card">
                     <span class="trivector-tag">SKILLS &amp; TOOLS</span>
                     <span class="trivector-title">Toolkit &amp; Software</span>
                     <span class="trivector-sub">3D Suite · Windows Server · n8n</span>
+                </a>
+                <a href="#showcase-section" class="trivector-card">
+                    <span class="trivector-tag">CREATIVE</span>
+                    <span class="trivector-title">3D Art &amp; Motion</span>
+                    <span class="trivector-sub">Blender Cycles · UE &amp; Unity</span>
                 </a>
             </div>
 
@@ -4203,7 +4643,7 @@
     </section>
 
     <!-- =====================================================================
-         CHAPTER 01: WORK EXPERIENCE & VERIFIED ACCREDITATIONS
+         CHAPTER 01: WORK EXPERIENCE & ACCREDITATIONS (DARK SECTION)
          ===================================================================== -->
     <section class="section-wrapper is-dark-section" id="experience-section" aria-label="Work Experience and Systems Support">
         <div class="section-inner">
@@ -4225,303 +4665,219 @@
                 Over 3 years of practical IT experience keeping production servers, retail trading platforms, and airport biometric gates running smoothly, paired with verified cybersecurity credentials and formal management education.
             </p>
 
-            <!-- Big Metrics Banner -->
-            <div class="metrics-banner" data-enter>
-                <div class="metric-block">
-                    <div class="metric-num">150+</div>
-                    <div class="metric-label">Servers Monitored<br>Linux &amp; Windows environments</div>
+            <!-- Big Stat Grid -->
+            <div class="stats-grid" data-enter>
+                <div class="stat-card">
+                    <div class="stat-num counter" data-target="150" data-suffix="+">150+</div>
+                    <div class="stat-lbl">SERVERS MONITORED</div>
+                    <div class="stat-sub">Linux &amp; Windows Environments</div>
                 </div>
-                <div class="metric-block">
-                    <div class="metric-num">800</div>
-                    <div class="metric-label">Laptops Configured<br>Enterprise rollout with AD &amp; Trellix</div>
+                <div class="stat-card">
+                    <div class="stat-num counter" data-target="800">800</div>
+                    <div class="stat-lbl">LAPTOPS CONFIGURED</div>
+                    <div class="stat-sub">Enterprise Rollout with AD &amp; Trellix</div>
                 </div>
-                <div class="metric-block">
-                    <div class="metric-num">3+<span style="font-size:1.8rem">yr</span></div>
-                    <div class="metric-label">Hands-On Experience<br>Desktop &amp; production support</div>
+                <div class="stat-card">
+                    <div class="stat-num counter" data-target="3" data-suffix="+yr">3+yr</div>
+                    <div class="stat-lbl">HANDS-ON EXPERIENCE</div>
+                    <div class="stat-sub">Desktop &amp; Production Support</div>
                 </div>
-                <div class="metric-block">
-                    <div class="metric-num">24/7</div>
-                    <div class="metric-label">Shift Coverage<br>Night shifts supporting trading systems</div>
+                <div class="stat-card">
+                    <div class="stat-num">24/7</div>
+                    <div class="stat-lbl">SHIFT COVERAGE</div>
+                    <div class="stat-sub">Night Shifts Supporting Trading Systems</div>
                 </div>
             </div>
 
-            <!-- Case Studies Grid -->
-            <div class="infra-grid">
-                <!-- Case 1: Sharekhan -->
-                <article class="infra-card" data-enter>
-                    <div class="infra-card-top">
-                        <div class="infra-card-header">
-                            <span class="infra-status-live"><span class="live-dot-green"></span>TRADING SUPPORT</span>
-                            <span class="infra-period">Apr 2024 – Oct 2025</span>
-                        </div>
-                        <h3 class="infra-role">Sharekhan (Mirae Asset)</h3>
-                        <div class="infra-org">Production Support Engineer · Techigent Technologies · Mumbai</div>
-                        <p class="infra-summary">
-                            Supported retail trading applications across 150+ Linux and Windows servers. Worked rotating night shifts to make sure order routing and database jobs completed cleanly before morning market open.
-                        </p>
+            <!-- Experience Deep-Dive Cards Grid -->
+            <div class="infra-grid" data-enter style="margin-top:40px;">
+                <!-- Role 1: Sharekhan -->
+                <div class="infra-card">
+                    <div class="infra-card-header">
+                        <div class="infra-card-badge"><span class="badge-dot"></span>TRADING SUPPORT</div>
+                        <div class="infra-card-dates">APR 2024 – OCT 2025</div>
                     </div>
-
-                    <div class="infra-card-body">
-                        <div class="dossier-subheading">Core Responsibilities &amp; Daily Work</div>
-                        <div class="work-breakdown-list">
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>Server Monitoring:</strong> Monitored 150+ servers for CPU, memory spikes, disk space, and application services using internal dashboards.</div>
-                            </div>
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>Database &amp; SQL Queries:</strong> Ran SQL queries in SQL Server Management Studio (SSMS) to look up customer trade logs, investigate order failures, and verify transaction statuses.</div>
-                            </div>
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>Morning Health Checks:</strong> Completed thorough pre-market checklists before 9:00 AM so trading systems were verified green for morning opening bells.</div>
-                            </div>
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>Issue Escalation:</strong> Triaged incoming alerts, documented incident details in ticketing systems, and escalated complex database/network issues to L3 and DBA teams.</div>
-                            </div>
-                        </div>
-
-                        <div class="infra-tags">
-                            <span class="i-tag">150+ Servers</span>
-                            <span class="i-tag">SQL Server (SSMS)</span>
-                            <span class="i-tag">Linux &amp; Windows</span>
-                            <span class="i-tag">Night Shifts (24/7)</span>
-                            <span class="i-tag">Pre-Market Audits</span>
-                        </div>
+                    <h3 class="infra-card-title">Sharekhan (Mirae Asset)</h3>
+                    <p class="infra-card-role">Production Support Engineer · Techigent Technologies · Mumbai</p>
+                    <ul class="infra-bullets">
+                        <li><strong>Server Health:</strong> Daily pre-market verification on 150+ production servers hosting TradeTiger and online trading platforms.</li>
+                        <li><strong>Database Queries:</strong> Ran regular SQL Server (SSMS) queries to verify transaction log shipping and data integrity.</li>
+                        <li><strong>Service Availability:</strong> Monitored critical trading services, checking port listening states, memory utilization, and error logs before trading bells.</li>
+                        <li><strong>Issue Escalation:</strong> Triaged incoming alerts, documented incident details in ticketing systems, and escalated complex database/network issues to L3 and DBA teams.</li>
+                    </ul>
+                    <div class="infra-tags">
+                        <span class="infra-tag">150+ SERVERS</span>
+                        <span class="infra-tag">SQL SERVER (SSMS)</span>
+                        <span class="infra-tag">LINUX &amp; WINDOWS</span>
+                        <span class="infra-tag">NIGHT SHIFTS (24/7)</span>
+                        <span class="infra-tag">PRE-MARKET AUDITS</span>
                     </div>
-                </article>
+                </div>
 
-                <!-- Case 2: CSMIA DigiYatra Airport -->
-                <article class="infra-card" data-enter>
-                    <div class="infra-card-top">
-                        <div class="infra-card-header">
-                            <span class="infra-status-live"><span class="live-dot-green"></span>AIRPORT INFRASTRUCTURE</span>
-                            <span class="infra-period">Aug 2025 – Present</span>
-                        </div>
-                        <h3 class="infra-role">DigiYatra Passenger Gates</h3>
-                        <div class="infra-org">Desktop &amp; Biometric Support Engineer · CSMIA T2 · Mumbai</div>
-                        <p class="infra-summary">
-                            Providing on-site technical support for DigiYatra biometric e-gates at Chhatrapati Shivaji Maharaj International Airport (Terminal 2). Keeping passenger hardware online and operational.
-                        </p>
+                <!-- Role 2: DigiYatra -->
+                <div class="infra-card">
+                    <div class="infra-card-header">
+                        <div class="infra-card-badge"><span class="badge-dot"></span>AIRPORT INFRASTRUCTURE</div>
+                        <div class="infra-card-dates">AUG 2025 – PRESENT</div>
                     </div>
-
-                    <div class="infra-card-body">
-                        <div class="dossier-subheading">Core Responsibilities &amp; Daily Work</div>
-                        <div class="work-breakdown-list">
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>Hardware &amp; Gate Maintenance:</strong> Troubleshoot biometric scanners, industrial barcode readers, gate flap controllers, and Windows terminal clients.</div>
-                            </div>
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>Rapid Incident Response:</strong> Respond immediately to gate offline alerts or passenger scanning errors during high-volume airport departure rushes.</div>
-                            </div>
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>Network Checks:</strong> Verify LAN connectivity, IP allocations, and communication between entry gates and central verification backends.</div>
-                            </div>
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>System Maintenance:</strong> Run scheduled hardware reboots, camera alignment calibrations, and client software updates during low-traffic windows.</div>
-                            </div>
-                        </div>
-
-                        <div class="infra-tags">
-                            <span class="i-tag">DigiYatra Biometrics</span>
-                            <span class="i-tag">CSMIA Airport T2</span>
-                            <span class="i-tag">Barcode Scanners</span>
-                            <span class="i-tag">Terminal Hardware</span>
-                            <span class="i-tag">On-Site Support</span>
-                        </div>
+                    <h3 class="infra-card-title">DigiYatra Passenger Gates</h3>
+                    <p class="infra-card-role">Desktop &amp; Biometric Support Engineer · CSMIA Airport T2 · Mumbai</p>
+                    <ul class="infra-bullets">
+                        <li><strong>Biometric Kiosks:</strong> Maintenance of facial recognition cameras, barcode scanners, and e-gates at Terminal 2.</li>
+                        <li><strong>Rapid Response:</strong> Kept hardware uptime high during peak departure waves when thousands of passengers boarded.</li>
+                        <li><strong>Network Checks:</strong> Verify LAN connectivity, IP allocations, and communication between entry gates and central verification backends.</li>
+                        <li><strong>System Maintenance:</strong> Run scheduled hardware reboots, camera alignment calibrations, and client software updates during low-traffic windows.</li>
+                    </ul>
+                    <div class="infra-tags">
+                        <span class="infra-tag">DIGIYATRA BIOMETRICS</span>
+                        <span class="infra-tag">CSMIA AIRPORT T2</span>
+                        <span class="infra-tag">BARCODE SCANNERS</span>
+                        <span class="infra-tag">TERMINAL HARDWARE</span>
+                        <span class="infra-tag">ON-SITE SUPPORT</span>
                     </div>
-                </article>
+                </div>
 
-                <!-- Case 3: Enterprise Rollout -->
-                <article class="infra-card" data-enter>
-                    <div class="infra-card-top">
-                        <div class="infra-card-header">
-                            <span class="infra-status-live"><span class="live-dot-green"></span>ENTERPRISE DEPLOYMENT</span>
-                            <span class="infra-period">Oct 2023 – Apr 2024</span>
-                        </div>
-                        <h3 class="infra-role">Enterprise System Rollout</h3>
-                        <div class="infra-org">Desktop Support Engineer · Corporate Fleet Deployment</div>
-                        <p class="infra-summary">
-                            Configured, imaged, and deployed 800+ laptops for corporate employees across multiple office branches. Handled end-to-end setup including domain join, antivirus, and disk encryption.
-                        </p>
+                <!-- Role 3: Enterprise Rollout -->
+                <div class="infra-card">
+                    <div class="infra-card-header">
+                        <div class="infra-card-badge"><span class="badge-dot"></span>ENTERPRISE DEPLOYMENT</div>
+                        <div class="infra-card-dates">OCT 2023 – APR 2024</div>
                     </div>
-
-                    <div class="infra-card-body">
-                        <div class="dossier-subheading">Core Responsibilities &amp; Daily Work</div>
-                        <div class="work-breakdown-list">
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>OS Imaging:</strong> Installed standardized Windows enterprise images across 800+ Dell, HP, and Lenovo corporate laptops.</div>
-                            </div>
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>Active Directory:</strong> Joined systems to the company domain, created user accounts, and assigned appropriate security groups in Active Directory.</div>
-                            </div>
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>Security &amp; Encryption:</strong> Configured BitLocker full-disk encryption, deployed Trellix (McAfee) endpoint protection, and verified compliance.</div>
-                            </div>
-                            <div class="work-item">
-                                <span class="work-bullet">▸</span>
-                                <div><strong>User Handoff:</strong> Guided end-users through initial login, Outlook email configuration, VPN setup, and general desktop troubleshooting.</div>
-                            </div>
-                        </div>
-
-                        <div class="infra-tags">
-                            <span class="i-tag">800 Laptops</span>
-                            <span class="i-tag">Active Directory</span>
-                            <span class="i-tag">BitLocker Encryption</span>
-                            <span class="i-tag">Trellix Endpoint</span>
-                            <span class="i-tag">Domain Migration</span>
-                        </div>
+                    <h3 class="infra-card-title">Enterprise System Rollout</h3>
+                    <p class="infra-card-role">Desktop Support Engineer · Corporate Fleet Deployment</p>
+                    <ul class="infra-bullets">
+                        <li><strong>800+ Devices:</strong> Configured Windows 10/11 on 800+ commercial laptops following corporate image standards.</li>
+                        <li><strong>Domain Join:</strong> Added devices to Active Directory domains, assigned OU permissions, and configured user group policies.</li>
+                        <li><strong>Security &amp; Encryption:</strong> Configured BitLocker full-disk encryption, deployed Trellix (McAfee) endpoint protection, and verified compliance.</li>
+                        <li><strong>User Handoff:</strong> Guided end-users through initial login, Outlook email configuration, VPN setup, and general desktop troubleshooting.</li>
+                    </ul>
+                    <div class="infra-tags">
+                        <span class="infra-tag">800 LAPTOPS</span>
+                        <span class="infra-tag">ACTIVE DIRECTORY</span>
+                        <span class="infra-tag">BITLOCKER ENCRYPTION</span>
+                        <span class="infra-tag">TRELLIX ENDPOINT</span>
+                        <span class="infra-tag">DOMAIN MIGRATION</span>
                     </div>
-                </article>
+                </div>
             </div>
 
-            <!-- INTEGRATED ACCREDITATIONS & ACADEMIC BACKGROUND -->
-            <div class="accreditations-intro" data-enter style="margin-top:64px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08);">
-                <p class="sec-tag">Accreditations &amp; Academic Degree</p>
-                <h3 class="sec-title" style="font-size:clamp(2rem, 3.4vw, 2.8rem);">
-                    Verified Qualifications &amp;<br>
-                    <em>Academic Degree.</em>
+            <!-- Verified Accreditations & Academic Degree (Integrated in Chapter 01) -->
+            <div class="accreditations-intro" data-enter style="margin-top:64px;">
+                <p class="sec-tag"><span class="badge-dot"></span>Accreditations &amp; Academic Degree</p>
+                <h3 class="sec-title" style="font-size:clamp(24px, 3.2vw, 36px); margin-bottom:12px;">
+                    Verified Qualifications &amp; <em>Academic Degree.</em>
                 </h3>
                 <p class="sec-sub">
                     Industry-verified qualifications through Google and IBM, alongside my formal management degree from the University of Mumbai.
                 </p>
             </div>
 
-            <!-- SPLIT ACCREDITATIONS & DEGREE -->
-            <div class="accred-academic-layout" data-enter>
-                <!-- Left: 5 Verified Certifications -->
-                <div class="accred-cards-column">
-                    <!-- Card 1: Google Foundations of Cybersecurity -->
-                    <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="accred-card">
-                        <div class="accred-card-top">
-                            <span class="accred-org-pill google">Google</span>
-                            <span class="accred-status-pill verified">
-                                <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified
-                            </span>
+            <div class="accreditations-grid" data-enter style="margin-top:32px;">
+                <!-- Column 1: Industry Certifications -->
+                <div class="certs-column">
+                    <div class="cert-card">
+                        <div class="cert-card-header">
+                            <span class="cert-issuer-badge">GOOGLE</span>
+                            <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
                         </div>
-                        <div class="accred-card-title">Foundations of Cybersecurity</div>
-                        <p class="accred-card-desc">Core security models, the CIA triad, NIST Cybersecurity Framework, Linux command line basics, and SIEM tool fundamentals.</p>
-                        <div class="accred-card-footer">
-                            <span class="accred-id">ID: H77H8G20YS9N</span>
-                            <span class="accred-link-hint">Verify on Coursera ↗</span>
-                        </div>
-                    </a>
-
-                    <!-- Card 2: Google Networks & Network Security -->
-                    <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="accred-card">
-                        <div class="accred-card-top">
-                            <span class="accred-org-pill google">Google</span>
-                            <span class="accred-status-pill verified">
-                                <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified
-                            </span>
-                        </div>
-                        <div class="accred-card-title">Networks &amp; Network Security</div>
-                        <p class="accred-card-desc">TCP/IP and OSI network architecture, packet inspection, intrusion detection (IDS/IPS), and firewall rules.</p>
-                        <div class="accred-card-footer">
-                            <span class="accred-id">ID: 0ABTT3NHCDXO</span>
-                            <span class="accred-link-hint">Verify on Coursera ↗</span>
-                        </div>
-                    </a>
-
-                    <!-- Card 3: Google Manage Security Risks -->
-                    <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="accred-card">
-                        <div class="accred-card-top">
-                            <span class="accred-org-pill google">Google</span>
-                            <span class="accred-status-pill verified">
-                                <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified
-                            </span>
-                        </div>
-                        <div class="accred-card-title">Play It Safe: Manage Security Risks</div>
-                        <p class="accred-card-desc">Threat modeling, vulnerability assessments, security audit compliance, and incident escalation procedures.</p>
-                        <div class="accred-card-footer">
-                            <span class="accred-id">ID: WMJ79P4RT454</span>
-                            <span class="accred-link-hint">Verify on Coursera ↗</span>
-                        </div>
-                    </a>
-
-                    <!-- Card 4: IBM SkillsBuild Web Fundamentals -->
-                    <div class="accred-card">
-                        <div class="accred-card-top">
-                            <span class="accred-org-pill ibm">IBM SkillsBuild</span>
-                            <span class="accred-status-pill verified">
-                                <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified Suite
-                            </span>
-                        </div>
-                        <div class="accred-card-title">Web &amp; Systems Fundamentals</div>
-                        <p class="accred-card-desc">Enterprise frontend basics, client-server communications, DOM architecture, and accessible web standards.</p>
-                        <div class="accred-card-footer">
-                            <span class="accred-id">7 Verified Credentials</span>
-                            <span class="accred-link-hint" style="color:rgba(255,255,255,0.45);">IBM Certified</span>
+                        <h4 class="cert-title">Foundations of Cybersecurity</h4>
+                        <p class="cert-desc">Core security models, the CIA triad, NIST Cybersecurity Framework, Linux command line basics, and SIEM tool fundamentals.</p>
+                        <div class="cert-footer">
+                            <span class="cert-id">ID: H77H8G26YS9N</span>
+                            <a href="https://coursera.org/verify/H77H8G26YS9N" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
                         </div>
                     </div>
 
-                    <!-- Card 5: CompTIA Security+ Active Target -->
-                    <div class="accred-card" style="grid-column: 1 / -1;">
-                        <div class="accred-card-top">
-                            <span class="accred-org-pill comptia">CompTIA</span>
-                            <span class="accred-status-pill target">
-                                <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#94a3b8;"></span> In Active Study
-                            </span>
+                    <div class="cert-card">
+                        <div class="cert-card-header">
+                            <span class="cert-issuer-badge">GOOGLE</span>
+                            <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
                         </div>
-                        <div class="accred-card-title">CompTIA Security+ (SY0-701)</div>
-                        <p class="accred-card-desc">Currently working through the official syllabus covering enterprise security architecture, cryptography, and defensive incident response.</p>
-                        <div class="accred-card-footer">
-                            <span class="accred-id">Target Milestone: 2026</span>
-                            <span class="accred-link-hint" style="color:#94a3b8;">Active Prep</span>
+                        <h4 class="cert-title">Networks &amp; Network Security</h4>
+                        <p class="cert-desc">TCP/IP and OSI network architecture, packet inspection, intrusion detection (IDS/IPS), and firewall rules.</p>
+                        <div class="cert-footer">
+                            <span class="cert-id">ID: 0ABTT3NHCDXO</span>
+                            <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-card-header">
+                            <span class="cert-issuer-badge">GOOGLE</span>
+                            <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
+                        </div>
+                        <h4 class="cert-title">Play It Safe: Manage Security Risks</h4>
+                        <p class="cert-desc">Threat modeling, vulnerability assessments, security audit compliance, and incident escalation procedures.</p>
+                        <div class="cert-footer">
+                            <span class="cert-id">ID: WHJ79P4RT454</span>
+                            <a href="https://coursera.org/verify/WHJ79P4RT454" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-card-header">
+                            <span class="cert-issuer-badge">IBM SKILLSBUILD</span>
+                            <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED SUITE</span>
+                        </div>
+                        <h4 class="cert-title">Web &amp; Systems Fundamentals</h4>
+                        <p class="cert-desc">Enterprise frontend basics, client-server communications, DOM architecture, and accessible web standards.</p>
+                        <div class="cert-footer">
+                            <span class="cert-id">7 Verified Credentials</span>
+                            <span class="cert-verify-link" style="color:#a1a1aa;">IBM Certified</span>
+                        </div>
+                    </div>
+
+                    <div class="cert-card" style="opacity:0.9;">
+                        <div class="cert-card-header">
+                            <span class="cert-issuer-badge" style="background:rgba(239,68,68,0.15);color:#f87171;">COMPTIA</span>
+                            <span class="cert-status-badge" style="background:rgba(239,68,68,0.15);color:#f87171;"><span class="status-dot" style="background:#ef4444;"></span>IN ACTIVE STUDY</span>
+                        </div>
+                        <h4 class="cert-title">CompTIA Security+ (SY0-701)</h4>
+                        <p class="cert-desc">Currently working through the official syllabus covering enterprise security architecture, cryptography, and defensive incident response.</p>
+                        <div class="cert-footer">
+                            <span class="cert-id">Target Milestone: 2026</span>
+                            <span class="cert-verify-link" style="color:#f87171;">Active Prep</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: Premier Academic Degree Showcase -->
-                <div class="academic-column">
-                    <div class="academic-degree-card">
-                        <div>
-                            <div class="academic-badge-top">
-                                <span>🎓</span>
-                                <span>University of Mumbai Affiliated</span>
-                            </div>
-                            <h3 class="academic-degree-title">Bachelor of Management Studies</h3>
-                            <div class="academic-college-sub">
-                                Royal College of Arts, Science &amp; Commerce · Mumbai, India
-                            </div>
+                <!-- Column 2: Formal Degree -->
+                <div class="degree-column">
+                    <div class="degree-card">
+                        <div class="degree-card-header">
+                            <span class="degree-badge"><span class="badge-dot"></span>UNIVERSITY OF MUMBAI AFFILIATED</span>
+                        </div>
+                        <h4 class="degree-title">Bachelor of Management Studies</h4>
+                        <p class="degree-institution">Royal College of Arts, Science &amp; Commerce · Mumbai, India</p>
 
-                            <div class="academic-specs-list">
-                                <div class="academic-spec-row">
-                                    <span class="spec-label">PROGRAM</span>
-                                    <span class="spec-val">3-Year Undergraduate Degree</span>
-                                </div>
-                                <div class="academic-spec-row">
-                                    <span class="spec-label">TIMELINE</span>
-                                    <span class="spec-val">2023 – 2026 (Final Year / TYBMS)</span>
-                                </div>
-                                <div class="academic-spec-row">
-                                    <span class="spec-label">SPECIALIZATION</span>
-                                    <span class="spec-val">IT Systems &amp; Strategic Operations</span>
-                                </div>
-                                <div class="academic-spec-row">
-                                    <span class="spec-label">STATUS</span>
-                                    <span class="spec-val" style="color:#10b981;">In Good Standing · Active</span>
-                                </div>
+                        <div class="degree-specs">
+                            <div class="degree-spec-row">
+                                <span class="spec-label">PROGRAM</span>
+                                <span class="spec-val">3-Year Undergraduate Degree</span>
                             </div>
-
-                            <p class="academic-narrative">
-                                Combining practical IT production support with formal business and management governance. Coursework covers IT systems management, organizational behavior, financial strategy, and risk governance—giving me a strong foundation for technical leadership and cross-functional operations.
-                            </p>
+                            <div class="degree-spec-row">
+                                <span class="spec-label">TIMELINE</span>
+                                <span class="spec-val">2023 – 2026 (Final Year / TYBMS)</span>
+                            </div>
+                            <div class="degree-spec-row">
+                                <span class="spec-label">SPECIALIZATION</span>
+                                <span class="spec-val">IT Systems &amp; Strategic Operations</span>
+                            </div>
+                            <div class="degree-spec-row">
+                                <span class="spec-label">STATUS</span>
+                                <span class="spec-val" style="color:#10b981;font-weight:600;">In Good Standing · Active</span>
+                            </div>
                         </div>
 
-                        <div class="academic-tags-row">
-                            <span class="flagship-tag" style="background:rgba(255,255,255,0.05);color:#e2e8f0;border-color:rgba(255,255,255,0.1);">IT Governance</span>
-                            <span class="flagship-tag" style="background:rgba(255,255,255,0.05);color:#e2e8f0;border-color:rgba(255,255,255,0.1);">Operations</span>
-                            <span class="flagship-tag" style="background:rgba(255,255,255,0.05);color:#e2e8f0;border-color:rgba(255,255,255,0.1);">Risk Management</span>
-                            <span class="flagship-tag" style="background:rgba(255,255,255,0.05);color:#e2e8f0;border-color:rgba(255,255,255,0.1);">University Degree</span>
+                        <p class="degree-desc">
+                            Combining practical IT production support with formal business and management governance. Coursework covers IT systems management, organizational behavior, financial strategy, and risk governance—giving me a strong foundation for technical leadership and cross-functional operations.
+                        </p>
+
+                        <div class="degree-tags">
+                            <span class="degree-tag">IT Governance</span>
+                            <span class="degree-tag">Operations</span>
+                            <span class="degree-tag">Risk Management</span>
+                            <span class="degree-tag">University Degree</span>
                         </div>
                     </div>
                 </div>
@@ -4530,11 +4886,11 @@
     </section>
 
     <!-- =====================================================================
-         CHAPTER 02: CAPABILITIES & REAL TOOLKIT (MUSEUM WHITE)
+         CHAPTER 02: CAPABILITIES & REAL TOOLKIT (LIGHT SECTION)
          ===================================================================== -->
-    <section class="section-wrapper" id="skills-section" aria-label="Capabilities Overview and Tools">
+    <section class="section-wrapper is-light-section" id="skills-section" aria-label="Capabilities Overview and Tools">
         <div class="section-inner">
-            <!-- CHAPTER GATE: CAPABILITIES -->
+            <!-- CHAPTER GATE: CAPABILITIES & REAL TOOLKIT -->
             <div class="chapter-gate light-gate" data-enter>
                 <div style="display:flex;align-items:center;gap:10px;">
                     <span class="gate-badge">02 // CAPABILITIES &amp; REAL TOOLKIT</span>
@@ -4552,203 +4908,137 @@
                 Three years of real-world IT support across trading platforms and airport infrastructure, combined with dedicated training in game engines, 3D software, and practical web development.
             </p>
 
-            <div class="spectrum-grid" data-enter>
-                <!-- Vector 01 -->
+            <!-- 3 Capabilities Cards (Light Edition) -->
+            <div class="spectrum-grid" data-enter style="margin-top:40px;">
+                <!-- Domain 1: Systems & Support -->
                 <div class="spectrum-card">
-                    <div>
-                        <div class="spectrum-card-header">
-                            <span class="spectrum-badge"><span class="spectrum-dot"></span>SYSTEMS &amp; SUPPORT</span>
-                            <span class="spectrum-num">01</span>
-                        </div>
-                        <h3 class="spectrum-pillar-title" style="margin-top:14px;">Enterprise Systems &amp; Support</h3>
-                        <p class="spectrum-pillar-desc" style="margin-top:6px;">
-                            Over 2.5 years supporting production trading applications at Sharekhan on 150+ Linux/Windows servers, writing daily checks, and troubleshooting SQL queries. Currently handling on-site hardware support for DigiYatra biometric boarding gates at Mumbai Airport.
-                        </p>
-
-                        <div class="spectrum-roles-block">
-                            <div class="spectrum-roles-heading">Roles I Fit</div>
-                            <div class="spectrum-roles-list">
-                                <span class="role-pill">Desktop / Systems Support Engineer</span>
-                                <span class="role-pill">L2 Application Support Specialist</span>
-                                <span class="role-pill">IT Operations Specialist</span>
-                            </div>
-                        </div>
-
-                        <div class="spectrum-proof-strip">
-                            <div class="spectrum-proof-item">
-                                <span class="sp-label">Primary OS</span>
-                                <span class="sp-val">Windows Server &amp; Client</span>
-                            </div>
-                            <div class="spectrum-proof-item">
-                                <span class="sp-label">Directory &amp; Auth</span>
-                                <span class="sp-val">Active Directory (AD DS)</span>
-                            </div>
-                            <div class="spectrum-proof-item">
-                                <span class="sp-label">Database Queries</span>
-                                <span class="sp-val">SQL Server (SSMS)</span>
-                            </div>
-                        </div>
+                    <div class="spectrum-card-header">
+                        <span class="spectrum-tag">SYSTEMS &amp; SUPPORT</span>
+                        <span class="spectrum-num">01</span>
                     </div>
-
-                    <a href="#experience-section" class="spectrum-jump-btn">
-                        <span>See Work Experience</span>
-                        <span>↓</span>
-                    </a>
+                    <h3 class="spectrum-card-title">Enterprise Systems &amp; Support</h3>
+                    <p class="spectrum-card-desc">
+                        Over 2.5 years supporting production trading applications and corporate laptop rollouts. I diagnose issues methodically—checking event viewer logs, network adapters, and application services instead of blindly rebooting machines.
+                    </p>
+                    <div class="spectrum-specs">
+                        <div class="spectrum-row"><span class="spectrum-row-label">PRIMARY ROLES</span><span class="spectrum-row-val">Desktop / Systems Support Engineer</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">APPLICATION OPS</span><span class="spectrum-row-val">L2 Application Support Specialist</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">ON-SITE OPS</span><span class="spectrum-row-val">IT Operations Specialist</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">PRIMARY OS</span><span class="spectrum-row-val">Windows Server &amp; Client</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">DIRECTORY &amp; AUTH</span><span class="spectrum-row-val">Active Directory (AD DS)</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">DATABASE QUERIES</span><span class="spectrum-row-val">SQL Server (SSMS)</span></div>
+                    </div>
+                    <div class="spectrum-card-footer">
+                        <a href="#experience-section" style="text-decoration:none;">See Work Experience ↗</a>
+                    </div>
                 </div>
 
-                <!-- Vector 02 -->
+                <!-- Domain 2: 3D Art & Game Engines -->
                 <div class="spectrum-card">
-                    <div>
-                        <div class="spectrum-card-header">
-                            <span class="spectrum-badge"><span class="spectrum-dot"></span>3D &amp; GAME ENGINES</span>
-                            <span class="spectrum-num">02</span>
-                        </div>
-                        <h3 class="spectrum-pillar-title" style="margin-top:14px;">3D Art &amp; Game Engines</h3>
-                        <p class="spectrum-pillar-desc" style="margin-top:6px;">
-                            Studied and practiced in Blender, Unreal Engine, and Unity. Passionate about lighting physics, photorealistic product rendering, hard surface modeling, and realtime interactive scenes.
-                        </p>
-
-                        <div class="spectrum-roles-block">
-                            <div class="spectrum-roles-heading">Creative Domains</div>
-                            <div class="spectrum-roles-list">
-                                <span class="role-pill">3D Artist &amp; Visualizer</span>
-                                <span class="role-pill">Unreal &amp; Unity Creator</span>
-                                <span class="role-pill">Product Animation Specialist</span>
-                            </div>
-                        </div>
-
-                        <div class="spectrum-proof-strip">
-                            <div class="spectrum-proof-item">
-                                <span class="sp-label">Primary 3D Tool</span>
-                                <span class="sp-val">Blender (Cycles Engine)</span>
-                            </div>
-                            <div class="spectrum-proof-item">
-                                <span class="sp-label">Game Engines</span>
-                                <span class="sp-val">Unreal Engine &amp; Unity</span>
-                            </div>
-                            <div class="spectrum-proof-item">
-                                <span class="sp-label">Texturing &amp; Post</span>
-                                <span class="sp-val">Substance Painter &amp; Photoshop</span>
-                            </div>
-                        </div>
+                    <div class="spectrum-card-header">
+                        <span class="spectrum-tag">3D &amp; GAME ENGINES</span>
+                        <span class="spectrum-num">02</span>
                     </div>
-
-                    <a href="#showcase-section" class="spectrum-jump-btn">
-                        <span>See 3D Renders</span>
-                        <span>↓</span>
-                    </a>
+                    <h3 class="spectrum-card-title">3D Art &amp; Game Engines</h3>
+                    <p class="spectrum-card-desc">
+                        Studied and practiced in Blender, Unreal Engine, and Unity. I know full 3D asset workflows—hard-surface modeling, UV unwrap, PBR texturing in Substance Painter, Cycles raytracing, and studio product lighting.
+                    </p>
+                    <div class="spectrum-specs">
+                        <div class="spectrum-row"><span class="spectrum-row-label">SPECIALIZATION</span><span class="spectrum-row-val">3D Environment &amp; Prop Modeler</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">COMMERCIAL ART</span><span class="spectrum-row-val">Product Animation Specialist</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">PRIMARY 3D TOOL</span><span class="spectrum-row-val">Blender (Cycles Engine)</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">GAME ENGINES</span><span class="spectrum-row-val">Unreal Engine &amp; Unity</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">TEXTURING &amp; POST</span><span class="spectrum-row-val">Substance Painter &amp; Photoshop</span></div>
+                    </div>
+                    <div class="spectrum-card-footer">
+                        <a href="#showcase-section" style="text-decoration:none;">See 3D Renders ↗</a>
+                    </div>
                 </div>
 
-                <!-- Vector 03 -->
+                <!-- Domain 3: Web & Automation -->
                 <div class="spectrum-card">
-                    <div>
-                        <div class="spectrum-card-header">
-                            <span class="spectrum-badge"><span class="spectrum-dot"></span>WEB &amp; AUTOMATION</span>
-                            <span class="spectrum-num">03</span>
-                        </div>
-                        <h3 class="spectrum-pillar-title" style="margin-top:14px;">Websites &amp; Workflow Automation</h3>
-                        <p class="spectrum-pillar-desc" style="margin-top:6px;">
-                            Built and launched real e-commerce and agency websites on WordPress with Razorpay payment gateways and Google Page 1 SEO. I use n8n and Zapier to automate repetitive tasks like lead intake and database syncs.
-                        </p>
-
-                        <div class="spectrum-roles-block">
-                            <div class="spectrum-roles-heading">Web &amp; Tooling</div>
-                            <div class="spectrum-roles-list">
-                                <span class="role-pill">WordPress Developer</span>
-                                <span class="role-pill">Workflow Automation (n8n / Zapier)</span>
-                                <span class="role-pill">Technical SEO &amp; E-Commerce</span>
-                            </div>
-                        </div>
-
-                        <div class="spectrum-proof-strip">
-                            <div class="spectrum-proof-item">
-                                <span class="sp-label">CMS &amp; E-Comm</span>
-                                <span class="sp-val">WordPress &amp; WooCommerce</span>
-                            </div>
-                            <div class="spectrum-proof-item">
-                                <span class="sp-label">Automation</span>
-                                <span class="sp-val">n8n Webhooks &amp; Zapier Syncs</span>
-                            </div>
-                            <div class="spectrum-proof-item">
-                                <span class="sp-label">Payments &amp; UI</span>
-                                <span class="sp-val">Razorpay APIs · Figma to Web</span>
-                            </div>
-                        </div>
+                    <div class="spectrum-card-header">
+                        <span class="spectrum-tag">WEB &amp; AUTOMATION</span>
+                        <span class="spectrum-num">03</span>
                     </div>
-
-                    <a href="#showcase-section" class="spectrum-jump-btn">
-                        <span>See Web Projects</span>
-                        <span>↓</span>
-                    </a>
+                    <h3 class="spectrum-card-title">Websites &amp; Workflow Automation</h3>
+                    <p class="spectrum-card-desc">
+                        Built and launched real e-commerce and agency websites on WordPress and WooCommerce. Paired with n8n and Zapier to automate form captures directly into client Google Sheets with zero manual data entry.
+                    </p>
+                    <div class="spectrum-specs">
+                        <div class="spectrum-row"><span class="spectrum-row-label">WEB DESIGN</span><span class="spectrum-row-val">WordPress Developer</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">EFFICIENCY PIPELINES</span><span class="spectrum-row-val">Workflow Automation (n8n / Zapier)</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">COMMERCE &amp; RANKING</span><span class="spectrum-row-val">Technical SEO &amp; E-Commerce</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">CMS &amp; E-COMM</span><span class="spectrum-row-val">WordPress &amp; WooCommerce</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">AUTOMATION</span><span class="spectrum-row-val">n8n Webhooks &amp; Zapier Syncs</span></div>
+                        <div class="spectrum-row"><span class="spectrum-row-label">PAYMENTS &amp; UI</span><span class="spectrum-row-val">Razorpay APIs · Figma to Web</span></div>
+                    </div>
+                    <div class="spectrum-card-footer">
+                        <a href="#showcase-section" style="text-decoration:none;">See Web Projects ↗</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- REAL TOOLS & SOFTWARE ECOSYSTEM MARQUEE -->
-            <div class="tools-ecosystem-wrapper" data-enter style="border-top-color:var(--line);padding-top:40px;">
-                <div class="tools-ecosystem-header">
-                    <div class="tools-badge" style="background:#0a0a0a;color:#ffffff;border-color:#0a0a0a;">
-                        <span>⚡</span>
-                        <span>The Real Toolkit</span>
+            <!-- Authentic Creative & IT Toolkit Dual Marquee (Light Track) -->
+            <div class="tools-marquee-container" data-enter style="margin-top:48px;">
+                <div class="tools-marquee-header">
+                    <span>✦ THE REAL TOOLKIT · 3D CREATIVE &amp; SYSTEMS SUITE ✦</span>
+                </div>
+                <!-- Lane 1: 3D, Game Engines & Creative Software -->
+                <div class="marquee-track-lane lane-left">
+                    <div class="marquee-inner">
+                        <div class="tool-pill"><span class="pill-name">Blender</span><span class="pill-role">Cycles Raytracing</span></div>
+                        <div class="tool-pill"><span class="pill-name">Unreal Engine</span><span class="pill-role">Lighting &amp; Environments</span></div>
+                        <div class="tool-pill"><span class="pill-name">Unity Engine</span><span class="pill-role">Interactive &amp; Real-Time</span></div>
+                        <div class="tool-pill"><span class="pill-name">Substance Painter</span><span class="pill-role">PBR Texturing</span></div>
+                        <div class="tool-pill"><span class="pill-name">Autodesk 3ds Max</span><span class="pill-role">Hard Surface</span></div>
+                        <div class="tool-pill"><span class="pill-name">Autodesk Maya</span><span class="pill-role">3D Animation</span></div>
+                        <div class="tool-pill"><span class="pill-name">Adobe Photoshop</span><span class="pill-role">Texture &amp; Post</span></div>
+                        <div class="tool-pill"><span class="pill-name">Adobe Premiere Pro</span><span class="pill-role">Video Editing</span></div>
+                        <div class="tool-pill"><span class="pill-name">Adobe Illustrator</span><span class="pill-role">Vector Assets</span></div>
+                        <div class="tool-pill"><span class="pill-name">Adobe Audition</span><span class="pill-role">Audio Cleanup</span></div>
+                        <!-- Duplicate set for seamless continuous loop -->
+                        <div class="tool-pill"><span class="pill-name">Blender</span><span class="pill-role">Cycles Raytracing</span></div>
+                        <div class="tool-pill"><span class="pill-name">Unreal Engine</span><span class="pill-role">Lighting &amp; Environments</span></div>
+                        <div class="tool-pill"><span class="pill-name">Unity Engine</span><span class="pill-role">Interactive &amp; Real-Time</span></div>
+                        <div class="tool-pill"><span class="pill-name">Substance Painter</span><span class="pill-role">PBR Texturing</span></div>
+                        <div class="tool-pill"><span class="pill-name">Autodesk 3ds Max</span><span class="pill-role">Hard Surface</span></div>
+                        <div class="tool-pill"><span class="pill-name">Autodesk Maya</span><span class="pill-role">3D Animation</span></div>
+                        <div class="tool-pill"><span class="pill-name">Adobe Photoshop</span><span class="pill-role">Texture &amp; Post</span></div>
+                        <div class="tool-pill"><span class="pill-name">Adobe Premiere Pro</span><span class="pill-role">Video Editing</span></div>
+                        <div class="tool-pill"><span class="pill-name">Adobe Illustrator</span><span class="pill-role">Vector Assets</span></div>
+                        <div class="tool-pill"><span class="pill-name">Adobe Audition</span><span class="pill-role">Audio Cleanup</span></div>
                     </div>
-                    <h3 class="tools-title" style="color:#0a0a0a;">The Tools &amp; Software I Actually Use</h3>
-                    <p class="tools-sub" style="color:#555550;">
-                        No inflated buzzwords—just the 3D creative suite I've studied and the IT systems I manage.
-                    </p>
                 </div>
 
-                <div class="tools-marquee-container" aria-label="Tools and software marquee">
-                    <!-- Row 1: 3D, Game Engines & Digital Art -->
-                    <div class="tools-marquee-track marquee-row-1">
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🧊</span><span>Blender (Cycles PBR)</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">3D &amp; Lighting</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎮</span><span>Unreal Engine (UE)</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Game Engine</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🕹️</span><span>Unity Engine</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Interactive</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🖌️</span><span>Substance Painter</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">PBR Texturing</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">📐</span><span>Autodesk 3ds Max</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Hard Surface</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎭</span><span>Autodesk Maya</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">3D Animation</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🖼️</span><span>Adobe Photoshop</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Texture &amp; Post</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎬</span><span>Adobe Premiere Pro</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Video Editing</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">✒️</span><span>Adobe Illustrator</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Vector Art</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎧</span><span>Adobe Audition</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Sound Design</span></div>
-                        <!-- Seamless Duplicate Row 1 -->
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🧊</span><span>Blender (Cycles PBR)</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">3D &amp; Lighting</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎮</span><span>Unreal Engine (UE)</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Game Engine</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🕹️</span><span>Unity Engine</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Interactive</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🖌️</span><span>Substance Painter</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">PBR Texturing</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">📐</span><span>Autodesk 3ds Max</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Hard Surface</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎭</span><span>Autodesk Maya</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">3D Animation</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🖼️</span><span>Adobe Photoshop</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Texture &amp; Post</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎬</span><span>Adobe Premiere Pro</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Video Editing</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">✒️</span><span>Adobe Illustrator</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Vector Art</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎧</span><span>Adobe Audition</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Sound Design</span></div>
-                    </div>
-
-                    <!-- Row 2: Systems, Database, Web & Automation -->
-                    <div class="tools-marquee-track marquee-row-2">
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🪟</span><span>Windows Server</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Enterprise OS</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">👥</span><span>Active Directory (AD DS)</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">User &amp; Domain</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🗄️</span><span>SQL Server (SSMS)</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Queries &amp; Logs</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🛡️</span><span>Trellix / McAfee</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Endpoint Security</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">✈️</span><span>DigiYatra Biometrics</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Airport Gates</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">📰</span><span>WordPress CMS</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Web Platforms</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🛒</span><span>WooCommerce</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">E-Commerce</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">⚙️</span><span>n8n Workflows</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Webhooks</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🔗</span><span>Zapier</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Cloud Sync</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎨</span><span>Figma</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">UI Design</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">💳</span><span>Razorpay APIs</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Payments</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🖌️</span><span>Canva</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Graphics</span></div>
-                        <!-- Seamless Duplicate Row 2 -->
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🪟</span><span>Windows Server</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Enterprise OS</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">👥</span><span>Active Directory (AD DS)</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">User &amp; Domain</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🗄️</span><span>SQL Server (SSMS)</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Queries &amp; Logs</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🛡️</span><span>Trellix / McAfee</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Endpoint Security</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">✈️</span><span>DigiYatra Biometrics</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Airport Gates</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">📰</span><span>WordPress CMS</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Web Platforms</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🛒</span><span>WooCommerce</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">E-Commerce</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">⚙️</span><span>n8n Workflows</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Webhooks</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🔗</span><span>Zapier</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Cloud Sync</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🎨</span><span>Figma</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">UI Design</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">💳</span><span>Razorpay APIs</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Payments</span></div>
-                        <div class="tool-pill" style="background:#ffffff;border-color:var(--line);color:#0a0a0a;"><span class="tool-pill-icon">🖌️</span><span>Canva</span><span class="tool-pill-tag" style="color:#888880;border-left-color:#e2e8f0;">Graphics</span></div>
+                <!-- Lane 2: Enterprise IT, Biometrics, Web & Automation -->
+                <div class="marquee-track-lane lane-right" style="margin-top:12px;">
+                    <div class="marquee-inner">
+                        <div class="tool-pill"><span class="pill-name">Windows Server</span><span class="pill-role">Enterprise OS</span></div>
+                        <div class="tool-pill"><span class="pill-name">Active Directory (AD DS)</span><span class="pill-role">User &amp; Domain</span></div>
+                        <div class="tool-pill"><span class="pill-name">SQL Server (SSMS)</span><span class="pill-role">Queries &amp; Logs</span></div>
+                        <div class="tool-pill"><span class="pill-name">Trellix / McAfee</span><span class="pill-role">Endpoint Security</span></div>
+                        <div class="tool-pill"><span class="pill-name">DigiYatra Biometrics</span><span class="pill-role">Airport Gates</span></div>
+                        <div class="tool-pill"><span class="pill-name">WordPress CMS</span><span class="pill-role">Web Platform</span></div>
+                        <div class="tool-pill"><span class="pill-name">WooCommerce</span><span class="pill-role">E-Commerce</span></div>
+                        <div class="tool-pill"><span class="pill-name">n8n Automation</span><span class="pill-role">Webhooks &amp; Sync</span></div>
+                        <div class="tool-pill"><span class="pill-name">Zapier</span><span class="pill-role">Pipelines</span></div>
+                        <div class="tool-pill"><span class="pill-name">Figma</span><span class="pill-role">UI Mockups</span></div>
+                        <div class="tool-pill"><span class="pill-name">Razorpay APIs</span><span class="pill-role">Payments</span></div>
+                        <div class="tool-pill"><span class="pill-name">Canva</span><span class="pill-role">Graphics</span></div>
+                        <!-- Duplicate set for seamless continuous loop -->
+                        <div class="tool-pill"><span class="pill-name">Windows Server</span><span class="pill-role">Enterprise OS</span></div>
+                        <div class="tool-pill"><span class="pill-name">Active Directory (AD DS)</span><span class="pill-role">User &amp; Domain</span></div>
+                        <div class="tool-pill"><span class="pill-name">SQL Server (SSMS)</span><span class="pill-role">Queries &amp; Logs</span></div>
+                        <div class="tool-pill"><span class="pill-name">Trellix / McAfee</span><span class="pill-role">Endpoint Security</span></div>
+                        <div class="tool-pill"><span class="pill-name">DigiYatra Biometrics</span><span class="pill-role">Airport Gates</span></div>
+                        <div class="tool-pill"><span class="pill-name">WordPress CMS</span><span class="pill-role">Web Platform</span></div>
+                        <div class="tool-pill"><span class="pill-name">WooCommerce</span><span class="pill-role">E-Commerce</span></div>
+                        <div class="tool-pill"><span class="pill-name">n8n Automation</span><span class="pill-role">Webhooks &amp; Sync</span></div>
+                        <div class="tool-pill"><span class="pill-name">Zapier</span><span class="pill-role">Pipelines</span></div>
+                        <div class="tool-pill"><span class="pill-name">Figma</span><span class="pill-role">UI Mockups</span></div>
+                        <div class="tool-pill"><span class="pill-name">Razorpay APIs</span><span class="pill-role">Payments</span></div>
+                        <div class="tool-pill"><span class="pill-name">Canva</span><span class="pill-role">Graphics</span></div>
                     </div>
                 </div>
             </div>
@@ -4756,12 +5046,11 @@
     </section>
 
     <!-- =====================================================================
-         CHAPTER 03: DIGITAL ART & FREELANCE SHOWCASE (OBSIDIAN DARK)
+         CHAPTER 03: DIGITAL ART & FREELANCE SHOWCASE (DARK SECTION)
          ===================================================================== -->
     <section class="section-wrapper is-dark-section" id="showcase-section" aria-label="3D Work, Animation, and Client Web Projects">
-        <span id="cinema-section" style="display:block; position:relative; top:-80px; visibility:hidden;"></span>
         <div class="section-inner">
-            <!-- CHAPTER GATE: DIGITAL ART & FREELANCE -->
+            <!-- CHAPTER GATE: CREATIVE SHOWCASE -->
             <div class="chapter-gate dark-gate" data-enter>
                 <div style="display:flex;align-items:center;gap:10px;">
                     <span class="gate-badge">03 // DIGITAL ART &amp; FREELANCE SHOWCASE</span>
@@ -4770,88 +5059,60 @@
                 <span>3D Animation · Material Optics · WooCommerce · n8n Pipelines</span>
             </div>
 
-            <!-- 01 / FEATURED 3D MOTION STUDY -->
-            <div class="motion-hero-header" data-enter>
-                <p class="sec-tag">01 / Featured 3D Motion Study</p>
+            <!-- PART 1: CINEMA 3D MOTION SEQUENCE (AirPods) -->
+            <div class="showcase-part-header" data-enter style="margin-top:24px;">
+                <p class="sec-tag">01 / FEATURED 3D MOTION STUDY</p>
                 <h2 class="sec-title">
-                    AirPod Motion<br>
-                    <em>Sequence Study</em>
+                    AirPods Motion<br>
+                    <em>60 FPS Study</em>
                 </h2>
                 <p class="sec-sub">
-                    A personal product animation I created in Blender Cycles to practice mechanical motion, realistic polymer materials, and studio lighting setups.
+                    A personal Blender Cycles study in mechanical motion, realistic polymer materials, and studio lighting.
                 </p>
             </div>
 
-            <!-- Cinema Theater -->
-            <div class="cinema-theater" data-enter>
-                <div class="cinema-screen">
+            <!-- High-Fidelity Video Player -->
+            <div class="cinema-player-wrapper" data-enter style="margin-top:28px;">
+                <div class="cinema-video-frame">
                     <video id="airpodVid" src="assets/airpod.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
-                </div>
-                <div class="cinema-bar">
-                    <div class="cinema-meta-left">
-                        <span class="track-name">AIRPOD PRODUCT MOTION STUDY</span>
-                        <span class="track-spec">BLENDER CYCLES · 60 FPS · 1080P COMPOSITE</span>
-                    </div>
-                    <div class="cinema-controls">
-                        <button class="cin-btn" id="cinPlayToggle" aria-label="Toggle playback">Pause</button>
-                        <button class="cin-btn" id="cinMuteToggle" aria-label="Toggle mute">Unmute</button>
-                        <button class="cin-btn" id="cinFullToggle" aria-label="Fullscreen">Fullscreen</button>
+                    <div class="cinema-overlay-bar">
+                        <div class="cinema-telemetry">
+                            <span class="telemetry-item"><span class="telemetry-dot live"></span>CYCLES 60FPS</span>
+                            <span class="telemetry-item">RAYTRACED POLYMER PBR</span>
+                            <span class="telemetry-item">STUDIO ACCENT LIGHTING</span>
+                        </div>
+                        <div class="cinema-controls">
+                            <button class="cinema-ctrl-btn" id="cinPlayToggle" aria-label="Pause Video">Pause</button>
+                            <button class="cinema-ctrl-btn" id="cinMuteToggle" aria-label="Unmute Video">Unmute</button>
+                            <button class="cinema-ctrl-btn" id="cinFullToggle" aria-label="Fullscreen">Expand ⛶</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Telemetry Bar -->
-            <div class="cinema-telemetry-grid" data-enter>
-                <div class="telemetry-cell">
-                    <div class="t-label">Software</div>
-                    <div class="t-val">Blender (Cycles PBR)</div>
-                </div>
-                <div class="telemetry-cell">
-                    <div class="t-label">Key Focus</div>
-                    <div class="t-val">Subsurface Materials &amp; Caustics</div>
-                </div>
-                <div class="telemetry-cell">
-                    <div class="t-label">Motion</div>
-                    <div class="t-val">Mechanical Assembly Choreography</div>
-                </div>
-                <div class="telemetry-cell">
-                    <div class="t-label">Project Type</div>
-                    <div class="t-val">Personal Product Visualization</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 02 / SPATIAL ENVIRONMENTS & OPTICS (FULL-BLEED PINNED HORIZONTAL GALLERY) -->
-        <div class="spatial-exhibition-wrapper" id="spatialExhibitionSection">
-            <div class="spatial-exhibition-inner">
-                <!-- Exhibition Header Bar -->
-                <div class="spatial-exhibition-header-wrap">
-                    <div class="spatial-exhibition-header">
-                        <div>
-                            <p class="sec-tag">02 / Selected 3D Renders</p>
-                            <h3 class="spatial-exhibition-title">
-                                Lighting &amp; <em>Material Studies</em>
-                            </h3>
-                            <p class="spatial-exhibition-sub">
-                                A collection of personal 3D scenes I created in Blender while studying light behavior, glass refraction, and interior environments. Click any image to view in full resolution.
-                            </p>
-                        </div>
-                        <div class="spatial-reel-nav">
-                            <div class="reel-counter">
-                                <span class="reel-current-num" id="reelCurrentNum">01</span> / <span class="reel-total-num">05</span>
-                            </div>
-                            <div class="reel-arrows">
-                                <button type="button" class="reel-arrow-btn" id="reelPrevBtn" aria-label="Previous work">←</button>
-                                <button type="button" class="reel-arrow-btn" id="reelNextBtn" aria-label="Next work">→</button>
-                            </div>
+            <!-- PART 2: HORIZONTAL PINNED SPATIAL REEL (5 LIGHTING STUDIES) -->
+            <div id="spatialExhibitionSection" style="margin-top:72px;">
+                <div class="spatial-intro-flex" data-enter>
+                    <div>
+                        <p class="sec-tag">02 / SELECTED 3D RENDERS</p>
+                        <h3 class="sec-title" style="font-size:clamp(26px, 3.4vw, 40px); margin-bottom:12px;">
+                            Lighting &amp; <em>Material Studies</em>
+                        </h3>
+                        <p class="sec-sub" style="max-width:540px;">
+                            A collection of personal 3D scenes I created in Blender while studying light behavior, glass refraction, and interior environments. Click any image to view in full resolution.
+                        </p>
+                    </div>
+                    <div class="spatial-controls-ui">
+                        <span class="reel-count"><strong id="reelCurrentNum">01</strong> / 05</span>
+                        <div class="reel-arrows">
+                            <button class="reel-arrow-btn" id="reelPrevBtn" aria-label="Previous Render">←</button>
+                            <button class="reel-arrow-btn" id="reelNextBtn" aria-label="Next Render">→</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Horizontal Scroll Viewport -->
-                <div class="spatial-reel-viewport" id="spatialReelViewport">
+                <div class="spatial-reel-viewport" id="spatialReelViewport" style="margin-top:32px;">
                     <div class="spatial-reel-track" id="spatialReelTrack">
-
                         <!-- Card 1: Moon in the River -->
                         <div class="spatial-reel-card is-flagship" onclick="openLB('assets/moon-in-the-river.jpg','Moon in the River — Environmental Lighting Study')">
                             <div class="reel-card-img-wrap">
@@ -4859,347 +5120,280 @@
                                 <span class="reel-badge">NIGHT LIGHTING</span>
                             </div>
                             <div class="reel-card-info">
-                                <div class="reel-card-meta-top">
-                                    <span class="reel-card-tag">01 · WATER REFLECTIONS</span>
-                                    <span class="reel-card-engine">Cycles Raytraced PBR</span>
-                                </div>
+                                <div class="reel-card-meta"><span>01 · WATER REFLECTIONS</span><span>CYCLES RAYTRACED PBR</span></div>
                                 <h4 class="reel-card-title">Moon in the River</h4>
                                 <p class="reel-card-desc">An atmospheric night scene testing water surface reflections, soft moonlit volumetric fog, and rippling waves.</p>
-                                <span class="reel-inspect-hint">Inspect Full Render ↗</span>
+                                <span class="reel-action-link">INSPECT FULL RENDER ↗</span>
                             </div>
                         </div>
 
                         <!-- Card 2: Living Space -->
-                        <div class="spatial-reel-card" onclick="openLB('assets/interior.webp','Contemporary Living Space — Archviz Interior Study')">
+                        <div class="spatial-reel-card" onclick="openLB('assets/interior.webp','Living Space — Interior Architectural Visualization')">
                             <div class="reel-card-img-wrap">
-                                <img src="assets/interior.webp" alt="Archviz interior living room render" loading="lazy">
+                                <img src="assets/interior.webp" alt="Living Space Archviz render" loading="lazy">
                                 <span class="reel-badge">ARCHVIZ INTERIOR</span>
                             </div>
                             <div class="reel-card-info">
-                                <div class="reel-card-meta-top">
-                                    <span class="reel-card-tag">02 · ARCHITECTURE</span>
-                                    <span class="reel-card-engine">Blender Cycles PBR</span>
-                                </div>
+                                <div class="reel-card-meta"><span>02 · ARCHITECTURE</span><span>BLENDER CYCLES PBR</span></div>
                                 <h4 class="reel-card-title">Living Space</h4>
                                 <p class="reel-card-desc">Interior archviz study testing natural sunlight falloff through windows, soft diffuse bounce, and fabric textures.</p>
-                                <span class="reel-inspect-hint">Inspect Full Render ↗</span>
+                                <span class="reel-action-link">INSPECT FULL RENDER ↗</span>
                             </div>
                         </div>
 
                         <!-- Card 3: Moon Drop -->
-                        <div class="spatial-reel-card" onclick="openLB('assets/moon-drop.jpg','Moon Drop — Spatial Composition')">
+                        <div class="spatial-reel-card" onclick="openLB('assets/moon-drop.jpg','Moon Drop — Surreal Celestial Lighting Study')">
                             <div class="reel-card-img-wrap">
-                                <img src="assets/moon-drop.jpg" alt="Moon Drop surreal spatial render" loading="lazy">
+                                <img src="assets/moon-drop.jpg" alt="Moon Drop Surreal 3D render" loading="lazy">
                                 <span class="reel-badge">SURREAL RENDER</span>
                             </div>
                             <div class="reel-card-info">
-                                <div class="reel-card-meta-top">
-                                    <span class="reel-card-tag">03 · COMPOSITION</span>
-                                    <span class="reel-card-engine">Procedural Shading</span>
-                                </div>
+                                <div class="reel-card-meta"><span>03 · COMPOSITION</span><span>PROCEDURAL SHADING</span></div>
                                 <h4 class="reel-card-title">Moon Drop</h4>
                                 <p class="reel-card-desc">A surreal space render testing high-contrast rim lighting, zero-gravity composition, and procedural lunar surface textures.</p>
-                                <span class="reel-inspect-hint">Inspect Full Render ↗</span>
+                                <span class="reel-action-link">INSPECT FULL RENDER ↗</span>
                             </div>
                         </div>
 
-                        <!-- Card 4: Terrarium Bottle -->
-                        <div class="spatial-reel-card" onclick="openLB('assets/terrarium-bottle.jpg','Terrarium Packaging & Organic Geometry')">
+                        <!-- Card 4: Glass Optics & Ice -->
+                        <div class="spatial-reel-card" onclick="openLB('assets/glass-with-ice.jpg','Terracotta & Glass — Optical Refraction Study')">
                             <div class="reel-card-img-wrap">
-                                <img src="assets/terrarium-bottle.jpg" alt="Terrarium bottle packaging render" loading="lazy">
-                                <span class="reel-badge">GLASS &amp; ORGANIC</span>
+                                <img src="assets/glass-with-ice.jpg" alt="Terracotta and Glass material study" loading="lazy">
+                                <span class="reel-badge">GLASS REFRACTION</span>
                             </div>
                             <div class="reel-card-info">
-                                <div class="reel-card-meta-top">
-                                    <span class="reel-card-tag">04 · GEOMETRY</span>
-                                    <span class="reel-card-engine">Cycles Dielectric</span>
-                                </div>
-                                <h4 class="reel-card-title">Terrarium Bottle</h4>
-                                <p class="reel-card-desc">Curved glass bottle study with physical glass thickness, internal refraction, and small plant models inside.</p>
-                                <span class="reel-inspect-hint">Inspect Full Render ↗</span>
+                                <div class="reel-card-meta"><span>04 · OPTICS</span><span>IOR 1.45 CAUSTICS</span></div>
+                                <h4 class="reel-card-title">Glass Optics &amp; Ice</h4>
+                                <p class="reel-card-desc">Curved architectural arches contrasting rough earthy clay with refractive glass caustics.</p>
+                                <span class="reel-action-link">INSPECT FULL RENDER ↗</span>
                             </div>
                         </div>
 
-                        <!-- Card 5: Glass & Ice Optics -->
-                        <div class="spatial-reel-card" onclick="openLB('assets/glass-with-ice.jpg','Glass & Ice Refraction — Physical IOR Optics Study')">
+                        <!-- Card 5: Terrarium Bottle -->
+                        <div class="spatial-reel-card" onclick="openLB('assets/terrarium-bottle.jpg','The Corridor — Hard Surface Architectural Study')">
                             <div class="reel-card-img-wrap">
-                                <img src="assets/glass-with-ice.jpg" alt="Glass and ice refraction material study" loading="lazy">
-                                <span class="reel-badge">OPTICS STUDY</span>
+                                <img src="assets/terrarium-bottle.jpg" alt="The Corridor hard surface render" loading="lazy">
+                                <span class="reel-badge">HARD SURFACE</span>
                             </div>
                             <div class="reel-card-info">
-                                <div class="reel-card-meta-top">
-                                    <span class="reel-card-tag">05 · PHYSICAL IOR</span>
-                                    <span class="reel-card-engine">Complex Transmission</span>
-                                </div>
-                                <h4 class="reel-card-title">Glass &amp; Ice Optics</h4>
-                                <p class="reel-card-desc">Testing physical index of refraction (IOR) matching water, solid ice facets, and fluid condensation physics.</p>
-                                <span class="reel-inspect-hint">Inspect Full Render ↗</span>
+                                <div class="reel-card-meta"><span>05 · PERSPECTIVE</span><span>CONCRETE PBR &amp; DEPTH</span></div>
+                                <h4 class="reel-card-title">The Corridor</h4>
+                                <p class="reel-card-desc">One-point perspective hallway testing brutalist concrete textures, indirect bounce illumination, and shadows.</p>
+                                <span class="reel-action-link">INSPECT FULL RENDER ↗</span>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                <!-- Progress Track Bar -->
-                <div class="reel-progress-bar-wrap">
+                <div class="spatial-reel-progress-wrap">
                     <div class="reel-progress-bar">
                         <div class="reel-progress-fill" id="reelProgressFill"></div>
                     </div>
-                    <span class="reel-scroll-hint">Scroll down to explore · Click any piece to inspect</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- 03 / FREELANCE WEBSITES & AUTOMATION SHOWCASE -->
-        <div class="section-inner" style="margin-top:64px;padding-top:54px;border-top:1px solid rgba(255,255,255,0.08);">
-            <p class="sec-tag" data-enter>03 / Freelance Client Work &amp; Automation</p>
-            <h3 class="sec-title" data-enter style="font-size:clamp(2.2rem, 3.6vw, 3rem);">
-                Websites &amp;<br>
-                <em>Workflow Automation.</em>
-            </h3>
-            <p class="sec-sub" data-enter>
-                Real client websites I designed and built on WordPress, alongside automated workflows engineered with n8n to eliminate repetitive manual work.
-            </p>
-
-            <!-- LEAD CAPTURE MILESTONE TIMELINE (timeline.tsx style) -->
-            <div class="milestone-timeline-card" data-enter>
-                <div class="milestone-header">
-                    <div class="milestone-title-wrap">
-                        <h3>Lead Capture &amp; Sheet Sync Automation</h3>
-                        <p>A practical automation workflow built with n8n to capture incoming inquiries from website forms, validate fields, and update client Google Sheets in real time without manual copy-pasting.</p>
-                    </div>
-                    <div class="milestone-badge">
-                        <span class="live-dot-green"></span>
-                        <span>Built with n8n &amp; Zapier</span>
-                    </div>
-                </div>
-
-                <div class="milestone-track">
-                    <!-- Stage 1 -->
-                    <div class="milestone-item">
-                        <div class="milestone-node-wrap">
-                            <div class="milestone-node is-active">01</div>
-                            <span class="milestone-stage-tag">Stage 01</span>
-                        </div>
-                        <div class="milestone-card-inner">
-                            <span class="milestone-status-pill">TRIGGER</span>
-                            <div class="milestone-name">Form Submission</div>
-                            <p class="milestone-desc">Lead submits an inquiry via website contact form or checkout event with customer payload.</p>
-                        </div>
-                    </div>
-
-                    <!-- Stage 2 -->
-                    <div class="milestone-item">
-                        <div class="milestone-node-wrap">
-                            <div class="milestone-node is-active">02</div>
-                            <span class="milestone-stage-tag">Stage 02</span>
-                        </div>
-                        <div class="milestone-card-inner">
-                            <span class="milestone-status-pill">FILTER</span>
-                            <div class="milestone-name">Data Validation</div>
-                            <p class="milestone-desc">Filters out spam submissions and validates email and phone formatting with regex checks.</p>
-                        </div>
-                    </div>
-
-                    <!-- Stage 3 -->
-                    <div class="milestone-item">
-                        <div class="milestone-node-wrap">
-                            <div class="milestone-node is-active">03</div>
-                            <span class="milestone-stage-tag">Stage 03</span>
-                        </div>
-                        <div class="milestone-card-inner">
-                            <span class="milestone-status-pill">FORMAT</span>
-                            <div class="milestone-name">Payload Cleanup</div>
-                            <p class="milestone-desc">Standardizes phone numbers, parses text fields, and formats UTC/IST timestamps.</p>
-                        </div>
-                    </div>
-
-                    <!-- Stage 4 -->
-                    <div class="milestone-item">
-                        <div class="milestone-node-wrap">
-                            <div class="milestone-node is-active">04</div>
-                            <span class="milestone-stage-tag">Stage 04</span>
-                        </div>
-                        <div class="milestone-card-inner">
-                            <span class="milestone-status-pill">SYNC</span>
-                            <div class="milestone-name">Google Sheet Update</div>
-                            <p class="milestone-desc">Appends new lead row to client spreadsheet and sends instant alert notification.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="milestone-footer-telemetry">
-                    <div>
-                        <span class="telemetry-status-dot"></span>
-                        <span>Pipeline Status: Active Webhook Endpoint (200 OK)</span>
-                    </div>
-                    <div>Roundtrip Latency: ~1.2s · Zero Data Loss · Automated Execution</div>
+                    <div class="spatial-sub-prompt">SCROLL DOWN TO EXPLORE · CLICK ANY PIECE TO INSPECT</div>
                 </div>
             </div>
 
-            <!-- ELEVATED EDITORIAL WEB SHOWCASE (FRAMED BROWSER VIEWPORTS) -->
-            <div class="web-editorial-showcase" data-enter>
-                <!-- 1. Flagship Spotlight: Rasha E Hasas -->
-                <a href="https://rashaehasas.com" target="_blank" rel="noopener" class="web-flagship-card">
-                    <div class="flagship-preview-pane">
-                        <div class="browser-chrome-bar">
-                            <div class="browser-chrome-dots">
-                                <span class="browser-dot"></span>
-                                <span class="browser-dot"></span>
-                                <span class="browser-dot"></span>
-                            </div>
-                            <span class="browser-address">https://rashaehasas.com 🔒</span>
-                        </div>
-                        <div class="flagship-img-wrap">
-                            <img src="assets/site-rashaehasas.jpg" alt="Rasha E Hasas live e-commerce platform preview" loading="lazy">
-                            <span class="flagship-badge-pill">FEATURED FLAGSHIP STORE</span>
-                        </div>
-                    </div>
-                    <div class="flagship-dossier-pane">
+            <!-- PART 3: FREELANCE CLIENT WEBSITES & N8N AUTOMATION PIPELINES -->
+            <div id="web-editorial-anchor" style="margin-top:72px;">
+                <div class="web-intro-header" data-enter>
+                    <p class="sec-tag">03 / FREELANCE CLIENT WORK &amp; AUTOMATION</p>
+                    <h3 class="sec-title" style="font-size:clamp(26px, 3.4vw, 40px); margin-bottom:12px;">
+                        Websites &amp; <em>Workflow Automation.</em>
+                    </h3>
+                    <p class="sec-sub">
+                        Real client websites I designed and built on WordPress, alongside automated workflows engineered with n8n to eliminate repetitive manual work.
+                    </p>
+                </div>
+
+                <!-- Milestone Timeline: n8n Lead Capture Automation -->
+                <div class="workflow-milestone-card" data-enter style="margin-top:32px;">
+                    <div class="workflow-card-top">
                         <div>
-                            <span class="flagship-category">E-Commerce &amp; Brand Engineering</span>
-                            <div class="flagship-title-row">
-                                <h3>Rasha E Hasas</h3>
-                                <div class="flagship-arrow">↗</div>
-                            </div>
-                            <p class="flagship-summary">
-                                Built an end-to-end luxury WooCommerce store featuring 50+ perfume fragrances, integrated the Razorpay payment gateway for instant transactions, and executed targeted on-page technical SEO that achieved Google Page 1 ranking for competitive perfume keywords.
+                            <h4 class="workflow-headline">Lead Capture &amp; Sheet Sync Automation</h4>
+                            <p class="workflow-lead-desc">
+                                A practical automation workflow built with n8n to capture incoming inquiries from website forms, validate fields, and update client Google Sheets in real time without manual copy-pasting.
                             </p>
                         </div>
-                        <div>
-                            <div class="flagship-metrics-grid">
-                                <div>
-                                    <div class="f-metric-val">50+ SKUs</div>
-                                    <div class="f-metric-lbl">Product Catalog</div>
-                                </div>
-                                <div>
-                                    <div class="f-metric-val">Razorpay</div>
-                                    <div class="f-metric-lbl">Payment Gateway</div>
-                                </div>
-                                <div>
-                                    <div class="f-metric-val">Page 1</div>
-                                    <div class="f-metric-lbl">Google SEO Ranking</div>
-                                </div>
-                                <div>
-                                    <div class="f-metric-val">100%</div>
-                                    <div class="f-metric-lbl">Responsive Mobile</div>
-                                </div>
+                        <div class="workflow-badge-pill">
+                            <span class="status-dot"></span>BUILT WITH N8N &amp; ZAPIER
+                        </div>
+                    </div>
+
+                    <!-- 4-Stage Connected Workflow -->
+                    <div class="workflow-milestone-track">
+                        <div class="milestone-step">
+                            <div class="milestone-node"><span class="node-num">01</span><span class="node-label">STAGE 01</span></div>
+                            <div class="milestone-box">
+                                <span class="step-role">TRIGGER</span>
+                                <h5 class="step-title">Form Submission</h5>
+                                <p class="step-desc">Lead submits an inquiry via website contact form or checkout event with customer payload.</p>
                             </div>
-                            <div class="flagship-tags-row">
-                                <span class="flagship-tag">WooCommerce</span>
-                                <span class="flagship-tag">Page 1 SEO</span>
-                                <span class="flagship-tag">Razorpay API</span>
-                                <span class="flagship-tag">Inventory CMS</span>
+                        </div>
+
+                        <div class="milestone-step">
+                            <div class="milestone-node"><span class="node-num">02</span><span class="node-label">STAGE 02</span></div>
+                            <div class="milestone-box">
+                                <span class="step-role">FILTER</span>
+                                <h5 class="step-title">Data Validation</h5>
+                                <p class="step-desc">Filters out spam submissions and validates email and phone formatting with regex checks.</p>
+                            </div>
+                        </div>
+
+                        <div class="milestone-step">
+                            <div class="milestone-node"><span class="node-num">03</span><span class="node-label">STAGE 03</span></div>
+                            <div class="milestone-box">
+                                <span class="step-role">FORMAT</span>
+                                <h5 class="step-title">Payload Cleanup</h5>
+                                <p class="step-desc">Standardizes phone numbers, parses text fields, and formats UTC/IST timestamps.</p>
+                            </div>
+                        </div>
+
+                        <div class="milestone-step">
+                            <div class="milestone-node"><span class="node-num">04</span><span class="node-label">STAGE 04</span></div>
+                            <div class="milestone-box">
+                                <span class="step-role">SYNC</span>
+                                <h5 class="step-title">Google Sheet Update</h5>
+                                <p class="step-desc">Appends new lead row to client spreadsheet and sends instant alert notification.</p>
                             </div>
                         </div>
                     </div>
-                </a>
 
-                <!-- 2. Editorial Duo: Sutsmax India & HideOut Marketing -->
-                <div class="web-duo-row">
-                    <!-- Sutsmax India -->
-                    <a href="https://sutsmaxindia.in" target="_blank" rel="noopener" class="editorial-duo-card">
-                        <div class="duo-img-wrap">
-                            <div class="browser-chrome-bar" style="height:30px;">
-                                <div class="browser-chrome-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
-                                <span class="browser-address" style="font-size:10px;padding:2px 8px;">https://sutsmaxindia.in</span>
-                            </div>
-                            <img src="assets/site-sutsmax.jpg" alt="Sutsmax India retail commerce website preview" loading="lazy">
-                        </div>
-                        <div class="duo-card-body">
-                            <div>
-                                <div class="duo-card-top">
-                                    <h4 class="duo-card-title">Sutsmax India</h4>
-                                    <span style="font-size:16px;">↗</span>
-                                </div>
-                                <div class="duo-card-role">Retail Commerce &amp; Product Catalog</div>
-                                <p class="duo-card-desc">
-                                    Developed an e-commerce catalog for an established incense manufacturer with direct WhatsApp ordering flow, categorized inventories, and clean WordPress administration.
-                                </p>
-                            </div>
-                            <div class="duo-tags-row">
-                                <span class="flagship-tag">E-Commerce</span>
-                                <span class="flagship-tag">WhatsApp Flow</span>
-                                <span class="flagship-tag">WordPress</span>
-                                <span class="flagship-tag">Product Catalog</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- HideOut Marketing -->
-                    <a href="https://hideoutmarketing.in" target="_blank" rel="noopener" class="editorial-duo-card">
-                        <div class="duo-img-wrap">
-                            <div class="browser-chrome-bar" style="height:30px;">
-                                <div class="browser-chrome-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
-                                <span class="browser-address" style="font-size:10px;padding:2px 8px;">https://hideoutmarketing.in</span>
-                            </div>
-                            <img src="assets/site-hideout.jpg" alt="HideOut Marketing digital agency website preview" loading="lazy">
-                        </div>
-                        <div class="duo-card-body">
-                            <div>
-                                <div class="duo-card-top">
-                                    <h4 class="duo-card-title">HideOut Marketing</h4>
-                                    <span style="font-size:16px;">↗</span>
-                                </div>
-                                <div class="duo-card-role">Agency Website &amp; Client Intake</div>
-                                <p class="duo-card-desc">
-                                    Converted agency Figma designs into an interactive WordPress website, wired with an automated webhook intake to process prospective clients directly.
-                                </p>
-                            </div>
-                            <div class="duo-tags-row">
-                                <span class="flagship-tag">Figma to Web</span>
-                                <span class="flagship-tag">WordPress</span>
-                                <span class="flagship-tag">n8n Webhook</span>
-                                <span class="flagship-tag">Agency CMS</span>
-                            </div>
-                        </div>
-                    </a>
+                    <div class="workflow-telemetry-strip">
+                        <div><span class="telemetry-dot live"></span>Workflow blueprint: form → validation → cleanup → sheet sync</div>
+                        <div>Built for less manual follow-up and clearer lead handoff.</div>
+                    </div>
                 </div>
 
-                <!-- 3. Institutional Portal Feature: Shri Vidya Jyoti School -->
-                <a href="https://shrividyajyotihighschool.in" target="_blank" rel="noopener" class="web-institutional-card">
-                    <div class="inst-body">
-                        <div>
-                            <span class="flagship-category">Institutional Portal &amp; Cloud Infrastructure</span>
-                            <div class="flagship-title-row">
-                                <h3 style="font-size:clamp(1.5rem, 2vw, 1.8rem);">Shri Vidya Jyoti High School</h3>
-                                <div class="flagship-arrow">↗</div>
+                <!-- Editorial Web Projects Grid (Strictly Bounded Browser Frames) -->
+                <div class="web-editorial-grid" data-enter style="margin-top:36px;">
+                    <!-- Project 1: Rasha E Hasas (Flagship Hero Layout) -->
+                    <div class="web-editorial-card is-flagship-web">
+                        <div class="browser-chrome-bar">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <div class="browser-url-pill">🔒 https://rashaehasas.com</div>
+                            <div class="browser-window-actions"><span>–</span><span>□</span><span>×</span></div>
+                        </div>
+                        <div class="browser-preview-viewport">
+                            <img src="assets/site-rashaehasas.jpg" alt="Rasha E Hasas luxury fragrance store" loading="lazy">
+                        </div>
+                        <div class="web-editorial-content">
+                            <span class="web-card-category">E-COMMERCE &amp; BRAND ENGINEERING</span>
+                            <h4 class="web-card-heading">Rasha E Hasas</h4>
+                            <p class="web-card-summary">
+                                Built an end-to-end luxury WooCommerce store with 50+ perfume SKUs, Razorpay payment integration, responsive mobile design, and on-page SEO setup.
+                            </p>
+                            <div class="web-stats-strip">
+                                <div class="web-stat-block"><span class="web-stat-num">50+ SKUs</span><span class="web-stat-sub">Product Catalog</span></div>
+                                <div class="web-stat-block"><span class="web-stat-num">On-page</span><span class="web-stat-sub">SEO Setup</span></div>
+                                <div class="web-stat-block"><span class="web-stat-num">Razorpay</span><span class="web-stat-sub">Payment Gateway</span></div>
+                                <div class="web-stat-block"><span class="web-stat-num">100%</span><span class="web-stat-sub">Responsive Mobile</span></div>
                             </div>
-                            <p class="flagship-summary" style="margin-bottom:18px;">
+                            <div class="web-tech-pills">
+                                <span class="web-pill">WooCommerce</span>
+                                <span class="web-pill">On-page SEO</span>
+                                <span class="web-pill">Razorpay API</span>
+                                <span class="web-pill">Inventory CMS</span>
+                            </div>
+                            <div class="web-card-actions">
+                                <a href="https://rashaehasas.com" target="_blank" rel="noopener" class="btn-web-visit">Visit Live Website ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Sutsmax India -->
+                    <div class="web-editorial-card">
+                        <div class="browser-chrome-bar">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <div class="browser-url-pill">🔒 https://sutsmaxindia.in</div>
+                        </div>
+                        <div class="browser-preview-viewport">
+                            <img src="assets/site-sutsmax.jpg" alt="Sutsmax India incense e-commerce store" loading="lazy">
+                        </div>
+                        <div class="web-editorial-content">
+                            <span class="web-card-category">RETAIL COMMERCE &amp; PRODUCT CATALOG</span>
+                            <h4 class="web-card-heading">Sutsmax India</h4>
+                            <p class="web-card-summary">Developed an e-commerce catalog for an established incense manufacturer with direct WhatsApp ordering flow, categorized inventories, and clean WordPress administration.</p>
+                            <div class="web-tech-pills">
+                                <span class="web-pill">E-Commerce</span>
+                                <span class="web-pill">WhatsApp Flow</span>
+                                <span class="web-pill">WordPress</span>
+                                <span class="web-pill">Product Catalog</span>
+                            </div>
+                            <div class="web-card-actions">
+                                <a href="https://sutsmaxindia.in" target="_blank" rel="noopener" class="btn-web-visit">Visit Website ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: HideOut Marketing -->
+                    <div class="web-editorial-card">
+                        <div class="browser-chrome-bar">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <div class="browser-url-pill">🔒 https://hideoutmarketing.in</div>
+                        </div>
+                        <div class="browser-preview-viewport">
+                            <img src="assets/site-hideout.jpg" alt="HideOut Marketing agency website" loading="lazy">
+                        </div>
+                        <div class="web-editorial-content">
+                            <span class="web-card-category">AGENCY WEBSITE &amp; CLIENT INTAKE</span>
+                            <h4 class="web-card-heading">HideOut Marketing</h4>
+                            <p class="web-card-summary">Converted agency Figma designs into an interactive WordPress website, wired with an automated webhook intake to process prospective clients directly.</p>
+                            <div class="web-tech-pills">
+                                <span class="web-pill">Figma to Web</span>
+                                <span class="web-pill">WordPress</span>
+                                <span class="web-pill">n8n Webhook</span>
+                                <span class="web-pill">Agency CMS</span>
+                            </div>
+                            <div class="web-card-actions">
+                                <a href="https://hideoutmarketing.in" target="_blank" rel="noopener" class="btn-web-visit">Visit Website ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Shri Vidya Jyoti High School -->
+                    <div class="web-editorial-card is-flagship-web">
+                        <div class="browser-chrome-bar">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <div class="browser-url-pill">🔒 https://shrividyajyotihighschool.com</div>
+                            <div class="browser-window-actions"><span>–</span><span>□</span><span>×</span></div>
+                        </div>
+                        <div class="browser-preview-viewport">
+                            <img src="assets/site-svjh.jpg" alt="Shri Vidya Jyoti High School portal" loading="lazy">
+                        </div>
+                        <div class="web-editorial-content">
+                            <span class="web-card-category">INSTITUTIONAL PORTAL &amp; CLOUD INFRASTRUCTURE</span>
+                            <h4 class="web-card-heading">Shri Vidya Jyoti High School</h4>
+                            <p class="web-card-summary">
                                 Built a complete institutional website for an accredited school, featuring admissions guidelines, student notices, photo galleries, and managed cloud hosting with SSL security hardening.
                             </p>
-                        </div>
-                        <div class="flagship-tags-row">
-                            <span class="flagship-tag">Educational Portal</span>
-                            <span class="flagship-tag">Admissions CMS</span>
-                            <span class="flagship-tag">Managed Hosting</span>
-                            <span class="flagship-tag">SSL Hardened</span>
+                            <div class="web-tech-pills">
+                                <span class="web-pill">Educational Portal</span>
+                                <span class="web-pill">Admissions CMS</span>
+                                <span class="web-pill">Managed Hosting</span>
+                                <span class="web-pill">SSL Hardened</span>
+                            </div>
+                            <div class="web-card-actions">
+                                <a href="https://shrividyajyotihighschool.com" target="_blank" rel="noopener" class="btn-web-visit">Visit Institutional Portal ↗</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="inst-img-wrap">
-                        <div class="browser-chrome-bar" style="height:32px;">
-                            <div class="browser-chrome-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
-                            <span class="browser-address">https://shrividyajyotihighschool.in 🔒</span>
-                        </div>
-                        <img src="assets/site-svjh.jpg" alt="Shri Vidya Jyoti High School educational portal preview" loading="lazy">
-                    </div>
-                </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- =====================================================================
-         CHAPTER 04: PERSONALITY & THE PROMISE (MUSEUM WHITE)
+         CHAPTER 04: HOW I WORK & TEAM VALUE (LIGHT SECTION)
          ===================================================================== -->
-    <section class="section-wrapper" id="promise-section" aria-label="Personality and Work Ethic">
+    <section class="section-wrapper is-light-section" id="promise-section" aria-label="Personality, Work Ethic, and Team Value">
         <div class="section-inner">
-            <!-- CHAPTER GATE: PERSONALITY & PROMISE -->
+            <!-- CHAPTER GATE: PERSONALITY & WORK ETHIC -->
             <div class="chapter-gate light-gate" data-enter>
                 <div style="display:flex;align-items:center;gap:10px;">
-                    <span class="gate-badge">04 // PERSONALITY &amp; THE PROMISE</span>
-                    <span class="gate-desc">How I Work, What I Value &amp; Who You Get</span>
+                    <span class="gate-badge">04 // HOW I WORK &amp; WHAT I VALUE</span>
+                    <span class="gate-desc">Practical Mindset · Team Value · Zero Corporate Fluff</span>
                 </div>
-                <span>Practical Mindset · Radical Ownership · No Fluff</span>
+                <span>Curiosity · Composure · Radical Honesty</span>
             </div>
 
             <p class="sec-tag" data-enter>04 / How I Work &amp; Who I Am</p>
@@ -5211,55 +5405,50 @@
                 What you actually get when you hire me for systems support, commission a 3D visual, or collaborate on a project.
             </p>
 
-            <!-- 3 Core Work Ethic Pillars -->
-            <div class="promise-grid" data-enter>
-                <!-- Pillar 1 -->
-                <div class="promise-pillar-card">
-                    <div>
-                        <span class="promise-pillar-num">01 / CURIOSITY</span>
-                        <h3 class="promise-pillar-title">Knowing how things work under the hood.</h3>
-                        <p class="promise-pillar-desc">
-                            I'm not the kind of engineer who just restarts an application or reboots a server blindly and crosses his fingers. Whether it's a trading platform stalling during night shifts or a glass transmission shader throwing unexpected black artifacts in Blender, I dig into the logs, configuration parameters, and physics until I understand *why* it failed. That’s how problems get solved for good.
-                        </p>
-                    </div>
+            <!-- 3 Pillars Grid: Curiosity, Composure, Honesty -->
+            <div class="promise-grid" data-enter style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px;">
+                <!-- Pillar 01: Curiosity -->
+                <div class="promise-card">
+                    <div class="promise-card-num">01 / CURIOSITY</div>
+                    <h3 class="promise-card-title">Knowing how things work under the hood.</h3>
+                    <p class="promise-card-body">
+                        I'm not the kind of engineer who just restarts an application or reboots a server blindly and crosses his fingers. Whether it's a trading platform stalling during night shifts or a glass transmission shader throwing unexpected black artifacts in Blender, I dig into the logs, configuration parameters, and physics until I understand <em>why</em> it failed. That’s how problems get solved for good.
+                    </p>
                 </div>
 
-                <!-- Pillar 2 -->
-                <div class="promise-pillar-card">
-                    <div>
-                        <span class="promise-pillar-num">02 / COMPOSURE</span>
-                        <h3 class="promise-pillar-title">Calm and reliable when things get messy.</h3>
-                        <p class="promise-pillar-desc">
-                            Supporting high-stakes retail trading systems and airport biometric boarding gates taught me that panicking helps nobody. When passenger queues build up or trading servers trigger alerts, I stay calm, follow systematic troubleshooting procedures, and communicate clearly. People know that when I'm on shift, issues are handled properly without drama.
-                        </p>
-                    </div>
+                <!-- Pillar 02: Composure -->
+                <div class="promise-card">
+                    <div class="promise-card-num">02 / COMPOSURE</div>
+                    <h3 class="promise-card-title">Calm and reliable when things get messy.</h3>
+                    <p class="promise-card-body">
+                        Supporting high-stakes retail trading systems and airport biometric boarding gates taught me that panicking helps nobody. When passenger queues build up or trading servers trigger alerts, I stay calm, follow systematic troubleshooting procedures, and communicate clearly. People know that when I'm on shift, issues are handled properly without drama.
+                    </p>
                 </div>
 
-                <!-- Pillar 3 -->
-                <div class="promise-pillar-card">
-                    <div>
-                        <span class="promise-pillar-num">03 / HONESTY</span>
-                        <h3 class="promise-pillar-title">Curious and not afraid to say "I don't know yet."</h3>
-                        <p class="promise-pillar-desc">
-                            I won't pretend to be an expert in software I haven't mastered. If there’s an unfamiliar tool, a new pipeline, or a peculiar error, give me the documentation and a couple of hours, and I'll figure it out. I take genuine pride in learning quickly, asking the right questions, and taking full responsibility for what I deliver.
-                        </p>
-                    </div>
+                <!-- Pillar 03: Honesty -->
+                <div class="promise-card">
+                    <div class="promise-card-num">03 / HONESTY</div>
+                    <h3 class="promise-card-title">Curious and not afraid to say "I don't know yet."</h3>
+                    <p class="promise-card-body">
+                        I won't pretend to be an expert in software I haven't mastered. If there’s an unfamiliar tool, a new pipeline, or a peculiar error, give me the documentation and a couple of hours, and I'll figure it out. I take genuine pride in learning quickly, asking the right questions, and taking full responsibility for what I deliver.
+                    </p>
                 </div>
             </div>
 
-            <!-- Personal Promise Statement Card -->
-            <div class="personal-promise-statement-card" data-enter>
-                <div class="promise-quote-text">
-                    "My promise is simple: I will never give you corporate excuses, cut lazy corners, or pretend to know something I don't. I show up on time, I take real ownership of my work, and I don't stop until it's running reliably."
-                </div>
-                <div class="promise-author-row">
+            <!-- Authentic Personal Note on Teamwork (Replaced Cringe Sales Pitch) -->
+            <div class="personal-team-note" data-enter>
+                <div class="personal-team-note-eyebrow">A PERSONAL NOTE ON TEAMWORK</div>
+                <h3 class="personal-team-note-title">What Colleagues &amp; Leads Appreciate When Working With Me</h3>
+                <p class="personal-team-note-body">
+                    At the end of the day, I’m not here to sell myself with buzzwords or rehearsed corporate lines. What colleagues and team leads have always appreciated about me is quite straightforward: I’m steady when things get chaotic, I don’t bring ego into the room, and I genuinely care about doing the work properly.
+                </p>
+                <p class="personal-team-note-body" style="margin-bottom:0;">
+                    Whether it’s staying late on shift to track down a production stall at Sharekhan or patiently troubleshooting a stubborn 3D render pipeline in Blender, I take pride in being someone a team can lean on and trust without second-guessing.
+                </p>
+                <div class="personal-team-note-author">
                     <div>
-                        <span class="promise-author-name">Joel Daniel Nadar</span>
-                        <span style="color:#64748b;margin:0 8px;">·</span>
-                        <span class="promise-author-role">Systems &amp; Support Engineer · 3D Creator · Mumbai, India</span>
-                    </div>
-                    <div style="font-family:'DM Mono',monospace;font-size:11px;color:#10b981;">
-                        ● Personal Commitment
+                        <div class="author-name">Joel Daniel Nadar</div>
+                        <div class="author-role">Systems Support Engineer &amp; 3D Creator · Mumbai, India</div>
                     </div>
                 </div>
             </div>
@@ -5267,12 +5456,12 @@
     </section>
 
     <!-- =====================================================================
-         CHAPTER 05: CONTACT & DIRECT INTAKE (MUSEUM WHITE)
+         CHAPTER 05: CONTACT & DIRECT INTAKE (DARK SECTION)
          ===================================================================== -->
-    <section class="section-wrapper" id="contact-section" aria-label="Contact and Getting In Touch">
+    <section class="section-wrapper is-dark-section" id="contact-section" aria-label="Contact and Getting In Touch">
         <div class="section-inner">
-            <!-- CHAPTER GATE: CONTACT (LIGHT GATE) -->
-            <div class="chapter-gate light-gate" data-enter>
+            <!-- CHAPTER GATE: CONTACT (DARK GATE) -->
+            <div class="chapter-gate dark-gate" data-enter>
                 <div style="display:flex;align-items:center;gap:10px;">
                     <span class="gate-badge">05 // CONTACT &amp; DIRECT INTAKE</span>
                     <span class="gate-desc">Available for Full-Time Roles &amp; High-Impact Projects</span>
@@ -5286,50 +5475,50 @@
                 <em>work together.</em>
             </h2>
             <p class="contact-hero-subtitle" data-enter>
-                Whether you need an engineer to support production trading servers, manage airport biometrics, create photorealistic 3D renders in Blender, or automate client workflows with n8n—I’m ready. Drop me an email or reach out directly on WhatsApp.
+                For systems support, 3D work, or an automation project, email or WhatsApp is the most direct way to start a conversation.
             </p>
 
-            <!-- TWO-COLUMN WHITE COMMAND DECK -->
-            <div class="contact-white-deck" data-enter>
+            <!-- TWO-COLUMN OBSIDIAN COMMAND DECK -->
+            <div class="contact-dark-deck" data-enter>
                 <!-- LEFT COLUMN: Primary Direct Intake Hub -->
-                <div class="contact-intake-card">
+                <div class="contact-intake-card-dark">
                     <div>
-                        <div class="contact-intake-status-badge">
-                            <span class="live-dot-green"></span>
+                        <div class="contact-intake-status-badge" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:6px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#34d399;font-family:'DM Mono',monospace;">
+                            <span class="live-dot-green" style="width:7px;height:7px;background:#10b981;border-radius:50%;display:block;box-shadow:0 0 8px #10b981;"></span>
                             <span>Open for Full-Time Roles &amp; Projects</span>
                         </div>
 
                         <!-- Direct Email Monolith Box -->
-                        <div class="intake-email-block">
-                            <span class="intake-label">PRIMARY DIRECT EMAIL</span>
-                            <a href="mailto:joelnadar825@gmail.com" class="intake-email-value" title="Click to email joelnadar825@gmail.com">
+                        <div class="intake-email-block-dark">
+                            <span class="intake-label" style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#a1a1aa;text-transform:uppercase;">PRIMARY DIRECT EMAIL</span>
+                            <a href="mailto:joelnadar825@gmail.com" class="intake-email-value-dark" title="Click to email joelnadar825@gmail.com">
                                 joelnadar825@gmail.com
                             </a>
-                            <div class="intake-actions-row">
-                                <button type="button" class="btn-white-copy" onclick="copyContact('joelnadar825@gmail.com', this)">
+                            <div class="intake-actions-row" style="display:flex;gap:10px;flex-wrap:wrap;">
+                                <button type="button" class="btn-dark-copy" onclick="copyContact('joelnadar825@gmail.com', this)">
                                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                     <span class="btn-text">Copy Email Address</span>
                                 </button>
-                                <a href="mailto:joelnadar825@gmail.com" class="btn-white-compose">
+                                <a href="mailto:joelnadar825@gmail.com" class="btn-dark-compose">
                                     <span>Send an Email ↗</span>
                                 </a>
                             </div>
                         </div>
 
                         <!-- Instant Phone & WhatsApp -->
-                        <div class="intake-phone-block">
+                        <div class="intake-phone-block" style="background:#1b1b19;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
                             <div>
-                                <span class="intake-label" style="margin-bottom:4px;">PHONE &amp; WHATSAPP</span>
-                                <a href="tel:+919321591870" class="intake-phone-val">+91 93215 91870</a>
+                                <span class="intake-label" style="display:block;margin-bottom:4px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#a1a1aa;text-transform:uppercase;">PHONE &amp; WHATSAPP</span>
+                                <a href="tel:+919321591870" class="intake-phone-val-dark">+91 93215 91870</a>
                             </div>
-                            <div class="intake-phone-actions">
-                                <a href="https://wa.me/919321591870" target="_blank" rel="noopener" class="btn-subtle-pill" style="background:#059669;color:#ffffff;border-color:#059669;">
+                            <div class="intake-phone-actions" style="display:flex;gap:8px;flex-wrap:wrap;">
+                                <a href="https://wa.me/919321591870" target="_blank" rel="noopener" class="btn-dark-copy" style="background:#059669 !important;color:#ffffff !important;border-color:#059669 !important;">
                                     WhatsApp ↗
                                 </a>
-                                <a href="tel:+919321591870" class="btn-subtle-pill">
+                                <a href="tel:+919321591870" class="btn-dark-compose">
                                     Call Direct →
                                 </a>
-                                <button type="button" class="btn-subtle-pill" onclick="copyContact('+919321591870', this)">
+                                <button type="button" class="btn-dark-compose" onclick="copyContact('+919321591870', this)">
                                     <span class="btn-text">Copy</span>
                                 </button>
                             </div>
@@ -5337,28 +5526,28 @@
                     </div>
 
                     <!-- Location & Live IST Telemetry -->
-                    <div class="intake-meta-strip">
+                    <div class="intake-meta-strip" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);margin-top:24px;font-size:12.5px;color:#a1a1aa;font-family:'DM Mono',monospace;">
                         <div>📍 Mumbai, Maharashtra, India · UTC+5:30</div>
                         <div>
-                            <span class="clock-live" id="liveTimeText" style="font-weight:700;color:#0a0a0a;">02:50 AM IST</span>
+                            <span class="clock-live" id="liveTimeText" style="font-weight:700;color:#ffffff;">02:50 AM IST</span>
                         </div>
-                        <div>⚡ Response: Under 2 hours</div>
+                        <div>● Mumbai IST · direct intake</div>
                     </div>
                 </div>
 
                 <!-- RIGHT COLUMN: Verified CV & Network Proof -->
-                <div class="contact-proof-column">
-                    <!-- CV Download Card -->
-                    <div class="contact-cv-box">
-                        <div class="cv-box-header">
-                            <span class="cv-badge">VERIFIED RESUME (2025/2026)</span>
-                            <span style="font-family:'DM Mono',monospace;font-size:11px;color:#888880;">PDF · 177 KB</span>
+                <div class="contact-proof-card-dark">
+                    <!-- Verified Curriculum Vitae Card -->
+                    <div class="contact-cv-box" style="margin-bottom:28px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                            <span style="background:rgba(59,130,246,0.15);color:#60a5fa;border:1px solid rgba(59,130,246,0.3);padding:4px 10px;border-radius:4px;font-size:11px;font-family:'DM Mono',monospace;font-weight:600;">VERIFIED RESUME (2025/2026)</span>
+                            <span style="font-size:12px;color:#71717a;font-family:'DM Mono',monospace;">PDF · 177 KB</span>
                         </div>
-                        <h3 class="cv-box-title">Curriculum Vitae</h3>
-                        <p class="cv-box-desc">
+                        <h4 style="font-family:'DM Sans',sans-serif;font-size:19px;font-weight:600;color:#ffffff;margin-bottom:8px;">Curriculum Vitae</h4>
+                        <p style="font-size:13.5px;line-height:1.6;color:#a1a1aa;margin-bottom:20px;">
                             A concise summary of my 3+ years in systems and production support, server monitoring (150+ Linux/Windows servers), airport biometric gate operations, and technical certifications.
                         </p>
-                        <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn-download-cv-white" download>
+                        <a href="assets/Joel_Daniel_Nadar_CV.pdf" class="btn-dark-copy" style="width:100%;justify-content:center;padding:12px 20px;text-decoration:none;" download>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                             <span>Download Joel_Daniel_Nadar_CV.pdf</span>
                         </a>
@@ -5366,21 +5555,21 @@
 
                     <!-- Online Profiles & Network Proof -->
                     <div class="contact-networks-box">
-                        <span class="networks-label">PROFESSIONAL &amp; CREATIVE PROOF</span>
-                        <div class="contact-network-tiles">
-                            <a href="https://linkedin.com/in/joel-nadar-899881267" target="_blank" rel="noopener" class="network-white-tile">
+                        <span style="display:block;margin-bottom:14px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#a1a1aa;text-transform:uppercase;">PROFESSIONAL &amp; CREATIVE PROOF</span>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                            <a href="https://linkedin.com/in/joel-nadar-899881267" target="_blank" rel="noopener" class="network-dark-tile">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6c0-.89-.72-1.6-1.6-1.6Z"/></svg>
                                 <span>LinkedIn ↗</span>
                             </a>
-                            <a href="https://artstation.com/joelnadar" target="_blank" rel="noopener" class="network-white-tile">
+                            <a href="https://artstation.com/joelnadar" target="_blank" rel="noopener" class="network-dark-tile">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m0 17.723 2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.332h13.674l-3.04-5.264H0v.427zm24 .07-7.447-12.92a2.41 2.41 0 0 0-2.14-1.343 2.41 2.41 0 0 0-2.14 1.343L4.82 17.793h4.63l4.78-8.29 4.79 8.29H24zM10.82 17.793l3.29-5.71 3.3 5.71h-6.59z"/></svg>
                                 <span>ArtStation ↗</span>
                             </a>
-                            <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener" class="network-white-tile">
+                            <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener" class="network-dark-tile">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
                                 <span>GitHub ↗</span>
                             </a>
-                            <a href="https://behance.net/joelnadar" target="_blank" rel="noopener" class="network-white-tile">
+                            <a href="https://behance.net/joelnadar" target="_blank" rel="noopener" class="network-dark-tile">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.976 3-3.411 0-5.75-2.6-5.75-6 0-3.559 2.39-6 5.75-6 3.484 0 5.568 2.529 5.385 6.094h-8.385c.09 1.838 1.438 3.094 3.25 3.094 1.422 0 2.502-.688 2.891-1.781l1.835 1.593zm-7.976-5h5.531c-.131-1.641-1.281-2.453-2.656-2.453-1.422 0-2.672.828-2.875 2.453zm-11.75-7h5.836c2.518 0 3.964 1.094 3.964 2.922 0 1.203-.688 2.188-1.781 2.656 1.453.453 2.234 1.625 2.234 3.125 0 2.203-1.688 3.297-4.297 3.297h-6.047v-12zm2.75 4.812h2.516c.922 0 1.578-.391 1.578-1.234 0-.797-.641-1.203-1.578-1.203h-2.516v2.437zm0 4.813h2.781c1.062 0 1.766-.453 1.766-1.359 0-.969-.734-1.391-1.766-1.391h-2.781v2.75z"/></svg>
                                 <span>Behance ↗</span>
                             </a>
@@ -5389,27 +5578,25 @@
                 </div>
             </div>
 
-            <!-- Crisp Clean Museum-Grade Footer -->
-            <footer class="site-footer-white" data-enter style="margin-top:64px;">
-                <div class="footer-inner-flex">
-                    <div>© 2026 Joel Daniel Nadar · Systems Support Engineer &amp; 3D Creator · Mumbai, India</div>
-                    <div>Built with Three.js, GSAP 3 &amp; Handcrafted CSS</div>
-                    <a onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="footer-back-top">Back to top ↑</a>
-                </div>
+            <!-- Obsidian Dark Museum-Grade Footer -->
+            <footer class="site-footer-dark" data-enter style="margin-top:64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+                <div>© 2026 Joel Daniel Nadar · Systems Support Engineer &amp; 3D Creator · Mumbai, India</div>
+                <div>Built with Three.js, GSAP 3 &amp; Handcrafted CSS</div>
+                <a onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to top ↑</a>
             </footer>
-
-
-
         </div>
     </section>
 
-        <!-- ── LIGHTBOX MODAL ─────────────────────────── -->
+    <!-- ── LIGHTBOX MODAL ─────────────────────────── -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Preview" onclick="closeLB(event)">
         <button class="lb-close" aria-label="Close" onclick="closeLB()">×</button>
         <img id="lb-img" src="" alt="">
         <div class="lb-caption" id="lb-cap"></div>
     </div>
 
+    <!-- ═════════════════════════════════════════════
+         THREE.JS & GSAP SHOWCASE CONTROLLER
+    ═════════════════════════════════════════════ -->
     <script type="module">
     import * as THREE from 'three';
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
