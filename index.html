@@ -2667,6 +2667,746 @@
     will-change: transform;
 }
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   NEW ARCHITECTURAL ENHANCEMENTS: TOOLS MARQUEE, TIMELINE & EDITORIAL WEB
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* --- 1. Tools & Software Dual Marquee (integration-hero style) --- */
+.tools-ecosystem-wrapper {
+    margin-top: 54px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+}
+.tools-ecosystem-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 36px;
+}
+.tools-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e5e5e0;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 5px 14px;
+    border-radius: 9999px;
+    margin-bottom: 14px;
+}
+.tools-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin: 0 0 10px;
+}
+.tools-sub {
+    font-size: 14px;
+    color: #9c9c96;
+    line-height: 1.6;
+    margin: 0;
+}
+.tools-marquee-container {
+    position: relative;
+    overflow: hidden;
+    padding: 12px 0;
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+.tools-marquee-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+}
+.marquee-row-1 {
+    animation: scrollLeftMarquee 40s linear infinite;
+}
+.marquee-row-2 {
+    margin-top: 14px;
+    animation: scrollRightMarquee 42s linear infinite;
+}
+.tools-marquee-track:hover {
+    animation-play-state: paused;
+}
+@keyframes scrollLeftMarquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes scrollRightMarquee {
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+}
+.tool-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 9999px;
+    color: #f0f0ee;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+    cursor: default;
+}
+.tool-pill:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+.tool-pill-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: #e2e8f0;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+}
+.tool-pill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.04em;
+    padding-left: 4px;
+    border-left: 1px solid rgba(255,255,255,0.12);
+}
+
+/* --- 2. Lead Capture Milestone Timeline (timeline.tsx style) --- */
+.milestone-timeline-card {
+    margin-top: 48px;
+    background: #ffffff;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    padding: 36px 40px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+    position: relative;
+}
+.milestone-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+}
+.milestone-title-wrap h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+}
+.milestone-title-wrap p {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    max-width: 640px;
+    line-height: 1.6;
+    margin: 0;
+}
+.milestone-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #065f46;
+    font-weight: 600;
+}
+.milestone-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+}
+/* Connecting Line behind nodes */
+.milestone-track::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+.milestone-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+.milestone-node-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.milestone-node {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0a0a0a;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    position: relative;
+    transition: transform 0.25s ease;
+}
+.milestone-item:hover .milestone-node {
+    transform: scale(1.1);
+}
+.milestone-node.is-active {
+    background: #0a0a0a;
+    color: #ffffff;
+    border-color: #0a0a0a;
+}
+.milestone-node.is-active::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px solid rgba(10, 10, 10, 0.2);
+    animation: nodePulse 2s infinite ease-out;
+}
+@keyframes nodePulse {
+    0% { transform: scale(0.95); opacity: 1; }
+    100% { transform: scale(1.3); opacity: 0; }
+}
+.milestone-stage-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.milestone-card-inner {
+    background: var(--bg-subtle);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+}
+.milestone-item:hover .milestone-card-inner {
+    background: #ffffff;
+    border-color: #0a0a0a;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    transform: translateY(-2px);
+}
+.milestone-status-pill {
+    align-self: flex-start;
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.milestone-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin: 0 0 6px;
+}
+.milestone-desc {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+.milestone-footer-telemetry {
+    margin-top: 24px;
+    padding: 12px 18px;
+    background: #0f1011;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: #94a3b8;
+}
+.telemetry-status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    margin-right: 6px;
+}
+
+/* --- 3. Elevated Editorial Web Projects Layout (Replacing 4-grid) --- */
+.web-editorial-showcase {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+/* Flagship Spotlight Card */
+.web-flagship-card {
+    background: #ffffff;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+.web-flagship-card:hover {
+    border-color: #0a0a0a;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+}
+.flagship-preview-pane {
+    position: relative;
+    background: #f1f1ee;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.browser-chrome-bar {
+    height: 36px;
+    background: #e7e7e3;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.browser-chrome-dots {
+    display: flex;
+    gap: 5px;
+}
+.browser-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.2);
+}
+.browser-address {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #666660;
+    background: #ffffff;
+    padding: 3px 12px;
+    border-radius: 4px;
+    flex: 1;
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.flagship-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    overflow: hidden;
+}
+.flagship-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.web-flagship-card:hover .flagship-img-wrap img {
+    transform: scale(1.04);
+}
+.flagship-badge-pill {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #0a0a0a;
+    color: #ffffff;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 5px 12px;
+    border-radius: 4px;
+}
+.flagship-dossier-pane {
+    padding: 40px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.flagship-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.flagship-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.flagship-title-row h3 {
+    font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+.flagship-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--bg-subtle);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--text-primary);
+    transition: all 0.25s ease;
+}
+.web-flagship-card:hover .flagship-arrow {
+    background: #0a0a0a;
+    color: #ffffff;
+    transform: translate(2px, -2px);
+}
+.flagship-summary {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 24px;
+}
+.flagship-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+    padding: 16px;
+    background: var(--bg-subtle);
+    border-radius: 6px;
+    border: 1px solid var(--line);
+}
+.f-metric-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.f-metric-lbl {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+}
+.flagship-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.flagship-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--line);
+    color: var(--text-secondary);
+}
+
+/* Editorial Duo Row */
+.web-duo-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+.editorial-duo-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+}
+.editorial-duo-card:hover {
+    border-color: #0a0a0a;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+}
+.duo-img-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+    background: #f1f1ee;
+}
+.duo-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.4s ease;
+}
+.editorial-duo-card:hover .duo-img-wrap img {
+    transform: scale(1.03);
+}
+.duo-card-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+}
+.duo-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+.duo-card-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+.duo-card-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+}
+.duo-card-desc {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.duo-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Institutional Full-Bleed Card */
+.web-institutional-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+}
+.web-institutional-card:hover {
+    border-color: #0a0a0a;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+}
+.inst-body {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.inst-img-wrap {
+    position: relative;
+    overflow: hidden;
+    min-height: 260px;
+    background: #f1f1ee;
+}
+.inst-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.4s ease;
+}
+.web-institutional-card:hover .inst-img-wrap img {
+    transform: scale(1.03);
+}
+
+/* --- 4. Dedicated Chapter 05: Accreditations & Academic Background --- */
+.accreditations-section-inner {
+    position: relative;
+    z-index: 2;
+}
+.accred-academic-layout {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 32px;
+}
+.accred-cards-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+.academic-column {
+    display: flex;
+    flex-direction: column;
+}
+.academic-degree-card {
+    background: #141413;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+.academic-degree-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 140px; height: 140px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+.academic-badge-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    padding: 5px 12px;
+    border-radius: 9999px;
+    margin-bottom: 20px;
+    align-self: flex-start;
+}
+.academic-degree-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(2rem, 3.2vw, 2.7rem);
+    color: #ffffff;
+    line-height: 1.1;
+    margin: 0 0 10px;
+}
+.academic-college-sub {
+    font-size: 14px;
+    color: #9c9c96;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.academic-specs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.academic-spec-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+.academic-spec-row .spec-label {
+    color: #8e8e89;
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+}
+.academic-spec-row .spec-val {
+    color: #f5f5f3;
+    font-weight: 600;
+}
+.academic-narrative {
+    font-size: 13px;
+    color: #9c9c96;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+.academic-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Responsive Overrides */
+@media (max-width: 900px) {
+    .milestone-track {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .milestone-track::before {
+        display: none;
+    }
+    .web-flagship-card {
+        grid-template-columns: 1fr;
+    }
+    .web-duo-row {
+        grid-template-columns: 1fr;
+    }
+    .web-institutional-card {
+        grid-template-columns: 1fr;
+    }
+    .accred-academic-layout {
+        grid-template-columns: 1fr;
+    }
+    .accred-cards-column {
+        grid-template-columns: 1fr;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -2912,11 +3652,70 @@
             </div>
 
             <!-- Academic Anchor -->
-            <div class="spectrum-academic-strip" data-enter>
-                <div class="deg-icon">🎓</div>
-                <div class="academic-text">
-                    <span class="deg-title">Bachelor of Management Studies (TYBMS)</span>
-                    <span class="deg-sub">Royal College of Arts, Science &amp; Commerce · University of Mumbai (2023–2026) · Practical Focus: IT Systems Management &amp; Cybersecurity</span>
+            
+            <!-- TOOLS & SOFTWARE ECOSYSTEM MARQUEE (integration-hero style) -->
+            <div class="tools-ecosystem-wrapper" data-enter>
+                <div class="tools-ecosystem-header">
+                    <div class="tools-badge">
+                        <span>⚡</span>
+                        <span>Tools &amp; Software Ecosystem</span>
+                    </div>
+                    <h3 class="tools-title">Tools &amp; Technologies I Work With</h3>
+                    <p class="tools-sub">
+                        Enterprise IT infrastructure, cybersecurity defense, 3D visualization, and web automation tools from my CV.
+                    </p>
+                </div>
+
+                <div class="tools-marquee-container" aria-label="Tools and software marquee">
+                    <!-- Row 1: Core Systems, Security & Cloud Stack -->
+                    <div class="tools-marquee-track marquee-row-1">
+                        <div class="tool-pill"><span class="tool-pill-icon">🐧</span><span>Linux (Ubuntu / Debian)</span><span class="tool-pill-tag">OS &amp; Shell</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🪟</span><span>Windows Server &amp; AD</span><span class="tool-pill-tag">Enterprise AD</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">⚡</span><span>Bash Scripting</span><span class="tool-pill-tag">Cron &amp; Automation</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🗄️</span><span>SQL Server (SSMS)</span><span class="tool-pill-tag">Database</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🛡️</span><span>Trellix / McAfee</span><span class="tool-pill-tag">Endpoint Security</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🦈</span><span>Wireshark</span><span class="tool-pill-tag">Packet Analysis</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">📊</span><span>Zabbix &amp; Grafana</span><span class="tool-pill-tag">Monitoring</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🌐</span><span>Nginx &amp; Apache</span><span class="tool-pill-tag">Web Servers</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">📦</span><span>Git &amp; GitHub</span><span class="tool-pill-tag">Version Control</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🐍</span><span>Python Scripting</span><span class="tool-pill-tag">Automation</span></div>
+                        <!-- Seamless Marquee Duplicate Row 1 -->
+                        <div class="tool-pill"><span class="tool-pill-icon">🐧</span><span>Linux (Ubuntu / Debian)</span><span class="tool-pill-tag">OS &amp; Shell</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🪟</span><span>Windows Server &amp; AD</span><span class="tool-pill-tag">Enterprise AD</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">⚡</span><span>Bash Scripting</span><span class="tool-pill-tag">Cron &amp; Automation</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🗄️</span><span>SQL Server (SSMS)</span><span class="tool-pill-tag">Database</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🛡️</span><span>Trellix / McAfee</span><span class="tool-pill-tag">Endpoint Security</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🦈</span><span>Wireshark</span><span class="tool-pill-tag">Packet Analysis</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">📊</span><span>Zabbix &amp; Grafana</span><span class="tool-pill-tag">Monitoring</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🌐</span><span>Nginx &amp; Apache</span><span class="tool-pill-tag">Web Servers</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">📦</span><span>Git &amp; GitHub</span><span class="tool-pill-tag">Version Control</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🐍</span><span>Python Scripting</span><span class="tool-pill-tag">Automation</span></div>
+                    </div>
+
+                    <!-- Row 2: Creative 3D, Web, Automation & Analytics -->
+                    <div class="tools-marquee-track marquee-row-2">
+                        <div class="tool-pill"><span class="tool-pill-icon">🧊</span><span>Blender 3D</span><span class="tool-pill-tag">Cycles PBR</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">✨</span><span>Three.js WebGL</span><span class="tool-pill-tag">Realtime 3D</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">📰</span><span>WordPress CMS</span><span class="tool-pill-tag">Web Platforms</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🛒</span><span>WooCommerce</span><span class="tool-pill-tag">E-Commerce</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">⚙️</span><span>n8n Workflows</span><span class="tool-pill-tag">Webhook Pipeline</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🔗</span><span>Zapier</span><span class="tool-pill-tag">Sync Integrations</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🎨</span><span>Figma</span><span class="tool-pill-tag">UI / Layout</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">💳</span><span>Razorpay APIs</span><span class="tool-pill-tag">Payment Gateway</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">📈</span><span>Google Analytics</span><span class="tool-pill-tag">Telemetry</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🔍</span><span>Search Console</span><span class="tool-pill-tag">Technical SEO</span></div>
+                        <!-- Seamless Marquee Duplicate Row 2 -->
+                        <div class="tool-pill"><span class="tool-pill-icon">🧊</span><span>Blender 3D</span><span class="tool-pill-tag">Cycles PBR</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">✨</span><span>Three.js WebGL</span><span class="tool-pill-tag">Realtime 3D</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">📰</span><span>WordPress CMS</span><span class="tool-pill-tag">Web Platforms</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🛒</span><span>WooCommerce</span><span class="tool-pill-tag">E-Commerce</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">⚙️</span><span>n8n Workflows</span><span class="tool-pill-tag">Webhook Pipeline</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🔗</span><span>Zapier</span><span class="tool-pill-tag">Sync Integrations</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🎨</span><span>Figma</span><span class="tool-pill-tag">UI / Layout</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">💳</span><span>Razorpay APIs</span><span class="tool-pill-tag">Payment Gateway</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">📈</span><span>Google Analytics</span><span class="tool-pill-tag">Telemetry</span></div>
+                        <div class="tool-pill"><span class="tool-pill-icon">🔍</span><span>Search Console</span><span class="tool-pill-tag">Technical SEO</span></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3297,155 +4096,230 @@
                 <em>Automation Projects.</em>
             </h2>
             <p class="sec-sub" data-enter>
-                Real client websites I designed and built on WordPress, along with automated workflows I set up using n8n and Zapier to eliminate repetitive manual work.
+                Real client websites I designed and built on WordPress, alongside automated workflows engineered with n8n to eliminate repetitive manual work.
             </p>
 
-            <!-- Webhook Card -->
-            <div class="pipeline-card" data-enter>
-                <div class="pipeline-card-top">
-                    <div>
-                        <div class="pipeline-title">Lead Capture &amp; Sheet Sync Automation</div>
-                        <p class="pipeline-desc">
-                            A practical automation workflow built with n8n to capture incoming inquiries from website forms, validate fields, and update client Google Sheets in real time without manual copy-pasting.
-                        </p>
+            <!-- LEAD CAPTURE MILESTONE TIMELINE (timeline.tsx style) -->
+            <div class="milestone-timeline-card" data-enter>
+                <div class="milestone-header">
+                    <div class="milestone-title-wrap">
+                        <h3>Lead Capture &amp; Sheet Sync Automation</h3>
+                        <p>A practical automation workflow built with n8n to capture incoming inquiries from website forms, validate fields, and update client Google Sheets in real time without manual copy-pasting.</p>
                     </div>
-                    <div class="pipeline-telemetry-badge">
+                    <div class="milestone-badge">
                         <span class="live-dot-green"></span>
                         <span>Built with n8n &amp; Zapier</span>
                     </div>
                 </div>
 
-                <div class="pipeline-flow">
-                    <div class="p-step">
-                        <div class="p-step-top">
-                            <span class="p-step-num">STAGE 01</span>
-                            <span class="p-step-status">TRIGGER</span>
+                <div class="milestone-track">
+                    <!-- Stage 1 -->
+                    <div class="milestone-item">
+                        <div class="milestone-node-wrap">
+                            <div class="milestone-node is-active">01</div>
+                            <span class="milestone-stage-tag">Stage 01</span>
                         </div>
-                        <div class="p-step-title">Form Submission</div>
-                        <div class="p-step-detail">Lead submits an inquiry via website contact form or checkout event</div>
-                    </div>
-                    <div class="p-step">
-                        <div class="p-step-top">
-                            <span class="p-step-num">STAGE 02</span>
-                            <span class="p-step-status">FILTER</span>
+                        <div class="milestone-card-inner">
+                            <span class="milestone-status-pill">TRIGGER</span>
+                            <div class="milestone-name">Form Submission</div>
+                            <p class="milestone-desc">Lead submits an inquiry via website contact form or checkout event with customer payload.</p>
                         </div>
-                        <div class="p-step-title">Data Validation</div>
-                        <div class="p-step-detail">Filters out spam submissions and validates email and phone formatting</div>
                     </div>
-                    <div class="p-step">
-                        <div class="p-step-top">
-                            <span class="p-step-num">STAGE 03</span>
-                            <span class="p-step-status">FORMAT</span>
+
+                    <!-- Stage 2 -->
+                    <div class="milestone-item">
+                        <div class="milestone-node-wrap">
+                            <div class="milestone-node is-active">02</div>
+                            <span class="milestone-stage-tag">Stage 02</span>
                         </div>
-                        <div class="p-step-title">Payload Cleanup</div>
-                        <div class="p-step-detail">Standardizes phone numbers, parses text fields, and formats timestamps</div>
-                    </div>
-                    <div class="p-step">
-                        <div class="p-step-top">
-                            <span class="p-step-num">STAGE 04</span>
-                            <span class="p-step-status">SYNC</span>
+                        <div class="milestone-card-inner">
+                            <span class="milestone-status-pill">FILTER</span>
+                            <div class="milestone-name">Data Validation</div>
+                            <p class="milestone-desc">Filters out spam submissions and validates email and phone formatting with regex checks.</p>
                         </div>
-                        <div class="p-step-title">Google Sheet Update</div>
-                        <div class="p-step-detail">Appends new lead row to client spreadsheet and sends instant alert</div>
                     </div>
+
+                    <!-- Stage 3 -->
+                    <div class="milestone-item">
+                        <div class="milestone-node-wrap">
+                            <div class="milestone-node is-active">03</div>
+                            <span class="milestone-stage-tag">Stage 03</span>
+                        </div>
+                        <div class="milestone-card-inner">
+                            <span class="milestone-status-pill">FORMAT</span>
+                            <div class="milestone-name">Payload Cleanup</div>
+                            <p class="milestone-desc">Standardizes phone numbers, parses text fields, and formats UTC/IST timestamps.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="milestone-item">
+                        <div class="milestone-node-wrap">
+                            <div class="milestone-node is-active">04</div>
+                            <span class="milestone-stage-tag">Stage 04</span>
+                        </div>
+                        <div class="milestone-card-inner">
+                            <span class="milestone-status-pill">SYNC</span>
+                            <div class="milestone-name">Google Sheet Update</div>
+                            <p class="milestone-desc">Appends new lead row to client spreadsheet and sends instant alert notification.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone-footer-telemetry">
+                    <div>
+                        <span class="telemetry-status-dot"></span>
+                        <span>Pipeline Status: Active Webhook Endpoint (200 OK)</span>
+                    </div>
+                    <div>Roundtrip Latency: ~1.2s · Zero Data Loss · Automated Execution</div>
                 </div>
             </div>
 
-            <!-- 4 Live Production Sites (Real Captured Showcases) -->
-            <div class="web-grid">
-                <a href="https://rashaehasas.com" target="_blank" rel="noopener" class="web-card" data-enter>
-                    <div class="web-card-img-wrap">
-                        <img src="assets/site-rashaehasas.jpg" alt="Rasha E Hasas live e-commerce platform preview" loading="lazy">
-                    </div>
-                    <div class="web-card-body">
-                        <div>
-                            <div class="web-card-top">
-                                <span class="web-card-name">Rasha E Hasas</span>
-                                <span class="web-card-arrow">↗</span>
+            <!-- ELEVATED EDITORIAL WEB SHOWCASE (Replacing 4-grid) -->
+            <div class="web-editorial-showcase" data-enter>
+                <!-- 1. Flagship Spotlight: Rasha E Hasas -->
+                <a href="https://rashaehasas.com" target="_blank" rel="noopener" class="web-flagship-card">
+                    <div class="flagship-preview-pane">
+                        <div class="browser-chrome-bar">
+                            <div class="browser-chrome-dots">
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
                             </div>
-                            <div class="web-card-role">E-Commerce Store · Perfume Brand</div>
-                            <p class="web-card-desc">
-                                Built a full WooCommerce store featuring 50+ perfume products, integrated Razorpay payment gateway, and set up on-page SEO that helped rank target keywords on Google page 1.
+                            <span class="browser-address">https://rashaehasas.com 🔒</span>
+                        </div>
+                        <div class="flagship-img-wrap">
+                            <img src="assets/site-rashaehasas.jpg" alt="Rasha E Hasas live e-commerce platform preview" loading="lazy">
+                            <span class="flagship-badge-pill">FEATURED FLAGSHIP STORE</span>
+                        </div>
+                    </div>
+                    <div class="flagship-dossier-pane">
+                        <div>
+                            <span class="flagship-category">E-Commerce &amp; Brand Engineering</span>
+                            <div class="flagship-title-row">
+                                <h3>Rasha E Hasas</h3>
+                                <div class="flagship-arrow">↗</div>
+                            </div>
+                            <p class="flagship-summary">
+                                Built an end-to-end luxury WooCommerce store featuring 50+ perfume fragrances, integrated the Razorpay payment gateway for instant transactions, and executed targeted on-page technical SEO that achieved Google Page 1 ranking for competitive perfume keywords.
                             </p>
                         </div>
-                        <div class="web-card-tags">
-                            <span class="i-tag">WooCommerce</span>
-                            <span class="i-tag">Page 1 SEO</span>
-                            <span class="i-tag">Razorpay</span>
-                            <span class="i-tag">50+ Products</span>
+                        <div>
+                            <div class="flagship-metrics-grid">
+                                <div>
+                                    <div class="f-metric-val">50+ SKUs</div>
+                                    <div class="f-metric-lbl">Product Catalog</div>
+                                </div>
+                                <div>
+                                    <div class="f-metric-val">Razorpay</div>
+                                    <div class="f-metric-lbl">Payment Gateway</div>
+                                </div>
+                                <div>
+                                    <div class="f-metric-val">Page 1</div>
+                                    <div class="f-metric-lbl">Google SEO Ranking</div>
+                                </div>
+                                <div>
+                                    <div class="f-metric-val">100%</div>
+                                    <div class="f-metric-lbl">Responsive Mobile</div>
+                                </div>
+                            </div>
+                            <div class="flagship-tags-row">
+                                <span class="flagship-tag">WooCommerce</span>
+                                <span class="flagship-tag">Page 1 SEO</span>
+                                <span class="flagship-tag">Razorpay API</span>
+                                <span class="flagship-tag">Inventory CMS</span>
+                            </div>
                         </div>
                     </div>
                 </a>
 
-                <a href="https://sutsmaxindia.in" target="_blank" rel="noopener" class="web-card" data-enter>
-                    <div class="web-card-img-wrap">
-                        <img src="assets/site-sutsmax.jpg" alt="Sutsmax India retail commerce website preview" loading="lazy">
-                    </div>
-                    <div class="web-card-body">
-                        <div>
-                            <div class="web-card-top">
-                                <span class="web-card-name">Sutsmax India</span>
-                                <span class="web-card-arrow">↗</span>
+                <!-- 2. Editorial Duo: Sutsmax India & HideOut Marketing -->
+                <div class="web-duo-row">
+                    <!-- Sutsmax India -->
+                    <a href="https://sutsmaxindia.in" target="_blank" rel="noopener" class="editorial-duo-card">
+                        <div class="duo-img-wrap">
+                            <div class="browser-chrome-bar" style="height:30px;">
+                                <div class="browser-chrome-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                                <span class="browser-address" style="font-size:10px;padding:2px 8px;">https://sutsmaxindia.in</span>
                             </div>
-                            <div class="web-card-role">E-Commerce &amp; Product Catalog</div>
-                            <p class="web-card-desc">
-                                Developed an e-commerce website for an established incense manufacturer with clean product categories, direct WhatsApp ordering, and a simple WordPress admin dashboard.
+                            <img src="assets/site-sutsmax.jpg" alt="Sutsmax India retail commerce website preview" loading="lazy">
+                        </div>
+                        <div class="duo-card-body">
+                            <div>
+                                <div class="duo-card-top">
+                                    <h4 class="duo-card-title">Sutsmax India</h4>
+                                    <span style="font-size:16px;">↗</span>
+                                </div>
+                                <div class="duo-card-role">Retail Commerce &amp; Product Catalog</div>
+                                <p class="duo-card-desc">
+                                    Developed an e-commerce catalog for an established incense manufacturer with direct WhatsApp ordering flow, categorized inventories, and clean WordPress administration.
+                                </p>
+                            </div>
+                            <div class="duo-tags-row">
+                                <span class="flagship-tag">E-Commerce</span>
+                                <span class="flagship-tag">WhatsApp Flow</span>
+                                <span class="flagship-tag">WordPress</span>
+                                <span class="flagship-tag">Product Catalog</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- HideOut Marketing -->
+                    <a href="https://hideoutmarketing.in" target="_blank" rel="noopener" class="editorial-duo-card">
+                        <div class="duo-img-wrap">
+                            <div class="browser-chrome-bar" style="height:30px;">
+                                <div class="browser-chrome-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                                <span class="browser-address" style="font-size:10px;padding:2px 8px;">https://hideoutmarketing.in</span>
+                            </div>
+                            <img src="assets/site-hideout.jpg" alt="HideOut Marketing digital agency website preview" loading="lazy">
+                        </div>
+                        <div class="duo-card-body">
+                            <div>
+                                <div class="duo-card-top">
+                                    <h4 class="duo-card-title">HideOut Marketing</h4>
+                                    <span style="font-size:16px;">↗</span>
+                                </div>
+                                <div class="duo-card-role">Agency Website &amp; Client Intake</div>
+                                <p class="duo-card-desc">
+                                    Converted agency Figma designs into an interactive WordPress website, wired with an automated webhook intake to process prospective clients directly.
+                                </p>
+                            </div>
+                            <div class="duo-tags-row">
+                                <span class="flagship-tag">Figma to Web</span>
+                                <span class="flagship-tag">WordPress</span>
+                                <span class="flagship-tag">n8n Webhook</span>
+                                <span class="flagship-tag">Agency CMS</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 3. Institutional Portal Feature: Shri Vidya Jyoti School -->
+                <a href="https://shrividyajyotihighschool.in" target="_blank" rel="noopener" class="web-institutional-card">
+                    <div class="inst-body">
+                        <div>
+                            <span class="flagship-category">Institutional Portal &amp; Cloud Infrastructure</span>
+                            <div class="flagship-title-row">
+                                <h3 style="font-size:clamp(1.5rem, 2vw, 1.8rem);">Shri Vidya Jyoti High School</h3>
+                                <div class="flagship-arrow">↗</div>
+                            </div>
+                            <p class="flagship-summary" style="margin-bottom:18px;">
+                                Built a complete institutional website for an accredited school, featuring admissions guidelines, student notices, photo galleries, and managed cloud hosting with SSL security hardening.
                             </p>
                         </div>
-                        <div class="web-card-tags">
-                            <span class="i-tag">E-Commerce</span>
-                            <span class="i-tag">Payment APIs</span>
-                            <span class="i-tag">Product Catalog</span>
-                            <span class="i-tag">WordPress</span>
+                        <div class="flagship-tags-row">
+                            <span class="flagship-tag">Educational Portal</span>
+                            <span class="flagship-tag">Admissions CMS</span>
+                            <span class="flagship-tag">Managed Hosting</span>
+                            <span class="flagship-tag">SSL Hardened</span>
                         </div>
                     </div>
-                </a>
-
-                <a href="https://hideoutmarketing.in" target="_blank" rel="noopener" class="web-card" data-enter>
-                    <div class="web-card-img-wrap">
-                        <img src="assets/site-hideout.jpg" alt="HideOut Marketing digital agency website preview" loading="lazy">
-                    </div>
-                    <div class="web-card-body">
-                        <div>
-                            <div class="web-card-top">
-                                <span class="web-card-name">HideOut Marketing</span>
-                                <span class="web-card-arrow">↗</span>
-                            </div>
-                            <div class="web-card-role">Agency Website &amp; Client Intake</div>
-                            <p class="web-card-desc">
-                                Converted agency designs from Figma into a custom WordPress website, with dynamic service portfolios and an automated webhook to capture incoming client inquiries.
-                            </p>
+                    <div class="inst-img-wrap">
+                        <div class="browser-chrome-bar" style="height:32px;">
+                            <div class="browser-chrome-dots"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                            <span class="browser-address">https://shrividyajyotihighschool.in 🔒</span>
                         </div>
-                        <div class="web-card-tags">
-                            <span class="i-tag">Figma to Web</span>
-                            <span class="i-tag">WordPress</span>
-                            <span class="i-tag">n8n Webhook</span>
-                            <span class="i-tag">Agency CMS</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://shrividyajyotihighschool.in" target="_blank" rel="noopener" class="web-card" data-enter>
-                    <div class="web-card-img-wrap">
                         <img src="assets/site-svjh.jpg" alt="Shri Vidya Jyoti High School educational portal preview" loading="lazy">
-                    </div>
-                    <div class="web-card-body">
-                        <div>
-                            <div class="web-card-top">
-                                <span class="web-card-name">Shri Vidya Jyoti School</span>
-                                <span class="web-card-arrow">↗</span>
-                            </div>
-                            <div class="web-card-role">School Website &amp; Admissions Portal</div>
-                            <p class="web-card-desc">
-                                Built a complete institutional website for an accredited school, featuring admissions guidelines, photo galleries, student notices, and managed cloud hosting.
-                            </p>
-                        </div>
-                        <div class="web-card-tags">
-                            <span class="i-tag">Educational Portal</span>
-                            <span class="i-tag">Admissions CMS</span>
-                            <span class="i-tag">Managed Hosting</span>
-                            <span class="i-tag">Security</span>
-                        </div>
                     </div>
                 </a>
             </div>
@@ -3455,13 +4329,17 @@
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          CERTIFICATIONS & CONTACT (OBSIDIAN DARK)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <section class="section-wrapper is-dark-section" id="contact-section" aria-label="Certifications and Contact">
-        <div class="section-inner">
-            <!-- CHAPTER GATE: CERTIFICATIONS & CONTACT -->
+    
+    <!-- =====================================================================
+         05 // ACCREDITATIONS & ACADEMIC BACKGROUND (DEDICATED SECTION)
+         ===================================================================== -->
+    <section class="section-wrapper is-dark-section" id="accreditations-section" aria-label="Certifications and Academic Background">
+        <div class="section-inner accreditations-section-inner">
+            <!-- CHAPTER GATE: CERTIFICATIONS -->
             <div class="chapter-gate dark-gate" data-enter>
                 <div style="display:flex;align-items:center;gap:10px;">
-                    <span class="gate-badge">05 // CERTIFICATIONS &amp; CONTACT</span>
-                    <span class="gate-desc">Credentials &amp; Getting In Touch</span>
+                    <span class="gate-badge">05 // ACCREDITATIONS &amp; EDUCATION</span>
+                    <span class="gate-desc">Verified Credentials &amp; University Degree</span>
                 </div>
                 <span>Google &amp; IBM Verified · University of Mumbai</span>
             </div>
@@ -3474,113 +4352,158 @@
                     <em>Academic Background.</em>
                 </h2>
                 <p class="sec-sub">
-                    Verified credentials in cybersecurity fundamentals, network defense, and risk management through Google and IBM, alongside my ongoing management degree.
+                    Verified credentials in cybersecurity fundamentals, network defense, and risk management through Google and IBM, alongside my ongoing management degree at the University of Mumbai.
                 </p>
             </div>
 
-            <!-- 6-CARD ACCREDITATIONS MATRIX -->
-            <div class="accreditations-matrix" data-enter>
-                <!-- Card 1: Google Foundations of Cybersecurity -->
-                <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="accred-card">
-                    <div class="accred-card-top">
-                        <span class="accred-org-pill google">Google</span>
-                        <span class="accred-status-pill verified">
-                            <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified
-                        </span>
-                    </div>
-                    <div class="accred-card-title">Foundations of Cybersecurity</div>
-                    <p class="accred-card-desc">Core security models, the CIA triad, NIST Cybersecurity Framework, Linux command line basics, and SIEM tool fundamentals.</p>
-                    <div class="accred-card-footer">
-                        <span class="accred-id">ID: H77H8G20YS9N</span>
-                        <span class="accred-link-hint">Verify on Coursera ↗</span>
-                    </div>
-                </a>
+            <!-- SPLIT ACCREDITATIONS & ACADEMIC DEGREE LAYOUT -->
+            <div class="accred-academic-layout" data-enter>
+                <!-- Left: 5 Verified Certifications -->
+                <div class="accred-cards-column">
+                    <!-- Card 1: Google Foundations of Cybersecurity -->
+                    <a href="https://coursera.org/verify/H77H8G20YS9N" target="_blank" rel="noopener" class="accred-card">
+                        <div class="accred-card-top">
+                            <span class="accred-org-pill google">Google</span>
+                            <span class="accred-status-pill verified">
+                                <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified
+                            </span>
+                        </div>
+                        <div class="accred-card-title">Foundations of Cybersecurity</div>
+                        <p class="accred-card-desc">Core security models, the CIA triad, NIST Cybersecurity Framework, Linux command line basics, and SIEM tool fundamentals.</p>
+                        <div class="accred-card-footer">
+                            <span class="accred-id">ID: H77H8G20YS9N</span>
+                            <span class="accred-link-hint">Verify on Coursera ↗</span>
+                        </div>
+                    </a>
 
-                <!-- Card 2: Google Networks & Network Security -->
-                <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="accred-card">
-                    <div class="accred-card-top">
-                        <span class="accred-org-pill google">Google</span>
-                        <span class="accred-status-pill verified">
-                            <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified
-                        </span>
-                    </div>
-                    <div class="accred-card-title">Networks &amp; Network Security</div>
-                    <p class="accred-card-desc">TCP/IP and OSI network architecture, packet inspection with Wireshark, intrusion detection (IDS/IPS), and firewall rules.</p>
-                    <div class="accred-card-footer">
-                        <span class="accred-id">ID: 0ABTT3NHCDXO</span>
-                        <span class="accred-link-hint">Verify on Coursera ↗</span>
-                    </div>
-                </a>
+                    <!-- Card 2: Google Networks & Network Security -->
+                    <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="accred-card">
+                        <div class="accred-card-top">
+                            <span class="accred-org-pill google">Google</span>
+                            <span class="accred-status-pill verified">
+                                <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified
+                            </span>
+                        </div>
+                        <div class="accred-card-title">Networks &amp; Network Security</div>
+                        <p class="accred-card-desc">TCP/IP and OSI network architecture, packet inspection with Wireshark, intrusion detection (IDS/IPS), and firewall rules.</p>
+                        <div class="accred-card-footer">
+                            <span class="accred-id">ID: 0ABTT3NHCDXO</span>
+                            <span class="accred-link-hint">Verify on Coursera ↗</span>
+                        </div>
+                    </a>
 
-                <!-- Card 3: Google Manage Security Risks -->
-                <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="accred-card">
-                    <div class="accred-card-top">
-                        <span class="accred-org-pill google">Google</span>
-                        <span class="accred-status-pill verified">
-                            <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified
-                        </span>
-                    </div>
-                    <div class="accred-card-title">Play It Safe: Manage Security Risks</div>
-                    <p class="accred-card-desc">Threat modeling, vulnerability assessments, security audit compliance, and incident escalation procedures.</p>
-                    <div class="accred-card-footer">
-                        <span class="accred-id">ID: WMJ79P4RT454</span>
-                        <span class="accred-link-hint">Verify on Coursera ↗</span>
-                    </div>
-                </a>
+                    <!-- Card 3: Google Manage Security Risks -->
+                    <a href="https://coursera.org/verify/WMJ79P4RT454" target="_blank" rel="noopener" class="accred-card">
+                        <div class="accred-card-top">
+                            <span class="accred-org-pill google">Google</span>
+                            <span class="accred-status-pill verified">
+                                <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified
+                            </span>
+                        </div>
+                        <div class="accred-card-title">Play It Safe: Manage Security Risks</div>
+                        <p class="accred-card-desc">Threat modeling, vulnerability assessments, security audit compliance, and incident escalation procedures.</p>
+                        <div class="accred-card-footer">
+                            <span class="accred-id">ID: WMJ79P4RT454</span>
+                            <span class="accred-link-hint">Verify on Coursera ↗</span>
+                        </div>
+                    </a>
 
-                <!-- Card 4: IBM SkillsBuild Web Fundamentals -->
-                <div class="accred-card">
-                    <div class="accred-card-top">
-                        <span class="accred-org-pill ibm">IBM SkillsBuild</span>
-                        <span class="accred-status-pill verified">
-                            <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified Suite
-                        </span>
+                    <!-- Card 4: IBM SkillsBuild Web Fundamentals -->
+                    <div class="accred-card">
+                        <div class="accred-card-top">
+                            <span class="accred-org-pill ibm">IBM SkillsBuild</span>
+                            <span class="accred-status-pill verified">
+                                <span class="hud-beacon" style="width:5px;height:5px;"></span> Verified Suite
+                            </span>
+                        </div>
+                        <div class="accred-card-title">Web &amp; Systems Fundamentals</div>
+                        <p class="accred-card-desc">Enterprise frontend basics, client-server communications, DOM architecture, and accessible web design standards.</p>
+                        <div class="accred-card-footer">
+                            <span class="accred-id">7 Verified Credentials</span>
+                            <span class="accred-link-hint" style="color:rgba(255,255,255,0.45);">IBM Certified</span>
+                        </div>
                     </div>
-                    <div class="accred-card-title">Web &amp; Systems Fundamentals</div>
-                    <p class="accred-card-desc">Enterprise frontend basics, client-server communications, DOM architecture, and accessible web design standards.</p>
-                    <div class="accred-card-footer">
-                        <span class="accred-id">7 Verified Credentials</span>
-                        <span class="accred-link-hint" style="color:rgba(255,255,255,0.45);">IBM Certified</span>
+
+                    <!-- Card 5: CompTIA Security+ Active Target -->
+                    <div class="accred-card" style="grid-column: 1 / -1;">
+                        <div class="accred-card-top">
+                            <span class="accred-org-pill comptia">CompTIA</span>
+                            <span class="accred-status-pill target">
+                                <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#94a3b8;"></span> In Active Study
+                            </span>
+                        </div>
+                        <div class="accred-card-title">CompTIA Security+ (SY0-701)</div>
+                        <p class="accred-card-desc">Currently working through the official syllabus covering enterprise security architecture, cryptography, and defensive incident response.</p>
+                        <div class="accred-card-footer">
+                            <span class="accred-id">Target Milestone: 2026</span>
+                            <span class="accred-link-hint" style="color:#94a3b8;">Active Prep</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 5: CompTIA Security+ Active Target -->
-                <div class="accred-card">
-                    <div class="accred-card-top">
-                        <span class="accred-org-pill comptia">CompTIA</span>
-                        <span class="accred-status-pill target">
-                            <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#94a3b8;"></span> In Active Study
-                        </span>
-                    </div>
-                    <div class="accred-card-title">CompTIA Security+ (SY0-701)</div>
-                    <p class="accred-card-desc">Currently working through the official syllabus covering enterprise security architecture, cryptography, and defensive incident response.</p>
-                    <div class="accred-card-footer">
-                        <span class="accred-id">Target Milestone: 2026</span>
-                        <span class="accred-link-hint" style="color:#94a3b8;">Active Prep</span>
-                    </div>
-                </div>
+                <!-- Right: Premier Academic Degree Showcase -->
+                <div class="academic-column">
+                    <div class="academic-degree-card">
+                        <div>
+                            <div class="academic-badge-top">
+                                <span>🎓</span>
+                                <span>University of Mumbai Affiliated</span>
+                            </div>
+                            <h3 class="academic-degree-title">Bachelor of Management Studies</h3>
+                            <div class="academic-college-sub">
+                                Royal College of Arts, Science &amp; Commerce · Mumbai, India
+                            </div>
 
-                <!-- Card 6: Bachelor of Management Studies (TYBMS) -->
-                <div class="accred-card">
-                    <div class="accred-card-top">
-                        <span class="accred-org-pill academic">Academic</span>
-                        <span class="accred-status-pill in-progress">
-                            <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#f59e0b;"></span> Class of 2026
-                        </span>
-                    </div>
-                    <div class="accred-card-title">Bachelor of Management Studies</div>
-                    <p class="accred-card-desc">Royal College of Arts, Science &amp; Commerce · University of Mumbai. Studies in strategic operations, IT systems governance, and organizational management.</p>
-                    <div class="accred-card-footer">
-                        <span class="accred-id">University of Mumbai · Final Year</span>
-                        <span class="accred-link-hint" style="color:#f59e0b;">TYBMS 2026</span>
+                            <div class="academic-specs-list">
+                                <div class="academic-spec-row">
+                                    <span class="spec-label">PROGRAM</span>
+                                    <span class="spec-val">3-Year Undergraduate Degree</span>
+                                </div>
+                                <div class="academic-spec-row">
+                                    <span class="spec-label">TIMELINE</span>
+                                    <span class="spec-val">2023 – 2026 (Final Year / TYBMS)</span>
+                                </div>
+                                <div class="academic-spec-row">
+                                    <span class="spec-label">SPECIALIZATION</span>
+                                    <span class="spec-val">IT Systems &amp; Strategic Operations</span>
+                                </div>
+                                <div class="academic-spec-row">
+                                    <span class="spec-label">STATUS</span>
+                                    <span class="spec-val" style="color:#10b981;">In Good Standing · Active</span>
+                                </div>
+                            </div>
+
+                            <p class="academic-narrative">
+                                Combining practical IT production support with formal business and management governance. Coursework covers IT systems management, organizational behavior, financial strategy, and risk governance—giving me a strong foundation for technical leadership and cross-functional operations.
+                            </p>
+                        </div>
+
+                        <div class="academic-tags-row">
+                            <span class="flagship-tag" style="background:rgba(255,255,255,0.05);color:#e2e8f0;border-color:rgba(255,255,255,0.1);">IT Governance</span>
+                            <span class="flagship-tag" style="background:rgba(255,255,255,0.05);color:#e2e8f0;border-color:rgba(255,255,255,0.1);">Operations</span>
+                            <span class="flagship-tag" style="background:rgba(255,255,255,0.05);color:#e2e8f0;border-color:rgba(255,255,255,0.1);">Risk Management</span>
+                            <span class="flagship-tag" style="background:rgba(255,255,255,0.05);color:#e2e8f0;border-color:rgba(255,255,255,0.1);">University Degree</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- SECTION DIVIDER -->
-            <div class="contact-divider-bar" data-enter></div>
+    <!-- =====================================================================
+         06 // CONTACT & DIRECT CHANNELS (DEDICATED CHAPTER)
+         ===================================================================== -->
+    <section class="section-wrapper is-dark-section" id="contact-section" aria-label="Contact and Getting In Touch">
+        <div class="section-inner">
+            <!-- CHAPTER GATE: CONTACT -->
+            <div class="chapter-gate dark-gate" data-enter>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span class="gate-badge">06 // CONTACT</span>
+                    <span class="gate-desc">Get in Touch · Open for Opportunities</span>
+                </div>
+                <span>Mumbai, India · Full-Time Roles &amp; Projects</span>
+            </div>
 
-            <!-- TIER 2: GET IN TOUCH -->
             <!-- Top Status & Live Mumbai Clock HUD -->
             <div class="contact-status-hud" data-enter>
                 <div class="hud-pill">
@@ -3655,24 +4578,23 @@
                 <!-- Channel 3: Verified Portfolios & Network Proof -->
                 <div class="channel-card networks-card">
                     <span class="channel-eyebrow">ONLINE PROFILES</span>
-                    <div class="channel-title">Find Me Online</div>
-                    <p class="channel-note">My professional network, active code repositories, and creative 3D portfolios.</p>
-                    <div class="channel-networks-list">
-                        <a href="https://www.linkedin.com/in/joel-aka-shadowknight/" target="_blank" rel="noopener" class="net-row">
-                            <span class="net-brand"><span class="net-tag-pill">IN</span> LinkedIn</span>
-                            <span class="net-meta">Professional Profile ↗</span>
+                    <div class="channel-title">Professional &amp; Creative Proof</div>
+                    <div class="channel-social-links">
+                        <a href="https://linkedin.com/in/joel-nadar-899881267" target="_blank" rel="noopener" class="social-chip">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6c0-.89-.72-1.6-1.6-1.6Z"/></svg>
+                            <span>LinkedIn Profile ↗</span>
                         </a>
-                        <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener" class="net-row">
-                            <span class="net-brand"><span class="net-tag-pill">GH</span> GitHub</span>
-                            <span class="net-meta">Code &amp; Repositories ↗</span>
+                        <a href="https://artstation.com/joelnadar" target="_blank" rel="noopener" class="social-chip">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m0 17.723 2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.332h13.674l-3.04-5.264H0v.427zm24 .07-7.447-12.92a2.41 2.41 0 0 0-2.14-1.343 2.41 2.41 0 0 0-2.14 1.343L4.82 17.793h4.63l4.78-8.29 4.79 8.29H24zM10.82 17.793l3.29-5.71 3.3 5.71h-6.59z"/></svg>
+                            <span>ArtStation ↗</span>
                         </a>
-                        <a href="https://www.artstation.com/shadowknight010" target="_blank" rel="noopener" class="net-row">
-                            <span class="net-brand"><span class="net-tag-pill">AS</span> ArtStation</span>
-                            <span class="net-meta">3D Portfolio ↗</span>
+                        <a href="https://behance.net/joelnadar" target="_blank" rel="noopener" class="social-chip">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.976 3-3.411 0-5.75-2.6-5.75-6 0-3.559 2.39-6 5.75-6 3.484 0 5.568 2.529 5.385 6.094h-8.385c.09 1.838 1.438 3.094 3.25 3.094 1.422 0 2.502-.688 2.891-1.781l1.835 1.593zm-7.976-5h5.531c-.131-1.641-1.281-2.453-2.656-2.453-1.422 0-2.672.828-2.875 2.453zm-11.75-7h5.836c2.518 0 3.964 1.094 3.964 2.922 0 1.203-.688 2.188-1.781 2.656 1.453.453 2.234 1.625 2.234 3.125 0 2.203-1.688 3.297-4.297 3.297h-6.047v-12zm2.75 4.812h2.516c.922 0 1.578-.391 1.578-1.234 0-.797-.641-1.203-1.578-1.203h-2.516v2.437zm0 4.813h2.781c1.062 0 1.766-.453 1.766-1.359 0-.969-.734-1.391-1.766-1.391h-2.781v2.75z"/></svg>
+                            <span>Behance ↗</span>
                         </a>
-                        <a href="https://www.behance.net/joeldaniel5" target="_blank" rel="noopener" class="net-row">
-                            <span class="net-brand"><span class="net-tag-pill">BE</span> Behance</span>
-                            <span class="net-meta">Design &amp; 3D Works ↗</span>
+                        <a href="https://github.com/ShadowKnightx10" target="_blank" rel="noopener" class="social-chip">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+                            <span>GitHub Code ↗</span>
                         </a>
                     </div>
                 </div>
