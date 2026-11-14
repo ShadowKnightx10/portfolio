@@ -4556,6 +4556,885 @@
     }
 }
 
+
+/* ═════════════════════════════════════════════════════════════════════
+   RESTORED CARD & ACCREDITATION ARCHITECTURE (FIXES RAW UNSTYLED TEXT)
+   ═════════════════════════════════════════════════════════════════════ */
+
+/* Stats Grid (Chapter 01 Experience) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 36px;
+}
+.stat-card {
+    background: #141413;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 24px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.stat-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.stat-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(32px, 3.8vw, 44px);
+    font-weight: 700;
+    line-height: 1;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+.stat-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: #a1a1aa;
+    margin-bottom: 4px;
+}
+.stat-sub {
+    font-size: 12px;
+    color: #71717a;
+    line-height: 1.4;
+}
+
+/* Infra deep-dive details */
+.infra-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.infra-card-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #34d399;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    display: inline-block;
+}
+.infra-card-dates {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #71717a;
+    letter-spacing: 0.08em;
+}
+.infra-card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+.infra-card-role {
+    font-size: 13.5px;
+    color: #a1a1aa;
+    margin-bottom: 18px;
+}
+.infra-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.infra-bullets li {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #d4d4d8;
+    position: relative;
+    padding-left: 18px;
+}
+.infra-bullets li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #10b981;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+}
+.infra-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.infra-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 4px 8px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #a1a1aa;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Accreditations & Academic Degree Layout (Fixes unstyled certification list) */
+.accreditations-intro {
+    position: relative;
+    z-index: 2;
+}
+.accreditations-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 0.95fr;
+    gap: 28px;
+    align-items: stretch;
+    margin-top: 36px;
+}
+.certs-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+.cert-card {
+    background: #141413;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.cert-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5);
+}
+.cert-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.cert-issuer-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+.cert-status-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    display: inline-block;
+}
+.cert-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.35;
+    margin-bottom: 8px;
+}
+.cert-desc {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #a1a1aa;
+    margin-bottom: 18px;
+}
+.cert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+}
+.cert-id {
+    color: #71717a;
+}
+.cert-verify-link {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.cert-verify-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Formal Academic Degree Card */
+.degree-column {
+    display: flex;
+    flex-direction: column;
+}
+.degree-card {
+    background: #141413;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 36px 30px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+.degree-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 140px; height: 140px;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.degree-card-header {
+    margin-bottom: 18px;
+}
+.degree-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.degree-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(26px, 2.8vw, 36px);
+    font-weight: 400;
+    font-style: italic;
+    color: #ffffff;
+    margin-bottom: 6px;
+    line-height: 1.15;
+}
+.degree-institution {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #a1a1aa;
+    margin-bottom: 22px;
+}
+.degree-specs {
+    background: #1b1b19;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+}
+.degree-spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 12.5px;
+}
+.degree-spec-row:last-child {
+    border-bottom: none;
+}
+.spec-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #71717a;
+    letter-spacing: 0.08em;
+}
+.spec-val {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    color: #e4e4e7;
+}
+.degree-desc {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #a1a1aa;
+    margin-bottom: 22px;
+}
+.degree-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.degree-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #d4d4d8;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Workflow Milestone Card (n8n Automation) */
+.workflow-milestone-card {
+    background: #141413;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 36px 32px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+.workflow-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+.workflow-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+.workflow-lead-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #a1a1aa;
+    max-width: 680px;
+}
+.workflow-badge-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #34d399;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+.workflow-milestone-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+    margin: 28px 0;
+}
+.milestone-step {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.milestone-node {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.node-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #0a0a0a;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.node-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #71717a;
+}
+.milestone-box {
+    background: #1b1b19;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 20px 18px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.step-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: #38bdf8;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+.step-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+.step-desc {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #a1a1aa;
+}
+.workflow-telemetry-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: #71717a;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Editorial Web Showcase Grid */
+.web-editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+.web-editorial-card {
+    background: #141413;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.web-editorial-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.22);
+}
+.web-editorial-card.is-flagship-web {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    grid-template-rows: auto 1fr;
+}
+.web-editorial-card.is-flagship-web .browser-chrome-bar {
+    grid-column: span 2;
+}
+.browser-chrome-bar {
+    background: #1b1b19;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.browser-dots {
+    display: flex;
+    gap: 6px;
+}
+.browser-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+}
+.browser-dots span:nth-child(1) { background: #ef4444; }
+.browser-dots span:nth-child(2) { background: #eab308; }
+.browser-dots span:nth-child(3) { background: #22c55e; }
+.browser-url-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #a1a1aa;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.browser-window-actions {
+    display: flex;
+    gap: 10px;
+    color: #71717a;
+    font-size: 12px;
+    font-family: monospace;
+}
+.browser-preview-viewport {
+    height: 380px;
+    max-height: 400px;
+    overflow: hidden;
+    position: relative;
+    background: #000000;
+}
+.browser-preview-viewport img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.web-editorial-card:hover .browser-preview-viewport img {
+    transform: scale(1.02);
+}
+.web-editorial-content {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.web-card-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: #38bdf8;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.web-card-heading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+.web-card-summary {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #a1a1aa;
+    margin-bottom: 20px;
+}
+.web-stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    background: #1b1b19;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+}
+.web-stat-block {
+    display: flex;
+    flex-direction: column;
+}
+.web-stat-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+}
+.web-stat-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #71717a;
+    letter-spacing: 0.05em;
+}
+.web-tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 22px;
+}
+.web-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #d4d4d8;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.web-card-actions {
+    margin-top: auto;
+}
+.btn-web-visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    color: #0a0a0a;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.btn-web-visit:hover {
+    background: #e4e4e7;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .accreditations-grid {
+        grid-template-columns: 1fr;
+    }
+    .certs-column {
+        grid-template-columns: 1fr;
+    }
+    .workflow-milestone-track {
+        grid-template-columns: 1fr;
+    }
+    .web-editorial-grid {
+        grid-template-columns: 1fr;
+    }
+    .web-editorial-card.is-flagship-web {
+        grid-column: span 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .web-stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 500px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ═════════════════════════════════════════════════════════════════════
+   UNIVERSAL CINEMA, MARQUEE & SPATIAL POLISH ENGINE
+   ═════════════════════════════════════════════════════════════════════ */
+
+/* Cinema Video Player */
+.cinema-player-wrapper {
+    margin-top: 36px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+.cinema-video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000000;
+}
+.cinema-video-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.cinema-overlay-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 14px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    flex-wrap: wrap;
+    gap: 12px;
+    z-index: 10;
+}
+.cinema-telemetry {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.telemetry-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: #d4d4d8;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.telemetry-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #a1a1aa;
+}
+.telemetry-dot.live {
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+}
+.cinema-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.cinema-ctrl-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.cinema-ctrl-btn:hover {
+    background: #ffffff;
+    color: #0a0a0a;
+}
+
+/* Dual-lane Marquee Continuous Animation */
+.marquee-track-lane {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+.marquee-track-lane .marquee-inner {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+}
+.lane-left .marquee-inner {
+    animation: scrollLeftMarquee 42s linear infinite;
+}
+.lane-right .marquee-inner {
+    animation: scrollRightMarquee 44s linear infinite;
+}
+.marquee-track-lane:hover .marquee-inner {
+    animation-play-state: paused;
+}
+
+/* Spatial Reel Intro Header UI */
+.spatial-intro-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.spatial-controls-ui {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.reel-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: #a1a1aa;
+}
+.reel-count strong {
+    color: #ffffff;
+    font-size: 16px;
+}
+.reel-arrows {
+    display: flex;
+    gap: 8px;
+}
+.reel-arrow-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1b1b19;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.reel-arrow-btn:hover {
+    background: #ffffff;
+    color: #0a0a0a;
+    border-color: #ffffff;
+    transform: scale(1.05);
+}
+.reel-action-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #38bdf8;
+    margin-top: 14px;
+    display: inline-block;
+    transition: color 0.2s;
+}
+.spatial-reel-card:hover .reel-action-link {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.spatial-reel-progress-wrap {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+.spatial-sub-prompt {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: #71717a;
+    text-transform: uppercase;
+}
+
+/* Domain Spectrum Specs Table */
+.spectrum-specs {
+    margin: 22px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 16px 0;
+}
+.spectrum-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+}
+
 </style>
 </head>
 <body>
