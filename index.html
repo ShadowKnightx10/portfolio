@@ -4819,112 +4819,127 @@
     text-decoration: underline;
 }
 
-/* Formal Academic Degree Card */
-.degree-column {
-    display: flex;
-    flex-direction: column;
-}
-.degree-card {
-    background: #141413;
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
-    padding: 36px 30px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+/* Infinite Scrolling Certifications Marquee */
+.cert-marquee-container {
+    width: 100%;
+    overflow: hidden;
     position: relative;
+    padding: 16px 0 24px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+.cert-marquee-lane {
+    display: flex;
+    width: 100%;
     overflow: hidden;
 }
-.degree-card::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 140px; height: 140px;
-    background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
-    pointer-events: none;
+.cert-marquee-inner {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: certMarqueeScroll 44s linear infinite;
+    will-change: transform;
 }
-.degree-card-header {
-    margin-bottom: 18px;
+.cert-marquee-container:hover .cert-marquee-inner {
+    animation-play-state: paused;
 }
-.degree-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: #fbbf24;
-    background: rgba(251, 191, 36, 0.12);
-    border: 1px solid rgba(251, 191, 36, 0.25);
-    padding: 5px 12px;
-    border-radius: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+@keyframes certMarqueeScroll {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
 }
-.degree-title {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(26px, 2.8vw, 36px);
-    font-weight: 400;
-    font-style: italic;
-    color: #ffffff;
-    margin-bottom: 6px;
-    line-height: 1.15;
+.cert-marquee-card {
+    width: 360px;
+    min-width: 360px;
+    max-width: 360px;
+    flex-shrink: 0;
+    background: #141413;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 22px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+    cursor: default;
+    position: relative;
 }
-.degree-institution {
+.cert-marquee-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+.cert-marquee-container:hover .cert-marquee-card:not(:hover) {
+    opacity: 0.6;
+}
+.cert-marquee-title {
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.35;
+    margin: 12px 0 8px 0;
+}
+.cert-marquee-desc {
+    font-size: 13px;
+    line-height: 1.55;
     color: #a1a1aa;
-    margin-bottom: 22px;
+    margin-bottom: 16px;
 }
-.degree-specs {
-    background: #1b1b19;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-bottom: 20px;
-}
-.degree-spec-row {
+.cert-marquee-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 7px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    font-size: 12.5px;
-}
-.degree-spec-row:last-child {
-    border-bottom: none;
-}
-.spec-label {
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: #71717a;
-    letter-spacing: 0.08em;
 }
-.spec-val {
+@media (max-width: 768px) {
+    .cert-marquee-card {
+        width: 300px;
+        min-width: 300px;
+        max-width: 300px;
+        padding: 18px 18px;
+    }
+}
+
+/* Dual Cinema Video Grid */
+.cinema-dual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+}
+@media (max-width: 860px) {
+    .cinema-dual-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.cinema-player-wrapper.sub-cinema {
+    margin-top: 0;
+}
+.cinema-player-wrapper.sub-cinema .cinema-video-frame {
+    aspect-ratio: 16 / 9;
+}
+.cinema-caption-bar {
+    padding: 16px 20px;
+    background: #141413;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.cinema-caption-title {
     font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    color: #e4e4e7;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
 }
-.degree-desc {
-    font-size: 13.5px;
-    line-height: 1.65;
+.cinema-caption-desc {
+    font-size: 12.5px;
     color: #a1a1aa;
-    margin-bottom: 22px;
-}
-.degree-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-.degree-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.05);
-    color: #d4d4d8;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    line-height: 1.5;
+    margin: 0;
 }
 
 /* Workflow Milestone Card (n8n Automation) */
@@ -5700,7 +5715,7 @@
                     <span class="gate-badge">01 // WORK EXPERIENCE &amp; ACCREDITATIONS</span>
                     <span class="gate-desc">Production Operations, Biometrics &amp; Enterprise IT</span>
                 </div>
-                <span>Sharekhan · Mumbai Airport (DigiYatra) · University of Mumbai</span>
+                <span>Sharekhan · Mumbai Airport (DigiYatra) · Google &amp; IBM Certified</span>
             </div>
 
             <p class="sec-tag" data-enter>01 / Experience &amp; Credentials</p>
@@ -5709,7 +5724,7 @@
                 <em>Backed by Verified Credentials.</em>
             </h2>
             <p class="sec-sub" data-enter>
-                Over 3 years of practical IT experience keeping production servers, retail trading platforms, and airport biometric gates running smoothly, paired with verified cybersecurity credentials and formal management education.
+                Over 3 years of practical IT experience keeping production servers, retail trading platforms, and airport biometric gates running smoothly, paired with verified cybersecurity credentials and enterprise systems training.
             </p>
 
             <!-- Big Stat Grid -->
@@ -5796,122 +5811,154 @@
                 </div>
             </div>
 
-            <!-- Verified Accreditations & Academic Degree (Integrated in Chapter 01) -->
+            <!-- Verified Industry Accreditations (Infinite Marquee Showcase) -->
             <div class="accreditations-intro" data-enter style="margin-top:64px;">
-                <p class="sec-tag"><span class="badge-dot"></span>Accreditations &amp; Academic Degree</p>
+                <p class="sec-tag"><span class="badge-dot"></span>Verified Credentials &amp; Certifications</p>
                 <h3 class="sec-title" style="font-size:clamp(24px, 3.2vw, 36px); margin-bottom:12px;">
-                    Verified Qualifications &amp; <em>Academic Degree.</em>
+                    Verified Qualifications &amp; <em>Security Accreditations.</em>
                 </h3>
                 <p class="sec-sub">
-                    Industry-verified qualifications through Google and IBM, alongside my formal management degree from the University of Mumbai.
+                    Industry-verified cybersecurity credentials and systems specializations through Google and IBM, alongside active preparation for CompTIA Security+. Hover over any credential to inspect or verify.
                 </p>
             </div>
 
-            <div class="accreditations-grid" data-enter style="margin-top:32px;">
-                <!-- Column 1: Industry Certifications -->
-                <div class="certs-column">
-                    <div class="cert-card">
-                        <div class="cert-card-header">
-                            <span class="cert-issuer-badge">GOOGLE</span>
-                            <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
-                        </div>
-                        <h4 class="cert-title">Foundations of Cybersecurity</h4>
-                        <p class="cert-desc">Core security models, CIA triad, NIST framework, and Linux CLI fundamentals.</p>
-                        <div class="cert-footer">
-                            <span class="cert-id">ID: H77H8G26YS9N</span>
-                            <a href="https://coursera.org/verify/H77H8G26YS9N" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-card-header">
-                            <span class="cert-issuer-badge">GOOGLE</span>
-                            <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
-                        </div>
-                        <h4 class="cert-title">Networks &amp; Network Security</h4>
-                        <p class="cert-desc">TCP/IP network architecture, packet inspection, intrusion detection, and firewalls.</p>
-                        <div class="cert-footer">
-                            <span class="cert-id">ID: 0ABTT3NHCDXO</span>
-                            <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-card-header">
-                            <span class="cert-issuer-badge">GOOGLE</span>
-                            <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
-                        </div>
-                        <h4 class="cert-title">Play It Safe: Manage Security Risks</h4>
-                        <p class="cert-desc">Threat modeling, vulnerability assessments, and incident escalation compliance.</p>
-                        <div class="cert-footer">
-                            <span class="cert-id">ID: WHJ79P4RT454</span>
-                            <a href="https://coursera.org/verify/WHJ79P4RT454" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-card-header">
-                            <span class="cert-issuer-badge">IBM SKILLSBUILD</span>
-                            <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED SUITE</span>
-                        </div>
-                        <h4 class="cert-title">Web &amp; Systems Fundamentals</h4>
-                        <p class="cert-desc">Enterprise frontend architecture, client-server communications, and web standards.</p>
-                        <div class="cert-footer">
-                            <span class="cert-id">7 Verified Credentials</span>
-                            <span class="cert-verify-link" style="color:#a1a1aa;">IBM Certified</span>
-                        </div>
-                    </div>
-
-                    <div class="cert-card" style="opacity:0.9;">
-                        <div class="cert-card-header">
-                            <span class="cert-issuer-badge" style="background:rgba(239,68,68,0.15);color:#f87171;">COMPTIA</span>
-                            <span class="cert-status-badge" style="background:rgba(239,68,68,0.15);color:#f87171;"><span class="status-dot" style="background:#ef4444;"></span>IN ACTIVE STUDY</span>
-                        </div>
-                        <h4 class="cert-title">CompTIA Security+ (SY0-701)</h4>
-                        <p class="cert-desc">Active study covering security architecture, cryptography, and defensive response.</p>
-                        <div class="cert-footer">
-                            <span class="cert-id">Target Milestone: 2026</span>
-                            <span class="cert-verify-link" style="color:#f87171;">Active Prep</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Column 2: Formal Degree -->
-                <div class="degree-column">
-                    <div class="degree-card">
-                        <div class="degree-card-header">
-                            <span class="degree-badge"><span class="badge-dot"></span>UNIVERSITY OF MUMBAI AFFILIATED</span>
-                        </div>
-                        <h4 class="degree-title">Bachelor of Management Studies</h4>
-                        <p class="degree-institution">Royal College of Arts, Science &amp; Commerce · Mumbai, India</p>
-
-                        <div class="degree-specs">
-                            <div class="degree-spec-row">
-                                <span class="spec-label">PROGRAM</span>
-                                <span class="spec-val">3-Year Undergraduate Degree</span>
+            <div class="cert-marquee-container" data-enter style="margin-top:32px;">
+                <div class="cert-marquee-lane">
+                    <div class="cert-marquee-inner">
+                        <!-- Card 1: Google Cybersecurity -->
+                        <div class="cert-marquee-card">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge">GOOGLE</span>
+                                <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
                             </div>
-                            <div class="degree-spec-row">
-                                <span class="spec-label">TIMELINE</span>
-                                <span class="spec-val">2023 – 2026 (Final Year / TYBMS)</span>
-                            </div>
-                            <div class="degree-spec-row">
-                                <span class="spec-label">SPECIALIZATION</span>
-                                <span class="spec-val">IT Systems &amp; Strategic Operations</span>
-                            </div>
-                            <div class="degree-spec-row">
-                                <span class="spec-label">STATUS</span>
-                                <span class="spec-val" style="color:#10b981;font-weight:600;">In Good Standing · Active</span>
+                            <h4 class="cert-marquee-title">Foundations of Cybersecurity</h4>
+                            <p class="cert-marquee-desc">Core security models, CIA triad, NIST CSF, and Linux CLI fundamentals.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">ID: H77H8G26YS9N</span>
+                                <a href="https://coursera.org/verify/H77H8G26YS9N" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
                             </div>
                         </div>
 
-                        <p class="degree-desc">
-                            Combines hands-on IT production support with formal management governance. Core focus on IT systems management, organizational strategy, and risk governance for cross-functional technical leadership.
-                        </p>
+                        <!-- Card 2: Google Networks -->
+                        <div class="cert-marquee-card">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge">GOOGLE</span>
+                                <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
+                            </div>
+                            <h4 class="cert-marquee-title">Networks &amp; Network Security</h4>
+                            <p class="cert-marquee-desc">TCP/IP network architecture, packet inspection, intrusion detection, and firewalls.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">ID: 0ABTT3NHCDXO</span>
+                                <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
+                            </div>
+                        </div>
 
-                        <div class="degree-tags">
-                            <span class="degree-tag">IT Systems Governance</span>
-                            <span class="degree-tag">Operations</span>
-                            <span class="degree-tag">University Degree</span>
+                        <!-- Card 3: Google Risk -->
+                        <div class="cert-marquee-card">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge">GOOGLE</span>
+                                <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
+                            </div>
+                            <h4 class="cert-marquee-title">Play It Safe: Manage Security Risks</h4>
+                            <p class="cert-marquee-desc">Threat modeling, vulnerability assessments, and incident escalation compliance.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">ID: WHJ79P4RT454</span>
+                                <a href="https://coursera.org/verify/WHJ79P4RT454" target="_blank" rel="noopener" class="cert-verify-link">Verify on Coursera ↗</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: IBM Fundamentals -->
+                        <div class="cert-marquee-card">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge" style="background:rgba(99,102,241,0.15);color:#818cf8;border-color:rgba(99,102,241,0.3);">IBM SKILLSBUILD</span>
+                                <span class="cert-status-badge" style="background:rgba(99,102,241,0.15);color:#818cf8;border-color:rgba(99,102,241,0.3);"><span class="status-dot" style="background:#818cf8;"></span>VERIFIED SUITE</span>
+                            </div>
+                            <h4 class="cert-marquee-title">Web &amp; Systems Fundamentals</h4>
+                            <p class="cert-marquee-desc">Enterprise frontend architecture, client-server communications, and web standards.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">7 Verified Credentials</span>
+                                <span class="cert-verify-link" style="color:#a1a1aa;">IBM Certified</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: CompTIA Security+ -->
+                        <div class="cert-marquee-card">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge" style="background:rgba(239,68,68,0.15);color:#f87171;border-color:rgba(239,68,68,0.3);">COMPTIA</span>
+                                <span class="cert-status-badge" style="background:rgba(239,68,68,0.15);color:#f87171;border-color:rgba(239,68,68,0.3);"><span class="status-dot" style="background:#ef4444;"></span>IN ACTIVE STUDY</span>
+                            </div>
+                            <h4 class="cert-marquee-title">CompTIA Security+ (SY0-701)</h4>
+                            <p class="cert-marquee-desc">Active study covering security architecture, cryptography, and defensive response.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">Target Milestone: 2026</span>
+                                <span class="cert-verify-link" style="color:#f87171;">Active Prep</span>
+                            </div>
+                        </div>
+
+                        <!-- DUPLICATE SET FOR SEAMLESS 50% CONTINUOUS LOOP -->
+                        <div class="cert-marquee-card" aria-hidden="true">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge">GOOGLE</span>
+                                <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
+                            </div>
+                            <h4 class="cert-marquee-title">Foundations of Cybersecurity</h4>
+                            <p class="cert-marquee-desc">Core security models, CIA triad, NIST CSF, and Linux CLI fundamentals.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">ID: H77H8G26YS9N</span>
+                                <a href="https://coursera.org/verify/H77H8G26YS9N" target="_blank" rel="noopener" class="cert-verify-link" tabindex="-1">Verify on Coursera ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="cert-marquee-card" aria-hidden="true">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge">GOOGLE</span>
+                                <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
+                            </div>
+                            <h4 class="cert-marquee-title">Networks &amp; Network Security</h4>
+                            <p class="cert-marquee-desc">TCP/IP network architecture, packet inspection, intrusion detection, and firewalls.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">ID: 0ABTT3NHCDXO</span>
+                                <a href="https://coursera.org/verify/0ABTT3NHCDXO" target="_blank" rel="noopener" class="cert-verify-link" tabindex="-1">Verify on Coursera ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="cert-marquee-card" aria-hidden="true">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge">GOOGLE</span>
+                                <span class="cert-status-badge"><span class="status-dot"></span>VERIFIED</span>
+                            </div>
+                            <h4 class="cert-marquee-title">Play It Safe: Manage Security Risks</h4>
+                            <p class="cert-marquee-desc">Threat modeling, vulnerability assessments, and incident escalation compliance.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">ID: WHJ79P4RT454</span>
+                                <a href="https://coursera.org/verify/WHJ79P4RT454" target="_blank" rel="noopener" class="cert-verify-link" tabindex="-1">Verify on Coursera ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="cert-marquee-card" aria-hidden="true">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge" style="background:rgba(99,102,241,0.15);color:#818cf8;border-color:rgba(99,102,241,0.3);">IBM SKILLSBUILD</span>
+                                <span class="cert-status-badge" style="background:rgba(99,102,241,0.15);color:#818cf8;border-color:rgba(99,102,241,0.3);"><span class="status-dot" style="background:#818cf8;"></span>VERIFIED SUITE</span>
+                            </div>
+                            <h4 class="cert-marquee-title">Web &amp; Systems Fundamentals</h4>
+                            <p class="cert-marquee-desc">Enterprise frontend architecture, client-server communications, and web standards.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">7 Verified Credentials</span>
+                                <span class="cert-verify-link" style="color:#a1a1aa;">IBM Certified</span>
+                            </div>
+                        </div>
+
+                        <div class="cert-marquee-card" aria-hidden="true">
+                            <div class="cert-card-header">
+                                <span class="cert-issuer-badge" style="background:rgba(239,68,68,0.15);color:#f87171;border-color:rgba(239,68,68,0.3);">COMPTIA</span>
+                                <span class="cert-status-badge" style="background:rgba(239,68,68,0.15);color:#f87171;border-color:rgba(239,68,68,0.3);"><span class="status-dot" style="background:#ef4444;"></span>IN ACTIVE STUDY</span>
+                            </div>
+                            <h4 class="cert-marquee-title">CompTIA Security+ (SY0-701)</h4>
+                            <p class="cert-marquee-desc">Active study covering security architecture, cryptography, and defensive response.</p>
+                            <div class="cert-marquee-footer">
+                                <span class="cert-id">Target Milestone: 2026</span>
+                                <span class="cert-verify-link" style="color:#f87171;">Active Prep</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -6093,25 +6140,26 @@
                 <span>3D Animation · Material Optics · Raytraced Cycles · Studio Lighting</span>
             </div>
 
-            <!-- PART 1: CINEMA 3D MOTION SEQUENCE (AirPods) -->
+            <!-- PART 1: CINEMA 3D MOTION & ANIMATION STUDIES -->
             <div class="showcase-part-header" data-enter style="margin-top:24px;">
-                <p class="sec-tag">01 / FEATURED 3D MOTION STUDY</p>
+                <p class="sec-tag">01 / FEATURED 3D MOTION &amp; SIMULATION</p>
                 <h2 class="sec-title">
-                    AirPods Motion<br>
-                    <em>60 FPS Study</em>
+                    Cinematic 3D Motion &amp;<br>
+                    <em>Physics Simulations.</em>
                 </h2>
                 <p class="sec-sub">
-                    A personal Blender Cycles study in mechanical motion, realistic polymer materials, and studio lighting.
+                    Mechanical motion studies, stylized conveyor kinetics, and concert volumetric lighting rendered across Blender Cycles and real-time EEVEE.
                 </p>
             </div>
 
-            <!-- High-Fidelity Video Player -->
+            <!-- Flagship High-Fidelity Video Player: AirPods -->
             <div class="cinema-player-wrapper" data-enter style="margin-top:28px;">
                 <div class="cinema-video-frame">
                     <video id="airpodVid" src="assets/airpod.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
                     <div class="cinema-overlay-bar">
                         <div class="cinema-telemetry">
                             <span class="telemetry-item"><span class="telemetry-dot live"></span>CYCLES 60FPS</span>
+                            <span class="telemetry-item">AIRPODS MOTION STUDY</span>
                             <span class="telemetry-item">RAYTRACED POLYMER PBR</span>
                             <span class="telemetry-item">STUDIO ACCENT LIGHTING</span>
                         </div>
@@ -6120,6 +6168,55 @@
                             <button class="cinema-ctrl-btn" id="cinMuteToggle" aria-label="Unmute Video">Unmute</button>
                             <button class="cinema-ctrl-btn" id="cinFullToggle" aria-label="Fullscreen">Expand ⛶</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dual Video Grid: Factory & Concert Stage -->
+            <div class="cinema-dual-grid" data-enter>
+                <!-- Video 2: Factory Conveyor -->
+                <div class="cinema-player-wrapper sub-cinema">
+                    <div class="cinema-video-frame">
+                        <video id="factoryVid" src="assets/factory.mp4" poster="assets/factory-thumb.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
+                        <div class="cinema-overlay-bar">
+                            <div class="cinema-telemetry">
+                                <span class="telemetry-item"><span class="telemetry-dot live"></span>CYCLES LOOP</span>
+                                <span class="telemetry-item">AUTOMATED CONVEYOR</span>
+                                <span class="telemetry-item">EMISSIVE LIGHTING</span>
+                            </div>
+                            <div class="cinema-controls">
+                                <button class="cinema-ctrl-btn" id="factoryPlayToggle" aria-label="Pause Factory Video">Pause</button>
+                                <button class="cinema-ctrl-btn" id="factoryMuteToggle" aria-label="Unmute Factory Video">Unmute</button>
+                                <button class="cinema-ctrl-btn" id="factoryFullToggle" aria-label="Fullscreen">Expand ⛶</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cinema-caption-bar">
+                        <div class="cinema-caption-title">Automated Factory Conveyor</div>
+                        <p class="cinema-caption-desc">Stylized 3D conveyor loop engineered in Blender Cycles exploring kinetic timing, emission falloff, and mechanical rigging.</p>
+                    </div>
+                </div>
+
+                <!-- Video 3: Concert Stage / Arena -->
+                <div class="cinema-player-wrapper sub-cinema">
+                    <div class="cinema-video-frame">
+                        <video id="concertVid" src="assets/scifi-corridor.mp4" poster="assets/scifi-thumb.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
+                        <div class="cinema-overlay-bar">
+                            <div class="cinema-telemetry">
+                                <span class="telemetry-item"><span class="telemetry-dot live"></span>BLENDER EEVEE</span>
+                                <span class="telemetry-item">CONCERT ARENA</span>
+                                <span class="telemetry-item">VOLUMETRIC FOG</span>
+                            </div>
+                            <div class="cinema-controls">
+                                <button class="cinema-ctrl-btn" id="concertPlayToggle" aria-label="Pause Concert Video">Pause</button>
+                                <button class="cinema-ctrl-btn" id="concertMuteToggle" aria-label="Unmute Concert Video">Unmute</button>
+                                <button class="cinema-ctrl-btn" id="concertFullToggle" aria-label="Fullscreen">Expand ⛶</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cinema-caption-bar">
+                        <div class="cinema-caption-title">Concert Arena &amp; Volumetric Lighting</div>
+                        <p class="cinema-caption-desc">Real-time EEVEE stage sequence testing synchronized spotlight sweeps, volumetric fog scattering, and character armature motion.</p>
                     </div>
                 </div>
             </div>
@@ -6696,25 +6793,28 @@
                 });
             });
 
-            // Cinema Controls
-            const airpodVid     = document.getElementById('airpodVid');
-            const cinPlayToggle = document.getElementById('cinPlayToggle');
-            const cinMuteToggle = document.getElementById('cinMuteToggle');
-            const cinFullToggle = document.getElementById('cinFullToggle');
-
-            if (airpodVid && cinPlayToggle) {
-                cinPlayToggle.addEventListener('click', () => {
-                    if (airpodVid.paused) { airpodVid.play(); cinPlayToggle.textContent = 'Pause'; }
-                    else { airpodVid.pause(); cinPlayToggle.textContent = 'Play'; }
+            // Cinema Controls Helper for All 3D Video Renders
+            function setupCinemaControls(vidId, playBtnId, muteBtnId, fullBtnId) {
+                const vid = document.getElementById(vidId);
+                const playBtn = document.getElementById(playBtnId);
+                const muteBtn = document.getElementById(muteBtnId);
+                const fullBtn = document.getElementById(fullBtnId);
+                if (!vid || !playBtn) return;
+                playBtn.addEventListener('click', () => {
+                    if (vid.paused) { vid.play(); playBtn.textContent = 'Pause'; }
+                    else { vid.pause(); playBtn.textContent = 'Play'; }
                 });
-                cinMuteToggle?.addEventListener('click', () => {
-                    airpodVid.muted = !airpodVid.muted;
-                    cinMuteToggle.textContent = airpodVid.muted ? 'Unmute' : 'Mute';
+                muteBtn?.addEventListener('click', () => {
+                    vid.muted = !vid.muted;
+                    muteBtn.textContent = vid.muted ? 'Unmute' : 'Mute';
                 });
-                cinFullToggle?.addEventListener('click', () => {
-                    (airpodVid.requestFullscreen || airpodVid.webkitRequestFullscreen)?.call(airpodVid);
+                fullBtn?.addEventListener('click', () => {
+                    (vid.requestFullscreen || vid.webkitRequestFullscreen)?.call(vid);
                 });
             }
+            setupCinemaControls('airpodVid', 'cinPlayToggle', 'cinMuteToggle', 'cinFullToggle');
+            setupCinemaControls('factoryVid', 'factoryPlayToggle', 'factoryMuteToggle', 'factoryFullToggle');
+            setupCinemaControls('concertVid', 'concertPlayToggle', 'concertMuteToggle', 'concertFullToggle');
 
             // Liquid Metal Ripples
             document.querySelectorAll('.btn-liquid-metal').forEach(btn => {
