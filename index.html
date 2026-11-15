@@ -10,7 +10,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap" rel="stylesheet">
 
     <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -224,7 +225,7 @@
             width: 100%;
             position: relative;
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
             padding: 0 var(--gutter);
             overflow: hidden;
@@ -233,7 +234,9 @@
 
         .hero-character-frame {
             position: relative;
-            width: 100%;
+            width: calc(100% + var(--gutter) + 80px);
+            margin-right: calc(-1 * var(--gutter));
+            margin-left: -80px;
             height: 100%;
             min-height: 560px;
             display: flex;
@@ -245,7 +248,15 @@
             width: 100%;
             height: 100%;
             display: block;
-            pointer-events: none;
+            pointer-events: auto;
+            cursor: grab;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        #hero-canvas:active,
+        #hero-canvas.is-dragging {
+            cursor: grabbing;
         }
 
         .hero-content-frame {
@@ -306,9 +317,9 @@
             font-size: clamp(3.6rem, 6.2vw, 6.8rem);
             font-weight: 700;
             line-height: 0.90;
-            letter-spacing: -0.045em;
+            letter-spacing: -0.03em;
             color: var(--text-primary);
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Clash Display', sans-serif;
             text-transform: none;
             margin: 0;
         }
@@ -2256,6 +2267,16 @@
         }
 
         /* ── FOOTER ─────────────────────────────────── */
+        .site-footer,
+        .site-footer *,
+        .site-footer div,
+        .site-footer span,
+        .site-footer a {
+            color: #ffffff !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
         .site-footer {
             padding: 32px var(--gutter);
             border-top: 1px solid rgba(255,255,255,0.08);
@@ -6865,14 +6886,15 @@
                 </div>
             </div>
 
-            <!-- Obsidian Dark Museum-Grade Footer -->
-            <footer class="site-footer-dark" data-enter style="margin-top:64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-                <div>© 2026 Joel Daniel Nadar · Systems Support Engineer &amp; 3D Visual Artist · Mumbai, India</div>
-                <div>Built with Three.js, GSAP 3 &amp; Handcrafted CSS</div>
-                <a onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to top ↑</a>
-            </footer>
         </div>
     </section>
+
+    <!-- Obsidian Black Museum-Grade Footer -->
+    <footer class="site-footer" style="background:#090908 !important;opacity:1 !important;visibility:visible !important;transform:none !important;border-top:1px solid rgba(255,255,255,0.14) !important;padding:36px var(--gutter) 42px !important;display:flex !important;justify-content:space-between !important;align-items:center !important;flex-wrap:wrap !important;gap:16px !important;font-family:'DM Mono',monospace !important;font-size:12px !important;color:#ffffff !important;letter-spacing:0.02em !important;">
+        <div style="color:#ffffff !important;opacity:1 !important;visibility:visible !important;font-weight:400 !important;">© 2026 Joel Daniel Nadar · Systems Support Engineer &amp; 3D Visual Artist · Mumbai, India</div>
+        <div style="color:#ffffff !important;opacity:1 !important;visibility:visible !important;font-weight:400 !important;">Built with Three.js, GSAP 3 &amp; Handcrafted CSS</div>
+        <a onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="color:#ffffff !important;opacity:1 !important;visibility:visible !important;font-weight:600 !important;cursor:pointer !important;text-decoration:none !important;border-bottom:1px solid rgba(255,255,255,0.4) !important;padding-bottom:2px !important;transition:all 0.2s ease !important;" onmouseover="this.style.color='#10b981';this.style.borderColor='#10b981'" onmouseout="this.style.color='#ffffff';this.style.borderColor='rgba(255,255,255,0.4)'">Back to top ↑</a>
+    </footer>
 
     <!-- ── LIGHTBOX MODAL ─────────────────────────── -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Preview" onclick="closeLB(event)">
@@ -7080,11 +7102,53 @@
                 mouse2D.y = -((cy - rect.top) / rect.height) * 2 + 1;
             };
 
-            window.addEventListener('mousemove', e => updateCoords(e.clientX, e.clientY), { passive: true });
+            // Interactive 3D Click & Spin (Horizontal Only, Damped Follow & Fling)
+            let targetDragRotY = 0;
+            let currentDragRotY = 0;
+            let spinVelY = 0;
+            let isDragging = false;
+            let prevPointerX = 0;
+            let lastDeltaX = 0;
+            let lastMoveTime = 0;
+
+            canvas.addEventListener('pointerdown', (e) => {
+                isDragging = true;
+                canvas.classList.add('is-dragging');
+                try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
+                prevPointerX = e.clientX;
+                spinVelY = 0;
+                lastDeltaX = 0;
+                lastMoveTime = performance.now();
+                updateCoords(e.clientX, e.clientY);
+            });
+
+            window.addEventListener('pointermove', (e) => {
+                updateCoords(e.clientX, e.clientY);
+                if (!isDragging) return;
+
+                const dx = e.clientX - prevPointerX;
+                prevPointerX = e.clientX;
+
+                // Advance target rotation with gentle, tactile sensitivity
+                targetDragRotY += dx * 0.0022;
+                lastDeltaX = dx;
+                lastMoveTime = performance.now();
+            });
+
+            const onPointerUp = (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                canvas.classList.remove('is-dragging');
+                try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+                const dt = performance.now() - lastMoveTime;
+                if (dt < 90) {
+                    spinVelY = lastDeltaX * 0.0018; // calm, luxurious glide
+                }
+            };
+
+            window.addEventListener('pointerup', onPointerUp);
+            window.addEventListener('pointercancel', onPointerUp);
             window.addEventListener('mouseleave', () => mouse2D.set(9999, 9999));
-            window.addEventListener('touchstart', e => { if (e.touches[0]) updateCoords(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
-            window.addEventListener('touchmove',  e => { if (e.touches[0]) updateCoords(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
-            window.addEventListener('touchend',   () => mouse2D.set(9999, 9999));
 
             const characterGroup = new THREE.Group();
             scene.add(characterGroup);
@@ -7101,8 +7165,11 @@
                     geo.applyMatrix4(child.matrixWorld);
                     const pos = geo.attributes.position;
                     for (let i = 0; i < pos.count; i++) {
+                        const x = pos.getX(i);
                         const y = pos.getY(i);
-                        if (y >= 0.52) allVerts.push(pos.getX(i), y, pos.getZ(i));
+                        if (y >= 0.48) {
+                            allVerts.push(x, y, pos.getZ(i));
+                        }
                     }
                 });
                 if (!allVerts.length) return;
@@ -7176,10 +7243,11 @@
                 loader.load('assets/character.glb', buildParticles);
             }
 
+            // Symmetrical center in expanded canvas; canvas margin bleed handles the leftward spatial fill
             let targetBaseX = 0, targetBaseY = 0;
             function updateFraming() {
                 const isMobile = window.innerWidth <= 900;
-                const w = charFrame.clientWidth  || (isMobile ? window.innerWidth : window.innerWidth * 0.45);
+                const w = charFrame.clientWidth  || (isMobile ? window.innerWidth : window.innerWidth * 0.52);
                 const h = charFrame.clientHeight || (isMobile ? window.innerHeight * 0.48 : window.innerHeight);
 
                 camera.aspect = w / (h || 1);
@@ -7189,9 +7257,16 @@
 
                 const vHalfH = Math.tan((36 * Math.PI / 180) / 2) * 3.2;
                 const vHalfW = vHalfH * camera.aspect;
+
+                // Calibrated against true maximum horizontal radius of gun arm (1.48) during 360-degree spin
+                // This guarantees the extended gun and cuffs NEVER clip at ANY rotation angle
+                const maxRadiusXZ = 1.48;
+                const maxHalfY    = 1.02;
+                const fitScaleW   = (vHalfW * 0.86) / maxRadiusXZ;
+                const fitScaleH   = (vHalfH * 0.88) / maxHalfY;
                 const scale = isMobile
-                    ? Math.min(0.80, (vHalfW * 0.82) / 1.05, (vHalfH * 0.82) / 1.0)
-                    : Math.min(0.85, (vHalfW * 0.88) / 1.02, (vHalfH * 0.88) / 1.0);
+                    ? Math.min(0.58, fitScaleW, fitScaleH)
+                    : Math.min(0.66, fitScaleW, fitScaleH);
 
                 characterGroup.scale.setScalar(scale);
                 characterGroup.position.set(targetBaseX, targetBaseY, 0);
@@ -7321,10 +7396,20 @@
                 elapsed += clock.getDelta();
                 camera.position.z += (scrollState.camZ - camera.position.z) * 0.12;
 
+                // Fling momentum with gentle friction decay
+                if (!isDragging && Math.abs(spinVelY) > 0.00005) {
+                    targetDragRotY += spinVelY;
+                    spinVelY *= 0.91;
+                }
+
+                // Heavy, viscous turntable smoothing (calm glide, no snappy fast spins)
+                currentDragRotY += (targetDragRotY - currentDragRotY) * 0.045;
+
                 if (particlePoints) {
                     characterGroup.position.y = targetBaseY + Math.sin(elapsed * 1.3) * 0.005;
                     characterGroup.position.x = targetBaseX;
-                    characterGroup.rotation.y = Math.sin(elapsed * 0.35) * 0.03 + scrollState.rotY;
+                    // Only spin horizontally around Y axis with damped user offset + ambient wave + scroll scrub
+                    characterGroup.rotation.y = currentDragRotY + Math.sin(elapsed * 0.35) * 0.03 + scrollState.rotY;
                     characterGroup.rotation.x = scrollState.rotX;
                     computeParticles(elapsed);
                 }
